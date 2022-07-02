@@ -40,11 +40,12 @@
             </div>
           </div>
         </div>
-        <div class="d-grid col-5 col-md-3 mx-auto">
-          <button class="btn btn-secondary btn-sm add_item_btn" type="button"><i class="fa-solid fa-plus"></i> Tambah</button>      
+        <div class="d-grid col-5 col-md-3 mx-auto">  
+          <button class="btn btn-danger btn-sm remove_item_btn" type="button"><i class="fa-solid fa-trash"></i> Hapus</button>      
         </div>
       </div>
     </div>
+    <button class="btn btn-secondary btn-sm add_item_btn" type="button"><i class="fa-solid fa-plus"></i> Tambah</button>
 
       <hr>
       
@@ -69,22 +70,15 @@
   $(document).ready(function() {
     $(".add_item_btn").click(function(e) {
       e.preventDefault();
-      $("#form_item").prepend(`<div class="row g-0 my-3 d-flex align-items-center">
-        <div class="col-md-2">
-          <img src="/img/Dedi A Rachim.jpg" class="img-fluid img-thumbnail rounded" alt="...">
+      $("#form_item").prepend(`<div class="row">
+        <div class="col-md-5 mb-2">
+          <input type="file" class="form-control" placeholder="Foto" aria-label="Foto">
         </div>
-        <div class="col-md-10">
-          <div class="card-body">
-            <textarea class="form-control fw-bold" id="exampleFormControlTextarea1" rows="2">Dedie A Rachim (Wakil Wali Kota Bogor)
-            </textarea>
-            <p class="card-text"><small class="text-muted">85% / 8500 Suara</small></p>
-            <div class="progress" style="height: 2rem;">
-              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-            </div>
-          </div>
+        <div class="col-md-6 mb-2">
+          <input type="text" class="form-control" placeholder="Nama" aria-label="Nama">
         </div>
-        <div class="d-grid col-5 col-md-3 mx-auto">
-          <button class="btn btn-danger btn-sm remove_item_btn" type="button"><i class="fa-solid fa-trash"></i> Hapus</button>      
+        <div class="d-grid col-md-1 mb-2 mx-auto">
+            <button type="button" class="btn btn-danger remove_item_btn"><i class="fa-solid fa-trash"></i></button>
         </div>
       </div>`);
     });  
