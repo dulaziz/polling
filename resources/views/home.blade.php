@@ -29,17 +29,22 @@
 
       <h4 class="card-title text-center fw-bold">Bakal Calon Wali Kota Bogor</h4>
       <hr>
-      <div class="row g-0 my-3">
+      <div class="row g-0 my-3 d-flex jusitfy-content-center">
         <div class="col-md-2">
           <img src="/img/Dedi A Rachim.jpg" class="img-fluid img-thumbnail rounded" alt="...">
         </div>
         <div class="col-md-10">
           <div class="card-body">
             <h5 class="card-title">Dedie A Rachim (Wakil Wali Kota Bogor)</h5>  
-            <p class="card-text"><small class="text-muted">85% / 8500 Suara</small></p>
-            <div class="progress" style="height: 2rem;">
+            {{-- <p class="card-text"><small class="text-muted">85% / 8500 Suara</small></p> --}}
+            {{-- <div class="progress" style="height: 2rem;">
               <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+            </div> --}}
+
+            <div class="col-md-2">
+              <div class="button btn-sm btn-primary text-center">Vote</div>
             </div>
+
           </div>
         </div>
       </div>

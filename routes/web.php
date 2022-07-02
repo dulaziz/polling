@@ -24,3 +24,7 @@ Route::get('/admin', function () {
 Route::get('/tambah', function () {
     return view('tambah');
 });
+
+Route::get('/test', function () {
+    return view('test');
+});
