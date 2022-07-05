@@ -180,3 +180,17 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   border-radius: 10px;
 }
+
+/* my css */
+
+/* Unit form style */
+.rb_tx_clr{
+  color: #00548F;
+}
+.rb_bg_clr{
+  background-color: #00548F;
+}
+.file {
+  visibility: hidden;
+  position: absolute;
+}

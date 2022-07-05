@@ -14,13 +14,37 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        "title" => "Home"
+    ]);
 });
 
 Route::get('/admin', function () {
-    return view('admin');
+    return view('admin', [
+        "title" => "Polling Unit"
+    ]);
 });
 
-Route::get('/tambah', function () {
-    return view('tambah');
+Route::get('/addPolling', function () {
+    return view('addPolling', [
+        "title" => "Add Polling Unit"
+    ]);
+});
+
+Route::get('/pollingUnit', function () {
+    return view('pollingUnit', [
+        "title" => "Polling Unit"
+    ]);
+});
+
+Route::get('/editPolling', function () {
+    return view('editPolling', [
+        "title" => "Edit Polling Unit"
+    ]);
+});
+
+Route::get('/result', function () {
+    return view('result', [
+        "title" => "Polling Result"
+    ]);
 });

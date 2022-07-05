@@ -6,3 +6,7 @@ $(window).scroll(function() {
         $('#navBar').removeClass('floatingNav');
     }
 });
+
+$(document).ready(function() {
+    alert('Tes')
+    });
