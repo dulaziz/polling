@@ -48,3 +48,7 @@ Route::get('/result', function () {
         "title" => "Polling Result"
     ]);
 });
+
+Route::get('/test', function () {
+    return view('test');
+});
