@@ -77,11 +77,12 @@
   }
   
   /* Shadow Sitcky Nav */
-  #navBar {
-    transition: 0.2s;
-  }
-  .floatingNav {
-    box-shadow: 0px 0px 10px #99999969;
-  }
+  /* Shadow Sitcky Nav */
+#navBar {
+  transition: 0.2s;
+}
+.floatingNav {
+  box-shadow: 0px 0px 10px #99999969;
+}
   
   

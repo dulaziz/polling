@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/navStyle.css">
 
 {{-- Navbar --}}
-<nav id="navBar" class="navbar navbar-expand-lg py-2 navbar-light sticky-top bg-light">
+<nav class="navbar navbar-expand-lg py-2 navbar-light">
   <div class="container"> 
 
     {{-- Logo --}}
@@ -34,5 +34,3 @@
 
   </div>
 </nav>
-
-<script src="js/script.js"></script>

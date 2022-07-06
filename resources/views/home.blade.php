@@ -13,7 +13,6 @@
 
   @include('partials.cardPollUnit')
 
-
 </div>
 
 </div>  
