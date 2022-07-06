@@ -3,7 +3,7 @@
 
 @section('child')
 
-<div class="container">
+
 
 {{-- Banner --}}
 @include('partials.banner')
@@ -15,6 +15,6 @@
 
 </div>
 
-</div>  
+
 
 @endsection

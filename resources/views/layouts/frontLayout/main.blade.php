@@ -23,9 +23,11 @@
 
     @include('layouts.frontLayout.navbar')
 
+    <div class="container">
     {{-- Content --}}
     <div>
         @yield('child')
+    </div>
     </div>
 
     @include('layouts.frontLayout.footer')

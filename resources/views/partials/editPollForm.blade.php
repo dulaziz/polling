@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="css/global.css">
 
-<h6 class="text-muted mb-5">{{ $title }}</h6>
 <div class="form-floating mb-3">
     <input type="text" class="form-control" id="floatingInput" placeholder="Text">
     <label for="floatingInput title-text">Title</label>
@@ -9,7 +8,21 @@
     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
     <label for="floatingTextarea2">Description</label>
   </div>
-
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="floatingInput" placeholder="Text">
+        <label for="floatingInput title-text">Star from</label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="floatingInput" placeholder="Text">
+        <label for="floatingInput title-text">Expired</label>
+      </div>
+    </div>
+  </div>
+  <hr>
 <div class="card border-light rounded-3 shadow-sm">
 <div class="card-body">
     <div class="form-floating mb-3">
