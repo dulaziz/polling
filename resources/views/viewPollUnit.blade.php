@@ -18,12 +18,6 @@
   
   <p class="fst-italic mb-3">Waktu Polling 04 Juli 2022 s/d 11 Juli 2022</p>
 
-  {{-- Allert after Vote --}}
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Tanggapan Anda telah tersimpan,</strong> Terimakasih telah mengikuti Polling kami.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-
     {{-- Card Vote --}}
   <div class="card border-light rounded-3 shadow-sm mb-3">
     <div class="card-body">
@@ -54,10 +48,9 @@
             {{-- Vote Name --}}
             <h5 class="card-title fw-bold">Dedie A Rachim</h5> 
             <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
-            {{-- Vote Button --}}
-            <div class="d-grid col-md-2">
-            <button type="button" class="btn btn-primary btn-sm">VOTE</button>
-          </div>
+            <div class="progress" style="height: 2rem">
+                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85% / 8500 Suara</div>
+              </div>
           </div>
         </div>
       </div>
@@ -79,12 +72,19 @@
         </div>
       </div>
       <hr>
-      <h5 class="float-end">85.000 Suara</h5>
+      <div class="row d-flex flex-row-reverse">
+          <div class="col-md-7">
+              <h5 class="float-md-end">85.000 Suara</h5>
+          </div>
+        <div class="col-md-5">
+            <a href="/editPolling" class="btn btn-success btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Edit</a>
+            <a href="/result" class="btn btn-primary btn-sm text-white mt-1" type="button"><i class="fa-solid fa-chart-bar"></i> Result</a>
+            <button class="btn btn-warning btn-sm text-white mt-1" type="button"><i class="fa-solid fa-xmark"></i> Close</button>
+            <button class="btn btn-danger btn-sm text-white mt-1" type="button"><i class="fa-solid fa-trash"></i> Delet</button>
+            <a href="/admin" class="btn btn-secondary btn-sm mt-1" type="button"><i class="fas fa-reply"></i> Back</a>
+        </div>
+      </div>
     </div>
-  </div>
-  
-  <div class="d-grid gap-2 col-md-3 mx-auto">
-    <a href="/" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
   </div>
 
 </div>

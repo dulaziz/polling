@@ -49,6 +49,13 @@ Route::get('/result', function () {
     ]);
 });
 
+Route::get('/viewPollUnit', function () {
+    return view('viewPollUnit', [
+        "title" => "View Polling Unit"
+    ]);
+});
+
 Route::get('/test', function () {
     return view('test');
 });
+
