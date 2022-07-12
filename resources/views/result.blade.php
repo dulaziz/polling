@@ -1,7 +1,9 @@
 
-@extends('layouts.frontLayout.main')
+@extends('layouts.main')
 
 @section('child')
+
+<link rel="stylesheet" type="text/css" media="print" href="css/print.css">
 
 <div class="container">
 
@@ -11,12 +13,12 @@
 {{-- Vote Elelment --}}
 <h6 class="text-muted mb-5">{{ $title }}</h6>
 
+<div class="print-container">
 <div class="mb-4">
 <h2 class="fw-bold">Bogor Memilih 2024, Siapa Kandidat Balon Wali Kota Bogor Terfavorit?</h2>
 <p class="fst-italic">Waktu Polling 04 Juli 2022 s/d 11 Juli 2022</p>
-
-
 </div>
+
 <div class="table-responsive">
 <table class="table table-sm" style="width: 900px;">
     <thead>
@@ -71,8 +73,9 @@
     </tbody>
   </table>
 </div>
+</div>
 <div class="float-end">
-  <a href="/result" class="btn btn-info btn-sm text-white" type="button"><i class="fa-solid fa-print"></i> Print</a>
+  <a onclick="window.print()" class="btn btn-info btn-sm text-white" type="button"><i class="fa-solid fa-print"></i> Print</a>
   <a href="/admin" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
 </div>
 
@@ -131,8 +134,10 @@
     </div>
 </div> --}}
 
+
 </div>
 
 </div>
+
 
 @endsection

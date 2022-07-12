@@ -1,6 +1,41 @@
 <link rel="stylesheet" href="css/global.css">
 
-<div class="form-floating mb-3">
+
+  <div class="row my-2 d-flex align-items-center">
+    <div class=" col-md-5 d-flex justify-content-center">
+      <img src="img/default1.jpg" id="preview" class="img-thumbnail" style="max-width: 260px; max-height: 274px;">
+    </div>
+    <div class="col-md-7 mb-2">
+      <div id="msg"></div>
+      <form method="post" id="image-form">
+        <input type="file1" name="img[]" class="file" accept="image/*">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" disabled placeholder="Upload Thumbnail" id="file1">
+          <div class="input-group-append">
+            <button type="button" class="browse1 btn btn-primary">Browse...</button>
+          </div>
+        </div>
+      </form>
+      <input type="text" class="form-control mb-3" placeholder="Title" aria-label="Title">
+      <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px"></textarea>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="date" class="form-control" id="floatingInput" placeholder="Text">
+            <label for="floatingInput title-text">Star from</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="date" class="form-control" id="floatingInput" placeholder="Text">
+            <label for="floatingInput title-text">Expired</label>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>
+
+{{-- <div class="form-floating mb-3">
     <input type="text" class="form-control" id="floatingInput" placeholder="Text">
     <label for="floatingInput title-text">Title</label>
   </div>
@@ -21,7 +56,8 @@
       <label for="floatingInput title-text">Expired</label>
     </div>
   </div>
-</div>
+</div> --}}
+
 <hr>
 <div class="card border-light rounded-3 shadow-sm">
 <div class="card-body">
@@ -30,28 +66,28 @@
         <label for="floatingInput">Sub Title</label>
       </div>
   <hr>
-  <div id="form_item_tambah">
-  <div class="row my-2">
-    <div class="ml-2 col-md-3">
-      <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail" style="max-width: 160px; max-height: 174px;">
-    </div>
-    <div class="col-md-9 mb-2">
-      <div id="msg"></div>
-      <form method="post" id="image-form">
-        <input type="file" name="img[]" class="file" accept="image/*">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
-          <div class="input-group-append">
-            <button type="button" class="browse btn btn-primary">Browse...</button>
+    <div id="form_item_tambah">
+    <div class="row my-2">
+      <div class="col-md-3 d-flex justify-content-center">
+        <img src="img/default2.jpg" id="preview" class="img-thumbnail" style="max-width: 160px; max-height: 174px;">
+      </div>
+      <div class="col-md-9 mb-2">
+        <div id="msg"></div>
+        <form method="post" id="image-form">
+          <input type="file" name="img[]" class="file" accept="image/*">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
+            <div class="input-group-append">
+              <button type="button" class="browse2 btn btn-primary">Browse...</button>
+            </div>
           </div>
-        </div>
-      </form>
-      <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name">
-      <input type="text" class="form-control mb-3" placeholder="Short desc" aria-label="Short desc">
-      <button type="button" class="btn btn-primary btn-sm add_item_tambah"><i class="fa-solid fa-plus"></i> Tambah</button>
-    </div>   
+        </form>
+        <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name">
+        <input type="text" class="form-control mb-3" placeholder="Short desc" aria-label="Short desc">
+        <button type="button" class="btn btn-primary btn-sm add_item_tambah"><i class="fa-solid fa-plus"></i> Tambah</button>
+      </div>   
+    </div>
   </div>
-</div>
   <hr>
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <button class="btn btn-success btn-sm" type="button"><i class="fa-solid fa-floppy-disk"></i> Save</button>
@@ -63,7 +99,24 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-$(document).on("click", ".browse", function() {
+$(document).on("click", ".browse1", function() {
+  var file = $(this).parents().find(".file1");
+  file.trigger("click");
+});
+$('input[type="file1"]').change(function(e) {
+  var fileName = e.target.files[0].name;
+  $("#file1").val(fileName);
+
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    // get loaded data and render thumbnail.
+    document.getElementById("preview").src = e.target.result;
+  };
+  // read the image file as a data URL.
+  reader.readAsDataURL(this.files[0]);
+});
+
+$(document).on("click", ".browse2", function() {
   var file = $(this).parents().find(".file");
   file.trigger("click");
 });
@@ -84,8 +137,8 @@ $('input[type="file"]').change(function(e) {
     $(".add_item_tambah").click(function(e) {
       e.preventDefault();
       $("#form_item_tambah").prepend(`<div class="row my-2">
-        <div class="ml-2 col-md-3">
-          <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail" style="max-width: 160px; max-height: 174px;">
+        <div class="col-md-3 d-flex justify-content-center">
+          <img src="img/LOGO-RADAR-150x111.png" id="preview" class="img-thumbnail" style="max-width: 160px; max-height: 174px;">
         </div>
         <div class="col-md-9 mb-2">
           <div id="msg"></div>

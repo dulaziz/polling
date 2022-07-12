@@ -1,5 +1,5 @@
 
-@extends('layouts.frontLayout.main')
+@extends('layouts.main')
 
 @section('child')
 

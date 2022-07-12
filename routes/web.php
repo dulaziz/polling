@@ -55,6 +55,24 @@ Route::get('/viewPollUnit', function () {
     ]);
 });
 
+Route::get('/adminLogin', function () {
+    return view('adminLogin', [
+        "title" => "Login"
+    ]);
+});
+
+Route::get('/upload', function () {
+    return view('upload', [
+        "title" => "Upload"
+    ]);
+});
+
+Route::get('/image', function () {
+    return view('image', [
+        "title" => "Image"
+    ]);
+});
+
 Route::get('/test', function () {
     return view('test');
 });
