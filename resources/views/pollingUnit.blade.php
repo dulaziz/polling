@@ -38,7 +38,7 @@
           <h4 class="card-title text-md-center fw-bold">Bakal Calon Wali Kota Bogor</h4>  
         </div>
         <div class="col-md-3">
-
+          {{-- Empity col --}}
         </div>
       </div>
       <hr>
