@@ -46,12 +46,12 @@
       <h6>Polling Items</h6>
     </div>
     <div class="col-md-9 d-grid">
-      <button type="button" class="btn btn-outline-primary add_item_tambah"><i class="fa-solid fa-plus"></i> Add Poll Items</button>
+      <button type="button" class="btn btn-outline-primary add_item_btn"><i class="fa-solid fa-plus"></i> Add Poll Items</button>
     </div>
   </div>
 
-  <div id="form_item_tambah">
-    <div class="row my-2 d-flex align-items-center">
+  <div id="form_item_add">
+    <div class="row my-5 d-flex align-items-center">
         <div class="preview col-md-3 d-flex justify-content-center my-3">
             <img src="img/default2.jpg" id="file-ip-2-preview" class="img-thumbnail" style="max-width: 160px; max-height: 174px;">
         </div>
@@ -61,7 +61,7 @@
 
         <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name">
         <input type="text" class="form-control mb-3" placeholder="Short desc" aria-label="Short desc">
-        <button type="button" class="btn btn-danger btn-sm remove_item_tambah"><i class="fa-solid fa-trash"></i> Delete</button>
+        <button type="button" class="btn btn-danger btn-sm remove_item_btn"><i class="fa-solid fa-trash"></i> Delete</button>
       </div>   
     </div>
   </div>
@@ -99,9 +99,9 @@ function showPreview2(event){
 
 // Add poll item form
 $(document).ready(function() {
-    $(".add_item_tambah").click(function(e) {
+    $(".add_item_btn").click(function(e) {
       e.preventDefault();
-      $("#form_item_tambah").prepend(`<div class="row my-2 d-flex align-items-center">
+      $("#form_item_add").prepend(`<div class="row my-5 d-flex align-items-center">
         <div class="preview col-md-3 d-flex justify-content-center mb-3">
             <img src="img/default2.jpg" id="file-ip-2-preview" class="img-thumbnail" style="max-width: 160px; max-height: 174px;">
         </div>
@@ -111,12 +111,12 @@ $(document).ready(function() {
 
         <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name">
         <input type="text" class="form-control mb-3" placeholder="Short desc" aria-label="Short desc">
-        <button type="button" class="btn btn-danger btn-sm remove_item_tambah"><i class="fa-solid fa-trash"></i> Delete</button>
+        <button type="button" class="btn btn-danger btn-sm remove_item_btn"><i class="fa-solid fa-trash"></i> Delete</button>
       </div>   
-    </div> <hr>`);
+    </div>`);
     });  
 
-    $(document).on('click', '.remove_item_tambah', function(e) {
+    $(document).on('click', '.remove_item_btn', function(e) {
       e.preventDefault();
       let row_item = $(this).parent().parent();
       $(row_item).remove();
