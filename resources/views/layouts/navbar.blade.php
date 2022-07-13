@@ -1,18 +1,18 @@
-<link rel="stylesheet" href="css/navStyle.css">
+<link rel="stylesheet" href="{{ asset('css/navStyle.css') }}">
 
 {{-- Navbar --}}
 <nav class="navbar navbar-expand-lg py-2 navbar-light">
-  <div class="container"> 
+  <div class="container">
 
     {{-- Logo --}}
-    <a class="navbar-brand navlogo" href="/"><img src="img/RB Nav.png" alt="logo radar bogor"></a>
-    
+    <a class="navbar-brand navlogo" href="/"><img src="{{ asset('img/RB Nav.png') }}" alt="logo radar bogor"></a>
+
     {{-- Burger Menu --}}
-    <button 
-    class="navbar-toggler collapsed d-flex d-lg-none flex-column justtify-content-around" 
-    type="button" 
-    data-bs-toggle="collapse" 
-    data-bs-target="#toggleMobileMenu" 
+    <button
+    class="navbar-toggler collapsed d-flex d-lg-none flex-column justtify-content-around"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#toggleMobileMenu"
     aria-controls="toggleMobileMenu"
     aria-expanded="false"
     aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
         <li class="nav-item">
           <a class="nav-link" href="">Epaper</a>
         </li>
-      </ul>     
+      </ul>
     </div>
 
   </div>
