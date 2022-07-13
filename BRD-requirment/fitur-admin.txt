@@ -1,0 +1,22 @@
+1. Buat Page Polling
+
+tabel  :
+
+    Unit   :
+        - id
+        - thumbnail
+        - title
+        - Description
+        - date_start
+        - date_end
+        - subtitle
+
+    Item    :
+        - id
+        - unit_id
+        - vote_image
+        - vote_name
+        - short_desc
+
+2. Buat Item Polling
+

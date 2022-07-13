@@ -9,14 +9,32 @@
 <div class="col-md-10 mx-auto my-5">
 
   {{-- Title --}}
-  <h3 class="fw-bold">Bogor Memilih 2024, Siapa Kandidat Balon Wali Kota Bogor Terfavorit?</h3>
+  <h3 class="fw-bold">{{ $polling_unit->title }}</h3>
 
   {{-- Desc --}}
-  <p class="mt-4 text-secondary">PEMILIHAN  Wali Kota Bogor akan digelar pada 2024 mendatang. Sejumlah nama digadang-gadang bakal maju menjadi orang nomor satu di Kota Bogor. 
-    Siapa kandidat bakal calon Wali Kota Bogor 2024, pilihan Anda? 
-    Yuk, ikut poling berikut:</p>
-  
-  <p class="fst-italic mb-3">Waktu Polling 04 Juli 2022 s/d 11 Juli 2022</p>
+  <p class="mt-4 text-secondary">{{ $polling_unit->description }}</p>
+
+  @php
+  $epoch_start = $polling_unit->date_start;
+   $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
+   $date_start = $dt->format('d-m-Y');
+
+  $epoch_end = $polling_unit->date_end;
+   $dt = new DateTime("@$epoch_end");  // convert UNIX timestamp to PHP DateTime
+   $date_end = $dt->format('d-m-Y');
+
+   // $date = new DateTime('07/09/2022'); // format: MM/DD/YYYY
+   // echo $date->format('U');
+
+//    echo time();
+
+   $times = round(microtime(true));
+   $ts = new DateTime("@$times");
+   $today = $ts->format('d-m-Y');
+
+@endphp
+
+  <p class="fst-italic mb-3">Waktu Polling {{ $date_start }} s/d {{ $date_end }}</p>
 
     {{-- Card Vote --}}
   <div class="card border-light rounded-3 shadow-sm mb-3">
@@ -25,11 +43,14 @@
       {{-- Sub Title --}}
       <div class="row d-flex align-items-center">
         <div class="col-md-3">
-          <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>
-          {{-- <small class="text-danger  fst-italic"><i class="fas fa-times-circle"></i> Closed Polling</small> --}}
+            @if ( $date_end <= $today)
+            <small class="text-danger  fst-italic"><i class="fas fa-times-circle"></i> Closed Polling</small>
+            @else
+            <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>
+            @endif
         </div>
         <div class="col-md-6">
-          <h4 class="card-title text-md-center fw-bold">Bakal Calon Wali Kota Bogor</h4>  
+          <h4 class="card-title text-md-center fw-bold">{{ $polling_unit->subtitle }}</h4>
         </div>
         <div class="col-md-3">
 
@@ -37,44 +58,41 @@
       </div>
       <hr>
 
+    {{-- Looping data vote item --}}
+
+    @foreach ($polling_item as $item)
+
+
       {{-- Vote Item --}}
       <div class="row g-0 my-3">
         <div class="col-md-2">
           {{-- Vote Thumbnail --}}
-          <img src="/img/Dedi A Rachim.jpg" class="img-fluid img-thumbnail rounded" alt="...">
+          <img src="{{ asset('storage/' . $item->vote_image) }}" class="img-fluid img-thumbnail rounded" alt="...">
         </div>
         <div class="col-md-10 d-flex align-items-center">
           <div class="card-body">
             {{-- Vote Name --}}
-            <h5 class="card-title fw-bold">Dedie A Rachim</h5> 
-            <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+            <h5 class="card-title fw-bold">{{ $item->vote_name }}</h5>
+            <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p>
             <div class="progress" style="height: 2rem">
-                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85% / 8500 Suara</div>
+                {{-- Cari jumlah persentase dari pemilih --}}
+                @php
+                    $total_vote = $item->response / $total_user_vote * 100;
+                @endphp
+                <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
               </div>
           </div>
         </div>
       </div>
 
 
-      {{-- Vote Item --}}
-      <div class="row g-0 my-3">
-        <div class="col-md-2">
-          <img src="/img/Atang Trisnanto.jpg" class="img-fluid img-thumbnail rounded" alt="...">
-        </div>
-        <div class="col-md-10">
-          <div class="card-body">
-            <h5 class="card-title">Atang Trisnanto</h5>  
-            <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
-            <div class="progress" style="height: 2rem">
-              <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65% / 6500 Suara</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    @endforeach
+
       <hr>
+
       <div class="row d-flex flex-row-reverse">
           <div class="col-md-7">
-              <h5 class="float-md-end">85.000 Suara</h5>
+              <h5 class="float-md-end">{{ $total_user_vote }} Suara</h5>
           </div>
         <div class="col-md-5">
             <a href="/editPolling" class="btn btn-success btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Edit</a>
@@ -84,11 +102,16 @@
             <a href="/admin" class="btn btn-secondary btn-sm mt-1" type="button"><i class="fas fa-reply"></i> Back</a>
         </div>
       </div>
+
+
+
+
+
     </div>
   </div>
 
 </div>
 
-</div>  
+</div>
 
 @endsection

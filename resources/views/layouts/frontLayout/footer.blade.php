@@ -1,11 +1,11 @@
-<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="{{ asset('css/global.css') }}">
 
 {{-- Footer Layout --}}
 <footer class="text-light py-3" style="background-color: #00548F;">
     <div class="container text-md-left">
       <div class="row text-md-left">
         <div class="col-md-12 col-lg-6 col-xl-6 mx-auto mt-3">
-          <img src="img/RB white.png" alt="logo radar bogor" class="mb-2" style="width: 250px">
+          <img src="{{ asset('img/RB white.png') }}" alt="logo radar bogor" class="mb-2" style="width: 250px">
           <hr>
           <p>Graha Pena Bogor <br> Jl KHR Abdullah Bin Nuh Jl. Ring Road Taman Yasmin No.30, RT.05/RW.04, Cibadak, Kec. Bogor Barat, Kota Bogor, Jawa Barat 16113.</p>
         </div>
