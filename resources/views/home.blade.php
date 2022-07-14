@@ -12,4 +12,6 @@
 
 </div>
 
+<script src="js/script.js"></script>
+
 @endsection

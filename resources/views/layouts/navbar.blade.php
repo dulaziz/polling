@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/navStyle.css">
 
 {{-- Navbar --}}
-<nav class="navbar navbar-expand-lg py-2 navbar-light">
+<nav id="navBar" class="navbar navbar-expand-lg py-2 navbar-light sticky-top bg-light">
   <div class="container"> 
 
     {{-- Logo --}}
@@ -34,3 +34,6 @@
 
   </div>
 </nav>
+
+<script src="js/script.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
