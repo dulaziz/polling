@@ -1,8 +1,13 @@
 <link rel="stylesheet" href="{{ asset('css/navStyle.css') }}">
 
 {{-- Navbar --}}
+<<<<<<< HEAD
+<nav id="navBar" class="navbar navbar-expand-lg py-2 navbar-light sticky-top bg-light">
+  <div class="container"> 
+=======
 <nav class="navbar navbar-expand-lg py-2 navbar-light">
   <div class="container">
+>>>>>>> 20cd86b3309d70c2b380855274dc29941a162c3d
 
     {{-- Logo --}}
     <a class="navbar-brand navlogo" href="/"><img src="{{ asset('img/RB Nav.png') }}" alt="logo radar bogor"></a>
@@ -34,3 +39,9 @@
 
   </div>
 </nav>
+<<<<<<< HEAD
+
+<script src="js/script.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+=======
+>>>>>>> 20cd86b3309d70c2b380855274dc29941a162c3d
