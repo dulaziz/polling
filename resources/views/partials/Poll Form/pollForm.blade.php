@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="css/global.css">
 
+<form action="{{ '/addUnit' }}" method="post" id="image-form" enctype="multipart/form-data">
+    @csrf
+
     @include('partials/Poll Form.pollFormHead')
     <hr>
 
@@ -9,7 +12,7 @@
 
         @include('partials/Poll Form.pollFormCardHead')
         <hr>
-    
+
         @include('partials/Poll Form.pollFormAddItem')
 
         @include('partials/Poll Form.pollFormItem')
@@ -18,7 +21,9 @@
         @include('partials/Poll Form.pollFormCardFoot')
 
     </div>
-</div>  
+</div>
+
+</form>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -56,9 +61,9 @@ $(document).ready(function() {
         <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name">
         <input type="text" class="form-control mb-3" placeholder="Short desc" aria-label="Short desc">
         <button type="button" class="btn btn-danger btn-sm remove_item_btn"><i class="fa-solid fa-trash"></i> Delete</button>
-      </div>   
+      </div>
     </div>`);
-    });  
+    });
 
     $(document).on('click', '.remove_item_btn', function(e) {
       e.preventDefault();

@@ -47,6 +47,9 @@ Route::get('/pollingUnitBar', function () {
         "title" => "Polling Unit Bar"
     ]);
 });
+
+Route::get('/pollingUnitBar/{id}',[pollingController::class,'show']);
+
 Route::get('/viewPollUnit/{id}',[pollingController::class,'show']);
 
 Route::get('/adminLogin', function () {

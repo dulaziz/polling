@@ -21,12 +21,12 @@
       <hr>
 
       @include('partials/Poll Unit.pollUnitfooterCard')
-      
+
     </div>
   </div>
 
 </div>
 
-</div>  
+</div>
 
 @endsection

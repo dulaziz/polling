@@ -62,7 +62,7 @@ class pollingController extends Controller
             'short_desc' => 'required',
         ]);
 
-        dd($validated);
+        // dd($validated);
 
         // Cek jika ada gambar yang di inputkan dan simpan kedalam folder storage
         if($request->hasfile('thumbnail')){
@@ -168,12 +168,15 @@ class pollingController extends Controller
 
         // $total_vote = $total_votings->response / $total_user_vote * 100;
 
-        return view('viewPollUnit', [
-            "title" => "View Polling Unit",
+        // return view('viewPollUnit', [
+             // "total_vote" => $total_vote
+        // ]);
+
+        return view('pollingUnitBar', [
+            "title" => "Polling Unit Bar",
             "polling_unit" => $polling_unit,
             "polling_item" => $polling_item,
             "total_user_vote" => $total_user_vote,
-            // "total_vote" => $total_vote
         ]);
 
     }
