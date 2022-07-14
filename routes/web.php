@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\adminController;
+use App\Http\Controllers\pollingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,17 +21,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/admin', function () {
-    return view('admin', [
-        "title" => "Polling Unit"
-    ]);
-});
+Route::get('/admin',[adminController::class,'index']);
+Route::get('/addPolling',[pollingController::class,'create']);
 
-Route::get('/addPolling', function () {
-    return view('addPolling', [
-        "title" => "Add Polling Unit"
-    ]);
-});
+
+Route::post('/addUnit',[pollingController::class,'create_unit']);
+Route::post('/addItems',[pollingController::class,'create_items']);
 
 Route::get('/pollingUnit', function () {
     return view('pollingUnit', [
@@ -43,17 +40,14 @@ Route::get('/editPolling', function () {
     ]);
 });
 
-Route::get('/result', function () {
-    return view('result', [
-        "title" => "Polling Result"
-    ]);
-});
+Route::get('/result/{vote_unit}',[pollingController::class,'result']);
 
 Route::get('/pollingUnitBar', function () {
     return view('pollingUnitBar', [
         "title" => "Polling Unit Bar"
     ]);
 });
+Route::get('/viewPollUnit/{id}',[pollingController::class,'show']);
 
 Route::get('/adminLogin', function () {
     return view('adminLogin', [

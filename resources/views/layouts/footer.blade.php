@@ -1,11 +1,11 @@
-<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="{{ asset('css/global.css') }}">
 
 {{-- Footer Layout --}}
 <footer class="text-light py-3" style="background-color: #00548F;">
     <div class="container text-md-left">
       <div class="row text-md-left">
         <div class="col-md-12 col-lg-6 col-xl-6 mx-auto mt-3">
-          <img src="img/RB white.png" alt="logo radar bogor" class="mb-2" style="width: 250px">
+          <img src="{{ asset('img/RB white.png') }}" alt="logo radar bogor" class="mb-2" style="width: 250px">
           <hr>
           <h5>Graha Pena Bogor</h5>
           <div class="d-flex">
@@ -68,4 +68,7 @@
       </div>
     </div>
   </footer>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 20cd86b3309d70c2b380855274dc29941a162c3d
