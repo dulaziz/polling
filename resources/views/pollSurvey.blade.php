@@ -33,6 +33,66 @@
         </label>
       </div>
     </div>
+
+    <div class="row">
+      <div class="poll-area">
+        <label for="opt-2" class="opt-2">
+          <div class="col-md-2 thumb">
+              <img src="/img/Atang Trisnanto.jpg" class="img-fluid img-thumbnail rounded" alt="...">
+          </div>
+          <div class="col-md-10 ps-3">
+            <h5 class="card-title fw-bold">Atang Trisnanto</h5>
+            <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+            <div class="d-flex align-items-center">
+              <span class="circle"></span>
+              <p class="mb-0">Vote</p>
+              <span class="percent ms-3">50%</span>
+            </div>
+            <div class="progress" style='--w:50;'></div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="poll-area">
+        <label for="opt-3" class="opt-3">
+          <div class="col-md-2 thumb">
+              <img src="/img/Yane Ardian.jpg" class="img-fluid img-thumbnail rounded" alt="...">
+          </div>
+          <div class="col-md-10 ps-3">
+            <h5 class="card-title fw-bold">Yane Ardian</h5>
+            <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+            <div class="d-flex align-items-center">
+              <span class="circle"></span>
+              <p class="mb-0">Vote</p>
+              <span class="percent ms-3">40%</span>
+            </div>
+            <div class="progress" style='--w:40;'></div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="poll-area">
+        <label for="opt-4" class="opt-4">
+          <div class="col-md-2 thumb">
+              <img src="/img/Ilustrasi.jpg" class="img-fluid img-thumbnail rounded" alt="...">
+          </div>
+          <div class="col-md-10 ps-3">
+            <h5 class="card-title fw-bold">Lainnya</h5>
+            <p class="card-text"><small class="text-muted">Lainnya</small></p>
+            <div class="d-flex align-items-center">
+              <span class="circle"></span>
+              <p class="mb-0">Vote</p>
+              <span class="percent ms-3">30%</span>
+            </div>
+            <div class="progress" style='--w:30;'></div>
+          </div>
+        </label>
+      </div>
+    </div>
             
 
 <style>
@@ -135,7 +195,7 @@ label .row .column{
   display: none;
 }
 label .progress{
-  height: 7px;
+  height: 15px;
   width: 100%;
   position: relative;
   background: #f0f0f0;
