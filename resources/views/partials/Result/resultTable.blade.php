@@ -62,3 +62,34 @@
         </tbody>
       </table>
     </div>
+
+    <style>
+      /* @media print {
+    body * {
+        visibility: hidden;
+    }
+    .print-container, .print-container * {
+        visibility: visible;
+    }
+    .print-container {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        margin: 50px 0 50px 0;
+    }
+}
+
+.progress {
+    background-image: none;
+    -webkit-print-color-adjust: exact;
+    box-shadow: inset 0 0;
+    -webkit-box-shadow: inset 0 0;
+}
+  
+.bar {
+    background-image: none;
+    -webkit-print-color-adjust: exact;
+    box-shadow: inset 0 0;
+    -webkit-box-shadow: inset 0 0;
+} */
+    </style>

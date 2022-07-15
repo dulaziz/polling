@@ -21,6 +21,6 @@
 
  @endphp
 
-    <h2 class="fw-bold">{{$vote_unit->description}}</h2>
+    <h2 class="fw-bold">{{$vote_unit->title}}</h2>
     <p class="fst-italic">Waktu Polling {{$date_start}} s/d {{$date_end}}</p>
 </div>

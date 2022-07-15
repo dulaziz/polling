@@ -4,7 +4,7 @@
 @section('child')
 
 {{-- Print style --}}
-<link rel="stylesheet" type="text/css" media="print" href="css/print.css">
+<link rel="stylesheet" type="text/css" media="print" href="{{ url('css/print.css') }}">
 
   <div class="container">
 
