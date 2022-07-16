@@ -15,11 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "title" => "Home"
-    ]);
-});
+Route::get('/',[pollingController::class,'index']);
 
 Route::get('/admin',[adminController::class,'index']);
 Route::get('/addPolling',[pollingController::class,'create']);
@@ -48,9 +44,10 @@ Route::get('/pollingUnitBar', function () {
     ]);
 });
 
-Route::get('/pollingUnitBar/{id}',[pollingController::class,'show']);
-
-Route::get('/viewPollUnit/{id}',[pollingController::class,'show']);
+Route::get('/pollingUnitBar/{id}',[pollingController::class,'show_bar']);
+Route::get('/pollingUnit/{id}',[pollingController::class,'show_unit']);
+Route::get('/getPollingUnit',[pollingController::class,'get_polling_json']);
+Route::get('/viewPollUnit/{id}',[pollingController::class,'show_unit']);
 
 Route::get('/adminLogin', function () {
     return view('adminLogin', [

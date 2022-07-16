@@ -30,7 +30,7 @@ $epoch_end = $polling_unit->date_end;
       <h4 class="card-title text-md-center fw-bold">{{ $polling_unit->subtitle }}</h4>
     </div>
     <div class="col-md-3">
-
+        <a href="/" class="btn btn-outline-secondary btn-sm float-end">Back <i class="fas fa-reply"></i></a>
     </div>
   </div>
 

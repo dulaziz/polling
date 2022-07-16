@@ -15,6 +15,17 @@ class pollingController extends Controller
 {
     //
 
+    public function index(){
+
+        $data_polling = DB::table('vote_units')->get();
+        return view('home', [
+            "title" => "Home",
+            "data_polling" => $data_polling
+        ]);
+    }
+
+
+
     public function create(){
 
 
@@ -140,8 +151,7 @@ class pollingController extends Controller
     }
 
 
-
-    public function show(VoteUnit $id){
+    public function show_bar(VoteUnit $id){
 
 
 
@@ -181,6 +191,46 @@ class pollingController extends Controller
 
     }
 
+    public function show_unit(VoteUnit $id){
+
+
+
+        $polling_unit = DB::table('vote_units')
+                            ->where('id',$id->id)
+                            ->first();
+
+        $polling_item = DB::table('vote_items')
+                            ->where('vote_unit_id',$id->id)
+                            ->get();
+
+        $total_votings = DB::table('votings')
+                            ->where('vote_item_id',$id->id)
+                            ->first();
+
+
+        // $total_votings = Voting::with(['voteItem'])
+        //                         ->where('vote_unit_id',$id->id)
+        //                         ->get();
+
+        //                         dd($total_votings);
+
+        $total_user_vote = DB::table('votings')->count('*');
+
+        // $total_vote = $total_votings->response / $total_user_vote * 100;
+
+        // return view('viewPollUnit', [
+             // "total_vote" => $total_vote
+        // ]);
+
+        return view('pollingUnit', [
+            "title" => "Polling Unit Bar",
+            "polling_unit" => $polling_unit,
+            "polling_item" => $polling_item,
+            "total_user_vote" => $total_user_vote,
+        ]);
+
+    }
+
     public function result(VoteUnit $vote_unit){
 
         // Ambil semua data total vote item yang vote unit id nya sesuai dengan vote unit id dan berelasi dengan tabel voting
@@ -204,6 +254,14 @@ class pollingController extends Controller
             "total_user_vote" => $total_user_vote,
             "vote_unit" => $vote_unit
         ]);
+
+    }
+
+    public function get_polling_json(){
+
+        $data_vote_unit_json = DB::table('vote_items')->get();
+
+        return json_decode($data_vote_unit_json);
 
     }
 
