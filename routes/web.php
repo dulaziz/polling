@@ -61,9 +61,9 @@ Route::get('/upload', function () {
     ]);
 });
 
-Route::get('/image', function () {
-    return view('image', [
-        "title" => "Image"
+Route::get('/pollSurvey', function () {
+    return view('pollSurvey', [
+        "title" => "Poll Survey"
     ]);
 });
 

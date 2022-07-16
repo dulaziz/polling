@@ -1,11 +1,11 @@
-<link rel="stylesheet" href="{{ asset('css/navStyle.css') }}">
+<link rel="stylesheet" href="css/navStyle.css">
 
 {{-- Navbar --}}
-<nav class="navbar navbar-expand-lg py-2 navbar-light">
+<nav id="navBar" class="navbar navbar-expand-lg py-2 navbar-light sticky-top bg-light">
   <div class="container">
 
     {{-- Logo --}}
-    <a class="navbar-brand navlogo" href="/"><img src="{{ asset('img/RB Nav.png') }}" alt="logo radar bogor"></a>
+    <a class="navbar-brand navlogo" href="/"><img src="{{ url('img/RB Nav.png') }}" alt="logo radar bogor"></a>
 
     {{-- Burger Menu --}}
     <button
@@ -34,3 +34,6 @@
 
   </div>
 </nav>
+
+<script src="js/script.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
