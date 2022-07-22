@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/navStyle.css">
+<link rel="stylesheet" href="{{ asset('css/navStyle.css')}}">
 
 {{-- Navbar --}}
 <nav id="navBar" class="navbar navbar-expand-lg py-2 navbar-light sticky-top bg-light">

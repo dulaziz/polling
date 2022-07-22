@@ -17,9 +17,20 @@
       <div class="progress" style="height: 2rem">
           {{-- Cari jumlah persentase dari pemilih --}}
           @php
-              $total_vote = $item->response / $total_user_vote * 100;
+                // Cek apakah ada data total user vote
+                if($total_user_vote > 0){
+                            $total_vote = $item->response / $total_user_vote * 100;
+                        }else {
+                            $total_user_vote = 0;
+                            # jika tidak ada data total user vote
+                            $total_vote = $item->response;
+                        }
           @endphp
-          <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
+          @if ($total_vote == 0)
+            <div class="progress-bar text-dark" role="progressbar" style="width:100%; background-color:#d5d5d5;" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
+          @else
+            <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
+          @endif
         </div>
     </div>
   </div>

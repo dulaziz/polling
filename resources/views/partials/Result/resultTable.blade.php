@@ -18,17 +18,27 @@
             <th scope="row">{{ $i++ }}</th>
             <td>{{ $tv->vote_name }}</td>
             <td>
+                  {{-- Cari jumlah persentase dari pemilih --}}
+                  @php
+                    // Cek apakah ada data total user vote
+                    if($total_user_vote > 0){
+                            $total_vote = $tv->response / $total_user_vote * 100;
+                        }else {
+                            $total_user_vote = 0;
+                            # jika tidak ada data total user vote
+                            $total_vote = $tv->response;
+                        }
+                 @endphp
                 <div class="progress mt-1">
-                    <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                    @if ($total_vote == 0)
+                    <div class="progress-bar text-dark" role="progressbar" style="width:100%; background-color:#d5d5d5;" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
+                    @else
+                    <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ floor($total_vote) }}% / {{ $total_user_vote }} Suara</div>
+                    @endif
                 </div>
             </td>
             <td>
-
-                {{-- Cari jumlah persentase dari pemilih --}}
-                @php
-                    $total_vote = $tv->response / $total_user_vote * 100;
-                @endphp
-                <p class="mb-0">{{ $total_vote }}% | {{ $total_user_vote }} Suara</p>
+                <p class="mb-0">{{ floor($total_vote) }}% | {{ $total_user_vote }} Suara</p>
             </td>
           </tr>
 
@@ -54,11 +64,15 @@
             <td>45% | 450 Suara</td>
           </tr> --}}
 
+          @endforeach
           <tr>
+            @php
+                $total_response_vote =  $total_vote_item / $total_user_vote * 100;
+            // echo $tv->response;
+            @endphp
             <td colspan="3"><strong>Total Response</strong></td>
-            <td><strong> 100% | 1950 Suara</strong></td>
+            <td><strong> {{floor($total_response_vote)}}% | {{$total_user_vote}} Suara</strong></td>
           </tr>
-        @endforeach
         </tbody>
       </table>
     </div>
@@ -85,7 +99,7 @@
     box-shadow: inset 0 0;
     -webkit-box-shadow: inset 0 0;
 }
-  
+
 .bar {
     background-image: none;
     -webkit-print-color-adjust: exact;

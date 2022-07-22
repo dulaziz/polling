@@ -18,5 +18,8 @@ class VoteUnit extends Model
         'subtitle'
     ];
 
+    public function vote_items(){
+       return $this->hasMany(VoteItem::class);
+    }
 
 }

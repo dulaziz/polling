@@ -9,32 +9,75 @@
 
     <h6 class="text-muted mb-5">{{ $title }}</h6>
 
-    <input type="checkbox" name="poll" id="opt-1">
-    <input type="checkbox" name="poll" id="opt-2">
-    <input type="checkbox" name="poll" id="opt-3">
-    <input type="checkbox" name="poll" id="opt-4">
+    @if ($message = Session::get('success'))
+        {{-- Allert after Vote --}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ $message }}</strong> Terimakasih telah mengikuti Polling kami.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
-    <div class="row">
-      <div class="poll-area">
-        <label for="opt-1" class="opt-1">
-          <div class="col-md-2 thumb">
-              <img src="/img/Dedi A Rachim.jpg" class="img-fluid img-thumbnail rounded" alt="...">
-          </div>
-          <div class="col-md-10 ps-3">
-            <h5 class="card-title fw-bold">Dedie A Rachim</h5>
-            <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
-            <div class="d-flex align-items-center">
-              <span class="circle"></span>
-              <p class="mb-0">Vote</p>
-              <span class="percent ms-3">60%</span>
+{{-- Looping data User Vote --}}
+@foreach ($user_vote as $uv)
+
+
+    {{-- Validasi Voting User --}}
+    @if ($uv->user_vote == 5 )
+
+    {{-- Looping data vote item --}}
+
+    @foreach ($polling_item as $item)
+
+        <form action="{{ '/pollSurvey' }}" method="post">
+            @csrf
+
+            {{-- Value Vote +1 --}}
+            <input type="hidden" name="response" value="{{ $total_vote->total_vote +1 }}">
+            <input type="hidden" name="vote_unit_id" value="{{ $polling_unit->id }}">
+            <input type="checkbox" name="vote_item_id" id="opt-{{$item->id}}" value="{{$item->id}}">
+
+            <div class="row">
+            <div class="poll-area">
+                <label for="opt-1" class="opt-{{$item->id}}">
+                <div class="col-md-2 thumb">
+                    <img src="/img/Dedi A Rachim.jpg" class="img-fluid img-thumbnail rounded" alt="...">
+                </div>
+                <div class="col-md-10 ps-3">
+                    <h5 class="card-title fw-bold">{{$item->vote_name}}</h5>
+                    <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+                    <div class="d-flex align-items-center">
+                    <span class="circle"></span>
+                    <p class="mb-0">Vote</p>
+                    @php
+                        $total_vote = $item->response / $total_user_vote * 100;
+                    @endphp
+                    <span class="percent ms-3">{{$total_vote}}</span>
+                    </div>
+                    <div class="progress" style='--w:60;'></div>
+                </div>
+                </label>
             </div>
-            <div class="progress" style='--w:60;'></div>
-          </div>
-        </label>
-      </div>
-    </div>
+            </div>
 
-    <div class="row">
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-primary float-end">Simpan</button>
+                </div>
+            </div>
+        </form>
+
+
+    @endforeach
+
+    @endif
+
+    {{-- End Validasi --}}
+
+@endforeach
+{{-- End Looping --}}
+
+
+    {{-- <div class="row">
       <div class="poll-area">
         <label for="opt-2" class="opt-2">
           <div class="col-md-2 thumb">
@@ -92,8 +135,8 @@
           </div>
         </label>
       </div>
-    </div>
-            
+    </div> --}}
+
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -226,14 +269,15 @@ input[type="checkbox"]{
 }
 </style>
 
+
 <script>
     const options = document.querySelectorAll("label");
-for (let i = 0; i < options.length; i++) {
-  options[i].addEventListener("click", ()=>{
-    for (let j = 0; j < options.length; j++) {
-      if(options[j].classList.contains("selected")){
-        options[j].classList.remove("selected");
-      }
+    for (let i = 0; i < options.length; i++) {
+    options[i].addEventListener("click", ()=>{
+        for (let j = 0; j < options.length; j++) {
+        if(options[j].classList.contains("selected")){
+            options[j].classList.remove("selected");
+        }
     }
 
     options[i].classList.add("selected");

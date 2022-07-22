@@ -30,11 +30,8 @@ Route::get('/pollingUnit', function () {
     ]);
 });
 
-Route::get('/editPolling', function () {
-    return view('editPolling', [
-        "title" => "Edit Polling Unit"
-    ]);
-});
+Route::get('/editPolling/{id}',[pollingController::class,'edit']);
+Route::post('/editPolling/{id}',[pollingController::class,'update']);
 
 Route::get('/result/{vote_unit}',[pollingController::class,'result']);
 
@@ -61,11 +58,8 @@ Route::get('/upload', function () {
     ]);
 });
 
-Route::get('/pollSurvey', function () {
-    return view('pollSurvey', [
-        "title" => "Poll Survey"
-    ]);
-});
+Route::get('/pollSurvey/{id}',[pollingController::class,'polling_survey']);
+Route::post('/pollSurvey',[pollingController::class,'set_polling_survey']);
 
 
 

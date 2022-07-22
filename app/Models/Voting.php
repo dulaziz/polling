@@ -14,9 +14,9 @@ class Voting extends Model
 
 
     protected $fillable = [
+        'user_vote',
         'vote_unit_id',
         'vote_item_id',
-        'response',
     ];
 
     // public function voteItem(){
