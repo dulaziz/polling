@@ -1,6 +1,6 @@
 {{-- Sub Title --}}
 <div class="row d-flex align-items-center">
-    <div class="col-md-3">
+    <div class="col-md-3 folat-star">
       <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>
       {{-- <small class="text-danger  fst-italic"><i class="fas fa-times-circle"></i> Closed Polling</small> --}}
     </div>

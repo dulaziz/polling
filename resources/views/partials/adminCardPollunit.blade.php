@@ -41,7 +41,7 @@
             <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>
             @endif
         <div class="float-end">
-
+            <a href="/addPollItems" class="btn btn-success btn-sm text-white mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a>
             {{-- Link show voting --}}
             <a href="/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm text-white mt-1" type="button"><i class="fa-solid fa-eye"></i> View</a>
 

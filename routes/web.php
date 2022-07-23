@@ -55,17 +55,35 @@ Route::get('/adminLogin', function () {
     ]);
 });
 
-Route::get('/upload', function () {
-    return view('upload', [
-        "title" => "Upload"
+Route::get('/profile', function () {
+    return view('profile', [
+        "title" => "Profile"
     ]);
 });
 
+Route::get('/addPollItems', function () {
+    return view('addPollItems', [
+        "title" => "Add Poll Items"
+    ]);
+});
+
+
+
+
+
+
+// root Testing
 Route::get('/pollSurvey', function () {
     return view('pollSurvey', [
         "title" => "Poll Survey"
     ]);
 });
+Route::get('/formPollTes', function () {
+    return view('formPollTes', [
+        "title" => "Form Poll Tes"
+    ]);
+});
+// root Testing
 
 
 

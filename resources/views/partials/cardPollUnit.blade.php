@@ -1,4 +1,4 @@
-<div class="card border border-0 shadow-sm rounded-3 mb-3">
+<div class="card border border-0 shadow-sm rounded-3 mb-3" data-aos="flip-down">
     <div class="card-body">
       <div class="row d-flex align-items-center">
         <div class="col-md-2">
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="card border border-0 shadow-sm rounded-3 mb-3">
+  <div class="card border border-0 shadow-sm rounded-3 mb-3" data-aos="flip-down">
     <div class="card-body">
       <div class="row d-flex align-items-center">
         <div class="col-md-2">
