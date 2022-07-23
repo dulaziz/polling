@@ -6,7 +6,7 @@
 @include('partials.banner')
 
 {{-- Content --}}
-<div class="col-md-10 mx-auto my-5">
+<div class="col-md-10 mx-md-auto my-5">
 
   @include('partials/cardPollUnit')
 

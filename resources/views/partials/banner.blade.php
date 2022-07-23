@@ -5,6 +5,6 @@
     </div>
 
     <div class="col-md-6">
-        <img src="img/RbPoll.png" alt="" data-aos="zoom-in-left" data-aos-duration="1000" class="float-end img-fluid">
+        <img src="img/RbPoll.png" alt="" data-aos="fade-right" data-aos-duration="1000" class="float-end img-fluid">
     </div>
 </div>
