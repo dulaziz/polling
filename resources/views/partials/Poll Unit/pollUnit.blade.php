@@ -1,7 +1,7 @@
 @include('partials/Poll Unit.pollUnitHeader')
 
 {{-- Card Poll --}}
-<div class="card border-light rounded-3 shadow-sm mb-3" data-aos="zoom-in">
+<div class="card border-light rounded-3 shadow-sm mb-3" data-aos="zoom-out" data-aos-duration="1500">
   <div class="card-body">
     @include('partials/Poll Unit.pollUnitHeaderCard')
     <hr>
