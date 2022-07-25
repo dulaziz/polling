@@ -45,7 +45,7 @@
     </div>
 
 <div class="my-5">
-<h6>Poll Items in "Polling Unit Name"</h6>
+<h6>Title: <a href=""> Bogor Memilih 2024, Siapa Kandidat Balon Wali Kota Bogor Terfavorit?</a></h6>
     <table class="table">
         <thead>
           <tr>

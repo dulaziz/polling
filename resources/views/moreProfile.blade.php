@@ -78,15 +78,15 @@
 
 
 <div class="my-5">
-    <h4>Dedie A Rachim</h4>
+    <h6 class="mb-3">More Profile: <span class="badge bg-success">Dedie A Rachim</span></h6>
     <div class="table-responsive">
         <table class="table table-sm" style="width: 900px;">
             <thead class="fw-normal">
             <tr>
-                <th scope="col" style="width: 5%;" class="fw-normal">No</th>
-                <th scope="col" style="width: 20%;" class="fw-normal">More Profile Title</th>
-                <th scope="col" style="width: 55%;" class="fw-normal">Desc</th>
-                <th scope="col" style="width: 20%;" class="fw-normal">Action</th>
+                <th scope="col" style="width: 5%;">No</th>
+                <th scope="col" style="width: 20%;">More Profile Title</th>
+                <th scope="col" style="width: 55%;">Desc</th>
+                <th scope="col" style="width: 20%;">Action</th>
             </tr>
             </thead>
             <tbody>
