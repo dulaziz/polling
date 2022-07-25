@@ -67,6 +67,12 @@ Route::get('/addPollItems', function () {
     ]);
 });
 
+Route::get('/moreProfile', function () {
+    return view('moreProfile', [
+        "title" => "Add More Profile"
+    ]);
+});
+
 
 
 
