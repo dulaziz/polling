@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\pollingController;
+use App\Http\Livewire\AddItems;
+use App\Http\Livewire\Items;
+use App\Http\Livewire\StoreItems;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +25,10 @@ Route::get('/addPolling',[pollingController::class,'create']);
 
 
 Route::post('/addUnit',[pollingController::class,'create_unit']);
-Route::post('/addItems',[pollingController::class,'create_items']);
+// Route::post('/addItems',[pollingController::class,'create_items']);
+// Route::get('/addItems/{id}',[pollingController::class,'edit_items']);
+Route::get('/addItems/{id}',AddItems::class);
+// Route::post('/addItems',[StoreItems::class,'storeItems']);
 
 Route::get('/pollingUnit', function () {
     return view('pollingUnit', [

@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use DateTime;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Storage;
 
 class pollingController extends Controller
@@ -59,6 +58,8 @@ class pollingController extends Controller
 
     public function create_unit(Request $request){
 
+        // dd($request->all());
+
         // Buat rule validasi form input unit
         $validated = $request->validate([
             'thumbnail' => 'required|mimes:jpg,bmp,png',
@@ -67,10 +68,10 @@ class pollingController extends Controller
             'date_end' => 'required',
             'subtitle' => 'required',
             // Rule validasi form items
-            'vote_unit_id' => 'required',
-            'vote_image' => 'required|mimes:jpg,bmp,png',
-            'vote_name' => 'required',
-            'short_desc' => 'required',
+            // 'vote_unit_id' => 'required',
+            // 'vote_image' => 'required|mimes:jpg,bmp,png',
+            // 'vote_name' => 'required',
+            // 'short_desc' => 'required',
         ]);
 
         // dd($validated);
@@ -106,7 +107,7 @@ class pollingController extends Controller
         // Validate form vote unit
         $validated['vote_unit_id'] = $request->vote_unit_id + 1;
 
-        VoteItem::create($validated);
+        // VoteItem::create($validated);
 
         $save = VoteUnit::create($validated);
 
@@ -124,6 +125,8 @@ class pollingController extends Controller
 
 
     public function create_items(Request $request){
+
+        dd($request->all());
 
         $validated = $request->validate([
             'vote_unit_id' => 'required',
@@ -390,6 +393,22 @@ class pollingController extends Controller
         return view('editPolling', [
             "title" => "Edit Polling Unit",
             "vote_unit_with_items" => $vote_unit_with_items
+        ]);
+
+    }
+
+    public function edit_items(VoteUnit $id){
+        $vote_unit = VoteUnit::with(['vote_items'])
+                        ->where('id',$id->id)
+                        ->first();
+
+                        // dd($vote_unit);
+        // $vote_unit_id = $vote_unit->id;
+
+        return view('addItems', [
+            "title" => "Edit Polling Unit",
+            "vote_unit" => $vote_unit,
+            // "vo" => $vote_unit_id,
         ]);
 
     }

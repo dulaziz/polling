@@ -50,7 +50,7 @@
             @else
 
                 <a href="/editPolling/{{ $pu->id  }}" class="btn btn-success btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Edit</a>
-                <a href="/editPolling/{{ $pu->id  }}" class="btn btn-success btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Add Galleri</a>
+                <a href="/addItems/{{ $pu->id  }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Add Items</a>
                 <button onClick="confirm( 'Apakah anda yakin ingin menutup polling ini' )" class="btn btn-warning btn-sm text-white mt-1" type="button"><i class="fa-solid fa-xmark"></i> Close</button>
             @endif
         <a href="/result/{{ $pu->id }}" class="btn btn-primary btn-sm text-white mt-1" type="button"><i class="fa-solid fa-chart-bar"></i> Result</a>

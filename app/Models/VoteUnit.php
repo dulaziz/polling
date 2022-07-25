@@ -20,6 +20,7 @@ class VoteUnit extends Model
 
     public function vote_items(){
        return $this->hasMany(VoteItem::class);
+    // return $this->hasMany(VoteItem::class,'vote_unit_id','id');
     }
 
 }
