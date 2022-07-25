@@ -6,122 +6,116 @@
 <div class="col-md-10 mx-auto my-5">
     <h6 class="text-muted mb-5">{{ $title }}</h6>
 
-    {{-- Polling Unit header --}}
-    <div class="row my-5 d-flex align-items-center">
-        <h4>Basic Profile</h4>
-        {{-- Thumbnail Poll Unit --}}
-        <div class="preview col-md-4 d-flex justify-content-center my-3">        
-            <img src="img/default1.jpg" id="file-ip-1-preview" class="img-thumbnail img_thumb_2">
+    <div class="card my-5">
+        <div class="card-header"><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items</small>
         </div>
-        <div class="col-md-8 mb-2">
-        {{-- File name thumbnail --}}
-        <input class="form-control mb-3" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
-        {{-- Input Name & title --}}
-        <div class="row">
-            <div class="col-md-6">
-                <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control mb-3" placeholder="Position" aria-label="Position">
-            </div>
-        </div>
-        
-        {{-- Input description --}}
-        <textarea class="form-control mb-3" placeholder="Bio" id="floatingTextarea2" style="height: 100px"></textarea>
-        </div> 
-    </div>
-
-    <div class="my-5">
-    <div class="card">
-        <div class="card-header">Biografi</div>
         <div class="card-body">
-            <div id="form_item_add">
-                <div class="row my-5 d-flex align-items-center">
-                    <div class=" col-md-3 d-flex justify-content-center my-3">
-                        <img src="img/default2.jpg" id="file-ip-2-preview" class="img-thumbnail img_thumb_2 preview">
-                    </div>
-                  <div class="col-md-9 mb-2">
-                    {{-- <label for="file-ip-1" class="form-label">Default file input example</label> --}}
-                    <input class="form-control mb-3" type="file" id="file-ip-2" accept="image/*" onchange="showPreview2(event);">   
+          <div class="row d-flex align-items-center">
+            <div class=" col-md-4 d-flex justify-content-center">
+              <img src="img/Dedi A Rachim.jpg" class="img-thumbnail img_thumb_2">
+            </div>
+            <div class="col-md-8">
+              {{-- File name thumbnail --}}
+              <input class="form-control mb-3" type="file">
+              {{-- Input Name & title --}}
+              <div class="row">
+                  <div class="col-md-6">
+                      <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name">
+                  </div>
+                  <div class="col-md-6">
+                      <input type="text" class="form-control mb-3" placeholder="Position" aria-label="Position">
+                  </div>
+              </div>
+              {{-- Input description --}}
+              <textarea class="form-control mb-3" placeholder="Bio" id="floatingTextarea2" style="height: 100px"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    <div class="card my-5">
+        <div class="card-header"><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></div>
+        <div class="card-body">
+            <div class="row d-flex align-items-center">
+                <h5>More Profile</h5>
+                <div class=" col-md-3 d-flex justify-content-center mb-5">
+                    <img src="img/default2.jpg" class="img-thumbnail img_thumb_2">
+                </div>
+                <div class="col-md-9 mb-2">
+                    <input class="form-control mb-3" type="file">   
                     <input type="text" class="form-control mb-3" placeholder="Title" aria-label="Title">
                     <div class="form-floating">
-                      <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px"></textarea>
-                      <label for="floatingTextarea2">Description</label>
+                        <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Description</label>
                     </div>
-                  </div>   
+                </div>   
+            </div>
+            {{-- Gallery upload --}}
+            <h5>Gallery</h5>
+            <div class="upload__box">
+                <div class="upload__btn-box">
+                    <label class="upload__btn">
+                        <p>Upload images</p>
+                        <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
+                    </label>
                 </div>
-              </div>
+                <div class="upload__img-wrap"></div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-grid d-md-block gap-2">
+                <button type="button" class="btn btn-success float-end"><i class="fas fa-save"></i> Save Profile Items</button>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="my-5">
-    <div class="upload__box">
-        <div class="upload__btn-box">
-            <label class="upload__btn">
-                <p>Upload images</p>
-                <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
-            </label>
-        </div>
-        <div class="upload__img-wrap"></div>
-    </div>
-    <!-- <div class="card">
-        <div class="card-header">Gallery</div>
-        <div class="card-body">
-            <input class="form-control mb-3" type="file" id="file-ip-2" accept="image/*" onchange="showPreview2(event);">   
-            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
-            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
-        </div>
-    </div> -->
-</div>
-
-
-    <button type="button" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save Profile Items</button>
 
 
 <div class="my-5">
-<h6>Poll Items in "Polling Unit Name"</h6>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">More Profile Title</th>
-            <th scope="col">Desc</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>History</td>
-            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</button>
-                <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Prestasi</td>
-            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</button>
-                <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
+    <h4>Dedie A Rachim</h4>
+    <div class="table-responsive">
+        <table class="table table-sm" style="width: 900px;">
+            <thead class="fw-normal">
+            <tr>
+                <th scope="col" style="width: 5%;" class="fw-normal">No</th>
+                <th scope="col" style="width: 20%;" class="fw-normal">More Profile Title</th>
+                <th scope="col" style="width: 55%;" class="fw-normal">Desc</th>
+                <th scope="col" style="width: 20%;" class="fw-normal">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>History</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Prestasi</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+                <td>
+                    <a href="/editMoreProfile" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
+                    <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 </div>
 
@@ -140,14 +134,14 @@
         .upload__btn-box {
             display: inline-block;
             font-weight: 600;
-            color: #fff;
+            color: #00548F;
             text-align: center;
             min-width: 160px;
             padding: 5px;
             transition: all .3s ease;
             cursor: pointer;
-            border: 2px solid;
-            background-color: #00548F;
+            border: 1px solid;
+            background-color: #fff;
             border-color: #00548F;
             border-radius: 5px;
             line-height: 26px;
@@ -155,8 +149,8 @@
         }
 
         .upload__btn-box:hover {
-            background-color: unset;
-            color: #00548F;
+            background-color: #00548F;
+            color: #fff;
             transition: all .3s ease;
         }
 

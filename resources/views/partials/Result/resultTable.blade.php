@@ -5,7 +5,7 @@
           <tr>
             <th scope="col" style="width: 20px;">No</th>
             <th scope="col" style="width: 200px;">Name</th>
-            <th scope="col"style="width: 520px;">Progressbar</th>
+            <th scope="col" style="width: 520px;">Progressbar</th>
             <th scope="col">Response</th>
           </tr>
         </thead>
