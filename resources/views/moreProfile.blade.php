@@ -64,10 +64,16 @@
             </div>
         </div>
         <div class="card-footer">
-            <div class="d-grid d-md-block gap-2">
-                <button type="button" class="btn btn-success float-end"><i class="fas fa-save"></i> Save Profile Items</button>
+            <div class="d-grid d-md-block gap-2 float-end">
+                <button type="button" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save More Profile</button>
+                <a href="/addPollItems" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
             </div>
         </div>
+    </div>
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
 

@@ -15,8 +15,13 @@
         </div>
         <div class="col-md-8 p-md-3">
           <div data-aos="fade-right">
-            <h4 class="text-uppercase mb-1">Dedi A Rachim</h4>
-            <h6 class="text-muted ">Wakil Wali Kota Bogor</h6>
+            <div class="d-flex mb-3">
+              <h4>1.</h4>
+              <div class="ms-1">
+                <h4 class="card-title mb-0">Dedie A Rachim</h4> 
+                <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+              </div>
+            </div>
             <hr class="mt-1 mb-3">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloribus incidunt quo excepturi consectetur dolorem natus officia! Voluptatibus possimus accusamus fuga tempora, vero fugit nesciunt facilis soluta sed quos corporis nulla magnam aperiam cupiditate velit neque magni dolor impedit, deleniti mollitia eos ipsum placeat omnis! Quo, doloremque reprehenderit adipisci explicabo natus provident aliquam quas consequatur deserunt numquam impedit a rem accusantium minima esse voluptates, odio hic optio saepe, dolores exercitationem quod sint. Distinctio officiis earum possimus nulla alias molestias suscipit laboriosam nemo nisi non. Iusto sunt molestias repellat voluptatum perferendis sapiente, debitis quibusdam possimus, fugit, aliquam cumque deserunt porro distinctio!</p>
         </div>

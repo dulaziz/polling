@@ -5,8 +5,8 @@
 {{-- Content --}}
 <div class="col-md-10 mx-auto my-5">
     <h6 class="text-muted mb-5">{{ $title }}</h6>
-    
-    <div class="card">
+
+    <div class="card my-5">
       <div class="card-header"><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items</small>
       </div>
       <div class="card-body">
@@ -32,10 +32,16 @@
         </div>
       </div>
       <div class="card-footer">
-          <div class="d-grid d-md-block gap-2">
-              <button type="button" class="btn btn-success float-end"><i class="fas fa-save"></i> Save Profile Items</button>
+          <div class="d-grid d-md-block gap-2 float-end">
+              <button type="button" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save Polling Item</button>
+              <a href="/admin" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
           </div>
       </div>
+    </div>
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
 <div class="my-5">
@@ -57,7 +63,7 @@
             <td>Wakil Wali Kota Bogor</td>
             <td><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></td>
             <td>
-                <a href="/moreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View more profile</a>
+                <a href="/moreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View More Profile</a>
             </td>
           </tr>
           <tr>
@@ -66,7 +72,7 @@
             <td>Kader Banteng</td>
             <td><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items</small></td>
             <td>
-                <a href="/moreProfile" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add more profile</a>
+                <a href="/moreProfile" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add More Profile</a>
             </td>
           </tr>
           <tr>
@@ -75,7 +81,7 @@
             <td>Ketua DPR Kota Bogor</td>
             <td><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></td>
             <td>
-              <a href="/moreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View more profile</a>
+              <a href="/moreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View More Profile</a>
             </td>
           </tr>
         </tbody>
