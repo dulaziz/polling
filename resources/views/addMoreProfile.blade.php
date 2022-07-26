@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
           <div class="row d-flex align-items-center">
-            <div class=" col-md-4 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center mb-3 mb-md-0">
               <img src="img/Dedi A Rachim.jpg" class="img-thumbnail img_thumb_2">
             </div>
             <div class="col-md-8">
@@ -39,16 +39,16 @@
     <div class="card my-5">
         <div class="card-header"><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></div>
         <div class="card-body">
-            <div class="row d-flex align-items-center">
+            <div class="row d-flex align-items-center mb-5">
                 <h5>More Profile</h5>
-                <div class=" col-md-3 d-flex justify-content-center mb-5">
+                <div class="col-md-4 d-flex justify-content-center mb-3 mb-md-0">
                     <img src="img/default2.jpg" class="img-thumbnail img_thumb_2">
                 </div>
-                <div class="col-md-9 mb-2">
+                <div class="col-md-8">
                     <input class="form-control mb-3" type="file">   
                     <input type="text" class="form-control mb-3" placeholder="Title" aria-label="Title">
                     <div class="form-floating">
-                        <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <textarea class="form-control" placeholder="Description" id="floatingTextarea2" style="height: 100px"></textarea>
                         <label for="floatingTextarea2">Description</label>
                     </div>
                 </div>   
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <div class="d-grid d-md-block gap-2 float-end">
+            <div class="d-flex gap-2 float-end">
                 <button type="button" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save More Profile</button>
                 <a href="/addPollItems" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
             </div>

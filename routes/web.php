@@ -67,29 +67,25 @@ Route::get('/addPollItems', function () {
     ]);
 });
 
-Route::get('/moreProfile', function () {
-    return view('moreProfile', [
+Route::get('/addMoreProfile', function () {
+    return view('addMoreProfile', [
         "title" => "Add More Profile"
     ]);
 });
 
-
-
-
-
-
-// root Testing
-Route::get('/pollSurvey', function () {
-    return view('pollSurvey', [
-        "title" => "Poll Survey"
+Route::get('/editPolling', function () {
+    return view('editPolling', [
+        "title" => "Edit Polling Unit"
     ]);
 });
-Route::get('/formPollTes', function () {
-    return view('formPollTes', [
-        "title" => "Form Poll Tes"
+
+Route::get('/editPollItems', function () {
+    return view('editPollItems', [
+        "title" => "Edit Polling Items"
     ]);
 });
-// root Testing
+
+
 
 
 

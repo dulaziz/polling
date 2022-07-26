@@ -7,10 +7,6 @@
         
         <h6 class="text-muted mb-5">{{ $title }}</h6>
 
-        {{-- @include('partials.addPolling') --}}
-        {{-- @include('partials/Poll Form.pollForm') --}}
-        {{-- Polling Unit header --}}
-
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Holy guacamole!</strong> You should check in on some of those fields below.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -35,7 +31,7 @@
                     <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px"></textarea>
                     {{-- Input date --}}
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3 mb-md-0">
                         <div class="form-floating">
                             <input type="date" class="form-control" id="floatingInput" placeholder="Text">
                             <label for="floatingInput title-text">Star from</label>
@@ -52,7 +48,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="d-grid d-md-block gap-2 float-end">
+                <div class="d-flex gap-2 float-end">
                     <button type="button" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save Polling Unit</button>
                     <a href="/admin" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
                 </div>
@@ -61,7 +57,7 @@
 
     </div>
 
-<script src="js/pollForm.js"></script>
+<script src="js/previewImg.js"></script>
 {{-- cdn add form --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 

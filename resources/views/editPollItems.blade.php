@@ -7,12 +7,8 @@
     <h6 class="text-muted mb-5">{{ $title }}</h6>
 
     <h6>Polling Unit: <a href=""> Bogor Memilih 2024, Siapa Kandidat Balon Wali Kota Bogor Terfavorit?</a></h6>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
 
-    <div class="card mb-5">
+    <div class="card my-5">
       <div class="card-header"><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items</small>
       </div>
       <div class="card-body">
@@ -45,8 +41,13 @@
       </div>
     </div>
 
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
 <div class="my-5">
-  <div class="table-responsive">
+    <div class="table-responsive">
     <table class="table table-sm" style="width: 900px;">
         <thead>
           <tr>
@@ -54,7 +55,7 @@
             <th scope="col">Name</th>
             <th scope="col">Position</th>
             <th scope="col">Profile Items</th>
-            <th scope="col">More Profile</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -64,8 +65,7 @@
             <td>Wakil Wali Kota Bogor</td>
             <td><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></td>
             <td>
-                <a href="/addMoreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View</a>
-                <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                <a href="/moreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View More Profile</a>
             </td>
           </tr>
           <tr>
@@ -74,8 +74,7 @@
             <td>Kader Banteng</td>
             <td><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items</small></td>
             <td>
-                <a href="/addMoreProfile" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add</a>
-                <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                <a href="/moreProfile" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add More Profile</a>
             </td>
           </tr>
           <tr>
@@ -84,17 +83,16 @@
             <td>Ketua DPR Kota Bogor</td>
             <td><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></td>
             <td>
-              <a href="/addMoreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View</a>
-              <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+              <a href="/moreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View More Profile</a>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
+    </div>
 
 </div>
-<script src="js/previewImg.js"></script>
+<script src="js/pollForm.js"></script>
 {{-- cdn add form --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
