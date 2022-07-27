@@ -101,20 +101,49 @@
   <div class="my-5">
     <h5 class="border-start border-danger border-4 text-uppercase ps-2 fw-bold rb-blue-tx" data-aos="fade-down" data-aos-duration="1000">Foto Kegiatan</h5>
       <div class="slider">
-        <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
-        <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
-        <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
-        <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
-        <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
-        <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
-        <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
-        <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          <a href="/img/Dedi A Rachim.jpg" class="fancybox item" data-fancybox="gallery1">
+            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          </a>
+          <a href="/img/Dedi A Rachim.jpg" class="fancybox item" data-fancybox="gallery1">
+            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          </a>
+          <a href="/img/Dedi A Rachim.jpg" class="fancybox item" data-fancybox="gallery1">
+            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          </a>
+          <a href="/img/Dedi A Rachim.jpg" class="fancybox item" data-fancybox="gallery1">
+            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          </a>
+          <a href="/img/Dedi A Rachim.jpg" class="fancybox item" data-fancybox="gallery1">
+            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          </a>
+          <a href="/img/Dedi A Rachim.jpg" class="fancybox item" data-fancybox="gallery1">
+            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          </a>
+          <a href="/img/Dedi A Rachim.jpg" class="fancybox item" data-fancybox="gallery1">
+            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          </a>
+          <a href="/img/Dedi A Rachim.jpg" class="fancybox item" data-fancybox="gallery1">
+            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          </a>
+          <a href="/img/Dedi A Rachim.jpg" class="fancybox item" data-fancybox="gallery1">
+            <img src="/img/Dedi A Rachim.jpg" class="img-fluid" alt="...">
+          </a>
       </div>
   </div>
 
 
 </div>
+  
+<style>
+  .item{
+    transition: .3s ease-in-out;
+  }
+  .item:hover{
+    filter: brightness(80%);
+  }
+</style>
 
+</script>
 <script src="js/slider.js" type="text/javascript"></script>
 
 @endsection
