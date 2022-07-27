@@ -56,4 +56,12 @@
   border-radius: 5px;
 }
 
+.img_gallery{
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 3px;
+  margin: 2px 2px;
+}
+
 

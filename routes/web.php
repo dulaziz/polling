@@ -21,12 +21,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/admin',[adminController::class,'index']);
-Route::get('/addPolling',[pollingController::class,'create']);
+Route::get('/admin', [adminController::class, 'index']);
+Route::get('/addPolling', [pollingController::class, 'create']);
 
 
-Route::post('/addUnit',[pollingController::class,'create_unit']);
-Route::post('/addItems',[pollingController::class,'create_items']);
+Route::post('/addUnit', [pollingController::class, 'create_unit']);
+Route::post('/addItems', [pollingController::class, 'create_items']);
 
 Route::get('/pollingUnit', function () {
     return view('pollingUnit', [
@@ -40,14 +40,14 @@ Route::get('/editPolling', function () {
     ]);
 });
 
-Route::get('/result/{vote_unit}',[pollingController::class,'result']);
+Route::get('/result/{vote_unit}', [pollingController::class, 'result']);
 
 Route::get('/pollingUnitBar', function () {
     return view('pollingUnitBar', [
         "title" => "Polling Unit Bar"
     ]);
 });
-Route::get('/viewPollUnit/{id}',[pollingController::class,'show']);
+Route::get('/viewPollUnit/{id}', [pollingController::class, 'show']);
 
 Route::get('/adminLogin', function () {
     return view('adminLogin', [
@@ -85,7 +85,8 @@ Route::get('/editPollItems', function () {
     ]);
 });
 
-
-
-
-
+Route::get('/viewProfileItems', function () {
+    return view('viewProfileItems', [
+        "title" => "View Profile Items"
+    ]);
+});
