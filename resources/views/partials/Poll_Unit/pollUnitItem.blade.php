@@ -1,3 +1,6 @@
+@php
+    $i =1;
+@endphp
 {{-- Looping data polling --}}
 @foreach ($polling_item as $pi)
 
@@ -14,7 +17,7 @@
             <div class="card-body">
                 {{-- Vote Name --}}
                 <div class="d-flex">
-                    <h5>1.</h5>
+                    <h5>{{$i++}}.</h5>
                     <div class="ms-1">
                         <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
                         <p class="card-text"><small class="text-muted">{{ $pi->short_desc }}</small></p>

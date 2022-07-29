@@ -52,9 +52,9 @@ Route::middleware('guest:web')->group(function(){
         // PollSurvey Page
         Route::post('/pollSurvey',[pollingController::class,'set_polling_survey']);
         // Polling Uni Page
-        // Route::get('/pollingUnit/{id}',[pollingController::class,'show_unit']);
+        Route::get('/pollingUnit/{id}',[pollingController::class,'show_unit']);
          // View Unit Bar
-        // Route::get('/pollingUnitBar/{id}',[pollingController::class,'show_bar']);
+        Route::get('/pollingUnitBar/{id}',[pollingController::class,'show_bar']);
         // Action Logout
         Route::get('/auth/google/logout',[GoogleController::class,'logout'])->name('logout');
     });
