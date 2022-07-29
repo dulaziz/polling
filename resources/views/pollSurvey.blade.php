@@ -152,7 +152,7 @@ body{
   justify-content: center;
   min-height: 100vh;
   background: #6665ee;
-} */
+}
 ::selection{
   color: #fff;
   background: #00548F;
@@ -168,7 +168,7 @@ body{
 .wrapper header{
   font-size: 22px;
   font-weight: 600;
-}
+} */
 .wrapper .poll-area{
   margin: 20px 0 15px 0;
 }
@@ -190,7 +190,7 @@ body{
 label.selected{
   border-color: #00548F!important;
 }
-label .row{
+/* label .row{
   display: flex;
   pointer-events: none;
   justify-content: space-between;
@@ -198,7 +198,7 @@ label .row{
 label .row .column{
   display: flex;
   align-items: center;
-}
+} */
 .row label .circle{
   height: 19px;
   width: 19px;

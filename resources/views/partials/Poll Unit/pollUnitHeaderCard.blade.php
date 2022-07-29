@@ -19,7 +19,7 @@ $epoch_end = $polling_unit->date_end;
 @endphp
  {{-- Sub Title --}}
  <div class="row d-flex align-items-center">
-    <div class="col-md-3">
+    <div class="col-md-3 folat-star">
         @if ( $date_end <= $today)
         <small class="text-danger  fst-italic"><i class="fas fa-times-circle"></i> Closed Polling</small>
         @else
@@ -30,7 +30,11 @@ $epoch_end = $polling_unit->date_end;
       <h4 class="card-title text-md-center fw-bold">{{ $polling_unit->subtitle }}</h4>
     </div>
     <div class="col-md-3">
-        <a href="/" class="btn btn-outline-secondary btn-sm float-end">Back <i class="fas fa-reply"></i></a>
+        @if (Auth::guard('admin')->user())
+            <a href="{{ route('admin.home') }}" class="btn btn-outline-secondary btn-sm float-end">Back <i class="fas fa-reply"></i></a>
+            @else
+            <a href="{{ '/' }}" class="btn btn-outline-secondary btn-sm float-end">Back <i class="fas fa-reply"></i></a>
+        @endif
     </div>
   </div>
 

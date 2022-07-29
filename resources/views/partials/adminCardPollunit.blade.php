@@ -12,7 +12,7 @@
           <img src="{{ asset('storage/'.$pu->thumbnail) }}" alt="" class=" img-fluid rounded">
       </div>
       <div class="col-md-10">
-          <a href="/pollingUnitBar"><h5><strong>{{ $pu->title }}</strong></h5></a>
+          <a href="admin/pollingUnitBar/{{ $pu->id }}"><h5><strong>{{ $pu->title }}</strong></h5></a>
         <p class="text-muted mb-1">{{ $pu->description }}</p>
         @php
            $epoch_start = $pu->date_start;
@@ -41,19 +41,19 @@
             <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>
             @endif
         <div class="float-end">
-
             {{-- Link show voting --}}
-            <a href="/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm text-white mt-1" type="button"><i class="fa-solid fa-eye"></i> View</a>
+            <a href="admin/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm text-white mt-1" type="button"><i class="fa-solid fa-eye"></i> View</a>
 
             @if ($date_end <= $today)
 
             @else
 
-                <a href="/editPolling/{{ $pu->id  }}" class="btn btn-success btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Edit</a>
-                <a href="/addItems/{{ $pu->id  }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Add Items</a>
+            <a href="admin/editPolling/{{ $pu->id  }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Edit</a>
+            <a href="admin/addItems/{{ $pu->id }}" class="btn btn-success btn-sm text-white mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a>
+            {{-- <a href="/addItems/{{ $pu->id  }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Add Items</a> --}}
                 <button onClick="confirm( 'Apakah anda yakin ingin menutup polling ini' )" class="btn btn-warning btn-sm text-white mt-1" type="button"><i class="fa-solid fa-xmark"></i> Close</button>
             @endif
-        <a href="/result/{{ $pu->id }}" class="btn btn-primary btn-sm text-white mt-1" type="button"><i class="fa-solid fa-chart-bar"></i> Result</a>
+        <a href="admin/result/{{ $pu->id }}" class="btn btn-primary btn-sm text-white mt-1" type="button"><i class="fa-solid fa-chart-bar"></i> Result</a>
         <button class="btn btn-danger btn-sm text-white mt-1" type="button"><i class="fa-solid fa-trash"></i> Delete</button>
       </div>
       </div>

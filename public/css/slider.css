@@ -1,0 +1,13 @@
+.slider img{
+    padding:5px;
+    border-radius: 10px;
+  }
+  .slick-prev, .slick-next {
+      z-index: 1;
+  }
+  .slick-next {
+      right: 5px;
+  }
+  .slick-prev {
+      left: 5px;
+  }

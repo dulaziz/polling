@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="css/global.css">
 
-<form action="{{ '/addUnit' }}" method="post" id="image-form" enctype="multipart/form-data">
+<form action="{{ '/admin/addUnit' }}" method="post" id="image-form" enctype="multipart/form-data">
     @csrf
 
   {{-- Polling Unit header --}}
 <div class="row my-2 d-flex align-items-center">
     {{-- Thumbnail Poll Unit --}}
     <div class="preview col-md-4 d-flex justify-content-center my-3">
-        <img src="img/default1.jpg" id="file-ip-1-preview" class="img-thumbnail" style="max-width: 260px; max-height: 274px;">
+        <img src="{{asset('img/default1.jpg')}}" id="file-ip-1-preview" class="img-thumbnail" style="max-width: 260px; max-height: 274px;">
     </div>
     <div class="col-md-8 mb-2">
       {{-- File name thumbnail --}}

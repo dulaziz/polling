@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\VoteItem;
+use App\Models\VoteProfile;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -10,6 +12,7 @@ class StoreItems extends Component
 {
     public $vote_unit_id;
     public $vote_items;
+    public $vote_unit;
 
     public $vote_image;
     public $vote_name;
@@ -79,9 +82,15 @@ class StoreItems extends Component
 
     public function render()
     {
-        $data = VoteItem::where('vote_unit_id',$this->vote_unit_id)->get();
+        // $data = DB::table('vote_items')->where('vote_unit_id',$this->vote_unit_id)->with(['profile'])->get();
+
+        $data = VoteItem::with('voteProfile')->where('vote_unit_id', $this->vote_unit_id)->get();
+
+        // dd($data);
+
         return view('livewire.store-items',[
             'data_items' => $data,
+            'data_unit' => $this->vote_unit,
         ]);
     }
 }

@@ -177,7 +177,11 @@ class pollingController extends Controller
 
         //                         dd($total_votings);
 
-        $total_user_vote = DB::table('votings')->count('*');
+        // $total_user_vote = DB::table('votings')->count('*');
+
+        $total_user_vote = DB::table('votings')
+                                ->where('vote_unit_id',$id->id)
+                                ->count('*');
 
         // $total_vote = $total_votings->response / $total_user_vote * 100;
 
@@ -194,6 +198,7 @@ class pollingController extends Controller
 
     }
 
+    // Controller Fitur Polling Unit
     public function show_unit(VoteUnit $id){
 
 
@@ -235,6 +240,8 @@ class pollingController extends Controller
                             ->where('vote_item_id',$id->id)
                             ->first();
 
+                            // dd($total_votings);
+
 
         $total_vote =  DB::table('votings')
                             ->select(DB::raw('count(*) as total_vote'))
@@ -261,6 +268,7 @@ class pollingController extends Controller
                                 ->where('vote_unit_id',$id->id)
                                 ->count('*');
 
+                                // dd($total_user_vote);
 
         return view('pollingUnit', [
             "title" => "Polling Unit Bar",
@@ -295,7 +303,7 @@ class pollingController extends Controller
                     ->select('user_vote')
                     ->get();
 
-                // dd($user_vote);
+                // dd($total_user_vote);
 
         return view('pollSurvey', [
             "title" => "Poll Survey",
@@ -415,23 +423,6 @@ class pollingController extends Controller
 
     public function update(Request $request){
         // dd($request->all());
-
-        // ^ array:14 [▼
-        //     "_token" => "XrCACIx10TlT2ynwHD2sGoPOnmHjrBgBnM8ffV0N"
-        //     "thumbnail_old" => "unit-items/qJxoJQ2vmJegV5rBsdry5wkhRtaWUncDkMJsRFxW.png"
-        //     "thumbnail" => null
-        //     "title" => "Bogor Memilih 2024, Siapa Kandidat Calon Wali Kota Bogor Terfavorit?"
-        //     "description" => "PEMILIHAN Wali Kota Bogor akan digelar pada 2024 mendatang. Sejumlah nama digadang-gadang bakal maju menjadi orang nomor satu di Kota Bogor. Siapa kandidat baka ▶"
-        //     "date_start_old" => "12-07-2022"
-        //     "date_start" => null
-        //     "date_end_old" => "31/07/2022"
-        //     "date_end" => null
-        //     "subtitle" => "Bakal Calon Wali Kota Bogor"
-        //     "unit_id" => array:4 [▶]
-        //     "vote_image_old" => array:4 [▶]
-        //     "vote_name" => array:4 [▶]
-        //     "short_desc" => array:4 [▶]
-        // ]
 
         $validatedData = $request->validate([
             'title' => 'required',

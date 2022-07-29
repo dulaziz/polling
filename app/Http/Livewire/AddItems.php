@@ -11,25 +11,14 @@ class AddItems extends Component
     public $id_unit;
     public $vote_unit;
     public $vote_items;
-    public $title = "Add Items";
+    public $title;
     public $itemCount;
-
-    protected $listeners = ['itemAdded' => 'handlePost'];
-    // protected $listeners = ['postAdded' => 'handlePost'];
 
     public function mount($id){
         $this->vote_unit = VoteUnit::find($id);
         $this->vote_items = VoteItem::where('vote_unit_id',$id)->get();
         $this->id_unit = $id;
     }
-
-    // public function incrementItemCount(){
-    //    dd($this->itemCount = VoteItem::count());
-    // }
-    public function handlePost(){
-        // dd($this->itemCount = VoteItem::count());
-        dd('parents');
-     }
 
     public function render()
     {
@@ -40,7 +29,7 @@ class AddItems extends Component
             'id_unit' => $this->id_unit,
             ])
             ->extends('layouts.main')
-            ->layoutData(['title' => 'Show Posts']);
+            ->layoutData(['title' => 'Add Items']);
     }
 
 

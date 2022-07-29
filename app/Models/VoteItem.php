@@ -21,15 +21,22 @@ class VoteItem extends Model
         'response',
         'vote_image',
         'vote_name',
-        'short_desc'
+        'short_desc',
+        'profile'
     ];
 
     public function votings(){
         return $this->hasMany(Voting::class);
     }
 
+
     public function voteUnit(){
         return $this->hasMany(VoteUnit::class,'id','vote_unit_id');
+    }
+
+    public function voteProfile(){
+        return $this->hasOne(VoteProfile::class,'vote_item_id','id');
+
     }
 
 }

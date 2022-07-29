@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             // $table->foreignIdFor(Voting::class,'vote_id');
             $table->foreignIdFor(VoteUnit::class,'vote_unit_id');
-            $table->integer('response');
+            $table->integer('response')->nullable();
             $table->string('vote_image');
             $table->string('vote_name');
             $table->string('short_desc')->nullable();

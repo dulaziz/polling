@@ -16,6 +16,7 @@ return new class extends Migration
     {
         Schema::create('votings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_vote');
             $table->foreignId('vote_unit_id');
             $table->foreignId('vote_item_id');
             // $table->integer('response');

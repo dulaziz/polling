@@ -1,188 +1,3 @@
-.goudy{
-    font-family: 'Sorts Mill Goudy', serif;
-  }
-.rb-blue-tx{
-  color: #00548F;
-  /* color: #E9F1FD; */
-  /* color: #E9F1FD; */
-  /* color: #F9F6EE; */
-}
-.y-tx{
-  color: #FFB84D;
-  /* color: #E9F1FD; */
-  /* color: #E9F1FD; */
-  /* color: #F9F6EE; */
-}
-
-/* Card Style */
-.myCard{
-    cursor: pointer;
-    transition: all 0.3s;
-}
-.myCard:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-  /* .carousel-indicators {
-    top: 200px;
-    right: 450px;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    list-style: none;
-} */
-
-
-.flip{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: lightgrey;
-}
-.book{
-  position: relative;
-  width: 350px;
-  height: 500px;
-  transition: transform 0.5s
-}
-.paper{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  perspective: 1500px;
-  cursor: zoom-in;
-}
-.front, .back{
-  background-color: white;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  transform-origin: left;
-  transition: transform 0.5s;
-}
-.front{
-  z-index: 1;
-  backface-visibility: hidden;
-  border-left: 3px solid lightgrey;
-}
-.back{
-  z-index: 0;
-}
-.front-content, .back-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.back-content{
-  transform: rotateY(180deg);
-}
-
-.btnn{
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 10px;
-  transition: transform 0.5s;
-}
-.btnn:focus{
-  outline: none;
-}
-.btnn:hover i{
-  color: red;
-}
-.btnn i{
-  font-size: 30px;
-}
-
-#p1{
-  z-index: 3;
-}
-#p2{
-  z-index: 2;
-}
-#p3{
-  z-index: 1;
-}
-
-.flipped .front,
-.flipped .back{
-  transform: rotateY(-180deg);
-}
-
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  color: #fff;
-  background-color: #FFB84D;
-}
-.nav-link {
-  color: #00548F;
-  font-weight: 500;
-}
-
-.cardPrice{
-  /* border: 1px solid #B8BFC9; */
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  border-radius: 10px;
-  transition: all 0.3s;
-}
-.ribbon{
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  overflow: hidden;
-}
-.ribbon::before,
-.ribbon::after{
-  position: absolute;
-  content: "";
-  display: block;
-  border: 5px solid #FFB84D;
-  border-top-color: transparent;
-  border-left-color: transparent;
-}
- .ribbon::before{
-  top: 0px;
-  right: 25px;
-}
-
- .ribbon::after{
-  bottom: 25px;
-  left: 0px;
-}
-
- .ribbon span{
-  position: absolute;
-  top: 20px;
-  right: 0;
-  transform: rotate(-45deg);
-  width: 200px;
-  background: #FFB84D;
-  padding: 10px 0;
-  color: #00548F;
-  text-align: center;
-  font-size: 17px;
-  box-shadow: 0px 1px 3px 0px rgb(0 0 0 / 21%);
-}
-
-.cardPaper, .cardRegist{
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  border-radius: 10px;
-}
-
-/* my css */
-
 /* Unit form style */
 .rb_tx_clr{
   color: #00548F;
@@ -231,4 +46,63 @@
 label.label-form-control-input {
     margin-top: -9px;
     opacity: 0.9;
+}
+
+/* Scroll bar desc profile */
+.scroll_profile{
+  height: 200px;
+  overflow:hidden;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 50px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c9c9c9;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #808080;
+  border-radius: 50px;
+}
+
+/* Image Thumb Profile */
+.img_thumb{
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.img_thumb_2{
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.img_card{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+
+/* Badge Login */
+
+.image-user{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.info-user>a{
+    text-decoration: none;
+    color: #212529;
 }

@@ -3,7 +3,7 @@
 {{-- Looping Data Vote Unit with vote item --}}
 @foreach ($vote_unit_with_items as $vote_unit_item)
 
-<form action="{{ '/editPolling/' . $vote_unit_item->id }}" method="post" enctype="multipart/form-data">
+<form action="{{ '/admin/editPolling/' . $vote_unit_item->id }}" method="post" enctype="multipart/form-data">
     @csrf
 
 {{-- Polling Unit --}}
@@ -37,11 +37,11 @@
           @php
             $epoch_start = $vote_unit_item->date_start;
             $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
-            $date_start = $dt->format('d/m/Y');
+            $date_start = $dt->format('m/d/Y');
 
             $epoch_end = $vote_unit_item->date_end;
             $dt = new DateTime("@$epoch_end");  // convert UNIX timestamp to PHP DateTime
-            $date_end = $dt->format('d/m/Y');
+            $date_end = $dt->format('m/d/Y');
 
             // $date = new DateTime('07/09/2022'); // format: MM/DD/YYYY
             // echo $date->format('U');

@@ -1,8 +1,8 @@
   {{-- Title --}}
-  <h3 class="fw-bold">{{ $polling_unit->title }}</h3>
+  <h3 class="fw-bold" data-aos="fade-right">{{ $polling_unit->title }}</h3>
 
   {{-- Desc --}}
-  <p class="mt-4 text-secondary">{{ $polling_unit->description }}</p>
+  <p class="mt-4 text-secondary" data-aos="fade-right">{{ $polling_unit->description }}</p>
 
   @php
   $epoch_start = $polling_unit->date_start;
@@ -25,11 +25,15 @@
 @endphp
 
   {{-- Date --}}
-  <p class="fst-italic mb-3">Waktu Polling {{ $date_start }} s/d {{ $date_end }}</p>
+  <p class="fst-italic mb-3" data-aos="fade-right">Waktu Polling {{ $date_start }} s/d {{ $date_end }}</p>
 
+{{-- Response --}}
+@if ($message = Session::get('success'))
 {{-- Allert after Vote --}}
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Tanggapan Anda telah tersimpan,</strong> Terimakasih telah mengikuti Polling kami.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ $message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+{{-- End Response --}}
 

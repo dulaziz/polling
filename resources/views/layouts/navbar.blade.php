@@ -1,11 +1,11 @@
-<link rel="stylesheet" href="{{ asset('css/navStyle.css')}}">
+<link rel="stylesheet" href="{{ asset('css/navStyle.css') }}">
 
 {{-- Navbar --}}
 <nav id="navBar" class="navbar navbar-expand-lg py-2 navbar-light sticky-top bg-light">
   <div class="container">
 
     {{-- Logo --}}
-    <a class="navbar-brand navlogo" href="/"><img src="{{ url('img/RB Nav.png') }}" alt="logo radar bogor"></a>
+    <a class="navbar-brand navlogo" href="/"><img src="{{ asset('img/RB Nav.png') }}" alt="logo radar bogor"></a>
 
     {{-- Burger Menu --}}
     <button
@@ -29,6 +29,21 @@
         <li class="nav-item">
           <a class="nav-link" href="">Epaper</a>
         </li>
+        @if (Auth::user())
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('img/favicon-96x96.png' ) }}" style="width: 25px; height:25px;"  alt="User Image">
+                    {{Auth::user()->name}}
+                </a>
+                <ul class="dropdown-menu bg-danger">
+                    @if(Auth::guard('admin')->user())
+                    <li><a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a></li>
+                    @else
+                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                    @endif
+                </ul>
+            </li>
+          @endif
       </ul>
     </div>
 
