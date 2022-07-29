@@ -154,6 +154,23 @@ class pollingController extends Controller
     }
 
 
+    public function show_profile($id){
+
+
+        // $data_unit = VoteUnit::find($id);
+        $data_item = VoteItem::with('voteProfiles')->where('vote_unit_id', $id)->first();
+        // $data = with('voteProfile')->first();
+
+        // dd($data_item->voteProfiles);
+
+        return view('viewProfileItems', [
+            "title" => "View Profile Items",
+            // 'data_unit' => $data_unit,
+            'data_item' => $data_item
+        ]);
+
+    }
+
     public function show_bar(VoteUnit $id){
 
 

@@ -71,8 +71,9 @@
             </div>
         </div>
             <div class="card-footer">
-                <div class="d-grid d-md-block gap-2">
-                    <button type="submit" class="btn btn-success float-end" wire:click="$emitUp('profileAdded')"><i class="fas fa-save"></i> Save Profile Items</button>
+                <div class="d-flex gap-2 float-end mb-2">
+                    <button type="button" class="btn btn-success btn-sm" wire:click="$emitUp('profileAdded')"><i class="fas fa-save"></i> Save More Profile</button>
+                    <a href="/admin/addItems/{{ $data_item->id }}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
                 </div>
             </div>
         </form>
@@ -80,57 +81,50 @@
 
     {{-- Looping Data Profile --}}
     <div class="my-5">
-        {{-- <h4></h4> --}}
-        <div class="row">
-            <div class="col-md-12 d-flex flex-column">
-                <div class="col-md-12">
-                    <h5>Profile</h5>
-                    <div class="table-responsive">
-                        <table class="table table-sm" style="width: 900px;">
-                            <thead class="fw-normal">
-                            <tr>
-                                <th scope="col" style="width: 5%;" class="fw-normal">No</th>
-                                <th scope="col" style="width: 20%;" class="fw-normal">Icon</th>
-                                <th scope="col" style="width: 20%;" class="fw-normal">More Profile Title</th>
-                                <th scope="col" style="width: 55%;" class="fw-normal">Desc</th>
-                                <th scope="col" style="width: 20%;" class="fw-normal">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $i=1;
-                                @endphp
-                                @foreach ($data_profile as $p)
-                                <tr>
-                                    <th scope="row">{{ $i++  }}</th>
-                                    <td>
-                                        <img src="{{asset('storage/'. $p->icon)}}" alt="" style="width:45px; height:45px;">
-                                    </td>
-                                    <td>{{ $p->title }}</td>
-                                    <td>{{$p->description}}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <h5>Gallery</h5>
-                    <div class="upload__img-wrap">
-                        @foreach ($data_profile as $p)
-                            @foreach (json_decode($p->gallery) as $g)
-                                <img src="{{ asset('storage/' .$g)  }}" alt="" style="width: 100px; width:100px; margin-right:25px;margin-top:25px;">
-                            @endforeach
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+        <h6 class="mb-3">More Profile: <span class="badge bg-success">{{$data_item->vote_name}}</span></h6>
+        <div class="table-responsive">
+            <table class="table table-sm" style="width: 900px;">
+                <thead class="fw-normal">
+                <tr>
+                    <th scope="col" style="width: 5%;" class="fw-normal">No</th>
+                    <th scope="col" style="width: 20%;" class="fw-normal">Icon</th>
+                    <th scope="col" style="width: 20%;" class="fw-normal">More Profile Title</th>
+                    <th scope="col" style="width: 55%;" class="fw-normal">Desc</th>
+                    <th scope="col" style="width: 20%;" class="fw-normal">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $i=1;
+                    @endphp
+                    @foreach ($data_profile as $p)
+                    <tr>
+                        <th scope="row">{{ $i++  }}</th>
+                        <td>
+                            <img src="{{asset('storage/'. $p->icon)}}" alt="" style="width:45px; height:45px;">
+                        </td>
+                        <td>{{ $p->title }}</td>
+                        <td>{{$p->description}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</button>
+                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="my-5">
+            <h6 class="mb-3">Gallery: <span class="badge bg-success">{{$data_item->vote_name}}</span></h6>
+            @foreach ($data_profile as $p)
+                @foreach (json_decode($p->gallery) as $g)
+                    <img src="{{ asset('storage/' .$g)  }}" class="img-fluid img_gallery" alt="...">
+                @endforeach
+            @endforeach
         </div>
     </div>
+
+
 </div>
 
 

@@ -39,4 +39,8 @@ class VoteItem extends Model
 
     }
 
+    public function voteProfiles(){
+        return $this->hasMany(VoteProfile::class,'vote_item_id','id');
+    }
+
 }

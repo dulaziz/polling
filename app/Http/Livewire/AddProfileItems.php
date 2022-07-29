@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AddProfileItems extends Component
 {
-    public $title;
+    public $title = 'Add More Profile';
     public $data_item;
 
     public $more_item_title;

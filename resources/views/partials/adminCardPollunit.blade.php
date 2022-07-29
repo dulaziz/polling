@@ -1,7 +1,7 @@
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
 @endif
 
 @foreach ($polling_unit as $pu)
@@ -19,8 +19,8 @@
             $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
             $date_start = $dt->format('d-m-Y');
 
-           $epoch_end = $pu->date_end;
-            $dt = new DateTime("@$epoch_end");  // convert UNIX timestamp to PHP DateTime
+            $epoch_end = $pu->date_end;
+            $dt = new DateTime("@$epoch_end"); // convert UNIX timestamp to PHP DateTime
             $date_end = $dt->format('d-m-Y');
 
             // $date = new DateTime('07/09/2022'); // format: MM/DD/YYYY
@@ -32,7 +32,7 @@
             $ts = new DateTime("@$times");
             $today = $ts->format('d-m-Y');
 
-        @endphp
+            @endphp
 
         <p class="fst-italic mb-1">Waktu Polling {{ $date_start }} s/d {{ $date_end }} </p>
             @if ($date_end <= $today)
@@ -40,24 +40,26 @@
             @else
             <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>
             @endif
-        <div class="float-end">
+        <div class="d-grid d-md-flex gap-2 float-md-end">
             {{-- Link show voting --}}
-            <a href="admin/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm text-white mt-1" type="button"><i class="fa-solid fa-eye"></i> View</a>
+            {{-- <a href="admin/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm mt-1" type="button"><i class="fa-solid fa-eye"></i> View</a> --}}
+            <a href="admin/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm mt-1"><i class="fa-solid fa-eye"></i> View</a>
+            <a href="admin/addItems/{{ $pu->id }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a>
 
             @if ($date_end <= $today)
 
             @else
 
             <a href="admin/editPolling/{{ $pu->id  }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Edit</a>
-            <a href="admin/addItems/{{ $pu->id }}" class="btn btn-success btn-sm text-white mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a>
-            {{-- <a href="/addItems/{{ $pu->id  }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Add Items</a> --}}
-                <button onClick="confirm( 'Apakah anda yakin ingin menutup polling ini' )" class="btn btn-warning btn-sm text-white mt-1" type="button"><i class="fa-solid fa-xmark"></i> Close</button>
+            {{-- <a href="admin/addItems/{{ $pu->id }}" class="btn btn-success btn-sm text-white mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a> --}}
+            <button onClick="confirm( 'Apakah anda yakin ingin menutup polling ini' )" class="btn btn-warning btn-sm mt-1 text-light" type="button"><i class="fa-solid fa-xmark"></i> Close</button>
             @endif
-        <a href="admin/result/{{ $pu->id }}" class="btn btn-primary btn-sm text-white mt-1" type="button"><i class="fa-solid fa-chart-bar"></i> Result</a>
-        <button class="btn btn-danger btn-sm text-white mt-1" type="button"><i class="fa-solid fa-trash"></i> Delete</button>
+            <a href="admin/result/{{ $pu->id }}" class="btn btn-primary btn-sm mt-1"><i class="fa-solid fa-chart-bar"></i> Result</a>
+            <button class="btn btn-danger btn-sm mt-1" type="button"><i class="fa-solid fa-trash"></i> Delete</button>
       </div>
       </div>
     </div>
 </div>
 
 @endforeach
+

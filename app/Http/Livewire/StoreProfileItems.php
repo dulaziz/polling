@@ -19,6 +19,7 @@ class StoreProfileItems extends Component
     public $data_id;
     public $data_vote_unit_id;
     public $data_image;
+    public $data_item;
 
     use WithFileUploads;
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\pollingController;
 use App\Http\Livewire\AddItems;
 use App\Http\Livewire\AddProfileItems;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,7 +80,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
         // Add Unit Page
         Route::get('/addPollItems', function () {return view('addPollItems', ["title" => "Add Poll Items"]);});
-        Route::post('/addUnit',[pollingController::class,'create_unit']);
+        Route::post('/addUnit',[pollingController::class,'create_unit'])->name('add-unit');;
 
         // View Unit Bar
         Route::get('/pollingUnitBar/{id}',[pollingController::class,'show_bar']);
@@ -96,6 +97,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
         // More Profile Page
         Route::get('/moreProfile/{id}',AddProfileItems::class);
+        // Show Profile Page
+        Route::get('/showProfile/{id}',[pollingController::class,'show_profile']);
 
         // Logout Page
         Route::get('/logout',[adminController::class,'logout'])->name('logout');
@@ -170,7 +173,38 @@ Route::get('/formPollTes', function () {
         "title" => "Form Poll Tes"
     ]);
 });
-// root Testing
 
+Route::get('/addMoreProfile', function () {
+    return view('addMoreProfile', [
+        "title" => "Add More Profile"
+    ]);
+});
 
+Route::get('/editPolling', function () {
+    return view('editPolling', [
+        "title" => "Edit Polling Unit"
+    ]);
+});
 
+Route::get('/editPollItems', function () {
+    return view('editPollItems', [
+        "title" => "Edit Polling Items"
+    ]);
+});
+
+Route::get('/viewProfileItems', function () {
+    return view('viewProfileItems', [
+        "title" => "View Profile Items"
+    ]);
+});
+
+Route::get('/products', function () {
+    return view('products', [
+        "title" => "Products"
+    ]);
+});
+Route::post('/save',[ProductController::class,'save'])->name('save.product');
+Route::get('/fetchProducts',[ProductController::class,'fetchProducts'])->name('fetch.products');
+Route::get('/getProductDetails',[ProductController::class,'getProductDetails'])->name('get.product.details');
+Route::post('/updateProduct',[ProductController::class,'updateProduct'])->name('update.product');
+Route::post('/deleteProduct',[ProductController::class,'deleteProduct'])->name('delete.product');

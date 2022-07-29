@@ -26,7 +26,7 @@
     <div class="card-body">
       <div class="row d-flex align-items-center">
           <div class="col-md-3 d-flex justify-content-center justify-content-md-start">
-              <img src="{{ 'storage/' . $dp->thumbnail }}" alt="" class=" img-fluid rounded">
+              <img src="{{ 'storage/' . $dp->thumbnail }}" alt="" class="img-fluid rounded img_card mb-3 mb-md-0">
         </div>
         <div class="col-md-9">
             {{-- Validasi date polling time --}}
@@ -36,7 +36,7 @@
             <a href="/pollingUnit/{{ $dp->id }}"><h5><strong>{{ $dp->title }}</strong></h5></a>
           @endif
             <p class="text-muted mb-1">{{$dp->description}}</p>
-          <p class="fst-italic mb-1">Waktu Polling {{$date_start}} s/d {{$date_end}}</p>
+          <p class="fst-italic mb-3">Waktu Polling {{$date_start}} s/d {{$date_end}}</p>
           @if ( $date_end <= $today)
           <small class="text-danger  fst-italic"><i class="fas fa-times-circle"></i> Closed Polling</small>
           @else
@@ -44,13 +44,14 @@
           @endif
           {{-- Validasi date polling time --}}
           @if ( $date_end <= $today)
-          <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-md-end" type="button">Lihat Polling</a>
+          <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Lihat Polling</a>
           @else
-          <a href="/pollingUnit/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-md-end" type="button">Ikuti Polling</a>
+          <a href="/pollingUnit/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Ikuti Polling</a>
           @endif
         </div>
     </div>
     </div>
   </div>
+{{-- </div> --}}
 
   @endforeach

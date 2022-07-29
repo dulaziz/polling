@@ -22,6 +22,7 @@ class AddItems extends Component
 
     public function render()
     {
+        // dd($this->vote_unit);
         return view('livewire.add-items',[
             'title' => $this->title,
             'vote_unit' => $this->vote_unit,

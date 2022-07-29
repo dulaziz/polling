@@ -1,6 +1,9 @@
 {{-- Be like water. --}}
 
 @section('child')
+
+<link rel="stylesheet" href="{{ asset('css/uploadGalleryBox.css') }}">
+
 <div>
 
 {{-- Content --}}

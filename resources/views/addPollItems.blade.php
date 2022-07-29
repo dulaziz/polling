@@ -6,13 +6,19 @@
 <div class="col-md-10 mx-auto my-5">
     <h6 class="text-muted mb-5">{{ $title }}</h6>
 
-    <div class="card">
+    <h6>Polling Unit: <a href=""> Bogor Memilih 2024, Siapa Kandidat Balon Wali Kota Bogor Terfavorit?</a></h6>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="card mb-5">
       <div class="card-header"><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items</small>
       </div>
         <div class="card-body">
             <div class="row d-flex align-items-center">
-            <div class="preview col-md-4 d-flex justify-content-center">
-                <img src="img/default1.jpg" id="file-ip-1-preview" class="img-thumbnail img_thumb_2">
+            <div class="preview col-md-4 d-flex justify-content-center mb-3 mb-md-0">
+                <img src="{{asset('img/default1.jpg')}}" id="file-ip-1-preview" class="img-thumbnail img_thumb_2">
             </div>
             <div class="col-md-8">
                 {{-- File name thumbnail --}}
@@ -32,22 +38,24 @@
             </div>
         </div>
         <div class="card-footer">
-            <div class="d-grid d-md-block gap-2">
-                <button type="button" class="btn btn-success float-end"><i class="fas fa-save"></i> Save Profile Items</button>
+            <div class="d-flex gap-2 float-end">
+              <button type="button" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save Polling Item</button>
+              <a href="/admin" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
             </div>
-        </div>
+          </div>
     </div>
+  </div>
 
-<div class="my-5">
-<h6>Poll Items in "Polling Unit Name"</h6>
-    <table class="table">
+  <div class="my-5">
+    <div class="table-responsive">
+      <table class="table table-sm" style="width: 900px;">
         <thead>
           <tr>
             <th scope="col">No</th>
             <th scope="col">Name</th>
             <th scope="col">Position</th>
             <th scope="col">Profile Items</th>
-            <th scope="col">Action</th>
+            <th scope="col">More Profile</th>
           </tr>
         </thead>
         <tbody>
@@ -57,7 +65,9 @@
             <td>Wakil Wali Kota Bogor</td>
             <td><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></td>
             <td>
-                <a href="/moreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View more profile</a>
+              <a href="/viewProfileItems" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View</a>
+              <a href="/editPollItems" class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i> Edit</a>
+              <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
             </td>
           </tr>
           <tr>
@@ -66,7 +76,9 @@
             <td>Kader Banteng</td>
             <td><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items</small></td>
             <td>
-                <a href="/moreProfile" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add more profile</a>
+              <a href="/addMoreProfile" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add</a>
+              <a href="/editPollItems" class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i> Edit</a>
+              <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
             </td>
           </tr>
           <tr>
@@ -75,20 +87,19 @@
             <td>Ketua DPR Kota Bogor</td>
             <td><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></td>
             <td>
-              <a href="/moreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View more profile</a>
+              <a href="/viewProfileItems" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View</a>
+              <a href="/editPollItems" class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i> Edit</a>
+              <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
             </td>
           </tr>
         </tbody>
       </table>
-      </div>
+    </div>
+  </div>
 
 </div>
-<script src="js/pollForm.js"></script>
+<script src="js/previewImg.js"></script>
 {{-- cdn add form --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 @endsection
-
-
-
-

@@ -104,8 +104,8 @@
                             @if ($item->voteProfile)
                                 <td><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></td>
                                 <td>
-                                    <a href="/moreProfile" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View</a>
-                                    <a href="/moreProfile/{{ $item->id }} " class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
+                                    <a href="/admin/showProfile/{{ $item->id }}" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View</a>
+                                    <a href="/editPollItems/{{ $item->id }}" class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i> Edit</a>
                                     <a href="/moreProfile/{{ $item->id }} " class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
                                 </td>
                             @else

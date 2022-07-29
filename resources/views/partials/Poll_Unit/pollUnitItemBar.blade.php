@@ -12,8 +12,13 @@
   <div class="col-md-10 d-flex align-items-center">
     <div class="card-body">
       {{-- Vote Name --}}
-      <h5 class="card-title fw-bold">{{ $item->vote_name }}</h5>
-      <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p>
+      <div class="d-flex mb-3">
+        <h5>1.</h5>
+        <div class="ms-1">
+            <h5 class="card-title mb-0">{{ $item->vote_name }}</h5>
+            <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p>
+        </div>
+      </div>
       <div class="progress" style="height: 2rem">
           {{-- Cari jumlah persentase dari pemilih --}}
           @php

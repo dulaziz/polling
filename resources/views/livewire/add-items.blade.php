@@ -7,7 +7,7 @@
 
     {{-- @include('partials.addPolling') --}}
     {{-- @include('partials/poll_items/poll-header-items') --}}
-
+    <h6>Polling Unit: <a href="{{ '/admin/pollingUnitBar/' . $vote_unit->id }}"> {{$vote_unit->title}}</a></h6>
     {{-- Polling item --}}
     <div class="card border-light rounded-3 shadow-sm">
         <div class="card-body">

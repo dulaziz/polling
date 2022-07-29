@@ -13,8 +13,13 @@
             <div class="col-md-10 d-flex align-items-center">
             <div class="card-body">
                 {{-- Vote Name --}}
-                <h5 class="card-title fw-bold">{{ $pi->vote_name }}</h5>
-                <p class="card-text"><small class="text-muted">{{ $pi->short_desc }}</small></p>
+                <div class="d-flex">
+                    <h5>1.</h5>
+                    <div class="ms-1">
+                        <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
+                        <p class="card-text"><small class="text-muted">{{ $pi->short_desc }}</small></p>
+                    </div>
+                </div>
                 <div class="progress" style="height: 2rem">
                     {{-- Cari jumlah persentase dari pemilih --}}
                     @php
@@ -62,8 +67,13 @@
                 <div class="col-md-10 d-flex align-items-center">
                 <div class="card-body">
                     {{-- Vote Name --}}
-                    <h5 class="card-title fw-bold">{{$pi->vote_name}}</h5>
-                    <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+                    <div class="d-flex mb-3">
+                        <h5>1.</h5>
+                        <div class="ms-1">
+                            <h5 class="card-title mb-o">{{$pi->vote_name}}</h5>
+                            <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+                        </div>
+                    </div>
                     <hr class="d-none d-md-block">
                     {{-- Validasi User Login --}}
                     @if (Auth::user())

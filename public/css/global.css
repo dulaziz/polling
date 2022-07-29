@@ -94,6 +94,19 @@ label.label-form-control-input {
   border-radius: 5px;
 }
 
+.img_gallery{
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 3px;
+  margin: 2px 2px;
+}
+
+@media only screen and (max-width: 480px){
+  .img_gallery{
+    width: 100%;
+}
+}
 
 /* Badge Login */
 
