@@ -99,7 +99,7 @@ class ProductController extends Controller
     public function deleteProduct(Request $request){
         $product = Product::find($request->product_id);
         $path = 'files/';
-        $image_path = $path.$product->$product_image;
+        $image_path = $path.$product->product_image;
         if($product->product_image != null && \Storage::disk('public')->exists($image_path)){
             \Storage::disk('public')->delete($image_path);
         }
