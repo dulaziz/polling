@@ -44,12 +44,12 @@
             {{-- Link show voting --}}
             {{-- <a href="admin/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm mt-1" type="button"><i class="fa-solid fa-eye"></i> View</a> --}}
             <a href="admin/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm mt-1"><i class="fa-solid fa-eye"></i> View</a>
-            <a href="admin/addItems/{{ $pu->id }}" class="btn btn-success btn-sm mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a>
+
 
             @if ($epoch_end <= $times)
 
             @else
-
+            <a href="admin/addItems/{{ $pu->id }}" class="btn btn-success btn-sm mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a>
             <a href="admin/editPolling/{{ $pu->id  }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Edit</a>
             {{-- Close Polling Unit --}}
             <form action="{{ route('admin.close') }}" method="post">

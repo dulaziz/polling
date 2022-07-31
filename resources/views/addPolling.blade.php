@@ -65,7 +65,7 @@
                             </div>
                         @enderror
                         {{-- Input description --}}
-                        <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px" name="description"></textarea>
                          {{-- Response notif form input description --}}
                         @error('description')
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
