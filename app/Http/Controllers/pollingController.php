@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VoteItem;
+use App\Models\VoteProfile;
 use App\Models\VoteUnit;
 use App\Models\Voting;
 use Illuminate\Http\Request;
@@ -161,7 +162,7 @@ class pollingController extends Controller
         $data_item = VoteItem::with('voteProfiles')->where('vote_unit_id', $id)->first();
         // $data = with('voteProfile')->first();
 
-        // dd($data_item->voteProfiles);
+        // dd($data_item);
 
         return view('viewProfileItems', [
             "title" => "View Profile Items",
@@ -409,15 +410,17 @@ class pollingController extends Controller
     }
 
     public function edit(VoteUnit $id){
-        $vote_unit_with_items = VoteUnit::with(['vote_items'])
-                        ->where('id',$id->id)
-                        ->get();
+        // $vote_unit_with_items = VoteUnit::with(['vote_items'])
+        //                 ->where('id',$id->id)
+        //                 ->first();
+
+        // dd($id);
 
                         // dd($vote_unit_with_items);
 
         return view('editPolling', [
             "title" => "Edit Polling Unit",
-            "vote_unit_with_items" => $vote_unit_with_items
+            "vote_unit" => $id
         ]);
 
     }
@@ -443,7 +446,6 @@ class pollingController extends Controller
 
         $validatedData = $request->validate([
             'title' => 'required',
-            'description' => 'required',
             'subtitle' => 'required',
         ]);
 
@@ -501,80 +503,7 @@ class pollingController extends Controller
             $validatedData['date_end'] = $date_end_old;
         }
 
-        // cek validasi jika ada thumbnail yang di kirim
-       if($request->hasfile('vote_image')){
-
-            foreach($request->file('vote_image') as $image){
-                // $hashName = $image->hashName();
-                // dd($name);
-                $image->store('vote-items');
-                dd( str_replace('.".','"','vote-items/'.$image->hashName()));
-                // $vote_image[] = str_replace('.".',' ',"vote-items/".$image->hashName());
-
-            }
-
-            // $vote_unit_id[] = $request->unit_id;
-            // $vote_name[] = $request->vote_name;
-
-            // dd(serialize($request->unit_id));
-            // $upload = new VoteItem();
-            // $upload->vote_unit_id = $request->vote_unit_id;
-            // $upload->vote_name = $request->vote_name;
-            // $upload->vote_image = json_encode($data);
-            // $upload->save();
-
-            // dd($vote_unit_id);
-
-
-            // // Ambil data array vote image
-            // $data_vote_image = $request->file('vote_image');
-
-
-            // // looping data array dari form vote image
-            // for($i=0; $i < count($request->file('vote_image')); $i++){
-            //     $image = [
-            //         'vote_image' => $data_vote_image[$i]
-            //     ];
-            //     // dd($data_vote_image[$i]);
-
-            //     $vote_image = $image['vote_image']->store('vote-items');
-            //     // insert data thumbnail baru
-            //     // $vote_image = Storage::disk('local')->put('test.txt','contents');
-            // }
-
-            // dd($vote_image);
-           // hapus data thumbnail sebelumnya
-           Storage::delete($request->vote_image_old);
-       }else{
-           $vote_image = $request->vote_image_old;
-       }
-
-        $unit_id = $request->unit_id;
-        $vote_name = $request->vote_name;
-        $short_desc = $request->short_desc;
-        // $vote_images = $vote_image;
-
-        // // dd($image);
-        // for($i=0; $i < count($da); $i++){
-        //     dd($vote_images);
-        // }
-
-        // Looping data array dari form input
-        for($i=0; $i < count($unit_id); $i++ ){
-
-
-                $dataSave = [
-                    'vote_image' => json_encode($vote_image[$i]),
-                    'vote_name' => $vote_name[$i],
-                    'short_desc' => $short_desc[$i],
-                ];
-
-                // $dataSave['vote_image'] = $vote_image;
-
-
-                DB::table('vote_items')->where('id',$unit_id[$i])->update($dataSave);
-        }
-
+        $validatedData['description'] = $request->description;
 
         // simpan validasi kedalam database vote unit
         $save = VoteUnit::where('id',$request->id)->update($validatedData);
@@ -586,6 +515,56 @@ class pollingController extends Controller
         }else{
 
             return back()->with('error', 'Your data failed created!')->withInput();
+        }
+
+    }
+
+    public function close_polling(Request $request){
+         // Request Validate Id Item
+         $validatedData = $request->validate([
+            'id' => 'required',
+            'date_end' => 'required',
+        ]);
+
+        // Ubah date normal time ke date epoch
+        $epoch_start = $request->date_end;
+        $dt = new DateTime("$epoch_start");  // convert UNIX timestamp to PHP DateTime
+        $date_end = $dt->format('U');
+
+        $validatedData['date_end'] = $date_end;
+
+        $closed = VoteUnit::where('id', $request->id)->update($validatedData);
+
+        if($closed){
+
+            return back()->with('message', 'Your data has been closed!');
+
+        }else{
+
+            return back()->with('message', 'Your data failed closed!');
+        }
+
+    }
+
+    public function delete(Request $request){
+        // Request Validate Id Item
+        $request->validate([
+            'id' => 'required'
+        ]);
+
+        // Delete Vote Item By Vote Unit Id
+        VoteItem::where('vote_unit_id', $request->id)->delete();
+        // Delete Vote Profile By Vote Item Id
+        VoteProfile::where('vote_item_id', $request->id)->delete();
+        // Delete Vote Unit By Vote Unit Id
+        $delete = VoteUnit::where('id', $request->id)->delete();
+
+        if($delete){
+            return back()->with('message', 'Your data has been deleted!');
+
+        }else{
+
+            return back()->with('message', 'Your data failed deleted!')->withInput();
         }
 
     }

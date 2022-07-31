@@ -35,7 +35,7 @@
             @endphp
 
         <p class="fst-italic mb-1">Waktu Polling {{ $date_start }} s/d {{ $date_end }} </p>
-            @if ($date_end <= $today)
+            @if ($epoch_end <= $times)
             <small class="text-danger  fst-italic"><i class="fas fa-times-circle"></i> Closed Polling</small>
             @else
             <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>
@@ -44,18 +44,34 @@
             {{-- Link show voting --}}
             {{-- <a href="admin/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm mt-1" type="button"><i class="fa-solid fa-eye"></i> View</a> --}}
             <a href="admin/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm mt-1"><i class="fa-solid fa-eye"></i> View</a>
-            <a href="admin/addItems/{{ $pu->id }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a>
+            <a href="admin/addItems/{{ $pu->id }}" class="btn btn-success btn-sm mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a>
 
-            @if ($date_end <= $today)
+            @if ($epoch_end <= $times)
 
             @else
 
             <a href="admin/editPolling/{{ $pu->id  }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Edit</a>
-            {{-- <a href="admin/addItems/{{ $pu->id }}" class="btn btn-success btn-sm text-white mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a> --}}
-            <button onClick="confirm( 'Apakah anda yakin ingin menutup polling ini' )" class="btn btn-warning btn-sm mt-1 text-light" type="button"><i class="fa-solid fa-xmark"></i> Close</button>
+            {{-- Close Polling Unit --}}
+            <form action="{{ route('admin.close') }}" method="post">
+                @csrf
+                {{-- Convert time today to date --}}
+                @php
+                     $times = round(microtime(true));
+                            $ts = new DateTime("@$times");
+                            $today = $ts->format('d-m-Y');
+                @endphp
+                <input type="hidden" name="id" value="{{ $pu->id }}">
+                <input type="hidden" name="date_end" value="{{ $today }}">
+                <button onclick="return confirm('Apakah anda yakin ingin menutup polling ini?' )" class="btn btn-warning btn-sm mt-1 text-light" type="submit"><i class="fa-solid fa-xmark"></i> Close</button>
+            </form>
             @endif
             <a href="admin/result/{{ $pu->id }}" class="btn btn-primary btn-sm mt-1"><i class="fa-solid fa-chart-bar"></i> Result</a>
-            <button class="btn btn-danger btn-sm mt-1" type="button"><i class="fa-solid fa-trash"></i> Delete</button>
+            {{-- Delete Unit --}}
+            <form action="{{ route('admin.delete') }}" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{ $pu->id }}">
+                <button class="btn btn-danger btn-sm mt-1" type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus data?')"><i class="fa-solid fa-trash"></i> Delete</button>
+            </form>
       </div>
       </div>
     </div>

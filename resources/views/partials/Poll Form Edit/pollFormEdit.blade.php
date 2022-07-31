@@ -55,18 +55,18 @@
         @endphp
 
         <div class="col-md-6">
-          <div class="form-floating">
-            <input class="form-control-edit" type="hidden" name="date_start_old" id="floatingInput" value="{{ $date_start }}">
-            <input class="form-control-edit" type="text" name="date_start" id="floatingInput" placeholder="{{$date_start}}" onfocus="(this.type='date')">
-            <label for="floatingInput title-text" class="label-form-control-input">Start Date</label>
+            <div class="form-floating">
+                <input class="form-control-edit" type="hidden" name="date_start_old" id="floatingInput" value="{{ $date_start }}">
+                <input class="form-control-edit" type="text" name="date_start" id="floatingInput" placeholder="{{$date_start}}" onfocus="(this.type='date')">
+                <label for="floatingInput title-text" class="label-form-control-input">Start Date</label>
+            </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-floating">
-            <input class="form-control-edit" type="hidden" name="date_end_old" id="floatingInput" value="{{ $date_end }}">
-            <input type="text" class="form-control-edit" id="floatingInput" placeholder="{{ $date_end }}" name="date_end" onfocus="(this.type='date')">
-            <label for="floatingInput title-text" class="label-form-control-input">Expired</label>
-          </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input class="form-control-edit" type="hidden" name="date_end_old" id="floatingInput" value="{{ $date_end }}">
+                <input type="text" class="form-control-edit" id="floatingInput" placeholder="{{ $date_end }}" name="date_end" onfocus="(this.type='date')">
+                <label for="floatingInput title-text" class="label-form-control-input">Expired</label>
+            </div>
         </div>
       </div>
     </div>

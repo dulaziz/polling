@@ -67,7 +67,11 @@
           @endforeach
           <tr>
             @php
+            if ($total_user_vote) {
                 $total_response_vote =  $total_vote_item / $total_user_vote * 100;
+            }else {
+                $total_response_vote =  0;
+            }
             // echo $tv->response;
             @endphp
             <td colspan="3"><strong>Total Response</strong></td>

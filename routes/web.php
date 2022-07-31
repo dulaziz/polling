@@ -75,8 +75,20 @@ Route::prefix('admin')->name('admin.')->group(function(){
         // Admin Page
         Route::get('/',[adminController::class,'index'])->name('home');
 
-        // Add Polling Page
-        Route::get('/addPolling',[pollingController::class,'create']);
+        // Route Page
+
+            // Add Polling Page
+            Route::get('/addPolling',[pollingController::class,'create']);
+
+            // Edit Polling Page
+            Route::get('/editPolling/{id}',[pollingController::class,'edit']);
+            Route::post('/editPolling/{id}',[pollingController::class,'update']);
+
+            // Close Polling Page
+            Route::post('/closePolling',[pollingController::class,'close_polling'])->name('close');
+
+            // Delete Polling Page
+            Route::post('/deletePolling',[pollingController::class,'delete'])->name('delete');
 
         // Add Unit Page
         Route::get('/addPollItems', function () {return view('addPollItems', ["title" => "Add Poll Items"]);});
@@ -88,15 +100,19 @@ Route::prefix('admin')->name('admin.')->group(function(){
         // Add Item Page
         Route::get('/addItems/{id}',AddItems::class);
 
-        // Edit Polling Page
-        Route::get('/editPolling/{id}',[pollingController::class,'edit']);
-        Route::post('/editPolling/{id}',[pollingController::class,'update']);
+        // Edit Item
+        Route::get('/editPollItems/{id}', function () {
+            return view('editPollItems', [
+                "title" => "Edit Polling Items"
+            ]);
+        });
 
         // Result Polling Page
         Route::get('/result/{vote_unit}',[pollingController::class,'result']);
 
         // More Profile Page
         Route::get('/moreProfile/{id}',AddProfileItems::class);
+
         // Show Profile Page
         Route::get('/showProfile/{id}',[pollingController::class,'show_profile']);
 

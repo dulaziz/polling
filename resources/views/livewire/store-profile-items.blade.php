@@ -72,8 +72,8 @@
         </div>
             <div class="card-footer">
                 <div class="d-flex gap-2 float-end mb-2">
-                    <button type="button" class="btn btn-success btn-sm" wire:click="$emitUp('profileAdded')"><i class="fas fa-save"></i> Save More Profile</button>
-                    <a href="/admin/addItems/{{ $data_item->id }}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
+                    <button type="submit" class="btn btn-success btn-sm" wire:click="$emitUp('profileAdded')"><i class="fas fa-save"></i> Save More Profile</button>
+                    <a href="/admin/addItems/{{ $data_item->vote_unit_id }}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
                 </div>
             </div>
         </form>

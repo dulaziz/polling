@@ -59,8 +59,9 @@
                   </div>
               </div>
               <div class="card-footer">
-                  <div class="d-grid d-md-block gap-2">
+                <div class="d-flex gap-2 float-end">
                       <button type="submit" class="btn btn-success float-end"><i class="fas fa-save"></i> Save Profile Items</button>
+                      <a href="{{ route('admin.home') }}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
                   </div>
               </div>
           </div>
@@ -104,15 +105,17 @@
                             @if ($item->voteProfile)
                                 <td><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></td>
                                 <td>
-                                    <a href="/admin/showProfile/{{ $item->id }}" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View</a>
-                                    <a href="/editPollItems/{{ $item->id }}" class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i> Edit</a>
-                                    <a href="/moreProfile/{{ $item->id }} " class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="/admin/showProfile/{{ $item->vote_unit_id }}" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View</a>
+                                    <a href="/admin/editPollItems/{{ $item->id }}" class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i> Edit</a>
+                                    {{-- Delete Item --}}
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteItem({{$item->id}}) : false">Delete</button>
                                 </td>
                             @else
                                 <td><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items </small></td>
                                 <td>
                                     <a href="/admin/moreProfile/{{ $item->id }} " class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add</a>
-                                    <a href="/moreProfile/{{ $item->id }} " class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                                    {{-- Delete Item --}}
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteItem({{$item->id}}) : false">Delete</button>
                                 </td>
                             @endif
 

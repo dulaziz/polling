@@ -55,21 +55,14 @@
                 @endforeach
             </div>
 
+            @livewire('store-gallery', ['data_item' => $data_item])
 
-            <h6 class="mb-3 text-muted">Gallery: <span class="badge bg-success">{{ $data_item->vote_name }}</span></h6>
-            <div class="border rounded p-2">
-                @foreach ($data_item->voteProfiles as $v)
-                    @foreach (json_decode($v->gallery) as $g)
-                        <img src="{{ asset('storage/'.$g) }}" class="img-fluid img_gallery" alt="...">
-                    @endforeach
-                @endforeach
-            </div>
             {{-- @endforeach --}}
         </div>
         <div class="card-footer">
             <div class="d-flex gap-2 float-end">
                 <a href="editPollItems" type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit Profile</button>
-                    <a href="/admin/addItems/{{$data_item->id}}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
+                    <a href="/admin/addItems/{{$data_item->vote_unit_id}}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
             </div>
         </div>
     </div>

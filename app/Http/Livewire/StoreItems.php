@@ -14,6 +14,7 @@ class StoreItems extends Component
     public $vote_items;
     public $vote_unit;
 
+    public $id_item;
     public $vote_image;
     public $vote_name;
     public $short_desc;
@@ -74,10 +75,14 @@ class StoreItems extends Component
 
     }
 
-    // public function handlePost(){
-        // dd($this->itemCount = VoteItem::count());
-    //     dd('self');
-    //  }
+    // Delete Item
+    public function deleteItem($id){
+
+        VoteItem::where('id',$id)->delete();
+        VoteProfile::where('vote_item_id',$id)->delete();
+        session()->flash('success', 'Your data has been deleted!');
+
+    }
 
 
     public function render()

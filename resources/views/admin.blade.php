@@ -8,6 +8,16 @@
 
     <h6 class="text-muted mb-5">{{ $title }}</h6>
 
+        {{-- Response --}}
+        @if ($message = Session::get('message'))
+        {{-- Allert after Vote --}}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ $message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        {{-- End Response --}}
+
       @include('partials.adminCardPollUnit')
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
