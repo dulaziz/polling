@@ -19,6 +19,10 @@
         </div>
       </div>
 
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="text-end text-decoration-none fw-bold" href="/result" role="button">Print result <i class="fas fa-long-arrow-right"></i></a>
+      </div>
+
   </div>
 </div>
 

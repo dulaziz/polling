@@ -141,7 +141,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="d-flex gap-2 float-end p-2">
+                <div class="gap-2 d-flex justify-content-end">
                     <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save Polling Unit</button>
                     <a href="/admin" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
                 </div>
@@ -158,3 +158,6 @@
 </div>
 
 @endsection
+
+
+

@@ -5,18 +5,19 @@
 
 {{-- Vote Item --}}
 <div class="row g-0 my-3">
-  <div class="col-md-2">
+  <div class="col-md-3 d-flex justify-content-center">
     {{-- Vote Thumbnail --}}
-    <img src="{{ asset('storage/' . $item->vote_image) }}" class="img-fluid img-thumbnail rounded" alt="...">
+    <img src="{{ asset('storage/' . $item->vote_image) }}" class="img-thumbnail img_card" alt="...">
   </div>
-  <div class="col-md-10 d-flex align-items-center">
+  <div class="col-md-9 d-flex align-items-center">
     <div class="card-body">
       {{-- Vote Name --}}
       <div class="d-flex mb-3">
         <h5>1.</h5>
         <div class="ms-1">
             <h5 class="card-title mb-0">{{ $item->vote_name }}</h5>
-            <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p>
+            <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+            {{-- <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p> --}}
         </div>
       </div>
       <div class="progress" style="height: 2rem">

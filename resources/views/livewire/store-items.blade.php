@@ -4,20 +4,30 @@
     <form wire:submit.prevent="storeItems" method="post" id="image-form" enctype="multipart/form-data">
         @csrf
 
-          <div class="card">
-              <div class="card-header"><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items</small>
+          <div class="card my-3">
+              <div class="card-header text-secondary">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="mb-0">Add Polling Items</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <small class="fst-italic float-md-end"><i class="fas fa-times-circle"></i> Basic Profile Items</small>
+                    </div>
+                </div>
+                
+                
               </div>
               <div class="card-body">
                   <div class="row d-flex align-items-center">
                     @if ($vote_image)
                         {{-- Thumbnail Poll Unit --}}
-                        <div class="preview col-md-4 d-flex justify-content-center">
-                            <img src="{{ $vote_image->temporaryUrl() }}" class="img-thumbnail" style="max-width: 260px; max-height: 274px;">
+                        <div class="preview col-md-4 mb-3 mb-md-0 d-flex justify-content-center">
+                            <img src="{{ $vote_image->temporaryUrl() }}" class="img-thumbnail img_thumb_2">
                         </div>
                     @else
                         {{-- Thumbnail Poll Unit --}}
-                        <div class="preview col-md-4 d-flex justify-content-center">
-                            <img src="{{ asset('img/default1.jpg') }}" id="file-ip-1-preview" class="img-thumbnail" style="max-width: 260px; max-height: 274px;">
+                        <div class="preview col-md-4 mb-3 mb-md-0 d-flex justify-content-center">
+                            <img src="{{ asset('img/default1.jpg') }}" id="file-ip-1-preview" class="img-thumbnail img_thumb_2">
                         </div>
                     @endif
                   <div class="col-md-8">
@@ -59,8 +69,8 @@
                   </div>
               </div>
               <div class="card-footer">
-                <div class="d-flex gap-2 float-end">
-                      <button type="submit" class="btn btn-success float-end"><i class="fas fa-save"></i> Save Profile Items</button>
+                <div class="gap-2 d-flex justify-content-end">
+                      <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save Profile Items</button>
                       <a href="{{ route('admin.home') }}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
                   </div>
               </div>
@@ -81,15 +91,17 @@
         @endif
 
         {{-- Looping data items --}}
-        <h6>Poll Items in "{{$data_unit->title}}"</h6>
-        <table class="table">
+        {{-- <h6>Poll Items in "{{$data_unit->title}}"</h6> --}}
+
+        <div class="table-responsive">
+        <table class="table table-sm" style="width: 100%;">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Profile Items</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" style="width: 2%;">No</th>
+                    <th scope="col" style="width: 17%;">Name</th>
+                    <th scope="col" style="width: 38%;">Bio</th>
+                    <th scope="col" style="width: 18%;">Profile Items</th>
+                    <th scope="col" style="width: 25%;">Action</th>
                 </tr>
             </thead>
                 <tbody>
@@ -113,9 +125,9 @@
                             @else
                                 <td><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items </small></td>
                                 <td>
-                                    <a href="/admin/moreProfile/{{ $item->id }} " class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add</a>
+                                    <a href="/admin/moreProfile/{{ $item->id }} " class="btn btn-success btn-sm"><i class="fas fa-plus"></i> More Profile</a>
                                     {{-- Delete Item --}}
-                                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteItem({{$item->id}}) : false">Delete</button>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteItem({{$item->id}}) : false"><i class="fas fa-trash"></i> Delete</button>
                                 </td>
                             @endif
 
@@ -140,6 +152,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
         </div>
     </div>
 </div>

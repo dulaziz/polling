@@ -49,10 +49,7 @@
         <div class="col-md-8">
           <input class="form-control mb-3" type="file">
           <input type="text" class="form-control mb-3" placeholder="Title" aria-label="Title">
-          <div class="form-floating">
-            <textarea class="form-control" placeholder="Description" id="floatingTextarea2" style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Description</label>
-          </div>
+            <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px" name="description"></textarea>
         </div>
       </div>
 

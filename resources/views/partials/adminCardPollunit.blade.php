@@ -8,10 +8,10 @@
 
 <div class="alert alert-secondary">
     <div class="row d-flex align-items-center">
-      <div class="col-md-2">
-          <img src="{{ asset('storage/'.$pu->thumbnail) }}" alt="" class=" img-fluid rounded">
+      <div class="col-md-3">
+          <img src="{{ asset('storage/'.$pu->thumbnail) }}" alt="" class="img-fluid img_card">
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
           <a href="admin/pollingUnitBar/{{ $pu->id }}"><h5><strong>{{ $pu->title }}</strong></h5></a>
         <p class="text-muted mb-1">{{ $pu->description }}</p>
         @php
@@ -49,7 +49,7 @@
             @if ($epoch_end <= $times)
 
             @else
-            <a href="admin/addItems/{{ $pu->id }}" class="btn btn-success btn-sm mt-1" type="button"><i class="fa-solid fa-users"></i> Add Poll items</a>
+            <a href="admin/addItems/{{ $pu->id }}" class="btn btn-success btn-sm mt-1" type="button"><i class="fa-solid fa-users"></i> Poll items</a>
             <a href="admin/editPolling/{{ $pu->id  }}" class="btn btn-dark btn-sm mt-1" type="button"><i class="fas fa-pen"></i> Edit</a>
             {{-- Close Polling Unit --}}
             <form action="{{ route('admin.close') }}" method="post">
@@ -62,7 +62,9 @@
                 @endphp
                 <input type="hidden" name="id" value="{{ $pu->id }}">
                 <input type="hidden" name="date_end" value="{{ $today }}">
+                <div class="d-grid d-md-flex gap-2 float-md-end">
                 <button onclick="return confirm('Apakah anda yakin ingin menutup polling ini?' )" class="btn btn-warning btn-sm mt-1 text-light" type="submit"><i class="fa-solid fa-xmark"></i> Close</button>
+                </div>
             </form>
             @endif
             <a href="admin/result/{{ $pu->id }}" class="btn btn-primary btn-sm mt-1"><i class="fa-solid fa-chart-bar"></i> Result</a>
@@ -70,7 +72,9 @@
             <form action="{{ route('admin.delete') }}" method="post">
                 @csrf
                 <input type="hidden" name="id" value="{{ $pu->id }}">
+                <div class="d-grid d-md-flex gap-2 float-md-end">
                 <button class="btn btn-danger btn-sm mt-1" type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus data?')"><i class="fa-solid fa-trash"></i> Delete</button>
+                </div>
             </form>
       </div>
       </div>

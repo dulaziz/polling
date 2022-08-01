@@ -6,9 +6,9 @@
 
             <div class="card-header"><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></div>
             <div class="card-body">
-            <div class="row d-flex align-items-center">
+            <div class="row d-flex align-items-center mb-5">
                 <h5>More Profile</h5>
-                <div class=" col-md-3 d-flex justify-content-center mb-5">
+                <div class=" col-md-3 d-flex justify-content-center mb-3 mb-md-0">
                     @if ($icon_profile)
                             <img src="{{ $icon_profile->temporaryUrl(); }}" class="img-thumbnail img_thumb_2">
                         @else
@@ -30,16 +30,15 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @enderror
-                    <div class="form-floating">
+                    
                         <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px" wire:model="desc_profile"></textarea>
-                        <label for="floatingTextarea2">Description</label>
                         @error('desc_profile')
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>{{ $message }}</strong>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @enderror
-                    </div>
+                    
                 </div>
             </div>
             {{-- Gallery upload --}}
@@ -71,7 +70,7 @@
             </div>
         </div>
             <div class="card-footer">
-                <div class="d-flex gap-2 float-end mb-2">
+                <div class="gap-2 d-flex justify-content-end">
                     <button type="submit" class="btn btn-success btn-sm" wire:click="$emitUp('profileAdded')"><i class="fas fa-save"></i> Save More Profile</button>
                     <a href="/admin/addItems/{{ $data_item->vote_unit_id }}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
                 </div>

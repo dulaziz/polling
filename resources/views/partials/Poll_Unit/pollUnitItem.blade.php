@@ -63,11 +63,11 @@
             {{-- @endforeach --}}
 
             <div class="row g-0 my-3">
-                <div class="col-md-2">
+                <div class="col-md-3 d-flex justify-content-center">
                 {{-- Vote Thumbnail --}}
-                <img src="{{ asset('storage/'.$pi->vote_image)}}" class="img-fluid img-thumbnail rounded" alt="...">
+                <img src="{{ asset('storage/'.$pi->vote_image)}}" class=" img-thumbnail img_card" alt="...">
                 </div>
-                <div class="col-md-10 d-flex align-items-center">
+                <div class="col-md-8 d-flex align-items-center">
                 <div class="card-body">
                     {{-- Vote Name --}}
                     <div class="d-flex mb-3">

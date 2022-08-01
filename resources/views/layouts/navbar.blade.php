@@ -32,14 +32,31 @@
         @if (Auth::user())
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('img/favicon-96x96.png' ) }}" style="width: 25px; height:25px;"  alt="User Image">
-                    {{Auth::user()->name}}
+                  {{Auth::user()->name}}
+                  {{-- <img src="{{ asset('img/favicon-96x96.png' ) }}" class="img-thumbnail rounded-circle"   alt="User Image" style="width: 25px;"> --}}
                 </a>
-                <ul class="dropdown-menu bg-danger">
+                <ul class="dropdown-menu dropdown-menu-end border-0 shadow p-3" style="width: 250px;">
+                  <li>
+                    <div class="d-flex justify-content-center mb-1">
+                      <img src="{{ asset('img/favicon-96x96.png' ) }}" class="img-thumbnail rounded-circle"   alt="User Image">
+                    </div>
+                    <div class="text-center mb-1 text-uppercase">
+                      {{Auth::user()->name}}
+                    </div>
+                  </li>
+                  <hr class="my-2">
                     @if(Auth::guard('admin')->user())
-                    <li><a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a></li>
+                    <li class="d-flex justify-content-center gap-2">
+                      <a href="/admin" class="btn btn-primary btn-sm"><i class="fas fa-home"></i> Home</a>
+                      <a href="{{ route('admin.logout') }}" class="btn btn-danger btn-sm"><i class="fas fa-power-off"></i> Logout</a>
+                    </li>
+                      
+                      {{-- <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="fas fa-power-off"></i> Logout</a> --}}
                     @else
-                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                    <li class="d-flex justify-content-center gap-2">
+                      <a href="/" class="btn btn-primary btn-sm"><i class="fas fa-home"></i> Home</a>
+                      <a class="btn btn-danger btn-sm" href="{{ route('logout') }}"><i class="fas fa-power-off"></i> Logout</a>
+                    </li>
                     @endif
                 </ul>
             </li>
