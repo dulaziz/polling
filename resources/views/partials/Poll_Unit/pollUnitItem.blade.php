@@ -9,18 +9,18 @@
     @if ($data_vote_user)
         {{-- Vote Item --}}
         <div class="row g-0 my-3">
-            <div class="col-md-2">
+            <div class="col-md-3 d-flex justify-content-center">
             {{-- Vote Thumbnail --}}
-            <img src="{{ asset('storage/' . $pi->vote_image) }}" class="img-fluid img-thumbnail rounded" alt="...">
+            <img src="{{ asset('storage/' . $pi->vote_image) }}" class="img-thumbnail img_card" alt="...">
             </div>
-            <div class="col-md-10 d-flex align-items-center">
+            <div class="col-md-9 d-flex align-items-center">
             <div class="card-body">
                 {{-- Vote Name --}}
                 <div class="d-flex">
                     <h5>{{$i++}}.</h5>
                     <div class="ms-1">
                         <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
-                        <p class="card-text"><small class="text-muted">{{ $pi->short_desc }}</small></p>
+                        <p class="card-text mb-3"><small class="text-muted">{{ $pi->short_desc }}</small></p>
                     </div>
                 </div>
                 <div class="progress" style="height: 2rem">
@@ -41,6 +41,7 @@
                         <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
                     @endif
                 </div>
+                <hr class="d-block d-md-none">
             </div>
             </div>
         </div>
@@ -67,7 +68,7 @@
                 {{-- Vote Thumbnail --}}
                 <img src="{{ asset('storage/'.$pi->vote_image)}}" class=" img-thumbnail img_card" alt="...">
                 </div>
-                <div class="col-md-8 d-flex align-items-center">
+                <div class="col-md-9 d-flex align-items-center">
                 <div class="card-body">
                     {{-- Vote Name --}}
                     <div class="d-flex mb-3">
@@ -82,14 +83,14 @@
                     @if (Auth::user())
                         {{-- Vote Button --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile" class="btn btn-info btn-sm text-light">Profile</a>
-                            <button type="submit" class="btn btn-success btn-sm">Vote</button>
+                            <a href="/profile" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                            <button type="submit" class="btn btn-success btn-sm px-5">Vote</button>
                         </div>
                     @else
                         {{-- Vote Button Redirect Login --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile" class="btn btn-info btn-sm text-light">Profile</a>
-                            <a href="{{ route('google.login') }}" class="btn btn-success btn-sm">Vote</a>
+                            <a href="/profile" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                            <a href="{{ route('google.login') }}" class="btn btn-success btn-sm px-5">Vote</a>
                         </div>
                     @endif
                 </div>

@@ -131,19 +131,13 @@
       </div>
   </div>
 
+  <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+    <a class="btn btn-success px-5" href="" role="button"><i class="fas fa-hand-pointer"></i> Vote</a>
+    <a class="btn btn-secondary px-5" href="" role="button"><i class="fas fa-reply"></i> Back</a>
+  </div>
 
 </div>
-  
-<style>
-  .item{
-    transition: .3s ease-in-out;
-  }
-  .item:hover{
-    filter: brightness(80%);
-  }
-</style>
 
-</script>
 <script src="js/slider.js" type="text/javascript"></script>
 
 @endsection

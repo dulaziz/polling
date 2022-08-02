@@ -74,7 +74,19 @@ label.label-form-control-input {
   border-radius: 50px;
 }
 
+/* font Size */
+.fs_title{
+  font-size: 1.6rem;
+}
+
 /* Image Thumb Profile */
+.img_thumb_artcl{
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 .img_thumb{
   width: 350px;
   height: 350px;
@@ -103,6 +115,19 @@ label.label-form-control-input {
 }
 
 @media only screen and (max-width: 480px){
+
+  .img_card{
+    width: 100%;
+  }
+  
+  .fs_title{
+    font-size: 1.3rem;
+  }
+
+  .img_thumb_artcl{
+    height: 250px;
+  }
+
   .img_gallery{
     width: 100%;
 }

@@ -5,7 +5,7 @@
 
 <div class="container">
   {{-- Content --}}
-  <div class="col-md-10 mx-auto my-5">
+  <div class="col-md-10 mx-auto my-2 my-md-5">
 
     @include('partials/Poll_Unit.pollUnitHeader')
     {{-- Card Poll --}}
@@ -17,6 +17,10 @@
         <hr class="d-none d-md-block">
         {{-- @include('partials/Poll Unit.pollUnitFooterCard') --}}
       </div>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-end d-md-none">
+      <a class="text-end text-decoration-none mb-3" href="/" role="button"><i class="fas fa-reply"></i> Back</a>
     </div>
 
   </div>

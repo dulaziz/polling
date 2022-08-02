@@ -31,23 +31,36 @@
         <div class="col-md-9">
             {{-- Validasi date polling time --}}
           @if ( $date_end <= $today)
-            <a href="/pollingUnitBar/{{ $dp->id }}"><h5><strong>{{ $dp->title }}</strong></h5></a>
+            <a href="/pollingUnitBar/{{ $dp->id }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
           @else
-            <a href="/pollingUnit/{{ $dp->id }}"><h5><strong>{{ $dp->title }}</strong></h5></a>
+            <a href="/pollingUnit/{{ $dp->id }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
           @endif
-            <p class="text-muted mb-1">{{$dp->description}}</p>
-          <p class="fst-italic mb-3">Waktu Polling {{$date_start}} s/d {{$date_end}}</p>
-          @if ( $date_end <= $today)
-          <small class="text-danger  fst-italic"><i class="fas fa-times-circle"></i> Closed Polling</small>
-          @else
-          <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>
-          @endif
-          {{-- Validasi date polling time --}}
-          @if ( $date_end <= $today)
-          <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Lihat Polling</a>
-          @else
-          <a href="/pollingUnit/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Ikuti Polling</a>
-          @endif
+            <p class="text-muted mb-3">{{$dp->description}}</p>
+
+            <div class="row d-flex align-items-center">
+              <div class="col-md-8 mb-3 mb-md-0">
+                @if ( $date_end <= $today)
+                <p class="text-danger float-md-start fst-italic me-2 mb-0"><i class="fas fa-times-circle"></i> Closed Polling</p>
+                @else
+                <p class="text-success float-md-start fst-italic me-2 mb-0"><i class="fas fa-check-circle"></i> Live Polling</p>
+                @endif
+                <p class="fst-italic mb-0">{{$date_start}} s/d {{$date_end}}</p>
+              </div>
+              <div class="col-md-4">
+                {{-- Validasi date polling time --}}
+                @if ( $date_end <= $today)
+                <div class="d-grid d-md-block gap-2">
+                  <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Lihat Polling</a>
+                </div>
+                @else
+                <div class="d-grid d-md-block gap-2">
+                  <a href="/pollingUnit/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Ikuti Polling</a>
+                </div>
+                @endif
+              </div>
+
+            </div>
+
         </div>
     </div>
     </div>

@@ -8,12 +8,12 @@
 
 <div class="alert alert-secondary">
     <div class="row d-flex align-items-center">
-      <div class="col-md-3">
+      <div class="col-md-3 d-flex justify-content-center mb-3 mb-md-0">
           <img src="{{ asset('storage/'.$pu->thumbnail) }}" alt="" class="img-fluid img_card">
       </div>
       <div class="col-md-9">
-          <a href="admin/pollingUnitBar/{{ $pu->id }}"><h5><strong>{{ $pu->title }}</strong></h5></a>
-        <p class="text-muted mb-1">{{ $pu->description }}</p>
+          <a href="admin/pollingUnitBar/{{ $pu->id }}"><h5 class="mb-3"><strong>{{ $pu->title }}</strong></h5></a>
+          <p class="text-muted mb-3 mb-md-2">{{ $pu->description }}</p>
         @php
            $epoch_start = $pu->date_start;
             $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
@@ -34,12 +34,14 @@
 
             @endphp
 
-        <p class="fst-italic mb-1">Waktu Polling {{ $date_start }} s/d {{ $date_end }} </p>
+        <p class="fst-italic mb-3 mb-md-1"> 
             @if ($epoch_end <= $times)
-            <small class="text-danger  fst-italic"><i class="fas fa-times-circle"></i> Closed Polling</small>
+            <small class="text-danger fst-italic"><i class="fas fa-times-circle mb-3 mb-md-1"></i> Closed Polling </small>
             @else
-            <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>
+            <small class="text-success fst-italic"><i class="fas fa-check-circle mb-3 mb-md-1"></i> Live Polling </small>
+            {{ $date_start }} s/d {{ $date_end }} </p>
             @endif
+            <hr class="my-2">
         <div class="d-grid d-md-flex gap-2 float-md-end">
             {{-- Link show voting --}}
             {{-- <a href="admin/pollingUnitBar/{{ $pu->id }}" class="btn btn-info text-light btn-sm mt-1" type="button"><i class="fa-solid fa-eye"></i> View</a> --}}

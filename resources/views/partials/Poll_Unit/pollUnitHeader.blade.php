@@ -1,5 +1,9 @@
 {{-- Title --}}
-<h3 class="fw-bold" data-aos="fade-right" data-aos-duration="1000">Bogor Memilih 2024, Siapa Kandidat Balon Wali Kota Bogor Terfavorit?</h3>
+<h3 class="fw-bold mb-3" data-aos="fade-right" data-aos-duration="1000">Bogor Memilih 2024, Siapa Kandidat Calon Wali Kota Bogor Terfavorit?</h3>
+
+<div class="">
+  <img class="img_thumb_artcl img-fluid" data-aos="fade-up" data-aos-duration="1500" src="/img/Plaza-Balaikota-Bogor.jpg" alt="...">
+</div>
 
 {{-- Desc --}}
 <p class="mt-4 text-secondary" data-aos="fade-right" data-aos-duration="1500">PEMILIHAN  Wali Kota Bogor akan digelar pada 2024 mendatang. Sejumlah nama digadang-gadang bakal maju menjadi orang nomor satu di Kota Bogor. 

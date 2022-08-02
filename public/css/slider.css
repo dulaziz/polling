@@ -11,3 +11,10 @@
   .slick-prev {
       left: 5px;
   }
+
+  .item{
+    transition: .3s ease-in-out;
+  }
+  .item:hover{
+    filter: brightness(80%);
+  }

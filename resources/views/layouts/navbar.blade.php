@@ -5,7 +5,7 @@
   <div class="container">
 
     {{-- Logo --}}
-    <a class="navbar-brand navlogo" href="/"><img src="{{ asset('img/RB Nav.png') }}" alt="logo radar bogor"></a>
+    <a class="navbar-brand navlogo" href="/"><img src="{{ asset('img/rblck.png') }}" alt="logo radar bogor"></a>
 
     {{-- Burger Menu --}}
     <button
@@ -46,14 +46,14 @@
                   </li>
                   <hr class="my-2">
                     @if(Auth::guard('admin')->user())
-                    <li class="d-flex justify-content-center gap-2">
+                    <li class="d-flex justify-content-around">
                       <a href="/admin" class="btn btn-primary btn-sm"><i class="fas fa-home"></i> Home</a>
                       <a href="{{ route('admin.logout') }}" class="btn btn-danger btn-sm"><i class="fas fa-power-off"></i> Logout</a>
                     </li>
                       
                       {{-- <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="fas fa-power-off"></i> Logout</a> --}}
                     @else
-                    <li class="d-flex justify-content-center gap-2">
+                    <li class="d-flex justify-content-around">
                       <a href="/" class="btn btn-primary btn-sm"><i class="fas fa-home"></i> Home</a>
                       <a class="btn btn-danger btn-sm" href="{{ route('logout') }}"><i class="fas fa-power-off"></i> Logout</a>
                     </li>
@@ -69,3 +69,4 @@
 
 <script src="js/script.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+

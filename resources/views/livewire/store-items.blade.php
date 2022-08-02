@@ -94,7 +94,7 @@
         {{-- <h6>Poll Items in "{{$data_unit->title}}"</h6> --}}
 
         <div class="table-responsive">
-        <table class="table table-sm" style="width: 100%;">
+        <table class="table table-sm" style="width: 925px;">
             <thead>
                 <tr>
                     <th scope="col" style="width: 2%;">No</th>
