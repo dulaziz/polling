@@ -68,8 +68,8 @@
                 {{-- Vote Thumbnail --}}
                 <img src="{{ asset('storage/'.$pi->vote_image)}}" class=" img-thumbnail img_card" alt="...">
                 </div>
-                <div class="col-md-9 d-flex align-items-center">
-                <div class="card-body">
+                <div class="col-md-9 d-grid align-items-center py-3 ps-md-3">
+                <div class="">
                     {{-- Vote Name --}}
                     <div class="d-flex mb-3">
                         <h5>1.</h5>

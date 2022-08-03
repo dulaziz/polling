@@ -25,7 +25,7 @@
       <ul class="navbar-nav text-center fw-bold ms-auto d-flex align-items-center">
         <li class="nav-item">
           <a class="nav-link" href="/">Beranda</a>
-        </li>
+        </li> 
         <li class="nav-item">
           <a class="nav-link" href="">Epaper</a>
         </li>
