@@ -10,6 +10,7 @@ use Livewire\WithFileUploads;
 
 class StoreItems extends Component
 {
+
     public $vote_unit_id;
     public $vote_items;
     public $vote_unit;
@@ -17,6 +18,7 @@ class StoreItems extends Component
     public $id_item;
     public $vote_image;
     public $vote_name;
+    public $vote_position;
     public $short_desc;
 
     use WithFileUploads;
@@ -27,6 +29,7 @@ class StoreItems extends Component
     protected $rules = [
         'vote_image' => 'required|image|max:1024',
         'vote_name' => 'required',
+        'vote_position' => 'required',
         'short_desc' => 'required',
 
     ];
@@ -36,6 +39,7 @@ class StoreItems extends Component
     private function resetInput(){
         $this->vote_image = null;
         $this->vote_name = null;
+        $this->vote_position = null;
         $this->short_desc = null;
     }
 
@@ -43,6 +47,7 @@ class StoreItems extends Component
     public function mount($id_unit){
 
           $this->vote_unit_id = $id_unit;
+
     }
 
 
@@ -54,6 +59,7 @@ class StoreItems extends Component
             'vote_unit_id' => $this->vote_unit_id,
             'vote_image' => $this->vote_image->store('vote-items'),
             'vote_name' => $this->vote_name,
+            'vote_position' => $this->vote_position,
             'short_desc' => $this->short_desc,
         ]);
 

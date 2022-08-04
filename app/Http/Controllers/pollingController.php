@@ -133,6 +133,7 @@ class pollingController extends Controller
             'vote_unit_id' => 'required',
             'vote_image' => 'required|mimes:jpg,bmp,png',
             'vote_name' => 'required',
+            'vote_position' => 'required',
             'short_desc' => 'required',
         ]);
 
@@ -162,7 +163,24 @@ class pollingController extends Controller
         $data_item = VoteItem::with('voteProfiles')->where('vote_unit_id', $id)->first();
         // $data = with('voteProfile')->first();
 
-        // dd($data_item);
+        // dd($data_item->voteProfiles);
+
+        return view('viewProfileItems', [
+            "title" => "View Profile Items",
+            // 'data_unit' => $data_unit,
+            'data_item' => $data_item
+        ]);
+
+    }
+
+    public function show_profile_item($id){
+
+
+        // $data_unit = VoteUnit::find($id);
+        $data_item = VoteItem::with('voteProfiles')->where('id', $id)->first();
+        // $data = with('voteProfile')->first();
+
+        // dd($data_item->voteProfiles);
 
         return view('viewProfileItems', [
             "title" => "View Profile Items",
@@ -249,7 +267,10 @@ class pollingController extends Controller
                         ->select()
                         ->from('votings')
                         ->join('users','users.id','votings.user_vote')
-                        ->count();
+                        ->first();
+
+                        // dd($data_vote_user);
+
         // SELECT * FROM `votings` JOIN users ON users.id = votings.user_vote;
                                 // dd($data_vote_user);
 
@@ -265,6 +286,8 @@ class pollingController extends Controller
                             ->select(DB::raw('count(*) as total_vote'))
                             ->where('vote_item_id',2)
                             ->first();
+
+
 
                             // SELECT
 
@@ -352,11 +375,11 @@ class pollingController extends Controller
 
         if($save){
 
-            return back()->with('success', 'Your data has been created!');
+            return back()->with('success', 'Your vote has been saved!');
 
         }else{
 
-            return back()->with('error', 'Your data failed created!')->withInput();
+            return back()->with('error', 'Your vote failed saved!')->withInput();
         }
 
 
@@ -495,7 +518,7 @@ class pollingController extends Controller
         }else{
 
                 // Ubah date normal time ke date epoch
-                $epoch_end = $request->date_end;
+                $epoch_end = $request->date_end_old;
                 $dt = new DateTime("$epoch_end");  // convert UNIX timestamp to PHP DateTime
                 $date_end_old = $dt->format('U');
 

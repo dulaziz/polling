@@ -16,21 +16,21 @@ class StoreGallery extends Component
 
         // dd($this->gallery);
 
-        foreach($this->gallery as $g){
-            // // dd($g->gallery);
-            foreach(json_decode($g->gallery) as $i){
-                // dd($i[2]);
-                // menampilkan isi array dengan perulangan while
-                $e = 0;
-                while($e < count(json_decode($g->gallery))){
-                    // dd($i);
-                    $this->i = $i;
-                    $e++;
-                }
-            }
+        // foreach($this->gallery as $g){
+        //     // // dd($g->gallery);
+        //     foreach(json_decode($g->gallery) as $i){
+        //         // dd($i[2]);
+        //         // menampilkan isi array dengan perulangan while
+        //         $e = 0;
+        //         while($e < count(json_decode($g->gallery))){
+        //             // dd($i);
+        //             $this->i = $i;
+        //             $e++;
+        //         }
+        //     }
 
 
-        }
+        // }
 
         // // menampilkan isi array dengan perulangan while
         // $i = 0;

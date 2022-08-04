@@ -3,7 +3,7 @@
 
     <form wire:submit.prevent="storeItems" method="post" id="image-form" enctype="multipart/form-data">
         @csrf
-
+        <input type="hidden" wire:model="postId">
           <div class="card my-3">
               <div class="card-header text-secondary">
                 <div class="row">
@@ -14,8 +14,8 @@
                         <small class="fst-italic float-md-end"><i class="fas fa-times-circle"></i> Basic Profile Items</small>
                     </div>
                 </div>
-                
-                
+
+
               </div>
               <div class="card-body">
                   <div class="row d-flex align-items-center">
@@ -53,7 +53,7 @@
                                 @enderror
                           </div>
                           <div class="col-md-6">
-                              <input type="text" class="form-control mb-3" placeholder="Position" aria-label="Position">
+                              <input type="text" class="form-control mb-3" placeholder="Position" aria-label="Position" wire:model="vote_position">
                           </div>
                       </div>
                       {{-- Input description --}}
@@ -99,7 +99,7 @@
                 <tr>
                     <th scope="col" style="width: 2%;">No</th>
                     <th scope="col" style="width: 17%;">Name</th>
-                    <th scope="col" style="width: 38%;">Bio</th>
+                    <th scope="col" style="width: 38%;">Position</th>
                     <th scope="col" style="width: 18%;">Profile Items</th>
                     <th scope="col" style="width: 25%;">Action</th>
                 </tr>
@@ -112,7 +112,7 @@
                         <tr>
                             <th scope="row">{{ $i++ }}</th>
                             <td>{{$item->vote_name}}</td>
-                            <td>{{$item->short_desc}}</td>
+                            <td>{{$item->vote_position}}</td>
 
                             @if ($item->voteProfile)
                                 <td><small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Premium Profile Items</small></td>

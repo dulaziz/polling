@@ -21,6 +21,7 @@ class VoteItem extends Model
         'response',
         'vote_image',
         'vote_name',
+        'vote_position',
         'short_desc',
         'profile'
     ];

@@ -1,6 +1,12 @@
   {{-- Title --}}
   <h3 class="fw-bold" data-aos="fade-right">{{ $polling_unit->title }}</h3>
 
+  {{-- Image --}}
+  <div class="">
+    <img class="img_thumb_artcl img-fluid" data-aos="fade-up" data-aos-duration="1500" src="/img/Plaza-Balaikota-Bogor.jpg" alt="...">
+  </div>
+
+
   {{-- Desc --}}
   <p class="mt-4 text-secondary" data-aos="fade-right">{{ $polling_unit->description }}</p>
 

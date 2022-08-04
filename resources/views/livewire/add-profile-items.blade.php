@@ -25,7 +25,7 @@
                       <input type="text" class="form-control mb-3" aria-label="Name" value="{{ $data_item->vote_name }}" readonly>
                   </div>
                   <div class="col-md-6">
-                      <input type="text" class="form-control mb-3" aria-label="Position" value="{{ $data_item->short_desc }}" readonly>
+                      <input type="text" class="form-control mb-3" aria-label="Position" value="{{ $data_item->vote_position }}" readonly>
                   </div>
               </div>
               {{-- Input description --}}

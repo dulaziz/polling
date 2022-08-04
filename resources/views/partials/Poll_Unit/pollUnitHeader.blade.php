@@ -1,19 +1,45 @@
-{{-- Title --}}
-<h3 class="fw-bold mb-3" data-aos="fade-right" data-aos-duration="1000">Bogor Memilih 2024, Siapa Kandidat Calon Wali Kota Bogor Terfavorit?</h3>
+  {{-- Title --}}
+  <h3 class="fw-bold" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit->title }}</h3>
 
-<div class="">
-  <img class="img_thumb_artcl img-fluid" data-aos="fade-up" data-aos-duration="1500" src="/img/Plaza-Balaikota-Bogor.jpg" alt="...">
-</div>
+  {{-- Image --}}
+  <div class="">
+    <img class="img_thumb_artcl img-fluid" data-aos="fade-up" data-aos-duration="1500" src="/img/Plaza-Balaikota-Bogor.jpg" alt="...">
+  </div>
 
-{{-- Desc --}}
-<p class="mt-4 text-secondary" data-aos="fade-right" data-aos-duration="1500">PEMILIHAN  Wali Kota Bogor akan digelar pada 2024 mendatang. Sejumlah nama digadang-gadang bakal maju menjadi orang nomor satu di Kota Bogor. 
-  Siapa kandidat bakal calon Wali Kota Bogor 2024, pilihan Anda? 
-  Yuk, ikut poling berikut:</p>
 
-<p class="fst-italic mb-3" data-aos="fade-right" data-aos-duration="2000">Waktu Polling 04 Juli 2022 s/d 11 Juli 2022</p>
+  {{-- Desc --}}
+  <p class="mt-4 text-secondary" data-aos="fade-right" data-aos-duration="1500">{{ $polling_unit->description }}</p>
 
+  @php
+  $epoch_start = $polling_unit->date_start;
+   $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
+   $date_start = $dt->format('d-m-Y');
+
+  $epoch_end = $polling_unit->date_end;
+   $dt = new DateTime("@$epoch_end");  // convert UNIX timestamp to PHP DateTime
+   $date_end = $dt->format('d-m-Y');
+
+   // $date = new DateTime('07/09/2022'); // format: MM/DD/YYYY
+   // echo $date->format('U');
+
+//    echo time();
+
+   $times = round(microtime(true));
+   $ts = new DateTime("@$times");
+   $today = $ts->format('d-m-Y');
+
+@endphp
+
+  {{-- Date --}}
+  <p class="fst-italic mb-3" data-aos="fade-right" data-aos-duration="2000">Waktu Polling {{ $date_start }} s/d {{ $date_end }}</p>
+
+{{-- Response --}}
+@if ($message = Session::get('success'))
 {{-- Allert after Vote --}}
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Tanggapan Anda telah tersimpan,</strong> Terimakasih telah mengikuti Polling kami.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ $message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+{{-- End Response --}}
+

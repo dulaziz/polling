@@ -20,6 +20,6 @@ class AddProfileItems extends Component
     {
         return view('livewire.add-profile-items')
         ->extends('layouts.main')
-        ->layoutData(['title' => 'More Profile']);;
+        ->layoutData(['title' => 'More Profile']);
     }
 }

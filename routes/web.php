@@ -6,6 +6,7 @@ use App\Http\Controllers\pollingController;
 use App\Http\Livewire\AddItems;
 use App\Http\Livewire\AddProfileItems;
 use App\Http\Controllers\ProductController;
+use App\Http\Livewire\EditProfileItems;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,8 @@ Route::middleware('guest:web')->group(function(){
     Route::get('/pollingUnit/{id}',[pollingController::class,'show_unit']);
     // View Unit Bar
     Route::get('/pollingUnitBar/{id}',[pollingController::class,'show_bar']);
+    // View Profile
+    Route::get('/showProfile/{id}',[pollingController::class,'show_profile']);
 });
 
 
@@ -57,6 +60,8 @@ Route::middleware('guest:web')->group(function(){
         Route::get('/pollingUnitBar/{id}',[pollingController::class,'show_bar']);
         // Action Logout
         Route::get('/auth/google/logout',[GoogleController::class,'logout'])->name('logout');
+         // View Profile
+        Route::get('/profile/{id}',[pollingController::class,'show_profile_item']);
     });
 
 
@@ -101,11 +106,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/addItems/{id}',AddItems::class);
 
         // Edit Item
-        Route::get('/editPollItems/{id}', function () {
-            return view('editPollItems', [
-                "title" => "Edit Polling Items"
-            ]);
-        });
+        // Route::get('/editPollItems/{id}', function () {
+        //     return view('editPollItems', [
+        //         "title" => "Edit Polling Items"
+        //     ]);
+        // });
+
+        Route::get('/editPollItems/{id}',EditProfileItems::class);
 
         // Result Polling Page
         Route::get('/result/{vote_unit}',[pollingController::class,'result']);

@@ -25,7 +25,7 @@
       <ul class="navbar-nav text-center fw-bold ms-auto d-flex align-items-center">
         <li class="nav-item">
           <a class="nav-link" href="/">Beranda</a>
-        </li> 
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="">Epaper</a>
         </li>
@@ -38,7 +38,11 @@
                 <ul class="dropdown-menu dropdown-menu-end border-0 shadow p-3" style="width: 250px;">
                   <li>
                     <div class="d-flex justify-content-center mb-1">
-                      <img src="{{ asset('img/favicon-96x96.png' ) }}" class="img-thumbnail rounded-circle"   alt="User Image">
+                        @if (Auth::guard('admin')->user())
+                            <img src="{{ asset('img/favicon-96x96.png' ) }}" class="img-thumbnail rounded-circle"   alt="User Image">
+                            @else
+                            <img src="{{Auth::user()->avatar}}" class="img-thumbnail rounded-circle"   alt="User Image">
+                        @endif
                     </div>
                     <div class="text-center mb-1 text-uppercase">
                       {{Auth::user()->name}}
@@ -50,7 +54,7 @@
                       <a href="/admin" class="btn btn-primary btn-sm"><i class="fas fa-home"></i> Home</a>
                       <a href="{{ route('admin.logout') }}" class="btn btn-danger btn-sm"><i class="fas fa-power-off"></i> Logout</a>
                     </li>
-                      
+
                       {{-- <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="fas fa-power-off"></i> Logout</a> --}}
                     @else
                     <li class="d-flex justify-content-around">

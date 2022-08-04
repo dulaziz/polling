@@ -1,12 +1,12 @@
 @php
     $i =1;
 @endphp
+
 {{-- Looping data polling --}}
 @foreach ($polling_item as $pi)
 
     {{-- Cek jika user telah melakukan voting --}}
-
-    @if ($data_vote_user)
+    @if ($data_vote_user->user_vote == Auth::user()->id)
         {{-- Vote Item --}}
         <div class="row g-0 my-3">
             <div class="col-md-3 d-flex justify-content-center">
@@ -55,7 +55,7 @@
             {{-- Value Vote +1 --}}
             <input type="hidden" name="response" value="{{ $total_vote->total_vote +1 }}">
             {{-- Validasi User Login --}}
-            @if (Auth::user())
+            @if (Auth::user()->id == $data_vote_user->user_vote)
                 <input type="hidden" name="user_vote" value="{{ Auth::user()->id }}">
             @endif
                 <input type="hidden" name="vote_unit_id" value="{{ $polling_unit->id }}">
@@ -72,10 +72,10 @@
                 <div class="">
                     {{-- Vote Name --}}
                     <div class="d-flex mb-3">
-                        <h5>1.</h5>
+                        <h5>{{$i++}}.</h5>
                         <div class="ms-1">
                             <h5 class="card-title mb-o">{{$pi->vote_name}}</h5>
-                            <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+                            <p class="card-text"><small class="text-muted">{{ $pi->vote_position }}</small></p>
                         </div>
                     </div>
                     <hr class="d-none d-md-block">
@@ -83,13 +83,13 @@
                     @if (Auth::user())
                         {{-- Vote Button --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                            <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
                             <button type="submit" class="btn btn-success btn-sm px-5">Vote</button>
                         </div>
                     @else
                         {{-- Vote Button Redirect Login --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                            <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
                             <a href="{{ route('google.login') }}" class="btn btn-success btn-sm px-5">Vote</a>
                         </div>
                     @endif
