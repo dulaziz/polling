@@ -74,8 +74,9 @@
                 @if (Auth::guard('admin')->user())
                     {{-- <a href="editPollItems" type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit Profile</button> --}}
                         <a href="/admin/addItems/{{$data_item->vote_unit_id}}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
-                @endif
+                @else
                 <a href="/pollingUnit/{{$data_item->vote_unit_id}}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
+                @endif
             </div>
         </div>
     </div>

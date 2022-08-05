@@ -18,9 +18,24 @@ class StoreEditProfileItems extends Component
     public $vote_position;
     public $short_desc;
 
+    // Property Input
+    public $vote_image_input;
+    public $vote_name_input;
+    public $vote_position_input;
+    public $short_desc_input;
+
+
     use WithFileUploads;
 
     protected $listeners = ['itemUpdated' => 'render'];
+
+    protected $rules = [
+        // 'vote_image' => 'required|image|max:1024',
+        'vote_name' => 'required',
+        'vote_position' => 'required',
+        'short_desc' => 'required',
+
+    ];
 
     private function resetInput(){
         $this->vote_image = null;
@@ -31,57 +46,38 @@ class StoreEditProfileItems extends Component
 
 
     public function mount($data_item){
-        $this->vote_image_old = $data_item->vote_image;
+        // $this->vote_image_old = $data_item->vote_image;
+        // $this->vote_image_input = $data_item->vote_image;
+        // $this->vote_name_input = $data_item->vote_name;
+        // $this->vote_position_input = $data_item->vote_position;
+        // $this->short_desc_input = $data_item->short_desc;
 
-        $item = VoteItem::find($data_item->id);
+        // $item = VoteItem::find($data_item->id);
 
-        // dd($item);
-        if($item) {
-            $this->postId   = $item->id;
-            // $this->title    = $post->title;
-            // $this->content  = $post->content;
-        }
+        $this->data_id = $this->data_item->id;
 
     }
 
 
+    public function loadInput()
+    {
+        $this->vote_image_input = $this->vote_image_input;;
+        $this->vote_name_input = $this->vote_name;
+        $this->vote_position_input = $this->vote_position;
+        $this->short_desc_input = $this->short_desc;
+    }
+
 
     public function update(){
 
-        $this->validate([
-            'vote_name' => 'required',
-            'vote_position' => 'required',
-            'short_desc' => 'required',
+        $this->validate();
+
+        // dd($this->vote_name);
+        VoteItem::where('id',$this->data_id)->update([
+            'vote_name' => $this->vote_name,
+            'vote_position' => $this->vote_position,
+            'short_desc' => $this->short_desc,
         ]);
-
-
-        if($this->postId) {
-
-            $post = VoteItem::find($this->postId);
-
-            if($post) {
-                $post->update([
-                    'vote_image' => $this->vote_image,
-                    'vote_name' => $this->vote_name,
-                    'vote_position' => $this->vote_position,
-                    'short_desc' => $this->short_desc,
-                ]);
-            }
-        }
-
-
-        // if ($this->vote_image != null) {
-        //     $this->vote_image = $this->vote_image->store('vote-items');
-        // }else{
-        //     $this->vote_image = $this->vote_image_old;
-        // }
-        // VoteItem::where('id',$this->data_id)->update([
-        //     'vote_image' => $this->vote_image,
-        //     'vote_name' => $this->vote_name,
-        //     'vote_position' => $this->vote_position,
-        //     'short_desc' => $this->short_desc,
-        // ]);
-
 
         $this->resetInput();
 
@@ -94,7 +90,7 @@ class StoreEditProfileItems extends Component
 
     public function render()
     {
-        // dd($this->data_item);
+        // dd($this->data_id);
         return view('livewire.store-edit-profile-items',['data_item' => $this->data_item]);
     }
 }

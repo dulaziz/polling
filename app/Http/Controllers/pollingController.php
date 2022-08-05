@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class pollingController extends Controller
@@ -182,7 +183,7 @@ class pollingController extends Controller
 
         // dd($data_item->voteProfiles);
 
-        return view('viewProfileItems', [
+        return view('profile', [
             "title" => "View Profile Items",
             // 'data_unit' => $data_unit,
             'data_item' => $data_item
@@ -267,6 +268,7 @@ class pollingController extends Controller
                         ->select()
                         ->from('votings')
                         ->join('users','users.id','votings.user_vote')
+                        ->where('user_vote', Auth::user()->id)
                         ->first();
 
                         // dd($data_vote_user);
@@ -310,6 +312,8 @@ class pollingController extends Controller
                                 ->count('*');
 
                                 // dd($total_user_vote);
+
+                                // dd($data_vote_user->user_vote);
 
         return view('pollingUnit', [
             "title" => "Polling Unit Bar",

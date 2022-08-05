@@ -4,12 +4,12 @@
     border-radius: 5px;
 }
 
-.upload__btn p {
+.upload__btn {
     margin: 0;
     cursor: pointer;
 }
 
-.upload__btn-box {
+.upload__btn {
     display: inline-block;
     font-weight: 600;
     color: #00548F;
@@ -26,7 +26,7 @@
     font-size: 14px;
 }
 
-.upload__btn-box:hover {
+.upload__btn:hover {
     background-color: #00548F;
     color: #fff;
     transition: all .3s ease;

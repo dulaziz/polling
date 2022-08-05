@@ -16,6 +16,7 @@
                 </div>
                 <div class="col-md-8">
                 {{-- File name thumbnail --}}
+                <input type="hidden" wire:model="vote_image_old" value="{{ $vote_image_input }}" >
                 <input class="form-control mb-3" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="vote_image" wire:model="vote_image">
                 {{-- Response notif form input vote image --}}
                 @error('vote_image')
@@ -25,9 +26,9 @@
                     </div>
                 @enderror
                 {{-- Input Name & title --}}
-                <div class="row">
+                <div class="row" wire:init="loadInput">
                     <div class="col-md-6">
-                        <input type="text" class="form-control mb-3"  aria-label="Name" placeholder="{{ $data_item->vote_name }}" value="{{ $data_item->vote_name }}" wire:model="vote_name">
+                        <input type="text" class="form-control mb-3"  aria-label="Name" placeholder="{{ $data_item->vote_name }}" value="{{$vote_name_input}}" wire:model.defer="vote_name">
                          {{-- Response notif form input short desc --}}
                           @error('vote_name')
                               <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -37,11 +38,18 @@
                           @enderror
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control mb-3" placeholder="{{ $data_item->vote_position }}" aria-label="Position" wire:model="vote_position">
+                        <input type="text" class="form-control mb-3" placeholder="{{ $data_item->vote_position }}" aria-label="Position" value="{{$vote_position}}" wire:model="vote_position">
+                        {{-- Response notif form input short desc --}}
+                        @error('vote_position')
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ $message }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @enderror
                     </div>
                 </div>
                 {{-- Input description --}}
-                <textarea class="form-control mb-3" placeholder="Bio" id="floatingTextarea2" style="height: 100px" wire:model="short_desc">{{ $data_item->short_desc }}</textarea>
+                <textarea class="form-control mb-3" placeholder="{{ $data_item->short_desc }}" id="floatingTextarea2" style="height: 100px" value="{{$short_desc_input}}"  wire:model="short_desc">{{ $data_item->short_desc }}</textarea>
                  {{-- Response notif form input short desc --}}
                   @error('short_desc')
                       <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -88,11 +96,17 @@
                                 <td>
                                     <img src="{{asset('storage/'. $p->icon)}}" alt="" style="width:45px; height:45px;">
                                 </td>
-                                <td>{{ $p->title }}</td>
-                                <td>{{$p->description}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</button>
-                                    <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                                    <input type="text" class="form-control" placeholder="{{ $p->title }}">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="{{$p->description}}">
+                                </td>
+                                <td>
+                                    <div class="d-flex gap-2">
+                                        <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</button>
+                                        <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

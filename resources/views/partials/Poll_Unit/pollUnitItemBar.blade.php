@@ -1,5 +1,9 @@
-{{-- Looping data vote item --}}
+{{-- Loop Iteration --}}
+@php
+    $i = 1;
+@endphp
 
+{{-- Looping data vote item --}}
 @foreach ($polling_item as $item)
 
 
@@ -13,7 +17,7 @@
     <div class="card-body">
       {{-- Vote Name --}}
       <div class="d-flex mb-3">
-        <h5>1.</h5>
+        <h5>{{$i++}}.</h5>
         <div class="ms-1">
             <h5 class="card-title mb-0">{{ $item->vote_name }}</h5>
             <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>

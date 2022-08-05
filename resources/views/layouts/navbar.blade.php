@@ -41,7 +41,7 @@
                         @if (Auth::guard('admin')->user())
                             <img src="{{ asset('img/favicon-96x96.png' ) }}" class="img-thumbnail rounded-circle"   alt="User Image">
                             @else
-                            <img src="{{Auth::user()->avatar}}" class="img-thumbnail rounded-circle"   alt="User Image">
+                            <img src="{{Auth::user()->avatar}}" class="img-thumbnail rounded-circle" alt="User Image">
                         @endif
                     </div>
                     <div class="text-center mb-1 text-uppercase">

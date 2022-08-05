@@ -6,7 +6,7 @@
 @foreach ($polling_item as $pi)
 
     {{-- Cek jika user telah melakukan voting --}}
-    @if ($data_vote_user->user_vote == Auth::user()->id)
+    @if ($data_vote_user)
         {{-- Vote Item --}}
         <div class="row g-0 my-3">
             <div class="col-md-3 d-flex justify-content-center">
@@ -48,57 +48,60 @@
 
     @else
 
-    {{-- Vote Item --}}
-        <form action="{{ '/pollSurvey' }}" method="post">
-            @csrf
+       {{-- Vote Item --}}
+       <form action="{{ '/pollSurvey' }}" method="post">
+        @csrf
 
-            {{-- Value Vote +1 --}}
-            <input type="hidden" name="response" value="{{ $total_vote->total_vote +1 }}">
-            {{-- Validasi User Login --}}
-            @if (Auth::user()->id == $data_vote_user->user_vote)
-                <input type="hidden" name="user_vote" value="{{ Auth::user()->id }}">
-            @endif
-                <input type="hidden" name="vote_unit_id" value="{{ $polling_unit->id }}">
-            {{-- @foreach ($vote_unit as $v) --}}
-            <input type="hidden" name="vote_item_id" value="{{$pi->id}}">
-            {{-- @endforeach --}}
+        {{-- Value Vote +1 --}}
+        <input type="hidden" name="response" value="{{ $total_vote->total_vote +1 }}">
+        {{-- Validasi User Login --}}
+        {{-- @if (Auth::user()->id == $data_vote_user->user_vote) --}}
+            <input type="hidden" name="user_vote" value="{{ Auth::user()->id }}">
+        {{-- @endif --}}
+            <input type="hidden" name="vote_unit_id" value="{{ $polling_unit->id }}">
+        {{-- @foreach ($vote_unit as $v) --}}
+        <input type="hidden" name="vote_item_id" value="{{$pi->id}}">
+        {{-- @endforeach --}}
 
-            <div class="row g-0 my-3">
-                <div class="col-md-3 d-flex justify-content-center">
-                {{-- Vote Thumbnail --}}
-                <img src="{{ asset('storage/'.$pi->vote_image)}}" class=" img-thumbnail img_card" alt="...">
-                </div>
-                <div class="col-md-9 d-grid align-items-center py-3 ps-md-3">
-                <div class="">
-                    {{-- Vote Name --}}
-                    <div class="d-flex mb-3">
-                        <h5>{{$i++}}.</h5>
-                        <div class="ms-1">
-                            <h5 class="card-title mb-o">{{$pi->vote_name}}</h5>
-                            <p class="card-text"><small class="text-muted">{{ $pi->vote_position }}</small></p>
-                        </div>
-                    </div>
-                    <hr class="d-none d-md-block">
-                    {{-- Validasi User Login --}}
-                    @if (Auth::user())
-                        {{-- Vote Button --}}
-                        <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
-                            <button type="submit" class="btn btn-success btn-sm px-5">Vote</button>
-                        </div>
-                    @else
-                        {{-- Vote Button Redirect Login --}}
-                        <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
-                            <a href="{{ route('google.login') }}" class="btn btn-success btn-sm px-5">Vote</a>
-                        </div>
-                    @endif
-                </div>
+        <div class="row g-0 my-3">
+            <div class="col-md-3 d-flex justify-content-center">
+            {{-- Vote Thumbnail --}}
+            <img src="{{ asset('storage/'.$pi->vote_image)}}" class=" img-thumbnail img_card" alt="...">
             </div>
-            <hr class="d-md-none">
-        </form>
-    </div>
+            <div class="col-md-9 d-grid align-items-center py-3 ps-md-3">
+            <div class="">
+                {{-- Vote Name --}}
+                <div class="d-flex mb-3">
+                    <h5>{{$i++}}.</h5>
+                    <div class="ms-1">
+                        <h5 class="card-title mb-o">{{$pi->vote_name}}</h5>
+                        <p class="card-text"><small class="text-muted">{{ $pi->vote_position }}</small></p>
+                    </div>
+                </div>
+                <hr class="d-none d-md-block">
+                {{-- Validasi User Login --}}
+                @if (Auth::user())
+                    {{-- Vote Button --}}
+                    <div class="d-grid d-md-flex gap-2 col-md-2">
+                        <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                        <button type="submit" class="btn btn-success btn-sm px-5">Vote</button>
+                    </div>
+                @else
+                    {{-- Vote Button Redirect Login --}}
+                    <div class="d-grid d-md-flex gap-2 col-md-2">
+                        <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                        <a href="{{ route('google.login') }}" class="btn btn-success btn-sm px-5">Vote</a>
+                    </div>
+                @endif
+            </div>
+        </div>
+        <hr class="d-md-none">
+    </form>
+</div>
+
 
     @endif
+
+
 
 @endforeach
