@@ -81,6 +81,13 @@ class StoreItems extends Component
 
     }
 
+
+    // Edit Item
+    public function editItem($id){
+
+    }
+
+
     // Delete Item
     public function deleteItem($id){
 

@@ -62,10 +62,13 @@ class StoreEditProfileItems extends Component
         // $this->validate();
 
         if($this->vote_image){
-            $this->vote_image;
-        }else{
-            $this->vote_image = $this->vote_image_input_old->store('vote-items');
+           $data_image =  $this->vote_image->store('vote-items');
         }
+
+        if(!$this->vote_image){
+            $data_image = $this->vote_image_input_old;
+        }
+
         if($this->vote_name){
             $this->vote_name;
         }else{
@@ -82,11 +85,12 @@ class StoreEditProfileItems extends Component
             $this->short_desc = $this->short_desc_input_old;
         }
 
-        dd($this->short_desc , $this->vote_name);
+        // dd($this->vote_image, $this->vote_name, $this->vote_position ,$this->short_desc);
+        // dd($data_image);
 
         VoteItem::where('id',$this->data_id)->update([
-            'vote_image' => $this->vote_image,
-            'vote_name' => $this->vote_name_,
+            'vote_image' => $data_image,
+            'vote_name' => $this->vote_name,
             'vote_position' => $this->vote_position,
             'short_desc' => $this->short_desc,
         ]);
@@ -102,7 +106,7 @@ class StoreEditProfileItems extends Component
 
     public function render()
     {
-        // dd($this->vote_image_input);
+        // dd($this->vote_image);
         return view('livewire.store-edit-profile-items',['data_item' => $this->data_item]);
     }
 }

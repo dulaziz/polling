@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-8">
                 {{-- File name thumbnail --}}
-                <input type="hidden" wire:model="vote_image_old" value="{{ $vote_image_input }}" >
+                {{-- <input type="hidden" wire:model="vote_image_old" value="{{ $vote_image_input }}" > --}}
                 <input class="form-control mb-3" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="vote_image" wire:model="vote_image">
                 {{-- Response notif form input vote image --}}
                 @error('vote_image')
@@ -26,9 +26,9 @@
                     </div>
                 @enderror
                 {{-- Input Name & title --}}
-                <div class="row" wire:init="loadInput">
+                <div class="row">
                     <div class="col-md-6">
-                        <input type="text" class="form-control mb-3"  aria-label="Name" placeholder="{{ $data_item->vote_name }}" value="{{$vote_name_input}}" wire:model.defer="vote_name">
+                        <input type="text" class="form-control mb-3"  aria-label="Name" placeholder="{{ $data_item->vote_name }}" value="{{$vote_name_input_old}}" wire:model.defer="vote_name">
                          {{-- Response notif form input short desc --}}
                           @error('vote_name')
                               <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 {{-- Input description --}}
-                <textarea class="form-control mb-3" placeholder="{{ $data_item->short_desc }}" id="floatingTextarea2" style="height: 100px" value="{{$short_desc_input}}"  wire:model="short_desc">{{ $data_item->short_desc }}</textarea>
+                <textarea class="form-control mb-3" placeholder="{{ $data_item->short_desc }}" id="floatingTextarea2" style="height: 100px" value="{{$short_desc_input_old}}"  wire:model="short_desc">{{ $data_item->short_desc }}</textarea>
                  {{-- Response notif form input short desc --}}
                   @error('short_desc')
                       <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -60,7 +60,7 @@
             </div>
             </div>
 
-            <div class="row d-flex align-items-center mb-5">
+            {{-- <div class="row d-flex align-items-center mb-5">
                 <h5 class="text-muted">More Profile</h5>
                 <div class="col-md-4 d-flex justify-content-center mb-3 mb-md-0">
                 <img src="{{ asset('img/default2.jpg')}}" class="img-thumbnail img_thumb_2">
@@ -70,10 +70,10 @@
                 <input type="text" class="form-control mb-3" placeholder="Title" aria-label="Title">
                     <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px" name="description" value={{$data_item->voteProfile->description}}></textarea>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- Looping Data Profile --}}
-            <div class="my-5">
+            {{-- <div class="my-5">
                 <h6 class="mb-3">More Profile: <span class="badge bg-success">{{$data_item->vote_name}}</span></h6>
                 <div class="table-responsive">
                     <table class="table table-sm" style="width: 900px;">
@@ -121,7 +121,11 @@
                         @endforeach
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
+
+
+
+            @livewire('update-more-item', ['data_item' => $data_item, 'data_profile' => $data_profile])
 
         </div>
         <div class="card-footer">
