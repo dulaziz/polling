@@ -27,8 +27,8 @@ class Voting extends Model
         return $this->belongsTo(VoteItem::class);
     }
 
-    // public function voteUnit(){
-    //     return $this->hasOne(VoteUnit::class,'id','vote_unit_id');
-    // }
+    public function voteUnit(){
+        return $this->hasOne(VoteUnit::class,'id','vote_unit_id');
+    }
 
 }

@@ -18,7 +18,10 @@ class UpdateMoreItem extends Component
     public $title_profiles;
     public $description_profiles;
 
-    protected $listeners = ['itemUpdated','itemDeleted' => 'render'];
+    protected $listeners = [
+    'itemUpdated' => 'render',
+        'itemDeleted' => 'render'
+];
 
     private function resetInput(){
         $this->title_profiles = null;
@@ -52,10 +55,11 @@ class UpdateMoreItem extends Component
 
 
        $this->resetInput();
+       session()->flash('success', 'Your data has been updated!');
+
 
        $this->emit('itemUpdated');
 
-       session()->flash('success', 'Your data has been updated!');
 
 
     }
@@ -64,8 +68,8 @@ class UpdateMoreItem extends Component
     public function deleteProfile($id){
 
         VoteProfile::where('id',$id)->delete();
-        $this->emit('itemDeleted');
         session()->flash('success', 'Your data has been deleted!');
+        $this->emit('itemDeleted');
 
     }
 

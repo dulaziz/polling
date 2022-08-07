@@ -66,9 +66,10 @@ class StoreItems extends Component
 
         $this->resetInput();
 
+        session()->flash('success', 'Your data has been created!');
+
         $this->emit('itemAdded');
 
-        session()->flash('success', 'Your data has been created!');
 
         // if($save){
 

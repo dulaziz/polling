@@ -27,7 +27,7 @@ class VoteItem extends Model
     ];
 
     public function votings(){
-        return $this->hasMany(Voting::class);
+        return $this->hasOne(Voting::class);
     }
 
 

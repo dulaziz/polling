@@ -74,15 +74,20 @@
     </div>
 
     {{-- Gallery --}}
+    @if ($data_item->voteProfiles)
     <div class="my-5">
         <h5 class="border-start border-danger border-4 text-uppercase ps-2 fw-bold rb-blue-tx" data-aos="fade-down" data-aos-duration="1000">Foto Kegiatan</h5>
-        @foreach ($data_item->voteProfiles as $vp)
+            {{-- Lopping Image --}}
+            @foreach ($data_item->voteProfiles as $item)
             <div class="slider">
-                <a href="{{asset('storage/' . $vp->icon)}}" class="fancybox item" data-fancybox="gallery1">
-                    <img src="{{asset('storage/' . $vp->icon)}}" class="img-fluid" alt="...">
-            </div>
-        @endforeach
+                    @foreach (json_decode($item->gallery) as $g)
+                    <a href="{{asset('storage/' . $g)}}" class="fancybox item" data-fancybox="gallery1">
+                    <img src="{{asset('storage/' . $g)}}" class="img-fluid" alt="...">
+                    @endforeach
+                </div>
+            @endforeach
     </div>
+    @endif
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
         @if (Auth::guard('admin')->user())

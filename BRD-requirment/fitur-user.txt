@@ -7,3 +7,6 @@
 
     Query Database:
         1. Ambil semua data voting yang vote_item_id nya sama dengan vote_item id
+
+    Progress Algoritma :
+    1. Ambil data voting yang

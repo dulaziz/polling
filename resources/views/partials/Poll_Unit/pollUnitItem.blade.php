@@ -5,8 +5,10 @@
 {{-- Looping data polling --}}
 @foreach ($polling_item as $pi)
 
+
+
     {{-- Cek jika user telah melakukan voting --}}
-    @if ($data_vote_user)
+    @if ($pi->votings)
         {{-- Vote Item --}}
         <div class="row g-0 my-3">
             <div class="col-md-3 d-flex justify-content-center">
@@ -101,7 +103,6 @@
 
 
     @endif
-
 
 
 @endforeach

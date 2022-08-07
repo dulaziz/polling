@@ -10,4 +10,7 @@
   </div>
 </div> --}}
 
-<h5 class="float-end mb-0">{{$total_user_vote}} Suara</h5>
+  {{-- Validasi Login Role Admin --}}
+  {{-- @if (Auth::guard('admin')->user()) --}}
+    <h5 class="float-end mb-0">{{$total_user_vote}} Suara</h5>
+  {{-- @endif --}}

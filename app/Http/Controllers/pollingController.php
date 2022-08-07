@@ -19,10 +19,14 @@ class pollingController extends Controller
 
     public function index(){
 
-        $data_polling = DB::table('vote_units')->get();
+        $data_pollings = VoteUnit::with('votings')->get();
+
+
+
         return view('home', [
             "title" => "Home",
-            "data_polling" => $data_polling
+            "data_polling" => $data_pollings,
+            // "data_votings" => $data_votings,
         ]);
     }
 
@@ -181,7 +185,7 @@ class pollingController extends Controller
         $data_item = VoteItem::with('voteProfiles')->where('id', $id)->first();
         // $data = with('voteProfile')->first();
 
-        // dd($data_item->voteProfiles);
+        // dd($data_item);
 
         return view('profile', [
             "title" => "View Profile Items",
@@ -244,11 +248,6 @@ class pollingController extends Controller
                             ->where('id',$id->id)
                             ->first();
 
-        // $polling_item = DB::table('vote_items')
-        //                     ->where('vote_unit_id',$id->id)
-        //                     ->get();
-
-                            // dd($polling_item);
 
         $polling_item = VoteItem::with('votings')
                                     ->where('vote_unit_id',$id->id)
@@ -264,17 +263,16 @@ class pollingController extends Controller
                         ->get();
 
                         // dd($vote_unit);
+
         $data_vote_user = DB::table('votings')
                         ->select()
                         ->from('votings')
+                        ->join('vote_units','vote_units.id','votings.vote_unit_id')
                         ->join('users','users.id','votings.user_vote')
                         ->where('user_vote', Auth::user()->id)
                         ->first();
 
                         // dd($data_vote_user);
-
-        // SELECT * FROM `votings` JOIN users ON users.id = votings.user_vote;
-                                // dd($data_vote_user);
 
 
         $total_votings = DB::table('votings')
@@ -291,29 +289,12 @@ class pollingController extends Controller
 
 
 
-                            // SELECT
-
-                            //     vote_item_id, COUNT(*) as total_vote
-
-                            // FROM
-
-                            //     `votings`
-
-                            // JOIN
-
-                            //     vote_items ON vote_items.id = votings.vote_item_id
-
-                            // GROUP BY votings.vote_item_id;
-
-                            // dd($total_vote);
-
         $total_user_vote = DB::table('votings')
                                 ->where('vote_unit_id',$id->id)
                                 ->count('*');
 
                                 // dd($total_user_vote);
 
-                                // dd($data_vote_user->user_vote);
 
         return view('pollingUnit', [
             "title" => "Polling Unit Bar",

@@ -49,13 +49,33 @@
               <div class="col-md-4">
                 {{-- Validasi date polling time --}}
                 @if ( $date_end <= $today)
-                <div class="d-grid d-md-block gap-2">
-                  <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Lihat Polling</a>
-                </div>
+                    <div class="d-grid d-md-block gap-2">
+                        <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Lihat Polling</a>
+                    </div>
                 @else
-                <div class="d-grid d-md-block gap-2">
-                  <a href="/pollingUnit/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Ikuti Polling</a>
-                </div>
+                    {{-- Fitur validasi jika user telah melakukan vote --}}
+                    {{-- {{$dp->votings->vote_unit_id}} --}}
+                    @if ($dp->votings)
+                        @if ($dp->votings->vote_unit_id === $dp->id)
+                            {{-- @foreach ($dp->votings as $dvu) --}}
+                            {{-- {{$dvu}} --}}
+                                {{-- @if ($dvu->vote_unit_id === $dp->id) --}}
+                                    <div class="d-grid d-md-block gap-2">
+                                        <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Lihat Polling</a>
+                                    </div>
+                                @else
+                                   <div class="d-grid d-md-block gap-2">
+                                        <a href="/pollingUnit/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Ikuti Pollings</a>
+                                    </div>
+                                {{-- @endif  --}}
+                            {{-- @endforeach --}}
+                        @endif
+                    @else
+                        <div class="d-grid d-md-block gap-2">
+                            <a href="/pollingUnit/{{ $dp->id }}" class="btn btn-outline-primary btn-sm float-end" type="button">Ikuti Polling</a>
+                        </div>
+                    @endif
+
                 @endif
               </div>
 
