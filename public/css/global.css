@@ -105,6 +105,18 @@ label.label-form-control-input {
   object-fit: cover;
   border-radius: 5px;
 }
+.img_card1{
+  width: 270px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: .3rem 0 0 .3rem;
+}
+.img_card2{
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: .3rem 0 0 .3rem;
+}
 
 .img_gallery{
   width: 140px;
@@ -126,6 +138,14 @@ label.label-form-control-input {
 
   .img_card{
     width: 100%;
+  }
+  .img_card1{
+    width: 100%;
+    border-radius: .3rem .3rem 0 0;
+  }
+  .img_card2{
+    width: 100%;
+    border-radius: .3rem .3rem 0 0;
   }
   
   .fs_title{

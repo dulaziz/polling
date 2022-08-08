@@ -22,9 +22,11 @@
       <div class="d-grid d-md-flex gap-2 justify-content-md-center">
           @if (Auth::guard('admin')->user())
           <a class="btn btn-primary btn-sm px-5" href="/result" role="button"><i class="fa-solid fa-chart-bar"></i> Print result</a>
-            <a href="{{ route('admin.home') }}" class="btn btn-secondary btn-sm float-end d-block d-md-none">Back <i class="fas fa-reply"></i></a>
+            <a href="{{ route('admin.home') }}" class="btn btn-secondary btn-sm float-end d-block d-md-none"><i class="fas fa-reply"></i> Back</a>
             @else
-            <a href="{{ '/' }}" class="btn btn-secondary btn-sm float-end d-block d-md-none">Back <i class="fas fa-reply"></i></a>
+            <div class="d-grid gap-2 d-md-flex justify-content-end">
+            <a href="{{ '/' }}" class="text-end text-decoration-none mb-3 d-block d-md-none"><i class="fas fa-reply"></i> Back</a>
+          </div>
         @endif
       </div>
 
