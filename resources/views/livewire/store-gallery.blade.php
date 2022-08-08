@@ -1,7 +1,7 @@
 <div>
     {{-- Stop trying to control. --}}
     <h6 class="mb-3 text-muted">Gallery: <span class="badge bg-success">{{ $data_item->vote_name }}</span></h6>
-    <div class="border rounded p-2">
+    <div class="border rounded p-2 d-block">
         @foreach ($data_item->voteProfiles as $v)
             @foreach (json_decode($v->gallery) as $g)
                 <img src="{{ asset('storage/'.$g) }}" class="img-fluid img_gallery" alt="...">

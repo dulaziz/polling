@@ -8,7 +8,7 @@
             <div class="card-body">
             <div class="row d-flex align-items-center mb-5">
                 <h5>More Profile</h5>
-                <div class=" col-md-3 d-flex justify-content-center mb-3 mb-md-0">
+                <div class="col-md-3 d-flex justify-content-center mb-3 mb-md-0">
                     @if ($icon_profile)
                             <img src="{{ $icon_profile->temporaryUrl(); }}" class="img-thumbnail img_thumb_2">
                         @else
@@ -46,7 +46,7 @@
             <div class="upload__box">
                 <div class="upload__btn-box">
                     <label class="upload__btn">
-                        <p>Upload images</p>
+                        <p class="mb-0">Upload images</p>
                         <input type="file" data-max_length="20" class="upload__inputfile" wire:model="gallery">
                         @error('gallery.*')
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -82,14 +82,13 @@
     <div class="my-5">
         <h6 class="mb-3">More Profile: <span class="badge bg-success">{{$data_item->vote_name}}</span></h6>
         <div class="table-responsive">
-            <table class="table table-sm" style="width: 900px;">
+            <table class="table table-sm" style="width: 930px;">
                 <thead class="fw-normal">
                 <tr>
-                    <th scope="col" style="width: 5%;" class="fw-normal">No</th>
-                    <th scope="col" style="width: 20%;" class="fw-normal">Icon</th>
-                    <th scope="col" style="width: 20%;" class="fw-normal">More Profile Title</th>
-                    <th scope="col" style="width: 55%;" class="fw-normal">Desc</th>
-                    <th scope="col" style="width: 20%;" class="fw-normal">Action</th>
+                    <th scope="col" style="width: 5%;">No</th>
+                    <th scope="col" style="width: 20%;">Icon</th>
+                    <th scope="col" style="width: 20%;">More Profile Title</th>
+                    <th scope="col" style="width: 55%;">Desc</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -104,10 +103,6 @@
                         </td>
                         <td>{{ $p->title }}</td>
                         <td>{{$p->description}}</td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>

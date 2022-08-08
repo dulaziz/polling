@@ -1,3 +1,5 @@
+{{-- ---TABLE EDIT POLL ITEMS--- --}}
+
 <div>
     {{-- Do your work, then step back. --}}
     <form method="post" wire:submit.prevent="updateProfile">
@@ -6,7 +8,7 @@
         <div class="my-5">
          <h6 class="mb-3">More Profile: <span class="badge bg-success">{{$data_item->vote_name}}</span></h6>
          <div class="table-responsive">
-             <table class="table table-sm" style="width: 900px;">
+             <table class="table table-sm align-middle" style="width: 896px;">
                  <thead class="fw-normal">
                  <tr>
                      <th scope="col" style="width: 5%;" class="fw-normal">No</th>
@@ -34,8 +36,8 @@
                          </td>
                          <td>
                              <div class="d-flex gap-2">
-                                 <button type="button" class="btn btn-primary btn-sm" wire:click="updateProfile({{ $p->id }})"><i class="fas fa-pen"></i> Edit</button>
-                                 <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteProfile({{$p->id}}) : false">Delete</button>
+                                 <button type="button" class="btn btn-success btn-sm" wire:click="updateProfile({{ $p->id }})"><i class="fa-solid fa-floppy-disk"></i></button>
+                                 <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteProfile({{$p->id}}) : false"><i class="fas fa-trash"></i></button>
                              </div>
                          </td>
                       </tr>

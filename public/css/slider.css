@@ -2,6 +2,13 @@
     padding:5px;
     border-radius: 10px;
   }
+  .img_slick{
+    width: 270px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 3px;
+    margin: 2px 2px;
+  }
   .slick-prev, .slick-next {
       z-index: 1;
   }
@@ -17,4 +24,10 @@
   }
   .item:hover{
     filter: brightness(80%);
+  }
+
+  @media only screen and (max-width: 480px){
+  .img_slick{
+    width: 100%;
+  }
   }

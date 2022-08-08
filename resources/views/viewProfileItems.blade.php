@@ -1,3 +1,5 @@
+{{-- VIEW SHOW PROFILE --}}
+
 @extends('layouts.main')
 
 @section('child')
@@ -28,14 +30,14 @@
                     {{-- Input Name & title --}}
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name" value="{{ $data_item->vote_name }}" readonly>
+                            <input type="text" class="form-control mb-3 fw-bold text-muted" placeholder="Name" aria-label="Name" value="{{ $data_item->vote_name }}" readonly>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control mb-3" placeholder="Position" aria-label="Position" readonly>
+                            <input type="text" class="form-control mb-3 fw-bold" placeholder="Position" aria-label="Position" readonly>
                         </div>
                     </div>
                     {{-- Input description --}}
-                    <textarea class="form-control mb-3" placeholder="Bio" id="floatingTextarea2" style="height: 100px" value="{{$data_item->short_desc}}" readonly>{{$data_item->short_desc}}</textarea>
+                    <textarea class="form-control mb-3" placeholder="Bio" id="floatingTextarea2" style="height: 150px" value="{{$data_item->short_desc}}" readonly>{{$data_item->short_desc}}</textarea>
                 </div>
             </div>
 
@@ -47,15 +49,14 @@
                 <div class="row d-flex align-items-center mb-5">
                     <h6 class="text-muted mb-3">More Profile</h6>
                     @foreach ($data_item->voteProfiles as $vp)
-                        <div class="col-md-4 d-flex justify-content-center mb-3 mb-md-0">
+                        <div class="col-md-4 d-flex justify-content-center p-0 p-md-3">
                             <img src="{{asset('storage/' . $vp->icon)}}" class="img-thumbnail img_thumb_2">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 mt-3 mb-5 mt-md-0 mb-md-0">
                             {{-- <input class="form-control mb-3" type="file"> --}}
-                            <input type="text" class="form-control mb-3" placeholder="Title" aria-label="Title" value="{{$vp->title}}" readonly>
+                            <input type="text" class="form-control mb-3 fw-bold text-muted" placeholder="Title" aria-label="Title" value="{{$vp->title}}" readonly>
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Description" id="floatingTextarea2" style="height: 100px" value="{{$vp->description}}" readonly>{{$vp->description}}</textarea>
-                                <label for="floatingTextarea2">Description</label>
+                                <textarea class="form-control py-2" placeholder="Description" id="floatingTextarea2" style="height: 150px" value="{{$vp->description}}" readonly>{{$vp->description}}</textarea>
                             </div>
                         </div>
                     @endforeach

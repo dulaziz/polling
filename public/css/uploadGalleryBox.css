@@ -71,7 +71,6 @@ input.upload__inputfile {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -10px;
-    padding: 10px;
 }
 
 .img-bg {
@@ -83,7 +82,7 @@ input.upload__inputfile {
 }
 
 @media only screen and (max-width: 480px) {
-    .upload__btn-box {
+    .upload__btn {
         min-width: 100%;
     }
 

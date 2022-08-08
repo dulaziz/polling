@@ -15,7 +15,7 @@
         </div>
         <div class="card-body">
           <div class="row d-flex align-items-center">
-            <div class=" col-md-4 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center mb-3 mb-md-0">
               <img src="{{ asset('storage/'. $data_item->vote_image )}}" class="img-thumbnail img_thumb_2">
             </div>
             <div class="col-md-8">

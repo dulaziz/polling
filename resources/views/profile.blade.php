@@ -11,7 +11,7 @@
   {{-- Basic Profile --}}
   <div class="row g-0 d-flex align-items-center mb-5">
     <div class="col-md-4 mb-2 mb-md-0 d-flex justify-content-center justify-content-md-start">
-        <img class="img_thumb img-fluid" data-aos="fade-up" data-aos-duration="1500" src="/img/Dedi A Rachim.jpg" alt="...">
+        <img class="img_thumb img-fluid" data-aos="fade-up" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="...">
     </div>
       <div class="col-md-8 p-md-3">
         <div data-aos="fade-down" data-aos-duration="1000">
@@ -82,24 +82,22 @@
             <div class="slider">
                     @foreach (json_decode($item->gallery) as $g)
                     <a href="{{asset('storage/' . $g)}}" class="fancybox item" data-fancybox="gallery1">
-                    <img src="{{asset('storage/' . $g)}}" class="img-fluid" alt="...">
+                    <img src="{{asset('storage/' . $g)}}" class="img-fluid img_slick" alt="...">
                     @endforeach
                 </div>
             @endforeach
     </div>
     @endif
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+    <div class="d-grid gap-2 d-md-flex justify-content-end">
         @if (Auth::guard('admin')->user())
-        {{-- <a href="editPollItems" type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit Profile</button> --}}
-            <a href="/admin/addItems/{{$data_item->vote_unit_id}}" class="btn btn-secondary btn-sm px-5" type="button"><i class="fas fa-reply"></i> Back</a>
+            <a href="/admin/addItems/{{$data_item->vote_unit_id}}" class="text-end text-decoration-none mb-3" type="button"><i class="fas fa-reply"></i> Back</a>
         @endif
-        {{-- <a href="/pollingUnit/{{$data_item->vote_unit_id}}" class="btn btn-secondary btn-sm px-5" type="button"><i class="fas fa-reply"></i> Back</a> --}}
     </div>
 
     @endif
-    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <a href="/pollingUnit/{{$data_item->vote_unit_id}}" class="btn btn-secondary btn-sm px-5" type="button"><i class="fas fa-reply"></i> Back</a>
+    <div class="d-grid gap-2 d-md-flex justify-content-end">
+        <a href="/pollingUnit/{{$data_item->vote_unit_id}}" class="text-end text-decoration-none mb-3" type="button"><i class="fas fa-reply"></i> Back</a>
     </div>
 </div>
 
