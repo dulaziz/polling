@@ -39,12 +39,20 @@
               <div class="row d-flex align-items-center">
 
                 <div class="col-md-8 mb-3 mb-md-0">
-                  @if ( $date_end <= $today)
+                  <p class="d-grid d-md-flex fst-italic mb-3 mb-md-1"> 
+                    @if ($epoch_end <= $times)
+                    <small class="text-danger fst-italic"><i class="fas fa-times-circle mb-3 mb-lg-1"></i> Closed Polling </small>
+                    @else
+                    <small class="text-success fst-italic me-md-3"><i class="fas fa-check-circle mb-3 mb-lg-1"></i> Live Polling </small>
+                    {{ $date_start }} s/d {{ $date_end }}
+                </p>
+                @endif
+                  {{-- @if ( $date_end <= $today)
                   <p class="text-danger float-md-start fst-italic me-2 mb-0"><i class="fas fa-times-circle"></i> Closed Polling</p>
                   @else
                   <p class="text-success float-md-start fst-italic me-2 mb-0"><i class="fas fa-check-circle"></i> Live Polling</p>
                   @endif
-                  <p class="fst-italic mt-1 mt-md-0 mb-0">{{$date_start}} s/d {{$date_end}}</p>
+                  <p class="fst-italic mt-1 mt-md-0 mb-0">{{$date_start}} s/d {{$date_end}}</p> --}}
                 </div>
           
                 <div class="col-md-4 d-flex justify-content-end">
