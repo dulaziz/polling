@@ -22,12 +22,11 @@ class pollingController extends Controller
         $data_pollings = VoteUnit::with('votings')->get();
 
 
-
         return view('home', [
             "title" => "Home",
             "data_polling" => $data_pollings,
-            // "data_votings" => $data_votings,
         ]);
+
     }
 
 
@@ -132,7 +131,7 @@ class pollingController extends Controller
 
     public function create_items(Request $request){
 
-        dd($request->all());
+        // dd($request->all());
 
         $validated = $request->validate([
             'vote_unit_id' => 'required',
@@ -232,7 +231,7 @@ class pollingController extends Controller
 
         return view('pollingUnitBar', [
             "title" => "Polling Unit Bar",
-            "polling_unit" => $polling_unit,
+            "polling_unit_with_items" => $polling_unit,
             "polling_item" => $polling_item,
             "total_user_vote" => $total_user_vote,
         ]);
@@ -240,70 +239,72 @@ class pollingController extends Controller
     }
 
     // Controller Fitur Polling Unit
-    public function show_unit(VoteUnit $id){
+    public function show_unit($id){
 
 
 
-        $polling_unit = DB::table('vote_units')
-                            ->where('id',$id->id)
-                            ->first();
+        // $polling_unit = DB::table('vote_units')
+        //                     ->where('id',$id->id)
+        //                     ->first();
 
 
-        $polling_item = VoteItem::with('votings')
-                                    ->where('vote_unit_id',$id->id)
-                                    ->get();
+        // $polling_item = VoteItem::with('votings')
+        //                             ->where('vote_unit_id',$id->id)
+        //                             ->get();
 
-                            // dd($polling_item);
+        //                             dd($polling_item);
 
-        $vote_unit = DB::table('votings')
-                        ->select(DB::raw(' vote_item_id,  count(*) as total_vote '))
-                        ->from('votings')
-                        ->join('vote_items','vote_items.id','votings.vote_item_id')
-                        ->groupBy('votings.vote_item_id')
-                        ->get();
-
-                        // dd($vote_unit);
-
-        $data_vote_user = DB::table('votings')
-                        ->select()
-                        ->from('votings')
-                        ->join('vote_units','vote_units.id','votings.vote_unit_id')
-                        ->join('users','users.id','votings.user_vote')
-                        ->where('user_vote', Auth::user()->id)
-                        ->first();
-
-                        // dd($data_vote_user);
-
-
-        $total_votings = DB::table('votings')
-                            ->where('vote_item_id',$id->id)
-                            ->first();
-
-                            // dd($total_votings);
-
-
-        $total_vote =  DB::table('votings')
-                            ->select(DB::raw('count(*) as total_vote'))
-                            ->where('vote_item_id',2)
-                            ->first();
-
+        // $total_vote =  DB::table('votings')
+        //                     ->select(DB::raw('count(*) as total_vote'))
+        //                     ->first();
 
 
         $total_user_vote = DB::table('votings')
-                                ->where('vote_unit_id',$id->id)
+                                ->where('vote_unit_id',$id)
                                 ->count('*');
 
-                                // dd($total_user_vote);
+        // $data_polling_unit = DB::select(
+        //    'SELECT *
+        //    FROM `vote_units`
+        //    JOIN `votings`
+        //    ON	`votings`.`vote_unit_id` = `vote_units`.`id`
+        //    WHERE`votings`.`vote_unit_id` = '.$id->id.''
+        // );
+
+        // $data_polling_item = DB::select(
+        //     'SELECT * FROM `vote_items` JOIN `votings` ON `votings`.`vote_unit_id` = `vote_items`.`vote_unit_id` WHERE `vote_items`.`vote_unit_id` ='.$id->id.' AND `votings`.`user_vote` = '. Auth::user()->id .''
+        // );
+
+        // dd($data_polling_item);
+
+        // $data_polling_unit = DB::table('vote_units')
+        //                     ->crossJoin('vote_items','vote_items.vote_unit_id','vote_units.id')
+        //                     // ->crossJoin('votings','votings.vote_unit_id','vote_units.id')
+        //                     // ->orderBy('','ASC')
+        //                     ->get();
+
+
+        // dd($data_polling_unit);
+
+
+        // $data_votings = VoteUnit::with('votings')->where('user_vote', Auth::user()->id)->get();
+
+        //                         dd($data_votings);
+
+
+
+        $data_polling_unit_with_items = VoteUnit::with(['vote_items','votings'])->where('id',$id)->first();
+
+        // dd($data_polling_unit_with_items);
 
 
         return view('pollingUnit', [
             "title" => "Polling Unit Bar",
-            "polling_unit" => $polling_unit,
-            "polling_item" => $polling_item,
+            // "polling_unit" => $polling_unit,
+            "polling_unit_with_items" => $data_polling_unit_with_items,
             "total_user_vote" => $total_user_vote,
-            "vote_unit" => $vote_unit,
-            "total_vote" => $total_vote,
-            "data_vote_user" => $data_vote_user,
+            // "total_vote" => $total_vote,
+
         ]);
 
     }
@@ -311,17 +312,17 @@ class pollingController extends Controller
     public function polling_survey(VoteUnit $id){
 
         $polling_unit = DB::table('vote_units')
-        ->where('id',$id->id)
-        ->first();
+                        ->where('id',$id->id)
+                        ->first();
 
         $polling_item = DB::table('vote_items')
-                ->where('vote_unit_id',$id->id)
-                ->get();
+                        ->where('vote_unit_id',$id->id)
+                        ->get();
 
         $total_vote =  DB::table('votings')
-                    ->select(DB::raw('count(*) as total_vote'))
-                    ->where('vote_item_id', '=', 2)
-                    ->first();
+                        ->select(DB::raw('count(*) as total_vote'))
+                        ->where('vote_item_id', '=', 2)
+                        ->first();
 
         $total_user_vote = DB::table('votings')->count('*');
 

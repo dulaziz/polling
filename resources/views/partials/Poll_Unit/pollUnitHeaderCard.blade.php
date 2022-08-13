@@ -1,9 +1,9 @@
 @php
-$epoch_start = $polling_unit->date_start;
+$epoch_start = $polling_unit_with_items->date_start;
  $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
  $date_start = $dt->format('d-m-Y');
 
-$epoch_end = $polling_unit->date_end;
+$epoch_end = $polling_unit_with_items->date_end;
  $dt = new DateTime("@$epoch_end");  // convert UNIX timestamp to PHP DateTime
  $date_end = $dt->format('d-m-Y');
 
@@ -27,7 +27,7 @@ $epoch_end = $polling_unit->date_end;
         @endif
     </div>
     <div class="col-md-6">
-      <h4 class="card-title text-md-center fw-bold">{{ $polling_unit->subtitle }}</h4>
+      <h4 class="card-title text-md-center fw-bold">{{ $polling_unit_with_items->subtitle }}</h4>
     </div>
     <div class="col-md-3">
         @if (Auth::guard('admin')->user())

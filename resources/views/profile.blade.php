@@ -29,49 +29,50 @@
 
   @if ($data_item->voteProfile)
   {{-- {{$data_item->voteProfile->title}} --}}
-    {{-- looping Data More Profile --}}
-    {{-- @foreach ($data_item->voteProfile  as $d) --}}
 
-    {{-- More Profile --}}
-    <ul class="nav nav-pills mb-3 d-flex justify-content-between justify-content-md-start" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#{{ $data_item->voteProfile->title }}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">{{$data_item->voteProfile->title}}</button>
+  {{-- More Profile --}}
+  <ul class="nav nav-pills mb-3 d-flex justify-content-between justify-content-md-start" id="pills-tab" role="tablist">
+        {{-- looping Data More Profile --}}
+        @foreach ($data_item->voteProfiles  as $d)
+        <li class="nav-item me-2" role="presentation">
+            <button class="nav-link" id="pills-{{$d->title}}" data-bs-toggle="pill" data-bs-target="#pills-{{ $d->title }}" type="button" role="tab" aria-controls="pills-{{$d->title}}" aria-selected="true">{{$d->title}}</button>
         </li>
+        @endforeach
     </ul>
-
-
+    <hr>
 
     {{-- @endforeach --}}
-
-    <hr>
+    @foreach ($data_item->voteProfiles as $d)
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="tab-pane fade show active" id="pills-{{$d->title}}" role="tabpanel" aria-labelledby="pills-{{$d->title}}">
         <div class="row g-0 d-flex align-items-center">
             <div class="col-md-3 d-flex justify-content-center">
-                <img src="{{ asset('storage/' . $data_item->voteProfile->icon)}}" alt="..." class="img-fluid" style="max-width: 150px;" data-aos="fade-up" data-aos-duration="1500">
+                <img src="{{ asset('storage/' . $d->icon)}}" alt="..." class="img-fluid" style="max-width: 150px;" data-aos="fade-up" data-aos-duration="1500">
             </div>
             <div class="col-md-9">
             <div class="card-body px-0 px-md-3" data-aos="fade-down" data-aos-duration="1000">
-                <h4 class="card-title text-uppercase mb-1">{{ $data_item->voteProfile->title }}</h4>
-                <p class="card-text">{{$data_item->voteProfile->description}}</p>
+                <h4 class="card-title text-uppercase mb-1">{{ $d->title }}</h4>
+                <p class="card-text">{{$d->description}}</p>
             </div>
             </div>
         </div>
         </div>
-        <div class="tab-pane fade" id="pills-{{ $data_item->voteProfile->title }}" role="tabpanel" aria-labelledby="pills-{{ $data_item->voteProfile->title }}-tab">
+        <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="pills-{{ $d->title }}-tab">
             <div class="row g-0 d-flex align-items-center">
                 <div class="col-md-3 d-flex justify-content-center">
                     <img src="/img/graph.png" alt="..." class="img-fluid" style="max-width: 150px;">
                 </div>
                 <div class="col-md-9">
                 <div class="card-body px-0 px-md-3">
-                    <h4 class="card-title text-uppercase mb-1">{{ $data_item->voteProfile->title }}</h4>
-                    <p class="card-text">{{$data_item->voteProfile->description}}</p>
+                    <h4 class="card-title text-uppercase mb-1">{{ $d->title }}</h4>
+                    <p class="card-text">{{$d->description}}</p>
                 </div>
                 </div>
             </div>
         </div>
     </div>
+
+@endforeach
 
     {{-- Gallery --}}
     @if ($data_item->voteProfiles)

@@ -1,5 +1,5 @@
   {{-- Title --}}
-  <h3 class="fw-bold" data-aos="fade-right">{{ $polling_unit->title }}</h3>
+  <h3 class="fw-bold" data-aos="fade-right">{{ $polling_unit_with_items->title }}</h3>
 
   {{-- Image --}}
   <div class="">
@@ -8,14 +8,14 @@
 
 
   {{-- Desc --}}
-  <p class="mt-4 text-secondary" data-aos="fade-right">{{ $polling_unit->description }}</p>
+  <p class="mt-4 text-secondary" data-aos="fade-right">{{ $polling_unit_with_items->description }}</p>
 
   @php
-  $epoch_start = $polling_unit->date_start;
+  $epoch_start = $polling_unit_with_items->date_start;
    $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
    $date_start = $dt->format('d-m-Y');
 
-  $epoch_end = $polling_unit->date_end;
+  $epoch_end = $polling_unit_with_items->date_end;
    $dt = new DateTime("@$epoch_end");  // convert UNIX timestamp to PHP DateTime
    $date_end = $dt->format('d-m-Y');
 

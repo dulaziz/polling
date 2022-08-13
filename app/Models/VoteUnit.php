@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class VoteUnit extends Model
 {
@@ -24,7 +25,12 @@ class VoteUnit extends Model
     }
 
     public function votings(){
-        return $this->hasOne(Voting::class);
+        // return $this->hasOneThrough(Voting::class,User::class,'id','user_vote')->ofMany('id');
+        if(Auth::user()){
+            return $this->hasOne(Voting::class)->where('user_vote',Auth::user()->id);
+        }else{
+            return $this->hasOne(Voting::class);
+        }
     }
 
 }

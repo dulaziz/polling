@@ -105,6 +105,34 @@ label.label-form-control-input {
   object-fit: cover;
   border-radius: 5px;
 }
+.img_card1{
+  width: 270px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: .3rem 0 0 .3rem;
+}
+.img_card2{
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: .3rem 0 0 .3rem;
+}
+.img_card3{
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 4px 0 0 4px;
+}
+.img_card4{
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 4px 0 0 4px;
+}
+.card_desc{
+  overflow-y: scroll;
+  height: 77px;
+}
 
 .img_gallery{
   width: 140px;
@@ -122,10 +150,32 @@ label.label-form-control-input {
   color: #00548F;
 }
 
+@media only screen and (max-width: 770px){
+  .img_card4{
+    border-radius: 4px 4px 0 0;
+  }
+}
 @media only screen and (max-width: 480px){
 
   .img_card{
     width: 100%;
+  }
+  .img_card1{
+    width: 100%;
+    border-radius: .3rem .3rem 0 0;
+  }
+  .img_card2{
+    width: 100%;
+    border-radius: .3rem .3rem 0 0;
+  }
+  .img_card3{
+    border-radius: 4px 4px 0 0;
+  }
+  .card_desc1{
+    height: 100%;
+  }
+  .card_desc{
+    height: 150px;
   }
   
   .fs_title{
