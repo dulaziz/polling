@@ -57,7 +57,11 @@
                                 <a href="admin/pollingUnitBar/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-eye"></i> View</a>
                             </li>
                             @if ($epoch_end <= $times)
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> 8080b70a8ff7867d56d05eb4101bb397d65fea77
                                 @else
                             <li>
                                 <a href="admin/addItems/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-users"></i> Poll items</a>

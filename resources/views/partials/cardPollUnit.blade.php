@@ -54,7 +54,6 @@
                   @endif
                   <p class="fst-italic mt-1 mt-md-0 mb-0">{{$date_start}} s/d {{$date_end}}</p> --}}
                 </div>
-
                 <div class="col-md-4 d-flex justify-content-end">
                   {{-- Validasi date polling time --}}
                   @if ( $date_end <= $today)
