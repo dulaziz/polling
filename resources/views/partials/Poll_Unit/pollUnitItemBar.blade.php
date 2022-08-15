@@ -14,13 +14,13 @@
     <img src="{{ asset('storage/' . $item->vote_image) }}" class="img-thumbnail img_card" alt="...">
   </div>
   <div class="col-md-9 d-flex align-items-center">
-    <div class="card-body">
+    <div class="card-body px-0 ps-md-3">
       {{-- Vote Name --}}
       <div class="d-flex mb-3">
         <h5>{{$i++}}.</h5>
         <div class="ms-1">
             <h5 class="card-title mb-0">{{ $item->vote_name }}</h5>
-            <p class="card-text"><small class="text-muted">Wakil Wali Kota Bogor</small></p>
+            <p class="card-text"><small class="text-muted">{{ $item->vote_position }}</small></p>
             {{-- <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p> --}}
         </div>
       </div>

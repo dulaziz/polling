@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="{{ asset('css/uploadGalleryBox.css') }}">
 
 {{-- Content --}}
-<div class="col-md-10 mx-auto my-5">
-  <h6 class="text-muted mb-5">{{ $title }}</h6>
+<div class="col-md-10 mx-auto my-md-5">
+  <h6 class="text-muted mb-3">{{ $title }}</h6>
 
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Holy guacamole!</strong> You should check in on some of those fields below.

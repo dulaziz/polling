@@ -5,8 +5,15 @@
   <div class="container">
 
     {{-- Logo --}}
-    <a class="navbar-brand navlogo" href="/"><img src="{{ asset('img/rblck.png') }}" alt="logo radar bogor"></a>
-
+    @if (Auth::guard('admin')->user())
+    <a class="navbar-brand navlogo" href="{{ route('admin.home') }}">
+      <img src="{{ asset('img/rblck.png') }}" alt="logo radar bogor">
+    </a>
+    @else
+    <a class="navbar-brand navlogo" href="{{ '/' }}">
+      <img src="{{ asset('img/rblck.png') }}" alt="logo radar bogor">
+    </a>
+    @endif
     {{-- Burger Menu --}}
     <button
     class="navbar-toggler collapsed d-flex d-lg-none flex-column justtify-content-around"
@@ -24,7 +31,11 @@
     <div class="collapse navbar-collapse" id="toggleMobileMenu">
       <ul class="navbar-nav text-center fw-bold ms-auto d-flex align-items-center">
         <li class="nav-item">
-          <a class="nav-link" href="/">Beranda</a>
+          @if (Auth::guard('admin')->user())
+              <a href="{{ route('admin.home') }}" class="nav-link">Beranda</a>
+            @else
+              <a href="{{ '/' }}" class="nav-link">Beranda</a>
+          @endif
         </li>
         <li class="nav-item">
           <a class="nav-link" href="">Epaper</a>

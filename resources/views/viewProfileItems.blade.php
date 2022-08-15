@@ -10,11 +10,11 @@
 @if ($data_item)
 
 {{-- Content --}}
-<div class="col-md-10 mx-auto my-5">
-    <h6 class="text-muted mb-5">{{ $title }}</h6>
+<div class="col-md-10 mx-auto my-3 my-md-5">
+    <h6 class="text-muted mb-3 mb-md-5">{{ $title }}</h6>
 
 
-    <div class="card my-5">
+    <div class="card">
         <div class="card-header">
             <small class="text-secondary"><i class="fas fa-eye"></i> View Profile <strong>{{$data_item->vote_name}}</strong></small>
         </div>
@@ -30,14 +30,14 @@
                     {{-- Input Name & title --}}
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control mb-3 fw-bold text-muted" placeholder="Name" aria-label="Name" value="{{ $data_item->vote_name }}" readonly>
+                            <input type="text" class="form-control mb-3 text-muted" placeholder="Name" aria-label="Name" value="{{ $data_item->vote_name }}" readonly>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control mb-3 fw-bold" placeholder="Position" aria-label="Position" readonly>
+                            <input type="text" class="form-control mb-3 " placeholder="Position" aria-label="Position" readonly>
                         </div>
                     </div>
                     {{-- Input description --}}
-                    <textarea class="form-control mb-3" placeholder="Bio" id="floatingTextarea2" style="height: 150px" value="{{$data_item->short_desc}}" readonly>{{$data_item->short_desc}}</textarea>
+                    <textarea class="form-control mb-3 text-muted" placeholder="Bio" id="floatingTextarea2" style="height: 150px" value="{{$data_item->short_desc}}" readonly>{{$data_item->short_desc}}</textarea>
                 </div>
             </div>
 
@@ -54,9 +54,9 @@
                         </div>
                         <div class="col-md-8 mt-3 mb-5 mt-md-0 mb-md-0">
                             {{-- <input class="form-control mb-3" type="file"> --}}
-                            <input type="text" class="form-control mb-3 fw-bold text-muted" placeholder="Title" aria-label="Title" value="{{$vp->title}}" readonly>
+                            <input type="text" class="form-control mb-3 text-muted" placeholder="Title" aria-label="Title" value="{{$vp->title}}" readonly>
                             <div class="form-floating">
-                                <textarea class="form-control py-2" placeholder="Description" id="floatingTextarea2" style="height: 150px" value="{{$vp->description}}" readonly>{{$vp->description}}</textarea>
+                                <textarea class="form-control py-2 text-muted" placeholder="Description" id="floatingTextarea2" style="height: 150px" value="{{$vp->description}}" readonly>{{$vp->description}}</textarea>
                             </div>
                         </div>
                     @endforeach

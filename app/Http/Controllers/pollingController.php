@@ -295,7 +295,7 @@ class pollingController extends Controller
 
         $data_polling_unit_with_items = VoteUnit::with(['vote_items','votings'])->where('id',$id)->first();
 
-        // dd($data_polling_unit_with_items);
+        // dd($data_polling_unit_with_items->thumbnail);
 
 
         return view('pollingUnit', [

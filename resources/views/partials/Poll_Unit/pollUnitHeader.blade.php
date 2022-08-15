@@ -1,14 +1,15 @@
   {{-- Title --}}
-  <h3 class="fw-bold" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h3>
+  <h3 class="fw-bold mb-3" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h3>
 
   {{-- Image --}}
   <div class="">
-    <img class="img_thumb_artcl img-fluid" data-aos="fade-up" data-aos-duration="1500" src="/img/Plaza-Balaikota-Bogor.jpg" alt="...">
+    <img class="img_thumb_artcl img-fluid" data-aos="fade-up" data-aos-duration="1500"
+    src="{{ url('storage/' . $polling_unit_with_items->thumbnail) }}" alt="...">
   </div>
 
 
   {{-- Desc --}}
-  <p class="mt-4 text-secondary" data-aos="fade-right" data-aos-duration="1500">{{ $polling_unit_with_items->description }}</p>
+  <p class="mt-3 text-secondary" data-aos="fade-right" data-aos-duration="1500">{{ $polling_unit_with_items->description }}</p>
 
   @php
   $epoch_start = $polling_unit_with_items->date_start;

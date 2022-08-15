@@ -3,9 +3,9 @@
 @section('child')
 
     {{-- Content --}}
-    <div class="col-md-10 mx-auto my-5">
+    <div class="col-md-10 mx-auto my-md-5">
 
-        <h6 class="text-muted mb-5">{{ $title }}</h6>
+        <h6 class="text-muted mb-md-5">{{ $title }}</h6>
 
         {{-- @include('partials.addPolling') --}}
         @include('partials/poll_items/poll-header-items')

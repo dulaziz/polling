@@ -3,7 +3,7 @@
 <div>
     {{-- Do your work, then step back. --}}
 
-    <div class="card my-5">
+    <div class="card">
         <form  method="post" wire:submit.prevent="update">
             @csrf
             <input type="hidden" wire:model="postId">

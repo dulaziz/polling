@@ -15,7 +15,7 @@
         <div class="card-body py-lg-0">
 
             <a href="admin/pollingUnitBar/{{ $pu->id }}"><h5 class="mb-3"><strong>{{ $pu->title }}</strong></h5></a>
-            <p class="text-muted mb-3 mb-md-2 card_desc1">{{ $pu->description }}</p>
+            <p class="text-muted mb-3 mb-md-2 card_desc">{{ $pu->description }}</p>
             @php
                $epoch_start = $pu->date_start;
                 $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
@@ -37,12 +37,12 @@
                 @endphp
 
                 <div class="row d-flex align-items-center">
-                    <div class="col-md-8 mb-3 mb-md-0">
-                        <p class="d-grid d-md-flex fst-italic mb-3 mb-md-1">
+                    <div class="col-md-8 mb-0">
+                        <p class="d-grid d-md-flex fst-italic mb-3 mb-md-0">
                             @if ($epoch_end <= $times)
-                            <small class="text-danger fst-italic"><i class="fas fa-times-circle mb-3 mb-lg-1"></i> Closed Polling </small>
+                            <small class="text-danger fst-italic"><i class="fas fa-times-circle mb-0"></i> Closed Polling </small>
                             @else
-                            <small class="text-success fst-italic me-md-3"><i class="fas fa-check-circle mb-3 mb-lg-1"></i> Live Polling </small>
+                            <small class="text-success fst-italic me-md-3"><i class="fas fa-check-circle mb-0"></i> Live Polling </small>
                             {{ $date_start }} s/d {{ $date_end }}
                         </p>
                             @endif
@@ -57,11 +57,6 @@
                                 <a href="admin/pollingUnitBar/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-eye"></i> View</a>
                             </li>
                             @if ($epoch_end <= $times)
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 8080b70a8ff7867d56d05eb4101bb397d65fea77
                                 @else
                             <li>
                                 <a href="admin/addItems/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-users"></i> Poll items</a>

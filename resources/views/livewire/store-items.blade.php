@@ -8,7 +8,7 @@
               <div class="card-header text-secondary">
                 <div class="row">
                     <div class="col-md-6">
-                        <h6 class="mb-0">Add Polling Items</h6>
+                        <h6 class="mb-0 d-none d-md-block">Add Polling Items</h6>
                     </div>
                     <div class="col-md-6">
                         <small class="fst-italic float-md-end"><i class="fas fa-times-circle"></i> Basic Profile Items</small>

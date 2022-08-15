@@ -3,9 +3,8 @@
 
 @section('child')
 
-<div class="container">
   {{-- Content --}}
-  <div class="col-md-10 mx-auto my-5">
+  <div class="col-md-10 mx-auto my-3 my-md-5">
 
     @include('partials/Poll_Unit.pollUnitHeader')
       {{-- Card Poll --}}
@@ -31,6 +30,5 @@
       </div>
 
   </div>
-</div>
 
 @endsection

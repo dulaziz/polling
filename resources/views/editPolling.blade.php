@@ -4,8 +4,8 @@
 @section('child')
 
 {{-- Content --}}
-<div class="col-md-10 mx-auto my-5">
-    <h6 class="text-muted mb-5">{{ $title }}</h6>
+<div class="col-md-10 mx-auto my-3 my-md-5">
+    <h6 class="text-muted mb-3 mb-md-5">{{ $title }}: <a class="fst-italic" href="{{ '/admin/pollingUnitBar/' . $vote_unit->id }}"> {{$vote_unit->title}}</a></h6>
 
   {{-- Response --}}
   @if ($message = Session::get('success'))
@@ -21,7 +21,7 @@
         <form action="{{ '/admin/editPolling/' . $vote_unit->id }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card-header">
-                <h6 class="mb-0">Edit Polling Unit</h6>
+                <h6 class="mb-0 text-muted"><i class="fas fa-pen"></i> Edit Polling Unit</h6>
             </div>
             <div class="card-body">
                 <div class="row my-2 d-flex align-items-center">

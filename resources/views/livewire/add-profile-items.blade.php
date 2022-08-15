@@ -7,10 +7,10 @@
 <div>
 
 {{-- Content --}}
-<div class="col-md-10 mx-auto my-5">
-    <h6 class="text-muted mb-5">{{ $title }}</h6>
+<div class="col-md-10 mx-auto my-3 my-md-5">
+    <h6 class="text-muted mb-3 mb-md-5">{{ $title }}</h6>
 
-    <div class="card my-5">
+    <div class="card">
         <div class="card-header"><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items</small>
         </div>
         <div class="card-body">

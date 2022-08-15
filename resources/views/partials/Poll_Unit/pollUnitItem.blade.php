@@ -23,7 +23,7 @@
                             <img src="{{ asset('storage/' . $pi->vote_image) }}" class="img-thumbnail img_card" alt="...">
                             </div>
                             <div class="col-md-9 d-flex align-items-center">
-                            <div class="card-body">
+                            <div class="card-body px-0 ps-md-3">
                                 {{-- Vote Name --}}
                                 <div class="d-flex">
                                     <h5>{{$i++}}.</h5>
@@ -65,7 +65,7 @@
                             <img src="{{ asset('storage/' . $pi->vote_image) }}" class="img-thumbnail img_card" alt="...">
                             </div>
                             <div class="col-md-9 d-flex align-items-center">
-                            <div class="card-body">
+                            <div class="card-body px-0 ps-md-3">
                                 {{-- Vote Name --}}
                                 <div class="d-flex">
                                     <h5>{{$i++}}.</h5>
