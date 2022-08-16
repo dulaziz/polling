@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         DB::table('admins')->insert([
             'name' => 'admin',
             'email' => 'admin@radar-bogor.com',
-            'password' => Hash::make('admin123'),
+            'password' => Hash::make('redaksi-polling-16'),
             // 'response' => 50,
         ]);
 
