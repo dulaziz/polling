@@ -18,7 +18,7 @@
         @endif
         {{-- End Response --}}
 
-      @include('partials.adminCardPollUnit')
+      @include('partials.adminCardPollunit')
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <a class="text-end text-decoration-none fw-bold" href="admin/addPolling" role="button">Add Polling <i class="fas fa-long-arrow-right"></i></a>
