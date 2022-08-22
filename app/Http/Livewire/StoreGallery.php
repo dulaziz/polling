@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\VoteProfile;
 use Livewire\Component;
 
 class StoreGallery extends Component
@@ -12,45 +13,27 @@ class StoreGallery extends Component
     public $data;
 
     public function mount($data_item){
-        $this->gallery[] = $data_item->voteProfile;
 
-        // dd($this->gallery);
-
-        // foreach($this->gallery as $g){
-        //     // // dd($g->gallery);
-        //     foreach(json_decode($g->gallery) as $i){
-        //         // dd($i[2]);
-        //         // menampilkan isi array dengan perulangan while
-        //         $e = 0;
-        //         while($e < count(json_decode($g->gallery))){
-        //             // dd($i);
-        //             $this->i = $i;
-        //             $e++;
-        //         }
-        //     }
-
-
-        // }
-
-        // // menampilkan isi array dengan perulangan while
-        // $i = 0;
-        // while($i < count($this->gallery)){
-        //     // $e = 0;
-        //     // while($e < $this->gallery[$i]){
-        //     //     dd($this->gallery[$i]);
-        //     //     $i++;
-
-        //     // };
-        //     dd($this->gallery);
-        // }
-
+       $this->gallery[] = $data_item->voteProfile;
 
     }
 
     public function confirmDelete($data)
     {
-        // $this->gallery = $g;
-        dd($data);
+        // dd($data);
+        $data_gallery = VoteProfile::where('vote_item_id',11)->first();
+
+        $data_arr = $data_gallery->gallery;
+
+        $data_arr_decode = json_decode($data_gallery->gallery);
+
+        $total_data_array = count($data_arr_decode);
+
+        $result = array_splice($data_arr_decode,$data,$total_data_array,'test');
+
+        dd($result);
+        // $output = array_search($data, json_decode($this->gallery[0]->gallery));
+        // dd($output);
     }
 
     public function kill()
@@ -61,7 +44,7 @@ class StoreGallery extends Component
 
     public function render()
     {
-
+        // dd(json_decode($this->gallery[0]->gallery));
         return view('livewire.store-gallery');
     }
 }

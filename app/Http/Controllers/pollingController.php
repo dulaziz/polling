@@ -163,11 +163,38 @@ class pollingController extends Controller
     public function show_profile($id){
 
 
-        // $data_unit = VoteUnit::find($id);
         $data_item = VoteItem::with('voteProfiles')->where('vote_unit_id', $id)->first();
-        // $data = with('voteProfile')->first();
 
-        // dd($data_item->voteProfiles);
+        // Fitur tambah element array di akhir.
+        // $data_array = json_decode($data_item->voteProfiles[0]->gallery);
+        // $data_gambar_baru = "gallery-items\/m6LS4xMuUl89qF8RHkNeua7wUgNDBNCu9TRIw6JG.png";
+        // Tambah element di akhir array
+        // $debug = array_push($data_array,$data_gambar_baru);
+
+        // cari element sesuai element dan ganti dengan element
+        // $debug_search_filter = array_filter($data_array, fn($element) => $element = $data_gambar_baru);
+
+        // cari element sesuai element
+        // $debug_search = array_search($data_gambar_baru, $data_array);
+
+        // rubah element array
+        // $debug_replace = $data_array.seac($data_gambar_baru);
+        // Akhir fitur
+
+
+        // Looping data_array
+        // foreach($data_array as $key => $value){
+        //     echo "".$key." ".$value. "<br>";
+        // }
+
+        // die;
+
+        // dd($data_item);
+        // dd($data_array);
+        // dd($data_gambar_baru);
+        // dd($debug_search_filter);
+        // dd($debug_search);
+        // dd($debug_replace);
 
         return view('viewProfileItems', [
             "title" => "View Profile Items",
