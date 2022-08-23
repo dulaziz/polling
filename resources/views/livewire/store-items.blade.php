@@ -120,7 +120,7 @@
                                     <a href="/admin/showProfile/{{ $item->vote_unit_id }}" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i> View</a>
                                     <a href="/admin/editPollItems/{{ $item->id }}" class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i> Edit</a>
                                     {{-- Delete Item --}}
-                                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteItem({{$item->id}}) : false">Delete</button>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteItem({{$item->id}}) : false"><i class="fas fa-trash"></i> Delete</button>
                                 </td>
                             @else
                                 <td><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items </small></td>

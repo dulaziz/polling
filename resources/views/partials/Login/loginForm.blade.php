@@ -1,4 +1,4 @@
-<div class="card shadow-sm" style="width: 19rem;">
+<div class="card shadow-sm border-0" style="width: 19rem;">
     <div class="card-body">
       <h6 class="card-title text-muted mb-4">Login</h6>
        {{-- Response --}}
@@ -22,19 +22,29 @@
                 </div>
             @enderror
         </div>
-        <div class="mb-3">
+        <div class="input-group mb-3">
+          <input type="password" class="form-control bg-light pwd" placeholder="Password" id="exampleInputPassword1" name="password">
+          <button class="btn btn-outline-secondary reveal" type="button" id="button-addon2"><i class="fas fa-eye"></i></button>
+          {{-- Response notif form input email --}}
+          @error('password')
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{ $message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @enderror
+        </div>
+        {{-- <div class="mb-3">
             <input type="password" class="form-control bg-light" placeholder="Password" id="exampleInputPassword1" name="password">
-            {{-- Response notif form input email --}}
              @error('password')
                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
                      <strong>{{ $message }}</strong>
                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                  </div>
              @enderror
-        </div>
+        </div> --}}
         <hr>
         <div class="d-grid">
-            <button type="submit" class="btn btn-outline-primary btn-sm">Login</button>
+            <button type="submit" class="btn btn-outline-primary">Login</button>
         </div>
       </form>
     </div>

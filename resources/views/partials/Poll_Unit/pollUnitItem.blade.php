@@ -30,7 +30,7 @@
                                     <div class="ms-1">
                                         <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
                                         <p class="card-text mb-3"><small class="text-muted">{{ $pi->vote_position }}</small></p>
-                                    </div>
+                                    </div>  
                                 </div>
                                 <div class="progress" style="height: 2rem">
                                     {{-- Cari jumlah persentase dari pemilih --}}
@@ -67,11 +67,12 @@
                             <div class="col-md-9 d-flex align-items-center">
                             <div class="card-body px-0 ps-md-3">
                                 {{-- Vote Name --}}
-                                <div class="d-flex">
+                                <div class="d-flex mb-3">
                                     <h5>{{$i++}}.</h5>
                                     <div class="ms-1">
                                         <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
-                                        <p class="card-text mb-3"><small class="text-muted">{{ $pi->vote_position }}</small></p>
+                                        <p class="card-text mb-0"><small class="text-muted">{{ $pi->vote_position }}</small></p>
+                                        <a href="/profile/{{ $pi->id }}" class="">Profile</a>
                                     </div>
                                 </div>
                                 <div class="progress" style="height: 2rem">
