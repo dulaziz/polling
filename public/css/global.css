@@ -158,7 +158,7 @@ label.label-form-control-input {
 
 
 .bg-bg{
-  background-image: url('http://127.0.0.1:8000/img/bnr_bg_wave.png');
+  background-image: url('https://vote.radarbogor.id//img/bnr_bg_wave.png');
   background-position: top right;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -180,7 +180,7 @@ label.label-form-control-input {
 }
 @media only screen and (max-width: 480px){
 .bg-bg{
-  background-image: url('http://127.0.0.1:8000/img/bnr_bg_wave_mbl.png');
+  background-image: url('https://vote.radarbogor.id//img/bnr_bg_wave_mbl.png');
 }
 .text_bnr{
   color: #212529;
