@@ -1,17 +1,17 @@
 <link rel="stylesheet" href="{{ asset('css/navStyle.css') }}">
 
 {{-- Navbar --}}
-<nav id="navBar" class="navbar navbar-expand-lg py-2 navbar-light sticky-top bg-light">
+<nav id="navBar" class="navbar navbar-expand-lg py-2 sticky-top">
   <div class="container">
 
     {{-- Logo --}}
     @if (Auth::guard('admin')->user())
     <a class="navbar-brand navlogo" href="{{ route('admin.home') }}">
-      <img src="{{ asset('img/rblck.png') }}" alt="logo radar bogor">
+      <img src="{{ asset('img/RB white.png') }}" alt="logo radar bogor">
     </a>
     @else
     <a class="navbar-brand navlogo" href="{{ '/' }}">
-      <img src="{{ asset('img/rblck.png') }}" alt="logo radar bogor">
+      <img src="{{ asset('img/RB white.png') }}" alt="logo radar bogor">
     </a>
     @endif
     {{-- Burger Menu --}}
@@ -29,7 +29,7 @@
     </button>
     {{-- Menu --}}
     <div class="collapse navbar-collapse" id="toggleMobileMenu">
-      <ul class="navbar-nav text-center fw-bold ms-auto d-flex align-items-center">
+      <ul class="navbar-nav text-center fw-bold ms-auto txt d-flex align-items-center">
         <li class="nav-item">
           @if (Auth::guard('admin')->user())
               <a href="{{ route('admin.home') }}" class="nav-link">Beranda</a>

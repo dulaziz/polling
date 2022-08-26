@@ -156,13 +156,35 @@ label.label-form-control-input {
   color: #00548F;
 }
 
+
+.bg-bg{
+  background-image: url('http://127.0.0.1:8000/img/bnr_bg_wave.png');
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  /* url("/assets/img/bg-bnr1.png")
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: 700px; */
+  
+}
+
+.text_bnr{
+  color: #fff;
+}
+
 @media only screen and (max-width: 770px){
   .img_card4{
     border-radius: 4px 4px 0 0;
   }
 }
 @media only screen and (max-width: 480px){
-
+.bg-bg{
+  background-image: url('http://127.0.0.1:8000/img/bnr_bg_wave_mbl.png');
+}
+.text_bnr{
+  color: #212529;
+}
   .img_card{
     width: 100%;
   }
