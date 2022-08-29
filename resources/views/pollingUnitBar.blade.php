@@ -3,7 +3,7 @@
 
 @section('child')
 
-<div class="container>
+<div class="container">
   {{-- Content --}}
   <div class="col-md-10 mx-auto my-3 my-md-5">
 
