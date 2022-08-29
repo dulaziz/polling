@@ -2,6 +2,7 @@
 
 @section('child')
 
+<div class="container">
     {{-- Content --}}
     <div class="col-md-10 mx-auto my-3 my-md-5">
 
@@ -115,6 +116,8 @@
         </div>
 
     </div>
+
+</div>
 
 <script src="{{ asset('js/previewImg.js')}}"></script>
 {{-- cdn add form --}}

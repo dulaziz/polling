@@ -3,6 +3,7 @@
 
 @section('child')
 
+<div class="container">
 {{-- Content --}}
 <div class="col-md-10 mx-auto my-3 my-md-5">
     <h6 class="text-muted mb-3 mb-md-5">{{ $title }}: <a class="fst-italic" href="{{ '/admin/pollingUnitBar/' . $vote_unit->id }}"> {{$vote_unit->title}}</a></h6>
@@ -148,6 +149,8 @@
             </div>
         </form>
     </div>
+
+</div>
 
 </div>
 
