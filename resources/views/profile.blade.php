@@ -2,8 +2,11 @@
 
 @section('child')
 
+{{-- @include('layouts.navbar') --}}
+
 <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 
+<div class="container">
 {{-- Content --}}
 <div class="col-md-10 mx-auto my-3 my-md-5">
 
@@ -147,6 +150,8 @@
     <div class="d-grid gap-2 d-md-flex justify-content-end">
         <a href="/pollingUnit/{{$data_item->vote_unit_id}}" class="text-end text-decoration-none mb-3" type="button"><i class="fas fa-reply"></i> Back</a>
     </div>
+</div>
+
 </div>
 
 <script src="{{ asset('js/slider.js')}}" type="text/javascript"></script>

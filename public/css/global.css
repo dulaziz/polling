@@ -152,13 +152,15 @@ label.label-form-control-input {
   color: #fff;
   background-color: #00548F;
 }
-.nav-link {
-  color: #00548F;
+
+.bnr{
+  /* position: relative;
+  top: -60px; */
+  height: 100vh;
 }
 
-
 .bg-bg{
-  background-image: url('http://127.0.0.1:8000/img/bnr_bg_wave.png');
+  background-image: url('http://127.0.0.1:8000/img/bnr_bg_wave2.png');
   background-position: top right;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -180,10 +182,11 @@ label.label-form-control-input {
 }
 @media only screen and (max-width: 480px){
 .bg-bg{
-  background-image: url('http://127.0.0.1:8000/img/bnr_bg_wave_mbl.png');
+  background-image: url('http://127.0.0.1:8000/img/bnr_bg_wave_mbl2.png');
 }
 .text_bnr{
   color: #212529;
+  margin-top: 90px;
 }
   .img_card{
     width: 100%;

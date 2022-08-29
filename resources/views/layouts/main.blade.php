@@ -30,14 +30,20 @@
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('/img/favicon-96x96.png') }}">
     <title>Polling Radar Bogor | {{ $title }}</title>
   </head>
-  <body class="bg-light bg-bg">
+  <body class="bg-light">
+
+    {{-- @if (Auth::guard('admin')->user())
+    @include('layouts.navbar')
+    @else
+    @include('layouts.navHome')
+    @endif --}}
 
     @include('layouts.navbar')
 
-    <div class="container">
+    {{-- <div class="container"> --}}
     {{-- Content --}}
         @yield('child')
-    </div>
+    {{-- </div> --}}
 
     @include('layouts.footer')
 
