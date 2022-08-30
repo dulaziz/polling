@@ -159,16 +159,25 @@ label.label-form-control-input {
   height: 100vh;
 }
 
+.profile_bg1{
+  height: 350px; 
+  background-image: url("/img/grid-bg.png");
+  background-position: right 0px bottom 0px;
+  background-repeat: no-repeat;       
+}
+.profile_bg2{
+  height: 250px; 
+  background-image: url("/img/grid-bg1.png");
+  background-position: left 0px bottom 0px;
+  background-repeat: no-repeat;     
+}
+
 .bg-bg{
-  background-image: url('https://vote.radarbogor.id/img/bnr_bg_wave2.png');
+  /* background-image: url('https://vote.radarbogor.id/img/bg-bnr-610px.jpg'); */
+  background-image: url("/img/bg-bnr-610px.jpg");
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: 100%;
-  /* url("/assets/img/bg-bnr1.png")
-  background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 700px; */
-  
+  background-size: 100%;  
 }
 
 .text_bnr{
@@ -178,11 +187,11 @@ label.label-form-control-input {
 @media only screen and (max-width: 770px){
   .img_card4{
     border-radius: 4px 4px 0 0;
-  }
+  } 
 }
 @media only screen and (max-width: 480px){
 .bg-bg{ 
-  background-image: url('https://vote.radarbogor.id//img/bnr_bg_wave_mbl2.png');
+  background-image: url("/img/bg-bnr-mbl.jpg");
 }
 .text_bnr{
   color: #212529;

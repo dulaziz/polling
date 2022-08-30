@@ -28,13 +28,7 @@
                 <p>{{$data_item->short_desc}}</p>
             </div>
         </div>
-        <div class="col-md-5 d-flex align-items-center" 
-            style="
-            height: 350px; 
-            background-image: url('{{ asset('img/grid-bg.png') }}');
-            background-position: right 0px bottom 0px;
-            background-repeat: no-repeat;
-            ">
+        <div class="col-md-5 d-flex align-items-center profile_bg1">
             <img class="img_thumb1 bg-white p-1 shadow" data-aos="zoom-out" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="..."> 
         </div>
     </div>
@@ -77,13 +71,7 @@
     @foreach ($data_item->voteProfiles as $d)
 
 <div class="row mb-5">
-    <div class="col-md-5 d-flex justify-content-center justify-content-md-end align-items-center" 
-    style="
-    height: 250px; 
-    background-image: url('{{ asset('img/grid-bg1.png') }}');
-    background-position: left 0px bottom 0px;
-    background-repeat: no-repeat;
-    ">
+    <div class="col-md-5 d-flex justify-content-center justify-content-md-end align-items-center profile_bg2">
         <img src="{{ asset('storage/' . $d->icon)}}" alt="..." class="img-fluid" style="max-width: 230px; 
         filter: drop-shadow(-3px 3px 3px #14141466);" data-aos="fade-up" data-aos-duration="1500">
     </div>
