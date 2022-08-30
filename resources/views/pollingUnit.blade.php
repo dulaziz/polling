@@ -2,6 +2,8 @@
 
 @section('child')
 
+<div class="container">
+
   {{-- Content --}}
   <div class="col-md-10 mx-auto my-2 my-md-5">
 
@@ -17,11 +19,11 @@
     </div>
     
   </div>
+    
+  <div class="d-grid gap-2 d-md-flex justify-content-end d-md-none">
+    <a class="text-end text-decoration-none mb-3" href="/" role="button"><i class="fas fa-reply"></i> Back</a>
+  </div>
   
-</div>
-<div class="d-grid gap-2 d-md-flex justify-content-end d-md-none">
-  <a class="text-end text-decoration-none mb-3" href="/" role="button"><i class="fas fa-reply"></i> Back</a>
-</div>
 </div>
 
 @endsection

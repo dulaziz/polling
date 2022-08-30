@@ -1,17 +1,17 @@
 <link rel="stylesheet" href="{{ asset('css/navStyle.css') }}">
 
 {{-- Navbar --}}
-<nav id="navBar" class="navbar navbar-expand-lg py-2 navbar-light sticky-top bg-light">
+<nav id="navBar" class="navbar navbar-expand-lg py-2">
   <div class="container">
 
     {{-- Logo --}}
     @if (Auth::guard('admin')->user())
     <a class="navbar-brand navlogo" href="{{ route('admin.home') }}">
-      <img src="{{ asset('img/rblck.png') }}" alt="logo radar bogor">
+      <img src="{{ asset('img/rb-nav-lgo.png') }}" alt="logo radar bogor">
     </a>
     @else
     <a class="navbar-brand navlogo" href="{{ '/' }}">
-      <img src="{{ asset('img/rblck.png') }}" alt="logo radar bogor">
+      <img src="{{ asset('img/rb-nav-lgo.png') }}" alt="logo radar bogor">
     </a>
     @endif
     {{-- Burger Menu --}}
@@ -32,18 +32,18 @@
       <ul class="navbar-nav text-center fw-bold ms-auto d-flex align-items-center">
         <li class="nav-item">
           @if (Auth::guard('admin')->user())
-              <a href="{{ route('admin.home') }}" class="nav-link">Beranda</a>
+              <a href="{{ route('admin.home') }}" class="nav-link txt">Beranda</a>
             @else
-              <a href="{{ '/' }}" class="nav-link">Beranda</a>
+              <a href="{{ '/' }}" class="nav-link txt">Beranda</a>
           @endif
         </li>
         @if (Auth::user())
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link txt dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {{Auth::user()->name}}
                   {{-- <img src="{{ asset('img/favicon-96x96.png' ) }}" class="img-thumbnail rounded-circle"   alt="User Image" style="width: 25px;"> --}}
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end border-0 shadow p-3" style="width: 250px;">
+                <ul class="dropdown-menu dropdown-menu-end border-0 shadow p-3 mt-3" style="width: 250px;">
                   <li>
                     <div class="d-flex justify-content-center mb-1">
                         @if (Auth::guard('admin')->user())

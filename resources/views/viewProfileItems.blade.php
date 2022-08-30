@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/uploadGalleryBox.css') }}">
 
+<div class="container">
 {{-- Cek Validasi Data Profile --}}
 @if ($data_item)
 
@@ -87,6 +88,8 @@
 </div>
 
 @endif
+
+</div>
 
 <script src="js/pollForm.js"></script>
 {{-- cdn add form --}}

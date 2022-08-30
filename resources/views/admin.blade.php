@@ -2,7 +2,9 @@
 @extends('layouts.main')
 
 @section('child')
+{{-- @include('layouts.navbar') --}}
 
+<div class="container">
   {{-- Content --}}
   <div class="col-md-10 mx-auto my-3 my-md-5">
 
@@ -25,5 +27,7 @@
     </div>
 
   </div>
+
+</div>
 
 @endsection

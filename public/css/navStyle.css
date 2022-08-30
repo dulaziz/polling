@@ -1,3 +1,6 @@
+.navbar{
+  background: #00548f;
+}
 .navbar-brand {
     padding-top: 0;
   }
@@ -29,7 +32,7 @@
     position: absolute;
     height: 2px;
     width: 100%;
-    background-color: #6C757D;
+    background-color: #F8F9FA;
     border-radius: 1px;
     /* top: 22px; */
     left: 0;
@@ -75,14 +78,28 @@
     background-position: center;
     background-size: cover;
   }
+
+  a.nav-link.txt{
+    color: #F8F9FA;
+  }
   
 /* Shadow Sitcky Nav */
-#navBar {
-  transition: 0.2s;
+/* #navBar {
+  transition: 0.5s;
 }
 .floatingNav {
+  background-color: #fff;
   box-shadow: 0px 0px 10px #99999969;
 }
+.floatingNav .navlogo{
+  filter: brightness(0) saturate(100%) invert(14%) sepia(42%) saturate(7%) hue-rotate(67deg) brightness(98%) contrast(98%);
+}
+.floatingNav .toggler-icon{
+  background-color: #212529;
+}
+.floatingNav a.nav-link.txt{
+  color: #212529;
+} */
 
   
   

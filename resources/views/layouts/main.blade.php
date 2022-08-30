@@ -32,14 +32,18 @@
   </head>
   <body class="bg-light">
 
+    {{-- @if (Auth::guard('admin')->user())
+    @include('layouts.navbar')
+    @else
+    @include('layouts.navHome')
+    @endif --}}
+
     @include('layouts.navbar')
 
-    <div class="container">
+    {{-- <div class="container"> --}}
     {{-- Content --}}
-    <div>
         @yield('child')
-    </div>
-    </div>
+    {{-- </div> --}}
 
     @include('layouts.footer')
 

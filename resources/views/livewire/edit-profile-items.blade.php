@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/uploadGalleryBox.css') }}">
 
+<div class="container">
 {{-- Content --}}
 <div class="col-md-10 mx-auto my-3 my-md-5">
   <h6 class="text-muted mb-3 mb-md-5">{{ $title }}</h6>
@@ -22,6 +23,9 @@
   </div>
 
 </div>
+
+</div>
+
 <script src="js/pollForm.js"></script>
 {{-- cdn add form --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
