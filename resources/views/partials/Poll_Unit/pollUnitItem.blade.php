@@ -30,7 +30,7 @@
                                     <div class="ms-1">
                                         <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
                                         <p class="card-text mb-3"><small class="text-muted">{{ $pi->vote_position }}</small></p>
-                                    </div>  
+                                    </div>
                                 </div>
                                 <div class="progress" style="height: 2rem">
                                     {{-- Cari jumlah persentase dari pemilih --}}
@@ -44,7 +44,7 @@
                                             $total_vote = $pi->response;
                                         }
                                     @endphp
-                                    @if ($total_vote === 0)
+                                    @if ($total_vote == 0)
                                         <div class="progress-bar text-dark" role="progressbar" style="width:100%; background-color:#d5d5d5;" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
                                     @else
                                         <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
@@ -90,7 +90,7 @@
                                     @if ($total_vote === 0)
                                         <div class="progress-bar text-dark" role="progressbar" style="width:100%; background-color:#d5d5d5;" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
                                     @else
-                                        <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
+                                        <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ round($total_vote) }}% / {{ $total_user_vote }} Suara</div>
                                     @endif
                                 </div>
                                 <hr class="d-block d-md-none">
@@ -162,11 +162,16 @@
             <form action="{{ '/pollSurvey' }}" method="post">
                     @csrf
                     {{-- Value Vote +1 --}}
-                    <input type="hidden" name="response" value="{{ $total_user_vote +1 }}">
+                    @if ($data_user_vote)
+                        <input type="hidden" name="response" value="{{ $pi->response + 1 }}">
+                    @else
+                        <input type="hidden" name="response" value="{{ +1 }}">
+                    @endif
                     {{-- Validasi User Login --}}
                     {{-- @if (Auth::user()->id == $data_vote_user->user_vote) --}}
                         <input type="hidden" name="user_vote" value="{{ Auth::user()->id }}">
                     {{-- @endif --}}
+                    {{-- {{$polling_unit_with_items->response}} --}}
                         <input type="hidden" name="vote_unit_id" value="{{ $polling_unit_with_items->id }}">
                     {{-- @foreach ($vote_unit as $v) --}}
                         <input type="hidden" name="vote_item_id" value="{{$pi->id}}">

@@ -322,15 +322,20 @@ class pollingController extends Controller
 
         $data_polling_unit_with_items = VoteUnit::with(['vote_items','votings'])->where('id',$id)->first();
 
-        // dd($data_polling_unit_with_items->thumbnail);
+        // dd($data_polling_unit_with_items);
 
+        // dd($total_user_vote);
+
+        $data_user_vote = Voting::where('user_vote', Auth::user()->id);
+
+        // dd($data_user_vote);
 
         return view('pollingUnit', [
             "title" => "Polling Unit Bar",
             // "polling_unit" => $polling_unit,
             "polling_unit_with_items" => $data_polling_unit_with_items,
             "total_user_vote" => $total_user_vote,
-            // "total_vote" => $total_vote,
+            "data_user_vote" => $data_user_vote,
 
         ]);
 
