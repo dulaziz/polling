@@ -8,6 +8,7 @@ use App\Http\Livewire\AddProfileItems;
 use App\Http\Controllers\ProductController;
 use App\Http\Livewire\EditProfileItems;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DikiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -231,3 +232,9 @@ Route::get('/fetchProducts',[ProductController::class,'fetchProducts'])->name('f
 Route::get('/getProductDetails',[ProductController::class,'getProductDetails'])->name('get.product.details');
 Route::post('/updateProduct',[ProductController::class,'updateProduct'])->name('update.product');
 Route::post('/deleteProduct',[ProductController::class,'deleteProduct'])->name('delete.product');
+
+
+
+
+
+

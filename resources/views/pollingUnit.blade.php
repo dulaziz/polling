@@ -15,7 +15,7 @@
           <hr>
           @include('partials/Poll_Unit.pollUnitItem')
           {{-- <hr class="d-none mt-3 d-md-block"> --}}
-          @include('partials/Poll_Unit.pollUnitFooterCard')
+          {{-- @include('partials/Poll_Unit.pollUnitFooterCard') --}}
         </div>
     </div>
     
