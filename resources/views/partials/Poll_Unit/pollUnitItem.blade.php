@@ -70,7 +70,7 @@
                     <div class="ms-1">
                         <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
                         <p class="card-text mb-0"><small class="text-muted">{{ $pi->vote_position }}</small></p>
-                        <a href="/profile/{{ $pi->id }}" class="">Profile</a>
+                        <a href="/profile/{{ encrypt($pi->id) }}" class="">Profile</a>
                     </div>
                 </div>
                 <div class="progress" style="height: 2rem">
@@ -189,7 +189,7 @@
                     @if (Auth::user())
                         {{-- Vote Button --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                            <a href="/profile/{{ encrypt($pi->id) }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
                             <button type="submit" class="btn btn-success btn-sm px-5">Vote</button>
                         </div>
                     @else

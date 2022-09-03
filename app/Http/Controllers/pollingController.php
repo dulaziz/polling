@@ -165,7 +165,6 @@ class pollingController extends Controller
 
     public function show_profile($id){
 
-
         $data_item = VoteItem::with('voteProfiles')->where('vote_unit_id', $id)->first();
 
         // Fitur tambah element array di akhir.
@@ -208,10 +207,10 @@ class pollingController extends Controller
     }
 
     public function show_profile_item($id){
-
+        // dd(decrypt($id));
 
         // $data_unit = VoteUnit::find($id);
-        $data_item = VoteItem::with('voteProfiles')->where('id', $id)->first();
+        $data_item = VoteItem::with('voteProfiles')->where('id', decrypt($id))->first();
         // $data = with('voteProfile')->first();
 
         // dd($data_item);
@@ -225,8 +224,6 @@ class pollingController extends Controller
     }
 
     public function show_bar(VoteUnit $id){
-
-
 
         $polling_unit = DB::table('vote_units')
                             ->where('id',$id->id)
