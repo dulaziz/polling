@@ -70,7 +70,7 @@
                     <div class="ms-1">
                         <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
                         <p class="card-text mb-0"><small class="text-muted">{{ $pi->vote_position }}</small></p>
-                        <a href="/profile/{{ encrypt($pi->id) }}" class="">Profile</a>
+                        <a href="/profile/{{ encrypt($pi->id) }}">Profile</a>
                     </div>
                 </div>
                 <div class="progress" style="height: 2rem">

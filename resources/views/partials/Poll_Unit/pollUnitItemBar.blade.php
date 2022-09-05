@@ -22,6 +22,7 @@
             <h5 class="card-title mb-0">{{ $item->vote_name }}</h5>
             <p class="card-text"><small class="text-muted">{{ $item->vote_position }}</small></p>
             {{-- <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p> --}}
+            <a href="/profile/{{ encrypt($item->id) }}">Profile</a>
         </div>
       </div>
       <div class="progress" style="height: 2rem">
