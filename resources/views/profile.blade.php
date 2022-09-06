@@ -136,7 +136,7 @@
 
     @endif
     <div class="d-grid gap-2 d-md-flex justify-content-end">
-        <a href="/pollingUnit/{{$data_item->vote_unit_id}}" class="text-end text-decoration-none mb-3" type="button"><i class="fas fa-reply"></i> Back</a>
+        <a href="/pollingUnit/{{encrypt($data_item->vote_unit_id)}}" class="text-end text-decoration-none mb-3" type="button"><i class="fas fa-reply"></i> Back</a>
     </div>
 </div>
 

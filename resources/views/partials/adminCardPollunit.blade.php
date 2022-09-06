@@ -55,12 +55,12 @@
                             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end my-2" style="width: 100%;">
                             <li>
                                 <a href="admin/pollingUnitBar/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-eye"></i> View</a>
+                                <a href="admin/editPolling/{{ $pu->id }}" class="dropdown-item"><i class="fas fa-pen"></i> Edit</a>
                             </li>
                             @if ($epoch_end <= $times)
                                 @else
                             <li>
                                 <a href="admin/addItems/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-users"></i> Poll items</a>
-                                <a href="admin/editPolling/{{ $pu->id  }}" class="dropdown-item"><i class="fas fa-pen"></i> Edit</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             {{-- Close Polling Unit --}}

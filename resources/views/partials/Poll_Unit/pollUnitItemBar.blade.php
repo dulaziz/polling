@@ -22,6 +22,7 @@
             <h5 class="card-title mb-0">{{ $item->vote_name }}</h5>
             <p class="card-text"><small class="text-muted">{{ $item->vote_position }}</small></p>
             {{-- <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p> --}}
+            <a href="/profile/{{ encrypt($item->id) }}">Profile</a>
         </div>
       </div>
       <div class="progress" style="height: 2rem">
@@ -38,9 +39,9 @@
           @endphp
           {{-- Validasi Login Role Admin --}}
             @if ($total_vote == 0)
-                <div class="progress-bar text-dark" role="progressbar" style="width:100%; background-color:#d5d5d5;" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $total_user_vote }} Suara</div>
+                <div class="progress-bar text-dark" role="progressbar" style="width:100%; background-color:#d5d5d5;" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $item->response }} Suara</div>
             @else
-                <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ round($total_vote) }}% / {{ $total_user_vote }} Suara</div>
+                <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ round($total_vote) }}% / {{ $item->response }} Suara</div>
             @endif
         </div>
     </div>

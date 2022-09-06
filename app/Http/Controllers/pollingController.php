@@ -13,6 +13,9 @@ use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
+
 class pollingController extends Controller
 {
     //
@@ -162,7 +165,6 @@ class pollingController extends Controller
 
     public function show_profile($id){
 
-
         $data_item = VoteItem::with('voteProfiles')->where('vote_unit_id', $id)->first();
 
         // Fitur tambah element array di akhir.
@@ -205,10 +207,10 @@ class pollingController extends Controller
     }
 
     public function show_profile_item($id){
-
+        // dd(decrypt($id));
 
         // $data_unit = VoteUnit::find($id);
-        $data_item = VoteItem::with('voteProfiles')->where('id', $id)->first();
+        $data_item = VoteItem::with('voteProfiles')->where('id', decrypt($id))->first();
         // $data = with('voteProfile')->first();
 
         // dd($data_item);
@@ -222,8 +224,6 @@ class pollingController extends Controller
     }
 
     public function show_bar(VoteUnit $id){
-
-
 
         $polling_unit = DB::table('vote_units')
                             ->where('id',$id->id)
@@ -268,7 +268,7 @@ class pollingController extends Controller
     // Controller Fitur Polling Unit
     public function show_unit($id){
 
-
+// dd(decrypt($id));
 
         // $polling_unit = DB::table('vote_units')
         //                     ->where('id',$id->id)
@@ -287,7 +287,7 @@ class pollingController extends Controller
 
 
         $total_user_vote = DB::table('votings')
-                                ->where('vote_unit_id',$id)
+                                ->where('vote_unit_id',decrypt($id))
                                 ->count('*');
 
         // $data_polling_unit = DB::select(
@@ -320,7 +320,7 @@ class pollingController extends Controller
 
 
 
-        $data_polling_unit_with_items = VoteUnit::with(['vote_items','votings'])->where('id',$id)->first();
+        $data_polling_unit_with_items = VoteUnit::with(['vote_items','votings'])->where('id',decrypt($id))->first();
 
         // dd($data_polling_unit_with_items);
 
@@ -458,7 +458,6 @@ class pollingController extends Controller
         // dd($id);
 
                         // dd($vote_unit_with_items);
-
         return view('editPolling', [
             "title" => "Edit Polling Unit",
             "vote_unit" => $id

@@ -12,7 +12,7 @@
                     @if ($icon_profile)
                             <img src="{{ $icon_profile->temporaryUrl(); }}" class="img-thumbnail img_thumb_2">
                         @else
-                            <img src="{{asset('img/default2.jpg')}}" class="img-thumbnail img_thumb_2">
+                            <img src="{{asset('img/default1.jpg')}}" class="img-thumbnail img_thumb_2">
                     @endif
                 </div>
                 <div class="col-md-9 mb-2">
