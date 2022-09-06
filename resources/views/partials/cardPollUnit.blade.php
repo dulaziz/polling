@@ -29,9 +29,9 @@
         <div class="card-body">
             {{-- Validasi date polling time --}}
             @if ( $date_end <= $today)
-              <a href="/pollingUnitBar/{{ $dp->id }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
+              <a href="/pollingUnitBar/{{ encrypt($dp->id) }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
             @else
-              <a href="/pollingUnit/{{ $dp->id }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
+              <a href="/pollingUnit/{{ encrypt($dp->id) }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
             @endif
               <p class="text-muted mb-3 card_desc">{{$dp->description}}
               </p>
@@ -57,7 +57,7 @@
                 <div class="col-md-4 d-grid justify-content-md-end">
                   {{-- Validasi date polling time --}}
                   @if ($epoch_end <= $times)
-                    <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-primary btn-sm" type="button">Lihat Polling</a>
+                    <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="btn btn-primary btn-sm" type="button">Lihat Polling</a>
                   @else
                     <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="btn btn-primary btn-sm" type="button">Ikuti Polling</a>
                   @endif

@@ -223,18 +223,18 @@ class pollingController extends Controller
 
     }
 
-    public function show_bar(VoteUnit $id){
+    public function show_bar($id){
 
         $polling_unit = DB::table('vote_units')
-                            ->where('id',$id->id)
+                            ->where('id',decrypt($id))
                             ->first();
 
         $polling_item = DB::table('vote_items')
-                            ->where('vote_unit_id',$id->id)
+                            ->where('vote_unit_id',decrypt($id))
                             ->get();
 
         $total_votings = DB::table('votings')
-                            ->where('vote_item_id',$id->id)
+                            ->where('vote_item_id',decrypt($id))
                             ->first();
 
 
@@ -247,7 +247,7 @@ class pollingController extends Controller
         // $total_user_vote = DB::table('votings')->count('*');
 
         $total_user_vote = DB::table('votings')
-                                ->where('vote_unit_id',$id->id)
+                                ->where('vote_unit_id',decrypt($id))
                                 ->count('*');
 
         // $total_vote = $total_votings->response / $total_user_vote * 100;
