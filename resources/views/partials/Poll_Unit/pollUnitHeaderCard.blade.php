@@ -20,7 +20,7 @@ $epoch_end = $polling_unit_with_items->date_end;
  {{-- Sub Title --}}
  <div class="row d-flex align-items-center">
     <div class="col-md-3 folat-star mb-3 mb-md-0">
-        @if ( $date_end <= $today)
+        @if ( $epoch_end <= $times)
         <small class="text-danger  fst-italic"><i class="fas fa-times-circle"></i> Closed Polling</small>
         @else
         <small class="text-success fst-italic"><i class="fas fa-check-circle"></i> Live Polling</small>

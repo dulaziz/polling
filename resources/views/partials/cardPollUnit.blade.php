@@ -56,8 +56,8 @@
                 </div>
                 <div class="col-md-4 d-grid justify-content-md-end">
                   {{-- Validasi date polling time --}}
-                  @if ( $date_end <= $today)
-                    <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-primary btn-sm" type="button">Lihat Polling</a>
+                  @if ( $epoch_end <= $times)
+                  <a href="/pollingUnitBar/{{ $dp->id }}" class="btn btn-primary btn-sm" type="button">Lihat Polling</a>
                   @else
                     <a href="/pollingUnit/{{ $dp->id }}" class="btn btn-primary btn-sm" type="button">Ikuti Polling</a>
                   @endif
