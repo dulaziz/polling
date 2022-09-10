@@ -28,7 +28,7 @@ $epoch_end = $polling_unit_with_items->date_end;
         @endif
     </div>
     <div class="col-md-6">
-      <h4 class="card-title text-md-center fw-bold">{{ $polling_unit_with_items->subtitle }}</h4>
+      <h4 class="card-title text-md-center">{{ $polling_unit_with_items->subtitle }}</h4>
     </div>
     <div class="col-md-3">
         @if (Auth::guard('admin')->user())

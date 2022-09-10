@@ -10,7 +10,39 @@
 {{-- Content --}}
 <div class="col-md-10 mx-auto my-3 my-md-5">
 
-    <div class="d-block d-md-none" data-aos="fade-up" data-aos-duration="1500">
+    {{-- Basic Profile Tes --}}
+    <div class="row align-items-center d-flex flex-column-reverse flex-md-row mb-5">
+        <div class="col-md-7">
+            <div data-aos="fade-down" data-aos-duration="1000">
+                    <h1 class="card-title mb-0 fw-bold mb-3 mb-md-0">{{$data_item->vote_name}}</h1>
+                    <hr class="mt-1 mb-3 d-none d-md-block">
+                    <div class="row align-items-center mb-3">
+                        <div class="col-md-4">
+                            <h5 class="text-muted">Jabatan</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>: {{$data_item->vote_position}}</h5>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-3">
+                        <div class="col-md-4">
+                            <h5 class="text-muted">Tempat Tgl Lahir</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>: 07 Agustus 1995</h5>
+                        </div>
+                    </div>       
+            </div>
+        </div>
+        <div class="col-md-5 d-flex align-items-center profile_bg1">
+            <img class="img_thumb1 bg-white p-1 shadow" data-aos="zoom-out" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="..."> 
+        </div>
+    </div>
+
+
+
+    {{-- Basic Profile Asli --}}
+    {{-- <div class="d-block d-md-none" data-aos="fade-up" data-aos-duration="1500">
         <h4 class="card-title mb-0">{{$data_item->vote_name}}</h4>
         <p class="card-text"><small class="text-muted">{{$data_item->vote_position}}</small></p>
     </div>
@@ -31,7 +63,7 @@
         <div class="col-md-5 d-flex align-items-center profile_bg1">
             <img class="img_thumb1 bg-white p-1 shadow" data-aos="zoom-out" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="..."> 
         </div>
-    </div>
+    </div> --}}
 
 
     

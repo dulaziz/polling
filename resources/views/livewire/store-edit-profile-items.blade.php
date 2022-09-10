@@ -131,7 +131,7 @@
 
         </div>
         <div class="card-footer">
-            <div class="d-flex gap-2 float-end">
+            <div class="d-flex gap-2 justify-content-end">
                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save More Profile</button>
                 <a href="/admin/addItems/{{ $data_item->vote_unit_id }}" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
             </div>

@@ -29,7 +29,7 @@
                             <h5>{{$i++}}.</h5>
                             <div class="ms-1">
                                 <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
-                                <p class="card-text mb-3"><small class="text-muted">{{ $pi->vote_position }}</small></p>
+                                {{-- <p class="card-text mb-3"><small class="text-muted">{{ $pi->vote_position }}</small></p> --}}
                             </div>
                         </div>
                         <div class="progress" style="height: 2rem">
@@ -69,7 +69,7 @@
                     <h5>{{$i++}}.</h5>
                     <div class="ms-1">
                         <h5 class="card-title mb-0">{{ $pi->vote_name }}</h5>
-                        <p class="card-text mb-0"><small class="text-muted">{{ $pi->vote_position }}</small></p>
+                        {{-- <p class="card-text mb-0"><small class="text-muted">{{ $pi->vote_position }}</small></p> --}}
                         <a href="/profile/{{ encrypt($pi->id) }}">Profile</a>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                         <h5>{{$i++}}.</h5>
                         <div class="ms-1">
                             <h5 class="card-title mb-o">{{$pi->vote_name}}</h5>
-                            <p class="card-text"><small class="text-muted">{{ $pi->vote_position }}</small></p>
+                            {{-- <p class="card-text"><small class="text-muted">{{ $pi->vote_position }}</small></p> --}}
                         </div>
                     </div>
                     <hr class="d-none d-md-block">
@@ -177,14 +177,14 @@
                 <div class="col-md-9 d-grid align-items-center py-3 ps-md-3">
 
                     {{-- Vote Name --}}
-                    <div class="d-flex mb-3">
-                        <h5>{{$i++}}.</h5>
+                    <div class="d-flex mb-3 mb-md-0">
+                        {{-- <h5>{{$i++}}.</h5> --}}
                         <div class="ms-1">
-                            <h5 class="card-title mb-o">{{$pi->vote_name}}</h5>
-                            <p class="card-text"><small class="text-muted">{{ $pi->vote_position }}</small></p>
+                            <h2 class="card-title mb-0 fw-bold">{{$pi->vote_name}}</h2>
+                            {{-- <p class="card-text"><small class="text-muted">{{ $pi->vote_position }}</small></p> --}}
                         </div>
                     </div>
-                    <hr class="d-none d-md-block">
+                    <hr class="d-none d-md-block my-0">
                     {{-- Validasi User Login --}}
                     @if (Auth::user())
                         {{-- Vote Button --}}

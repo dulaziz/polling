@@ -14,7 +14,7 @@
       <div class="col-lg-8">
         <div class="card-body py-lg-0">
 
-            <a href="admin/pollingUnitBar/{{ $pu->id }}"><h5 class="mb-3"><strong>{{ $pu->title }}</strong></h5></a>
+            <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}"><h5 class="mb-3"><strong>{{ $pu->title }}</strong></h5></a>
             <p class="text-muted mb-3 mb-md-2 card_desc">{{ $pu->description }}</p>
             @php
                $epoch_start = $pu->date_start;
@@ -54,7 +54,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end my-2" style="width: 100%;">
                             <li>
-                                <a href="admin/pollingUnitBar/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-eye"></i> View</a>
+                                <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}" class="dropdown-item"><i class="fa-solid fa-eye"></i> View</a>
                                 <a href="admin/editPolling/{{ $pu->id }}" class="dropdown-item"><i class="fas fa-pen"></i> Edit</a>
                             </li>
                             @if ($epoch_end <= $times)
