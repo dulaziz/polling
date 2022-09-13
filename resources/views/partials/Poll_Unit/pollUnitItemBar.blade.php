@@ -17,10 +17,10 @@
     <div class="card-body px-0 ps-md-3">
       {{-- Vote Name --}}
       <div class="d-flex mb-3">
-        <h5>{{$i++}}.</h5>
+        {{-- <h5>{{$i++}}.</h5> --}}
         <div class="ms-1">
-            <h5 class="card-title mb-0">{{ $item->vote_name }}</h5>
-            <p class="card-text"><small class="text-muted">{{ $item->vote_position }}</small></p>
+            <h2 class="card-title mb-0">{{ $item->vote_name }}</h2>
+            {{-- <p class="card-text"><small class="text-muted">{{ $item->vote_position }}</small></p> --}}
             {{-- <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p> --}}
             <a href="/profile/{{ encrypt($item->id) }}">Profile</a>
         </div>

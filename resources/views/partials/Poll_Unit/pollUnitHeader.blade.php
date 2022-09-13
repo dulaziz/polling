@@ -1,15 +1,23 @@
-  {{-- Title --}}
-  <h3 class="fw-bold mb-3" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h3>
 
-  {{-- Image --}}
+  {{-- <h3 class="fw-bold mb-3" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h3>
+
   <div class="">
     <img class="img_thumb_artcl img-fluid" data-aos="fade-up" data-aos-duration="1500"
     src="{{ url('storage/' . $polling_unit_with_items->thumbnail) }}" alt="...">
   </div>
 
+  <p class="mt-3 text-secondary" data-aos="fade-right" data-aos-duration="1500">{{ $polling_unit_with_items->description }}</p> --}}
 
-  {{-- Desc --}}
-  <p class="mt-3 text-secondary" data-aos="fade-right" data-aos-duration="1500">{{ $polling_unit_with_items->description }}</p>
+  <div class="row d-flex align-items-center mb-5" data-aos="zoom-in">
+    <div class="col-md-4 mb-3 mb-md-0">
+      <img src="{{ url('storage/' . $polling_unit_with_items->thumbnail) }}" class="pstr_thumb" alt="">
+    </div>
+    <div class="col-md-8">
+      <h1 class="fw-bold mb-3" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h1>
+      <hr>
+      <p>{{ $polling_unit_with_items->description }}</p>
+    </div>
+  </div>
 
   @php
   $epoch_start = $polling_unit_with_items->date_start;

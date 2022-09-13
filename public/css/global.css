@@ -79,10 +79,18 @@ label.label-form-control-input {
   font-size: 1.6rem;
 }
 
+
+.pstr_thumb{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 /* Image Thumb Profile */
 .img_thumb_artcl{
   width: 100%;
-  height: 350px;
+  height: 400px;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -125,7 +133,7 @@ label.label-form-control-input {
 }
 .img_card3{
   width: 100%;
-  height: 220px;
+  height: 200px;
   object-fit: cover;
   border-radius: 4px 0 0 4px;
 }
@@ -159,9 +167,10 @@ label.label-form-control-input {
   height: 100vh;
 }
 
-.profile_bg1{
+
+.profile_bg1{ 
   height: 350px; 
-  background-image: url("/img/grid-bg.png");
+  background-image: url("/img/grid-bg.png") !important;
   background-position: right 0px bottom 0px;
   background-repeat: no-repeat;       
 }
@@ -190,6 +199,14 @@ label.label-form-control-input {
   } 
 }
 @media only screen and (max-width: 480px){
+
+  /* .base_prf_txt1 p{
+    font-size: 18px;
+  }
+  .base_prf_txt2 p{
+    font-size: 18px;
+  } */
+
 .bg-bg{ 
   background-image: url("/img/bg-bnr-mbl.jpg");
 }
@@ -223,7 +240,7 @@ label.label-form-control-input {
   }
 
   .img_thumb_artcl{
-    height: 250px;
+    height: 200px;
   }
 
   .img_thumb{
@@ -246,4 +263,11 @@ label.label-form-control-input {
 .info-user>a{
     text-decoration: none;
     color: #212529;
+}
+
+.img_thumb1{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
 }

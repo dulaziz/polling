@@ -5,38 +5,39 @@
 {{-- @include('layouts.navbar') --}}
 
 <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
+<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 
 <div class="container">
 {{-- Content --}}
 <div class="col-md-10 mx-auto my-3 my-md-5">
 
     {{-- Basic Profile Tes --}}
-    <div class="row align-items-center d-flex flex-column-reverse flex-md-row mb-5">
+    <div class="row align-items-center d-flex flex-column-reverse flex-md-row mb-5">        
         <div class="col-md-7">
             <div data-aos="fade-down" data-aos-duration="1000">
                     <h1 class="card-title mb-0 fw-bold mb-3 mb-md-0">{{$data_item->vote_name}}</h1>
                     <hr class="mt-1 mb-3 d-none d-md-block">
-                    <div class="row align-items-center mb-3">
-                        <div class="col-md-4">
-                            <h5 class="text-muted">Jabatan</h5>
+                    <div class="row align-items-center mb-1 text-muted">
+                        <div class="col-4 base_prf_txt1">
+                            <p class="mb-0">Jabatan</p>
                         </div>
-                        <div class="col-md-6">
-                            <h5>: {{$data_item->vote_position}}</h5>
+                        <div class="col-8 base_prf_txt2">
+                            <p class="mb-0">: {{$data_item->vote_position}}</p>
                         </div>
                     </div>
-                    <div class="row align-items-center mb-3">
-                        <div class="col-md-4">
-                            <h5 class="text-muted">Tempat Tgl Lahir</h5>
+                    <div class="row align-items-center mb-3 text-muted">
+                        <div class="col-4 base_prf_txt1">
+                            <p>Tempat Tgl Lahir</p>
                         </div>
-                        <div class="col-md-6">
-                            <h5>: 07 Agustus 1995</h5>
+                        <div class="col-8 base_prf_txt2">
+                            <p>: 07 Agustus 1995</p>
                         </div>
-                    </div>       
+                    </div>     
             </div>
         </div>
-        <div class="col-md-5 d-flex align-items-center profile_bg1">
-            <img class="img_thumb1 bg-white p-1 shadow" data-aos="zoom-out" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="..."> 
-        </div>
+        <div class="col-md-5 d-flex align-items-center justify-content-center profile_bgx mb-3">
+            <img class="img_thumbx bg-white p-1 shadow" data-aos="zoom-out" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="..."> 
+        </div>  
     </div>
 
 

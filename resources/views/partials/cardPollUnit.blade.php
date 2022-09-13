@@ -20,15 +20,45 @@
     $today = $ts->format('d-m-Y');
     @endphp
 
-  <div class="card mb-3 border-0 shadow-sm" data-aos="zoom-in">
+    <div class="row d-flex align-items-center mb-5" data-aos="zoom-in">
+      <div class="col-md-4 mb-3 mb-md-0">
+        <img src="{{ 'storage/' . $dp->thumbnail }}" class="pstr_thumb" alt="">
+      </div>
+      <div class="col-md-8">
+        @if ( $date_end <= $today)
+          <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h1><strong>{{ $dp->title }}</strong></h1></a>
+        @else
+          <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h1><strong>{{ $dp->title }}</strong></h1></a>
+        @endif
+        <hr class="d-none d-md-block">
+        <p>{{$dp->description}}</p>
+        <p>
+          @if ($epoch_end <= $times)
+          <small class="text-danger fst-italic"><i class="fas fa-times-circle"></i> Closed Polling </small>
+          @else
+          <small class="text-success fst-italic me-md-3"><i class="fas fa-check-circle"></i> Live Polling </small>
+          {{ $date_start }} s/d {{ $date_end }}
+        </p>
+        @endif
+        @if ($epoch_end <= $times)
+          <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="btn btn-primary mt-3" type="button">Lihat Polling</a>
+        @else
+          <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="btn btn-primary mt-3" type="button">Ikuti Polling</a>
+        @endif
+        <hr class="d-block d-md-none">
+      </div>
+    </div>
+
+
+  {{-- <div class="card mb-3 border-0 shadow-sm" data-aos="zoom-in">
     <div class="row g-0 d-flex align-items-center">
       <div class="col-md-4">
         <img src="{{ 'storage/' . $dp->thumbnail }}" class="img-fluid img_card3" alt="...">
       </div>
       <div class="col-md-8">
-        <div class="card-body">
+        <div class="card-body"> --}}
             {{-- Validasi date polling time --}}
-            @if ( $date_end <= $today)
+            {{-- @if ( $date_end <= $today)
               <a href="/pollingUnitBar/{{ encrypt($dp->id) }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
             @else
               <a href="/pollingUnit/{{ encrypt($dp->id) }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
@@ -46,17 +76,17 @@
                     <small class="text-success fst-italic me-md-3"><i class="fas fa-check-circle"></i> Live Polling </small>
                     {{ $date_start }} s/d {{ $date_end }}
                 </p>
-                @endif
+                @endif --}}
                   {{-- @if ( $date_end <= $today)
                   <p class="text-danger float-md-start fst-italic me-2 mb-0"><i class="fas fa-times-circle"></i> Closed Polling</p>
                   @else
                   <p class="text-success float-md-start fst-italic me-2 mb-0"><i class="fas fa-check-circle"></i> Live Polling</p>
                   @endif
                   <p class="fst-italic mt-1 mt-md-0 mb-0">{{$date_start}} s/d {{$date_end}}</p> --}}
-                </div>
-                <div class="col-md-4 d-grid justify-content-md-end">
+                {{-- </div>
+                <div class="col-md-4 d-grid justify-content-md-end"> --}}
                   {{-- Validasi date polling time --}}
-                  @if ($epoch_end <= $times)
+                  {{-- @if ($epoch_end <= $times)
                     <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="btn btn-primary btn-sm" type="button">Lihat Polling</a>
                   @else
                     <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="btn btn-primary btn-sm" type="button">Ikuti Polling</a>
@@ -67,7 +97,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
 
 @endforeach

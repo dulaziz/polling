@@ -38,7 +38,7 @@
                 </div>
             </td>
             <td>
-                <p class="mb-0">{{ floor($total_vote) }}% Suara</p>
+                <p class="mb-0">{{ floor($total_vote) }}% | {{ $tv->response }} Suara</p>
             </td>
           </tr>
 
