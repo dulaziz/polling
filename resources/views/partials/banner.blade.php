@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-md-6 px-0">
-        <img src="img/00 POLLING.png" style="filter: drop-shadow(-3px 3px 3px #14141466);" alt="" data-aos="fade-right" data-aos-duration="1000" class="  img-fluid">
+        <img src="img/polling rb.png" style="filter: drop-shadow(-3px 3px 3px #14141466);" alt="" data-aos="fade-right" data-aos-duration="1000" class="  img-fluid">
     </div>
 </div>
 

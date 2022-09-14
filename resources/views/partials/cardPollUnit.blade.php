@@ -31,20 +31,23 @@
           <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h1><strong>{{ $dp->title }}</strong></h1></a>
         @endif
         <hr class="d-none d-md-block">
-        <p>{{$dp->description}}</p>
-        <p>
+        <p class="d-none d-md-block">{{$dp->description}}</p>
+        <div class="d-flex flex-column">
           @if ($epoch_end <= $times)
-          <small class="text-danger fst-italic"><i class="fas fa-times-circle"></i> Closed Polling </small>
+          <small class="text-danger fst-italic mb-1"><i class="fas fa-times-circle"></i> Closed Polling</small>
           @else
-          <small class="text-success fst-italic me-md-3"><i class="fas fa-check-circle"></i> Live Polling </small>
-          {{ $date_start }} s/d {{ $date_end }}
-        </p>
+          <small class="text-success fst-italic mb-1"><i class="fas fa-check-circle"></i> Live Polling</small>
+          <small>{{ $date_start }} s/d {{ $date_end }}</small> 
+        </div>
         @endif
+
+        <div class="btn-group d-grid d-md-block mt-3">
         @if ($epoch_end <= $times)
-          <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="btn btn-primary mt-3" type="button">Lihat Polling</a>
+          <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="btn btn-primary mt-md-3" type="button">Lihat Polling</a>
         @else
-          <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="btn btn-primary mt-3" type="button">Ikuti Polling</a>
+          <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="btn btn-primary mt-md-3" type="button">Ikuti Polling</a>
         @endif
+        </div>
         <hr class="d-block d-md-none">
       </div>
     </div>
