@@ -31,7 +31,14 @@
                             </div>
                         @enderror
 
-                        <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px" wire:model="desc_profile"></textarea>
+                        {{-- <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px" wire:model="desc_profile"></textarea> --}}
+
+                        {{-- Summernote --}}
+                        <div wire:ignore>
+                            {{-- <div id="summernote" wire:model="desc_profile" input="">Hello Summernote</div> --}}
+                            <textarea type="text" input="desc_profile" id="summernote" class="form-control summernote">{{ $desc_profile }}</textarea>
+                        </div>
+
                         @error('desc_profile')
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -121,4 +128,29 @@
 
 </div>
 
+
+<script>
+    $(document).ready(function() {
+        // $('#summernote').summernote();
+        $('.summernote').summernote({
+          tabsize: 2,
+          height: 200,
+          toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link', 'picture', 'video']],
+              ['view', ['fullscreen', 'codeview', 'help']]
+          ],
+          callbacks: {
+              onChange: function(contents, $editable) {
+              @this.set('desc_profile', contents);
+          }
+      }
+      });
+    });
+
+</script>
 

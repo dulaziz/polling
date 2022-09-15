@@ -53,7 +53,7 @@ class StoreItems extends Component
 
     public function storeItems(){
 
-        $this->validate();
+        dd($this->validate());
 
         VoteItem::create([
             'vote_unit_id' => $this->vote_unit_id,

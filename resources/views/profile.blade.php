@@ -12,7 +12,7 @@
 <div class="col-md-10 mx-auto my-3 my-md-5">
 
     {{-- Basic Profile Tes --}}
-    <div class="row align-items-center d-flex flex-column-reverse flex-md-row mb-5">        
+    <div class="row align-items-center d-flex flex-column-reverse flex-md-row mb-5">
         <div class="col-md-7">
             <div data-aos="fade-down" data-aos-duration="1000">
                     <h1 class="card-title mb-0 fw-bold mb-3 mb-md-0">{{$data_item->vote_name}}</h1>
@@ -30,14 +30,23 @@
                             <p>Tempat Tgl Lahir</p>
                         </div>
                         <div class="col-8 base_prf_txt2">
-                            <p>: 07 Agustus 1995</p>
+                            {{-- @php
+                                $tanggal_bio =
+                            @endphp --}}
+                            @php
+                                //  $date_bio = $data_item->short_desc;
+                                //  echo $date_bio;
+                                 $date = new DateTime($data_item->short_desc); // format: MM/DD/YYYY
+                                 $tanggal_bio =  $date->format('d-m-Y');
+                            @endphp
+                            <p>: {{ $tanggal_bio }}</p>
                         </div>
-                    </div>     
+                    </div>
             </div>
         </div>
         <div class="col-md-5 d-flex align-items-center justify-content-center profile_bgx mb-3">
-            <img class="img_thumbx bg-white p-1 shadow" data-aos="zoom-out" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="..."> 
-        </div>  
+            <img class="img_thumbx bg-white p-1 shadow" data-aos="zoom-out" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="...">
+        </div>
     </div>
 
 
@@ -62,12 +71,12 @@
             </div>
         </div>
         <div class="col-md-5 d-flex align-items-center profile_bg1">
-            <img class="img_thumb1 bg-white p-1 shadow" data-aos="zoom-out" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="..."> 
+            <img class="img_thumb1 bg-white p-1 shadow" data-aos="zoom-out" data-aos-duration="1500" src="{{ asset('storage/' . $data_item->vote_image) }}" alt="...">
         </div>
     </div> --}}
 
 
-    
+
 
   {{-- Basic Profile --}}
   {{-- <div class="row g-0 d-flex align-items-center mb-5">
@@ -105,12 +114,12 @@
 
 <div class="row mb-5">
     <div class="col-md-5 d-flex justify-content-center justify-content-md-end align-items-center profile_bg2">
-        <img src="{{ asset('storage/' . $d->icon)}}" alt="..." class="img-fluid" style="max-width: 230px; 
+        <img src="{{ asset('storage/' . $d->icon)}}" alt="..." class="img-fluid" style="max-width: 230px;
         filter: drop-shadow(-3px 3px 3px #14141466);" data-aos="fade-up" data-aos-duration="1500">
     </div>
     <div class="col-md-7" data-aos="fade-down" data-aos-duration="1000">
         <h4 class="card-title text-uppercase mb-1">{{ $d->title }}</h4>
-        <p class="card-text">{{$d->description}}</p>
+        <p class="card-text">{!! $d->description !!}</p>
     </div>
 </div>
 
