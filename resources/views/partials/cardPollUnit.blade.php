@@ -31,7 +31,9 @@
           <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h1><strong>{{ $dp->title }}</strong></h1></a>
         @endif
         <hr class="d-none d-md-block">
-        <p class="d-none d-md-block">{{$dp->description}}</p>
+        <div class="d-none d-md-block">
+          {!! $dp->description !!}
+        </div>
         <div class="d-flex flex-column">
           @if ($epoch_end <= $times)
           <small class="text-danger fst-italic mb-1"><i class="fas fa-times-circle"></i> Closed Polling</small>

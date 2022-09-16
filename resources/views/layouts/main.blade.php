@@ -92,23 +92,7 @@
 
     <!-- Summernote JS - CDN Link -->
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#my_summernote").summernote({
-              placeholder: 'Description',
-              tabsize: 2,
-              height: 120,
-              toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']]
-              ]
-            });
-        });
-    </script>
+    
     <!-- //Summernote JS - CDN Link -->
 
     {{-- Aos --}}

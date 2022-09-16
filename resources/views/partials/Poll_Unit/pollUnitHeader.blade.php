@@ -16,7 +16,7 @@
     <div class="col-md-8">
       <h1 class="fw-bold mb-3 d-none d-md-block" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h1>
       <hr class="d-none d-md-block">
-      <p>{{ $polling_unit_with_items->description }}</p>
+      <p>{!! $polling_unit_with_items->description !!}</p>
 
       @php
       $epoch_start = $polling_unit_with_items->date_start;

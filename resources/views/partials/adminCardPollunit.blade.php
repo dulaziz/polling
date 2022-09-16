@@ -7,12 +7,13 @@
 @foreach ($polling_unit as $pu)
 
 <div class="row d-flex align-items-center mb-5">
-    <div class="col-md-4">
+    <div class="col-md-4 mb-3 mb-md-0">
         <img src="{{ 'storage/' . $pu->thumbnail }}" class="pstr_thumb" alt="...">
     </div>
     <div class="col-md-8">
         <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}" class="mb-3 text-decoration-none text-dark"><h1><strong>{{ $pu->title }}</strong></h1></a>
-        <p class="text-muted mb-3 mb-md-2">{{ $pu->description }}</p>
+        <hr class="d-none d-md-block">
+        <p class="text-muted mb-3 mb-md-2">{!! $pu->description !!}</p>
 
         @php
         $epoch_start = $pu->date_start;
@@ -33,6 +34,8 @@
         $today = $ts->format('d-m-Y');
         @endphp
 
+<div class="row d-flex align-items-center">
+    <div class="col-md-9">
         <p class="d-grid d-md-flex fst-italic mb-3 mb-md-0">
             @if ($epoch_end <= $times)
             <small class="text-danger fst-italic"><i class="fas fa-times-circle mb-0"></i> Closed Polling </small>
@@ -41,52 +44,58 @@
             {{ $date_start }} s/d {{ $date_end }}
         </p>
             @endif
-
-        <div class="btn-group d-grid d-md-block mt-3">
-            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Action
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark my-2">
+    </div>
+    
+    <div class="col-md-3 d-grid justify-content-md-end">
+    
+        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Action
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark my-2">
+        <li>
+            <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}" class="dropdown-item"><i class="fa-solid fa-eye"></i> View</a>
+            <a href="admin/editPolling/{{ $pu->id }}" class="dropdown-item"><i class="fas fa-pen"></i> Edit</a>
+        </li>
+        @if ($epoch_end <= $times)
+            @else
+        <li>
+            <a href="admin/addItems/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-users"></i> Poll items</a>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        {{-- Close Polling Unit --}}
+        <form action="{{ route('admin.close') }}" method="post">
+            @csrf
+            {{-- Convert time today to date --}}
+            @php
+                $times = round(microtime(true));
+                        $ts = new DateTime("@$times");
+                        $today = $ts->format('d-m-Y');
+            @endphp
+            <input type="hidden" name="id" value="{{ $pu->id }}">
+            <input type="hidden" name="date_end" value="{{ $today }}">
+            <button onclick="return confirm('Apakah anda yakin ingin menutup polling ini?' )" class="dropdown-item" type="submit"><i class="fa-solid fa-xmark"></i> Close</button>
+        </form>
+        @endif
+        <li>
+            <a href="admin/result/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-chart-bar"></i> Result</a>
+        </li>
+        {{-- Delete Unit --}}
+        <form action="{{ route('admin.delete') }}" method="post">
+            @csrf
+            <input type="hidden" name="id" value="{{ $pu->id }}">
             <li>
-                <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}" class="dropdown-item"><i class="fa-solid fa-eye"></i> View</a>
-                <a href="admin/editPolling/{{ $pu->id }}" class="dropdown-item"><i class="fas fa-pen"></i> Edit</a>
+                <button onclick="return confirm('Apakah anda yakin ingin menghapus Polling ini?' )" class="dropdown-item" type="submit"><i class="fa-solid fa-trash"></i> Delete</button>
+            {{-- <button class="dropdown-items" type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus Polling ini?')"><i class="fa-solid fa-trash"></i> Delete</button> --}}
             </li>
-            @if ($epoch_end <= $times)
-                @else
-            <li>
-                <a href="admin/addItems/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-users"></i> Poll items</a>
-            </li>
-            <li><hr class="dropdown-divider"></li>
-            {{-- Close Polling Unit --}}
-            <form action="{{ route('admin.close') }}" method="post">
-                @csrf
-                {{-- Convert time today to date --}}
-                @php
-                    $times = round(microtime(true));
-                            $ts = new DateTime("@$times");
-                            $today = $ts->format('d-m-Y');
-                @endphp
-                <input type="hidden" name="id" value="{{ $pu->id }}">
-                <input type="hidden" name="date_end" value="{{ $today }}">
-                <button onclick="return confirm('Apakah anda yakin ingin menutup polling ini?' )" class="dropdown-item" type="submit"><i class="fa-solid fa-xmark"></i> Close</button>
-            </form>
-            @endif
-            <li>
-                <a href="admin/result/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-chart-bar"></i> Result</a>
-            </li>
-            {{-- Delete Unit --}}
-            <form action="{{ route('admin.delete') }}" method="post">
-                @csrf
-                <input type="hidden" name="id" value="{{ $pu->id }}">
-                <li>
-                    <button onclick="return confirm('Apakah anda yakin ingin menghapus Polling ini?' )" class="dropdown-item" type="submit"><i class="fa-solid fa-trash"></i> Delete</button>
-                {{-- <button class="dropdown-items" type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus Polling ini?')"><i class="fa-solid fa-trash"></i> Delete</button> --}}
-                </li>
-            </form>
-            </ul>
-        </div>
+        </form>
+        </ul>
     </div>
 </div>
+
+        <hr class="d-md-none">
+    </div>
+</div>
+
 
 
 

@@ -28,27 +28,39 @@
                 <div class="row my-2 d-flex align-items-center">
                     @if($vote_unit->thumbnail)
                         {{-- Thumbnail Poll Unit --}}
-                        <div class="preview col-md-4 d-flex justify-content-center my-3">
-                            <img src="{{ asset('storage/' . $vote_unit->thumbnail) }}" id="file-ip-1-preview" class="img-thumbnail img_thumb" style="max-width: 260px; max-height: 274px;">
+                        <div class="preview col-md-4 my-3">
+                            <img src="{{ asset('storage/' . $vote_unit->thumbnail) }}" id="file-ip-1-preview" class="img-thumbnail img_thumb_upl">
+                            
+                            {{-- File name thumbnail --}}
+                            <input class="form-control mt-2" type="hidden" value="{{ $vote_unit->thumbnail }}" name="thumbnail_old">
+                            <input class="form-control mt-2" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="thumbnail">
+                            {{-- Response notif form input thumbnail --}}
+                            @error('thumbnail')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @enderror
                         </div>
                     @else
                         {{-- Thumbnail Poll Unit --}}
-                        <div class="preview col-md-4 d-flex justify-content-center my-3">
-                            <img src="{{ asset('img/default1.jpg') }}" id="file-ip-1-preview" class="img-thumbnail img_thumb" style="max-width: 260px; max-height: 274px;">
+                        <div class="preview col-md-4 my-3">
+                            <img src="{{ asset('img/default1.jpg') }}" id="file-ip-1-preview" class="img-thumbnail img_thumb_upl">
+
+                            {{-- File name thumbnail --}}
+                            <input class="form-control mt-2" type="hidden" value="{{ $vote_unit->thumbnail }}" name="thumbnail_old">
+                            <input class="form-control mt-2" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="thumbnail">
+                            {{-- Response notif form input thumbnail --}}
+                            @error('thumbnail')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @enderror
                         </div>
                     @endif
 
                     <div class="col-md-8 mb-2">
-                    {{-- File name thumbnail --}}
-                    <input class="form-control mb-3" type="hidden" value="{{ $vote_unit->thumbnail }}" name="thumbnail_old">
-                    <input class="form-control mb-3" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="thumbnail">
-                     {{-- Response notif form input thumbnail --}}
-                     @error('thumbnail')
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>{{ $message }}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @enderror
                     {{-- Input title --}}
                     <input type="text" class="form-control mb-3" placeholder="Title" aria-label="Title" value="{{ $vote_unit->title }}" name="title">
                      {{-- Response notif form input thumbnail --}}
@@ -68,7 +80,8 @@
                         </div>
                     @enderror
                     {{-- Input description --}}
-                    <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px" value="{{ $vote_unit->description }}" name="description">{{ $vote_unit->description }}</textarea>
+                    {{-- <textarea class="form-control mb-3" placeholder="Description" id="floatingTextarea2" style="height: 100px" value="{{ $vote_unit->description }}" name="description">{{ $vote_unit->description }}</textarea> --}}
+                    <textarea class="form-control" id="edit_summer" value="{{ $vote_unit->description }}" name="description">{{ $vote_unit->description }}</textarea>
                      {{-- Response notif form input thumbnail --}}
                      @error('description')
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -77,7 +90,7 @@
                         </div>
                     @enderror
                     {{-- Input date --}}
-                    <div class="row">
+                    <div class="row mt-3">
 
                         {{-- Convert Date Time --}}
                         @php
@@ -159,6 +172,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </div>
+
+<script>
+    $(document).ready(function() {
+        // $('#summernote').summernote();
+        $('#edit_summer').summernote({
+          tabsize: 2,
+          height: 200,
+          toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link', 'picture', 'video']]
+          ],
+
+      });
+    });
+
+</script>
 
 @endsection
 
