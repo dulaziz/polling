@@ -11,7 +11,7 @@
         <img src="{{ 'storage/' . $pu->thumbnail }}" class="pstr_thumb" alt="...">
     </div>
     <div class="col-md-8">
-        <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}" class="mb-3 text-decoration-none text-dark"><h1><strong>{{ $pu->title }}</strong></h1></a>
+        <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}" class="mb-3 text-decoration-none text-dark"><h2><strong>{{ $pu->title }}</strong></h2></a>
         <hr class="d-none d-md-block">
         <p class="text-muted mb-3 mb-md-2">{!! $pu->description !!}</p>
 
