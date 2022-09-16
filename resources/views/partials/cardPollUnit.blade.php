@@ -26,9 +26,9 @@
       </div>
       <div class="col-md-8">
         @if ( $date_end <= $today)
-          <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h1><strong>{{ $dp->title }}</strong></h1></a>
+          <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h2><strong>{{ $dp->title }}</strong></h2></a>
         @else
-          <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h1><strong>{{ $dp->title }}</strong></h1></a>
+          <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h2><strong>{{ $dp->title }}</strong></h2></a>
         @endif
         <hr class="d-none d-md-block">
         <div class="d-none d-md-block">
