@@ -32,7 +32,7 @@
                              <input type="text" class="form-control" placeholder="{{ $p->title }}" wire:model.defer="title_profiles">
                          </td>
                          <td>
-                             <input type="text" class="form-control" placeholder="{{$p->description}}" wire:model.defer="description_profiles">
+                             <input type="text" class="form-control" placeholder="{{$p->description}}" wire:model.defer="description_profiles">  
                          </td>
                          <td>
                              <div class="d-flex gap-2">
@@ -57,3 +57,22 @@
     </form>
 
 </div>
+
+<script>
+    $(document).ready(function() {
+        // $('#summernote').summernote();
+        $('#edit_summer_dsc').summernote({
+          tabsize: 2,
+          height: 200,
+          toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link']]
+          ],
+
+      });
+    });
+</script>

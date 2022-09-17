@@ -27,7 +27,7 @@
                     </div>
                     <div class="row align-items-center mb-3 text-muted">
                         <div class="col-4 base_prf_txt1">
-                            <p>Tempat Tgl Lahir</p>
+                            <p>Tgl Lahir</p>
                         </div>
                         <div class="col-8 base_prf_txt2">
                             {{-- @php
@@ -113,11 +113,11 @@
     @foreach ($data_item->voteProfiles as $d)
 
 <div class="row mb-5">
-    <div class="col-md-5 d-flex justify-content-center justify-content-md-end align-items-center profile_bg2">
+    <div class="col-md-3 mb-3 mb-md-0 d-flex justify-content-center justify-content-md-end align-items-center profile_bg2">
         <img src="{{ asset('storage/' . $d->icon)}}" alt="..." class="img-fluid" style="max-width: 230px;
         filter: drop-shadow(-3px 3px 3px #14141466);" data-aos="fade-up" data-aos-duration="1500">
     </div>
-    <div class="col-md-7" data-aos="fade-down" data-aos-duration="1000">
+    <div class="col-md-9" data-aos="fade-down" data-aos-duration="1000">
         <h4 class="card-title text-uppercase mb-1">{{ $d->title }}</h4>
         <p class="card-text">{!! $d->description !!}</p>
     </div>

@@ -13,7 +13,9 @@
     <div class="col-md-8">
         <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}" class="mb-3 text-decoration-none text-dark"><h2><strong>{{ $pu->title }}</strong></h2></a>
         <hr class="d-none d-md-block">
-        <p class="text-muted mb-3 mb-md-2">{!! $pu->description !!}</p>
+        <div class="d-none d-md-block">
+            {!! $pu->description !!}
+        </div>
 
         @php
         $epoch_start = $pu->date_start;

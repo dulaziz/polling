@@ -9,12 +9,12 @@
   <p class="mt-3 text-secondary" data-aos="fade-right" data-aos-duration="1500">{{ $polling_unit_with_items->description }}</p> --}}
 
   <div class="row d-flex align-items-center mb-5" data-aos="zoom-in">
-    <h1 class="fw-bold mb-3 d-block d-md-none" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h1>
+    <h2 class="fw-bold mb-3 d-block d-md-none" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h2>
     <div class="col-md-4 mb-3 mb-md-0">
       <img src="{{ url('storage/' . $polling_unit_with_items->thumbnail) }}" class="pstr_thumb" alt="">
     </div>
     <div class="col-md-8">
-      <h1 class="fw-bold mb-3 d-none d-md-block" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h1>
+      <h2 class="fw-bold mb-3 d-none d-md-block" data-aos="fade-right" data-aos-duration="1000">{{ $polling_unit_with_items->title }}</h2>
       <hr class="d-none d-md-block">
       <p>{!! $polling_unit_with_items->description !!}</p>
 
