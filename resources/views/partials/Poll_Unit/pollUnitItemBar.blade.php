@@ -18,30 +18,31 @@
       {{-- Vote Name --}}
       <div class="d-flex mb-3">
         {{-- <h5>{{$i++}}.</h5> --}}
-        <div class="ms-1">
-            <h2 class="card-title mb-0">{{ $item->vote_name }}</h2>
+        <div class="">
+            <a href="/profile/{{ encrypt($item->id) }}" class="text-decoration-none text-dark"><h2>{{ $item->vote_name }}</h2></a>
             {{-- <p class="card-text"><small class="text-muted">{{ $item->vote_position }}</small></p> --}}
             {{-- <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p> --}}
-            <a href="/profile/{{ encrypt($item->id) }}">Profile</a>
+            {{-- <a href="/profile/{{ encrypt($item->id) }}">Profile</a> --}}
         </div>
       </div>
-      <div class="progress" style="height: 2rem">
           {{-- Cari jumlah persentase dari pemilih --}}
           @php
-                // Cek apakah ada data total user vote
-                if($total_user_vote > 0){
-                            $total_vote = $item->response / $total_user_vote * 100;
-                        }else {
-                            $total_user_vote = 0;
-                            # jika tidak ada data total user vote
-                            $total_vote = $item->response;
-                        }
+            // Cek apakah ada data total user vote
+            if($total_user_vote > 0){
+                $total_vote = $item->response / $total_user_vote * 100;
+            }else {
+                $total_user_vote = 0;
+                # jika tidak ada data total user vote
+                $total_vote = $item->response;
+            }
           @endphp
+          <p class="text-primary mb-2">{{ round($total_vote) }}% Suara</p>
+      <div class="progress">
           {{-- Validasi Login Role Admin --}}
             @if ($total_vote == 0)
-                <div class="progress-bar text-dark" role="progressbar" style="width:100%; background-color:#d5d5d5;" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ $total_vote }}% / {{ $item->response }} Suara</div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:100%; background-color:#d5d5d5;" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100"></div>
             @else
-                <div class="progress-bar" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100">{{ round($total_vote) }}% / {{ $item->response }} Suara</div>
+                <div class="progress-bar progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100"></div>
             @endif
         </div>
     </div>

@@ -1,20 +1,19 @@
-<link rel="stylesheet" href="{{ asset('css/global.css') }}">
 
 {{-- Footer Layout --}}
 <footer class="text-light py-3" style="background-color: #00548F;">
     <div class="container text-md-left">
-      <div class="row text-md-left">
-        <div class="col-md-12 col-lg-6 col-xl-6 mx-auto mt-3">
+      <div class="row text-md-left pt-3">
+        <div class="col-md-6">
           <img src="{{ asset('img/RB white.png') }}" alt="logo radar bogor" class="mb-2" style="width: 250px">
           <hr>
           <h5>Graha Pena Bogor</h5>
           <div class="d-flex">
-          <i class="fas fa-map-marker-alt mt-1"></i>
-          <p class="ms-3">Jl KHR Abdullah Bin Nuh Jl. Ring Road Taman Yasmin No.30, RT.05/RW.04, Cibadak, Kec. Bogor Barat, Kota Bogor, Jawa Barat 16113.</p>
-        </div>
+            <i class="fas fa-map-marker-alt mt-1"></i>
+            <p class="ms-3">Jl KHR Abdullah Bin Nuh Jl. Ring Road Taman Yasmin No.30, RT.05/RW.04, Cibadak, Kec. Bogor Barat, Kota Bogor, Jawa Barat 16113.</p>
+          </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mt-3">
+        <div class="col-md-3">
           <h5 class="text-uppercase mb-4 fw-bold">Soccial</h5>
           <hr>
           <p>
@@ -44,7 +43,7 @@
           </p>
         </div>
 
-        <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mt-3">
+        <div class="col-md-3">
           <h5 class="text-uppercase mb-4 fw-bold">Contact</h5>
           <hr>
           <p>
@@ -58,7 +57,7 @@
           </p>
         </div>
         <hr>
-        <div class="row align-items-center">
+        <div class="d-flex align-items-center">
             <p class="mb-0">2022 Copyright &copy All rights reserved by:
               <a href="#" style="text-decoration: none;">
                 <strong class="text-light">Radar Bogor</strong>
