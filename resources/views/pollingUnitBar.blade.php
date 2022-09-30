@@ -16,7 +16,7 @@
           @include('partials/Poll_Unit.pollUnitHeaderCard')
           <hr>
           @include('partials/Poll_Unit.pollUnitItemBar')
-          <hr>
+
           @include('partials/Poll_Unit.pollUnitFooterCard')
         </div>
       </div>

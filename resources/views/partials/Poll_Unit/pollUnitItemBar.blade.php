@@ -19,7 +19,7 @@
       <div class="d-flex mb-3">
         {{-- <h5>{{$i++}}.</h5> --}}
         <div class="">
-            <a href="/profile/{{ encrypt($item->id) }}" class="text-decoration-none text-dark"><h2>{{ $item->vote_name }}</h2></a>
+            <h2>{{ $item->vote_name }}</h2>
             {{-- <p class="card-text"><small class="text-muted">{{ $item->vote_position }}</small></p> --}}
             {{-- <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p> --}}
             {{-- <a href="/profile/{{ encrypt($item->id) }}">Profile</a> --}}
@@ -44,7 +44,8 @@
             @else
                 <div class="progress-bar progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100"></div>
             @endif
-        </div>
+      </div>
+      <hr class="d-block d-md-none">
     </div>
   </div>
 </div>
