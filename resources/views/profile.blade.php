@@ -15,7 +15,7 @@
     <div class="row align-items-center d-flex flex-column-reverse flex-md-row mb-5">
         <div class="col-md-7">
             <div data-aos="fade-down" data-aos-duration="1000">
-                <h1 class="card-title mb-0 fw-bold mb-3 mb-md-0">{{$data_item->vote_name}}</h1>
+                <h1 class="card-title mb-0 fw-bold mb-3 mb-md-0 text-uppercase">{{$data_item->vote_name}}</h1>
                 <hr class="mt-1 mb-3 d-none d-md-block">
                 <p class="mb-1 fw-bold">{{$data_item->vote_position}}</p>
                 <p class="fw-bold">{{ $data_item->short_desc }}</p>
@@ -134,7 +134,7 @@
     {{-- Gallery --}}
     @if ($data_item->voteProfiles)
     <div class="my-5">
-        <h5 class="border-start border-danger border-4 text-uppercase ps-2 fw-bold rb-blue-tx" data-aos="fade-down" data-aos-duration="1000">Photo</h5>
+        {{-- <h5 class="border-start border-danger border-4 text-uppercase ps-2 fw-bold rb-blue-tx" data-aos="fade-down" data-aos-duration="1000">Photo</h5> --}}
             {{-- Lopping Image --}}
             @foreach ($data_item->voteProfiles as $item)
             <div class="slider">
