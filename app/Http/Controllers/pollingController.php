@@ -22,7 +22,9 @@ class pollingController extends Controller
 
     public function index(){
 
-        $data_pollings = VoteUnit::with('votings')->get();
+        $data_pollings = VoteUnit::with('votings')
+            ->orderBy('id', 'DESC')
+            ->get();
 
 
         return view('home', [
