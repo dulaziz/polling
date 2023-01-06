@@ -3,9 +3,10 @@
 }
 .navbar-brand {
     padding-top: 0;
+    padding-bottom: 0;
   }
   .navlogo img{
-    width: 250px;
+    width: 230px;
   }
   
   /* Custom Toggler */
