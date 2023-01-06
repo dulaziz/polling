@@ -15,33 +15,10 @@
     <div class="row align-items-center d-flex flex-column-reverse flex-md-row mb-5">
         <div class="col-md-7">
             <div data-aos="fade-down" data-aos-duration="1000">
-                    <h1 class="card-title mb-0 fw-bold mb-3 mb-md-0">{{$data_item->vote_name}}</h1>
-                    <hr class="mt-1 mb-3 d-none d-md-block">
-                    <div class="row align-items-center mb-1 text-muted">
-                        <div class="col-4 base_prf_txt1">
-                            <p class="mb-0">Jabatan</p>
-                        </div>
-                        <div class="col-8 base_prf_txt2">
-                            <p class="mb-0">: {{$data_item->vote_position}}</p>
-                        </div>
-                    </div>
-                    <div class="row align-items-center mb-3 text-muted">
-                        <div class="col-4 base_prf_txt1">
-                            <p>Tgl Lahir</p>
-                        </div>
-                        <div class="col-8 base_prf_txt2">
-                            {{-- @php
-                                $tanggal_bio =
-                            @endphp --}}
-                            @php
-                                //  $date_bio = $data_item->short_desc;
-                                //  echo $date_bio;
-                                 $date = new DateTime($data_item->short_desc); // format: MM/DD/YYYY
-                                 $tanggal_bio =  $date->format('d-m-Y');
-                            @endphp
-                            <p>: {{ $tanggal_bio }}</p>
-                        </div>
-                    </div>
+                <h1 class="card-title mb-0 fw-bold mb-3 mb-md-0">{{$data_item->vote_name}}</h1>
+                <hr class="mt-1 mb-3 d-none d-md-block">
+                <p class="mb-1 fw-bold">{{$data_item->vote_position}}</p>
+                <p class="fw-bold">{{ $data_item->short_desc }}</p>
             </div>
         </div>
         <div class="col-md-5 d-flex align-items-center justify-content-center profile_bgx mb-3">
