@@ -56,7 +56,7 @@
                         </div>
                         {{-- Input description --}}
                         {{-- <textarea class="form-control mb-3" placeholder="Bio" id="floatingTextarea2" style="height: 100px" wire:model="short_desc"></textarea> --}}
-                        <input type="date" class="form-control mb-3" wire:model="short_desc">
+                        <input type="text" class="form-control mb-3" wire:model="short_desc">
                         @error('short_desc')
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>{{ $message }}</strong>
