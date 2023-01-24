@@ -12,17 +12,12 @@
 
   @media only screen and (max-width: 770px){
     .img_thumbx{
-        width: 250px;
-        height: 250px;
+        max-width: 250px;
+        object-fit: contain;
       }
   }
 
   @media only screen and (max-width: 480px){
-    .img_thumbx{
-        width: 260px;
-        height: 260px;
-        border-radius: 50%;
-      }
       .profile_bgx{
         height: 510px;
         position: relative;
@@ -34,9 +29,7 @@
 
   @media only screen and (max-width: 375px){
     .img_thumbx{
-        width: 230px;
-        height: 230px;
-        border-radius: 50%;
+        max-width: 230px;
       }
       .profile_bgx{
         height: 455px;
@@ -45,9 +38,7 @@
 
   @media only screen and (max-width: 320px){
     .img_thumbx{
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
+        max-width: 200px;
       }
       .profile_bgx{
         height: 390px;
