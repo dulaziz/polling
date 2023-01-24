@@ -20,7 +20,7 @@
     $today = $ts->format('d-m-Y');
     @endphp
 
-    <div class="container">
+    <div class="container mt-5">
       <div class="col-md-10 mx-auto">
 
         <div class="row d-flex align-items-center mb-5 " data-aos="zoom-in">
