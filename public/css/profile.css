@@ -29,7 +29,7 @@
 
   @media only screen and (max-width: 375px){
     .img_thumbx{
-        max-width: 230px !important;
+        max-width: 230px;
       }
       .profile_bgx{
         height: 455px;
@@ -38,7 +38,7 @@
 
   @media only screen and (max-width: 320px){
     .img_thumbx{
-        max-width: 200px !important; 
+        max-width: 200px; 
       }
       .profile_bgx{
         height: 390px;
