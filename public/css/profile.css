@@ -29,7 +29,7 @@
 
   @media only screen and (max-width: 375px){
     .img_thumbx{
-        max-width: 230px;
+        max-width: 230px !important;
       }
       .profile_bgx{
         height: 455px;
