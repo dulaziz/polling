@@ -56,7 +56,7 @@
                         </div>
                         {{-- Input description --}}
                         {{-- <textarea class="form-control mb-3" placeholder="Bio" id="floatingTextarea2" style="height: 100px" wire:model="short_desc"></textarea> --}}
-                        <input type="text" class="form-control mb-3" wire:model="short_desc">
+                        <input type="text" class="form-control mb-3" placeholder="Short Desc" wire:model="short_desc">
                         @error('short_desc')
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -78,7 +78,7 @@
 
 {{-- <hr> --}}
 
-<div class="my-5">
+<div class="my-5 col-lg-12">
     @if ($message = Session::get('success'))
         {{-- Alert After Create Item --}}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -91,14 +91,14 @@
     {{-- <h6>Poll Items in "{{$data_unit->title}}"</h6> --}}
 
     <div class="table-responsive">
-        <table class="table table-sm" style="width: 925px;">
+        <table class="table table-sm" style="width: 100%;">
             <thead>
                 <tr>
-                    <th scope="col" style="width: 2%;">No</th>
-                    <th scope="col" style="width: 17%;">Name</th>
-                    <th scope="col" style="width: 38%;">Position</th>
-                    <th scope="col" style="width: 18%;">Profile Items</th>
-                    <th scope="col" style="width: 25%;">Action</th>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Profile Items</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -122,6 +122,7 @@
                         @else
                             <td><small class="text-secondary fst-italic"><i class="fas fa-times-circle"></i> Basic Profile Items </small></td>
                             <td>
+                                <a href="/admin/editPollItems/{{ $item->id }}" class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i> Edit</a>
                                 <a href="/admin/moreProfile/{{ $item->id }} " class="btn btn-success btn-sm"><i class="fas fa-plus"></i> More Profile</a>
                                 {{-- Delete Item --}}
                                 <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteItem({{$item->id}}) : false"><i class="fas fa-trash"></i> Delete</button>

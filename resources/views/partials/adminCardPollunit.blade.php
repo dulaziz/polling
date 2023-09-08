@@ -47,9 +47,9 @@
         </p>
             @endif
     </div>
-    
+
     <div class="col-md-3 d-grid justify-content-md-end">
-    
+
         <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         Action
         </button>

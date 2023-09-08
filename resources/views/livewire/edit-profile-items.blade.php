@@ -16,7 +16,6 @@
                     </div>
                 @endif
             {{-- End Response --}}
-            <input type="text" class="" value="kkkkk">
 
   @livewire('store-edit-profile-items', ['data_item' => $data_item,'data_profile' => $data_profile])
 

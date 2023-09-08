@@ -72,7 +72,7 @@ class pollingController extends Controller
 
         // Buat rule validasi form input unit
         $validated = $request->validate([
-            'thumbnail' => 'required|mimes:jpg,bmp,png',
+            'thumbnail' => 'required|image|file',
             'title' => 'required',
             'date_start' => 'required',
             'date_end' => 'required',
@@ -609,6 +609,28 @@ class pollingController extends Controller
             return back()->with('message', 'Your data failed deleted!')->withInput();
         }
 
+    }
+
+    public function updateMoreProfileItem(Request $request){
+        $profileId = $request->profileId;
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        VoteProfile::where('id', $profileId)->update($validatedData);
+
+        return redirect(request()->header('Referer'))->with('success', 'Your data has been updated!');
+    }
+
+    public function deleteMoreProfileItem(Request $request){
+        $profileId = $request->profile_id;
+        $VoteProfile = VoteProfile::where('id', $profileId)->first();
+
+        Storage::delete($VoteProfile->icon);
+        VoteProfile::where('id', $profileId)->delete();
+
+        return redirect(request()->header('Referer'))->with('success', 'Your data has been deleted!');
     }
 
 }

@@ -12,6 +12,7 @@ class StoreEditProfileItems extends Component
     public $data_profile;
 
     public $data_id;
+    public $vote_unit_id;
     public $vote_image;
     public $vote_image_old;
     public $vote_name;
@@ -29,14 +30,6 @@ class StoreEditProfileItems extends Component
 
     protected $listeners = ['itemUpdated' => 'render'];
 
-    // protected $rules = [
-    //     // 'vote_image' => 'required|image|max:1024',
-    //     'vote_name' => 'required',
-    //     'vote_position' => 'required',
-    //     'short_desc' => 'required',
-
-    // ];
-
     private function resetInput(){
         $this->vote_image = null;
         $this->vote_name = null;
@@ -47,10 +40,11 @@ class StoreEditProfileItems extends Component
 
     public function mount($data_item){
 
+        $this->vote_unit_id = $data_item->vote_unit_id;
         $this->vote_image_input_old = $data_item->vote_image;
-        $this->vote_name_input_old = $data_item->vote_name;
-        $this->vote_position_input_old = $data_item->vote_position;
-        $this->short_desc_input_old = $data_item->short_desc;
+        $this->vote_name = $data_item->vote_name;
+        $this->vote_position = $data_item->vote_position;
+        $this->short_desc = $data_item->short_desc;
 
         $this->data_id = $this->data_item->id;
 
@@ -85,9 +79,6 @@ class StoreEditProfileItems extends Component
             $this->short_desc = $this->short_desc_input_old;
         }
 
-        // dd($this->vote_image, $this->vote_name, $this->vote_position ,$this->short_desc);
-        // dd($data_image);
-
         VoteItem::where('id',$this->data_id)->update([
             'vote_image' => $data_image,
             'vote_name' => $this->vote_name,
@@ -99,7 +90,7 @@ class StoreEditProfileItems extends Component
 
         $this->emit('itemUpdated');
 
-        session()->flash('success', 'Your data has been created!');
+        return redirect(request()->header('Referer'))->with('success', 'Your data has been updated!');
 
 
     }

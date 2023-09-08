@@ -33,9 +33,9 @@
               <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h2><strong>{{ $dp->title }}</strong></h2></a>
             @else
               <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h2><strong>{{ $dp->title }}</strong></h2></a>
-            @endif 
+            @endif
 
-            <hr class="d-none d-md-block"> 
+            <hr class="d-none d-md-block">
 
             <div class="d-none d-md-block">
               {!! $dp->description !!}
@@ -46,7 +46,7 @@
               <small class="text-danger fst-italic mb-1"><i class="fas fa-times-circle"></i> Closed Polling</small>
               @else
               <small class="text-success fst-italic mb-1"><i class="fas fa-check-circle"></i> Live Polling</small>
-              <small>{{ $date_start }} s/d {{ $date_end }}</small> 
+              <small>{{ $date_start }} s/d {{ $date_end }}</small>
               @endif
             </div>
 
@@ -85,7 +85,7 @@
           <small class="text-danger fst-italic mb-1"><i class="fas fa-times-circle"></i> Closed Polling</small>
           @else
           <small class="text-success fst-italic mb-1"><i class="fas fa-check-circle"></i> Live Polling</small>
-          <small>{{ $date_start }} s/d {{ $date_end }}</small> 
+          <small>{{ $date_start }} s/d {{ $date_end }}</small>
         </div>
         @endif
 

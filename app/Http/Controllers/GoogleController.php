@@ -38,7 +38,7 @@ class GoogleController extends Controller
             return redirect()->route('home');
 
         }catch(\Throwable $th){
-           return redirect('google.login');
+           return redirect()->route('google.login');
         }
     }
 

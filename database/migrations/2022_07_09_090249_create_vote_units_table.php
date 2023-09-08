@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('thumbnail');
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->text('description')->nullable();
             $table->bigInteger('date_start');
             $table->bigInteger('date_end');

@@ -44,6 +44,7 @@ class StoreProfileItems extends Component
         $this->data_id = $data_item->id;
         $this->data_vote_unit_id = $data_item->vote_unit_id;
         $this->data_image = $data_item->vote_image;
+
     }
 
     public function storeProfile(){
@@ -74,8 +75,7 @@ class StoreProfileItems extends Component
 
         $this->emit('profileAdded');
 
-        session()->flash('success', 'Images has been successfully Uploaded.');
-
+        return redirect(request()->header('Referer'))->with('success', 'Images has been successfully Uploaded.');
     }
 
 

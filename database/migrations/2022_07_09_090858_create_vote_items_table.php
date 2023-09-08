@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('response')->nullable();
             $table->string('vote_image');
             $table->string('vote_name');
+            $table->string('slug')->nullable();
             $table->string('vote_position')->nullable();
             $table->text('short_desc')->nullable();
             $table->timestamps();

@@ -5,7 +5,7 @@
         <div class="my-5">
          <h6 class="mb-3">More Profile: <span class="badge bg-success">{{$data_item->vote_name}}</span></h6>
          <div class="table-responsive">
-             <table class="table table-sm" style="width: 900px;">
+             <table class="table table-sm" style="width: 100%;">
                  <thead class="fw-normal">
                  <tr>
                      <th scope="col" style="width: 5%;" class="fw-normal">No</th>

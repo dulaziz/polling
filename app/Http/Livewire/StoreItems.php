@@ -66,19 +66,9 @@ class StoreItems extends Component
 
         $this->resetInput();
 
-        session()->flash('success', 'Your data has been created!');
-
         $this->emit('itemAdded');
 
-
-        // if($save){
-
-        //     return back()->with('success', 'Your data has been created!');
-
-        // }else{
-
-        //     return back()->with('error', 'Your data failed created!')->withInput();
-        // }
+        return redirect(request()->header('Referer'))->with('success', 'Your data has been created!');
 
     }
 
@@ -94,7 +84,9 @@ class StoreItems extends Component
 
         VoteItem::where('id',$id)->delete();
         VoteProfile::where('vote_item_id',$id)->delete();
-        session()->flash('success', 'Your data has been deleted!');
+
+
+        return redirect(request()->header('Referer'))->with('success', 'Your data has been deleted!');
 
     }
 

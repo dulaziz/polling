@@ -8,7 +8,7 @@
         <div class="my-5">
          <h6 class="mb-3">More Profile: <span class="badge bg-success">{{$data_item->vote_name}}</span></h6>
          <div class="table-responsive">
-             <table class="table table-sm align-middle" style="width: 896px;">
+             <table class="table table-sm align-middle" style="width: 100%;">
                  <thead class="fw-normal">
                  <tr>
                      <th scope="col" style="width: 5%;" class="fw-normal">No</th>
@@ -22,22 +22,23 @@
                      @php
                          $i=1;
                      @endphp
-                     @foreach ($data_profile as $p)
+                     @foreach ($data_profile as $profile)
                      <tr>
                          <th scope="row">{{ $i++ }}</th>
                          <td>
-                             <img src="{{asset('storage/'. $p->icon)}}" alt="" style="width:45px; height:45px;">
+                             <img src="{{asset('storage/'. $profile->icon)}}" alt="" style="width:100%;">
                          </td>
                          <td>
-                             <input type="text" class="form-control" placeholder="{{ $p->title }}" wire:model.defer="title_profiles">
+                             <input type="text" class="form-control" placeholder="{{ $profile->title }}" wire:model.defer="title_profiles">
                          </td>
                          <td>
-                             <input type="text" class="form-control" placeholder="{{$p->description}}" wire:model.defer="description_profiles">  
+                            <textarea class="form-control" placeholder="{{$profile->description}}" value="{{$profile->description}}" id="poll_summer" wire:model.defer="description_profiles">{{$profile->description}}</textarea>
+                             {{-- <input type="text" class="form-control" placeholder="{{$profile->description}}" wire:model.defer="description_profiles"> --}}
                          </td>
                          <td>
                              <div class="d-flex gap-2">
-                                 <button type="button" class="btn btn-success btn-sm" wire:click="updateProfile({{ $p->id }})"><i class="fa-solid fa-floppy-disk"></i></button>
-                                 <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteProfile({{$p->id}}) : false"><i class="fas fa-trash"></i></button>
+                                 <button type="button" class="btn btn-success btn-sm" wire:click="updateProfile({{ $profile->id }})"><i class="fa-solid fa-floppy-disk"></i></button>
+                                 <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?') ? @this.deleteProfile({{$profile->id}}) : false"><i class="fas fa-trash"></i></button>
                              </div>
                          </td>
                       </tr>
@@ -47,8 +48,8 @@
          </div>
          <div class="my-5">
              <h6 class="mb-3">Gallery: <span class="badge bg-success">{{$data_item->vote_name}}</span></h6>
-             @foreach ($data_profile as $p)
-                 @foreach (json_decode($p->gallery) as $g)
+             @foreach ($data_profile as $profile)
+                 @foreach (json_decode($profile->gallery) as $g)
                      <img src="{{ asset('storage/' .$g)  }}" class="img-fluid img_gallery" alt="...">
                  @endforeach
              @endforeach
@@ -61,7 +62,7 @@
 <script>
     $(document).ready(function() {
         // $('#summernote').summernote();
-        $('#edit_summer_dsc').summernote({
+        $('.edit_summer_dsc').summernote({
           tabsize: 2,
           height: 200,
           toolbar: [
