@@ -7,18 +7,17 @@
         <form method="post" wire:submit.prevent="update">
             @csrf
             <input type="hidden" wire:model="postId">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <small class="text-secondary"><i class="fas fa-pen"></i> Edit Profile
                     <strong>{{ $data_item->vote_name }}</strong></small>
 
-                <div class="d-flex gap-2 justify-content-end">
+                <div class="">
                     <a href="/admin/addItems/{{ $data_item->vote_unit_id }}" class="btn btn-secondary btn-sm"
                         type="button"><i class="fas fa-reply"></i> Back</a>
                 </div>
             </div>
             <div class="card-body">
-                <div class="row d-flex align-items-center mb-5">
-                    <h5 class="text-muted">Basic Profile</h5>
+                <div class="row d-flex align-items-center mb-3">
                     <div class="col-md-4 d-flex justify-content-center mb-md-0">
                         <img src="{{ asset('storage/' . $data_item->vote_image) }}" class="img-thumbnail img_thumb_2">
                     </div>
@@ -36,56 +35,57 @@
                             </div>
                         @enderror
                         {{-- Input Name & title --}}
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control mb-3" aria-label="Name"
-                                    wire:model.defer="vote_name">
-                                {{-- Response notif form input short desc --}}
-                                @error('vote_name')
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control mb-3" aria-label="Position"
-                                    value="{{ $vote_position }}" wire:model="vote_position">
-                                {{-- Response notif form input short desc --}}
-                                @error('vote_position')
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
-                                    </div>
-                                @enderror
-                            </div>
+                        <div class="">
+                            <input type="text" class="form-control mb-3" aria-label="Name"
+                                wire:model.defer="vote_name">
+                            {{-- Response notif form input short desc --}}
+                            @error('vote_name')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="">
+                            <input type="text" class="form-control mb-3" aria-label="Position"
+                                value="{{ $vote_position }}" wire:model="vote_position">
+                            {{-- Response notif form input short desc --}}
+                            @error('vote_position')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @enderror
                         </div>
                         {{-- Input description --}}
-                        <textarea class="form-control mb-3" placeholder="{{ $data_item->short_desc }}" id="floatingTextarea2" rows="7""
-                            value="{{ $short_desc_input_old }}" wire:model="short_desc">{{ $data_item->short_desc }}</textarea>
+                        {{-- <textarea class="form-control mb-3" placeholder="{{ $data_item->short_desc }}" id="floatingTextarea2" rows="7""
+                            value="{{ $short_desc_input_old }}" wire:model="short_desc">{{ $data_item->short_desc }}</textarea> --}}
                         {{-- Response notif form input short desc --}}
-                        @error('short_desc')
+                        {{-- @error('short_desc')
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>{{ $message }}</strong>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
-                        @enderror
+                        @enderror --}}
                     </div>
-                    <hr>
-                    <div class="d-flex gap-2 justify-content-end">
-                        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save More
-                            Profile</button>
-                    </div>
-                </div>
+                    
 
+                </div>
+                <textarea class="form-control mb-3 edit_summer_dsc" placeholder="Description" id="description"
+                style="height: 100px" name="description"></textarea>
+
+                <div class="d-flex gap-2 justify-content-end mt-3">
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Save More
+                        Profile</button>
+                </div>
         </form>
 
 
         {{-- Looping Data Profile --}}
-        @if (isset($data_profile[0]))
+        {{-- @if (isset($data_profile[0]))
             <h6 class="mb-3">More Profile: <span class="badge bg-success">{{ $data_item->vote_name }}</span></h6>
             @foreach ($data_profile as $profile)
                 <form action="/admin/update-more-profile" method="post">
@@ -97,7 +97,6 @@
                             <img src="{{ asset('storage/' . $profile->icon) }}" class="img-thumbnail img_thumb_2">
                         </div>
                         <div class="col-md-8">
-                            {{-- <input class="form-control mb-3" type="file"> --}}
                             <input type="text" name="title" id="title" class="form-control mb-3" value="{{ $profile->title }}"
                                 aria-label="Title">
                             <textarea class="form-control mb-3 edit_summer_dsc" placeholder="Description" id="description"
@@ -122,29 +121,11 @@
                     @endforeach
                 @endforeach
             </div>
-            {{-- @livewire('update-more-item', ['data_item' => $data_item, 'data_profile' => $data_profile]) --}}
-        @endif
+        @endif --}}
 
 
     </div>
 
 </div>
 
-<script>
-    $(document).ready(function() {
-        // $('#summernote').summernote();
-        $('.edit_summer_dsc').summernote({
-            tabsize: 2,
-            height: 200,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link']]
-            ],
-
-        });
-    });
-</script>
+<script src="/js/summernote.js"></script>
