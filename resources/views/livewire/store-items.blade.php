@@ -16,7 +16,7 @@
             </div>
 
             <div class="card-body">
-                <div class="row d-flex align-items-center">
+                <div class="row d-flex align-items-center mb-3">
                     @if ($vote_image)
                         {{-- Thumbnail Poll Unit --}}
                         <div class="preview col-md-4 mb-3 mb-md-0 d-flex justify-content-center">
@@ -39,32 +39,38 @@
                             </div>
                         @enderror
                         {{-- Input Name & title --}}
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name" wire:model="vote_name">
-                                {{-- Response notif form input short desc --}}
-                                @error('vote_name')
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control mb-3" placeholder="Position" aria-label="Position" wire:model="vote_position">
-                            </div>
+                        <div class="">
+                            <input type="text" class="form-control mb-3" placeholder="Name" aria-label="Name" wire:model="vote_name">
+                            {{-- Response notif form input short desc --}}
+                            @error('vote_name')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @enderror
                         </div>
+                        <div class="">
+                            <input type="text" class="form-control mb-3" placeholder="Position" aria-label="Position" wire:model="vote_position">
+                        </div>
+
                         {{-- Input description --}}
                         {{-- <textarea class="form-control mb-3" placeholder="Bio" id="floatingTextarea2" style="height: 100px" wire:model="short_desc"></textarea> --}}
-                        <input type="text" class="form-control mb-3" placeholder="Short Desc" wire:model="short_desc">
+
+                        {{-- <input type="text" class="form-control mb-3" placeholder="Short Desc" wire:model="short_desc">
                         @error('short_desc')
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>{{ $message }}</strong>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
-                        @enderror
+                        @enderror --}}
                     </div>
                 </div>
+                {{-- Try V2 --}}
+                <div>
+                    <textarea class="form-control mb-3 edit_summer_dsc" placeholder="Description" id="description"
+                    style="height: 100px" name="description"></textarea>
+                </div>
+                {{-- end Try --}}
             </div>
 
             <div class="card-footer">
@@ -152,3 +158,5 @@
         </table>
     </div>
 </div>
+
+<script src="/js/summernote.js"></script>
