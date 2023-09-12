@@ -65,7 +65,7 @@
 
     <!-- JQuery summernote-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        
+
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -84,7 +84,7 @@
 
     {{-- Fancy Box --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-    
+
     {{-- Light Box --}}
     <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.0/dist/index.bundle.min.js"></script>
 
@@ -93,7 +93,7 @@
 
     <!-- Summernote JS - CDN Link -->
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    
+
     <!-- //Summernote JS - CDN Link -->
 
     {{-- Aos --}}

@@ -40,9 +40,9 @@
                         </div>
                         <div class="col-md-8 mb-2">
                         {{-- File name thumbnail --}}
-                        
+
                         {{-- Input title --}}
-                        <input type="text" class="form-control mb-3" placeholder="Title" aria-label="Title" name="title">
+                        <input type="text" class="form-control mb-3" placeholder="Title Polling" aria-label="Title" name="title">
                         {{-- Response notif form input title --}}
                         @error('title')
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
