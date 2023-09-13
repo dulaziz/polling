@@ -131,6 +131,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/update-more-profile', [pollingController::class, 'updateMoreProfileItem']);
         Route::get('/delete-more-profile', [pollingController::class, 'deleteMoreProfileItem']);
 
+        Route::get('/polling/createSlug', [pollingController::class, 'createSlug'])->middleware('auth');
+
         // Logout Page
         Route::get('/logout', [adminController::class, 'logout'])->name('logout');
     });

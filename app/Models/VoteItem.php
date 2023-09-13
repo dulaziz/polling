@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class VoteItem extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $table = 'vote_items';
 
@@ -21,10 +22,20 @@ class VoteItem extends Model
         'response',
         'vote_image',
         'vote_name',
+        'slug',
         'vote_position',
         'short_desc',
         'profile'
     ];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'vote_name'
+            ]
+        ];
+    }
 
     public function votings(){
         return $this->hasMany(Voting::class);

@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
 
+use Cviebrock\EloquentSluggable\Services\SlugService;
+
 class pollingController extends Controller
 {
     //
@@ -67,24 +69,15 @@ class pollingController extends Controller
 
 
     public function create_unit(Request $request){
-
-        // dd($request->all());
-
         // Buat rule validasi form input unit
         $validated = $request->validate([
             'thumbnail' => 'required|image|file',
             'title' => 'required',
+            'slug' => 'required',
             'date_start' => 'required',
             'date_end' => 'required',
             'subtitle' => 'required',
-            // Rule validasi form items
-            // 'vote_unit_id' => 'required',
-            // 'vote_image' => 'required|mimes:jpg,bmp,png',
-            // 'vote_name' => 'required',
-            // 'short_desc' => 'required',
         ]);
-
-        // dd($validated);
 
         // Cek jika ada gambar yang di inputkan dan simpan kedalam folder storage
         if($request->hasfile('thumbnail')){
@@ -631,6 +624,12 @@ class pollingController extends Controller
         VoteProfile::where('id', $profileId)->delete();
 
         return redirect(request()->header('Referer'))->with('success', 'Your data has been deleted!');
+    }
+
+    public function createSlug(Request $request)
+    {
+        $slug =  SlugService::createSlug(VoteUnit::class, 'slug', $request->title) ;
+        return response()->json(['slug' => $slug]);
     }
 
 }

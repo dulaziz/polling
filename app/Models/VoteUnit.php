@@ -2,22 +2,33 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class VoteUnit extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $fillable = [
         'thumbnail',
         'title',
+        'slug',
         'description',
         'date_start',
         'date_end',
         'subtitle'
     ];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function vote_items(){
        return $this->hasMany(VoteItem::class);
