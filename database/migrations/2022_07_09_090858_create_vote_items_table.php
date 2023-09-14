@@ -17,14 +17,13 @@ return new class extends Migration
     {
         Schema::create('vote_items', function (Blueprint $table) {
             $table->id();
-            // $table->foreignIdFor(Voting::class,'vote_id');
             $table->foreignIdFor(VoteUnit::class,'vote_unit_id');
             $table->integer('response')->nullable();
             $table->string('vote_image');
             $table->string('vote_name');
             $table->string('slug')->nullable();
             $table->string('vote_position')->nullable();
-            $table->text('short_desc')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

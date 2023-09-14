@@ -61,7 +61,7 @@ class pollingController extends Controller
         }
 
 
-        return view('addPolling', [
+        return view('polling.addPolling', [
             "title" => "Add Polling Unit",
             'vote_unit_id_latest' => $data
         ]);
@@ -251,7 +251,7 @@ class pollingController extends Controller
              // "total_vote" => $total_vote
         // ]);
 
-        return view('pollingUnitBar', [
+        return view('polling.pollingUnitBar', [
             "title" => "Polling Unit Bar",
             "polling_unit_with_items" => $polling_unit,
             "polling_item" => $polling_item,
@@ -261,61 +261,13 @@ class pollingController extends Controller
     }
 
     // Controller Fitur Polling Unit
-    public function show_unit($id){
+    public function show_unit($slug){
 
-// dd(decrypt($id));
-
-        // $polling_unit = DB::table('vote_units')
-        //                     ->where('id',$id->id)
-        //                     ->first();
-
-
-        // $polling_item = VoteItem::with('votings')
-        //                             ->where('vote_unit_id',$id->id)
-        //                             ->get();
-
-        //                             dd($polling_item);
-
-        // $total_vote =  DB::table('votings')
-        //                     ->select(DB::raw('count(*) as total_vote'))
-        //                     ->first();
-
+        $data_polling_unit_with_items = VoteUnit::with(['vote_items','votings'])->where('slug', $slug)->first();
 
         $total_user_vote = DB::table('votings')
-                                ->where('vote_unit_id',decrypt($id))
+                                ->where('vote_unit_id', $data_polling_unit_with_items->id)
                                 ->count('*');
-
-        // $data_polling_unit = DB::select(
-        //    'SELECT *
-        //    FROM `vote_units`
-        //    JOIN `votings`
-        //    ON	`votings`.`vote_unit_id` = `vote_units`.`id`
-        //    WHERE`votings`.`vote_unit_id` = '.$id->id.''
-        // );
-
-        // $data_polling_item = DB::select(
-        //     'SELECT * FROM `vote_items` JOIN `votings` ON `votings`.`vote_unit_id` = `vote_items`.`vote_unit_id` WHERE `vote_items`.`vote_unit_id` ='.$id->id.' AND `votings`.`user_vote` = '. Auth::user()->id .''
-        // );
-
-        // dd($data_polling_item);
-
-        // $data_polling_unit = DB::table('vote_units')
-        //                     ->crossJoin('vote_items','vote_items.vote_unit_id','vote_units.id')
-        //                     // ->crossJoin('votings','votings.vote_unit_id','vote_units.id')
-        //                     // ->orderBy('','ASC')
-        //                     ->get();
-
-
-        // dd($data_polling_unit);
-
-
-        // $data_votings = VoteUnit::with('votings')->where('user_vote', Auth::user()->id)->get();
-
-        //                         dd($data_votings);
-
-
-
-        $data_polling_unit_with_items = VoteUnit::with(['vote_items','votings'])->where('id',decrypt($id))->first();
 
         // dd($data_polling_unit_with_items);
 
@@ -446,14 +398,8 @@ class pollingController extends Controller
     }
 
     public function edit(VoteUnit $id){
-        // $vote_unit_with_items = VoteUnit::with(['vote_items'])
-        //                 ->where('id',$id->id)
-        //                 ->first();
 
-        // dd($id);
-
-                        // dd($vote_unit_with_items);
-        return view('editPolling', [
+        return view('polling.editPolling', [
             "title" => "Edit Polling Unit",
             "vote_unit" => $id
         ]);
@@ -481,6 +427,7 @@ class pollingController extends Controller
 
         $validatedData = $request->validate([
             'title' => 'required',
+            'slug'  => 'required',
             'subtitle' => 'required',
         ]);
 
@@ -545,11 +492,11 @@ class pollingController extends Controller
 
         if($save){
 
-            return back()->with('success', 'Your data has been created!');
+            return redirect('admin/editPolling/'.$validatedData['slug'])->with('success', 'Your data has been updated!');
 
         }else{
 
-            return back()->with('error', 'Your data failed created!')->withInput();
+            return redirect('admin/editPolling/'.$validatedData['slug'])->with('error', 'Your data failed updated!')->withInput();
         }
 
     }

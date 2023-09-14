@@ -30,7 +30,7 @@
                         {{-- Thumbnail Poll Unit --}}
                         <div class="preview col-md-4 my-3">
                             <img src="{{ asset('storage/' . $vote_unit->thumbnail) }}" id="file-ip-1-preview" class="img-thumbnail img_thumb_upl">
-                            
+
                             {{-- File name thumbnail --}}
                             <input class="form-control mt-2" type="hidden" value="{{ $vote_unit->thumbnail }}" name="thumbnail_old">
                             <input class="form-control mt-2" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="thumbnail">
@@ -61,15 +61,36 @@
                     @endif
 
                     <div class="col-md-8 mb-2">
-                    {{-- Input title --}}
-                    <input type="text" class="form-control mb-3" placeholder="Title" aria-label="Title" value="{{ $vote_unit->title }}" name="title">
-                     {{-- Response notif form input thumbnail --}}
-                     @error('title')
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>{{ $message }}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                {{-- Input title --}}
+                                <input type="text" class="form-control mt-4 mb-2" value="{{$vote_unit->title}}"
+                                    aria-label="Title" name="title" id="title">
+                                {{-- Response notif form input title --}}
+                                @error('title')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-6">
+                                {{-- Input title --}}
+                                <span class="text-xs text-danger">click tab for generate  new slug</span>
+                                <input type="text" class="form-control mb-2" value="{{$vote_unit->slug}}"
+                                    aria-label="slug" name="slug" id="slug"  readonly>
+                                {{-- Response notif form input title --}}
+                                @error('slug')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @enderror
+                            </div>
                         </div>
-                    @enderror
+
                     {{-- Input subtitle --}}
                     <input type="text" class="form-control mb-3" placeholder="Subtitle" aria-label="Subtiitle" value="{{ $vote_unit->subtitle }}" name="subtitle">
                      {{-- Response notif form input thumbnail --}}
@@ -174,6 +195,16 @@
 </div>
 
 <script>
+
+    const title = document.querySelector('#title');
+    const slug = document.querySelector('#slug');
+
+    title.addEventListener('change', function() {
+        fetch('/admin/polling/createSlug?title=' + title.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug)
+    });
+
     $(document).ready(function() {
         // $('#summernote').summernote();
         $('#edit_summer').summernote({

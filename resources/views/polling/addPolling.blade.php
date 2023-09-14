@@ -43,6 +43,7 @@
                             <div class="col-md-8 mb-2">
                                 {{-- File name thumbnail --}}
 
+                                {{-- title & slug --}}
                                 <div class="row">
                                     <div class="col-lg-6">
                                         {{-- Input title --}}
@@ -71,8 +72,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
-
 
                                 {{-- Input subtitle --}}
                                 <input type="text" class="form-control mb-3" placeholder="Subtitle" aria-label="Subtitle"
