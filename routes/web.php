@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 // Web
 
 // Polling Uni Page
-Route::get('/pollingUnit/{id}', [pollingController::class, 'show_unit']);
+Route::get('/polling/{id}', [pollingController::class, 'show_unit']);
 // View Unit Bar
 Route::get('/pollingUnitBar/{id}', [pollingController::class, 'show_bar']);
 
@@ -38,7 +38,7 @@ Route::middleware('guest:web')->group(function () {
     Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
     Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
     // Polling Uni Page
-    Route::get('/pollingUnit/{id}', [pollingController::class, 'show_unit']);
+    Route::get('/polling/{id}', [pollingController::class, 'show_unit']);
     // View Unit Bar
     Route::get('/pollingUnitBar/{id}', [pollingController::class, 'show_bar']);
     // View Profile
@@ -55,7 +55,7 @@ Route::middleware(['auth:web',])->group(function () {
     // PollSurvey Page
     Route::post('/pollSurvey', [pollingController::class, 'set_polling_survey']);
     // Polling Uni Page
-    Route::get('/pollingUnit/{id}', [pollingController::class, 'show_unit']);
+    Route::get('/polling/{id}', [pollingController::class, 'show_unit']);
     // View Unit Bar
     Route::get('/pollingUnitBar/{id}', [pollingController::class, 'show_bar']);
     // Action Logout

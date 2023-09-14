@@ -277,7 +277,7 @@ class pollingController extends Controller
 
         // dd($data_user_vote);
 
-        return view('pollingUnit', [
+        return view('polling.pollingUnit', [
             "title" => "Polling Unit Bar",
             // "polling_unit" => $polling_unit,
             "polling_unit_with_items" => $data_polling_unit_with_items,

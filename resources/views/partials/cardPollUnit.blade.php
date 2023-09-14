@@ -33,7 +33,7 @@
                             <h2><strong>{{ $dp->title }}</strong></h2>
                         </a>
                     @else
-                        <a href="/pollingUnit/{{ $dp->slug }}" class="mb-3 text-decoration-none text-dark">
+                        <a href="/polling/{{ $dp->slug }}" class="mb-3 text-decoration-none text-dark">
                             <h2><strong>{{ $dp->title }}</strong></h2>
                         </a>
                     @endif
@@ -49,8 +49,8 @@
                             <small class="text-danger fst-italic mb-1"><i class="fas fa-times-circle"></i> Closed
                                 Polling</small>
                         @elseif(date('d-m-Y') < $date_start)
-                            <small class="text-success fst-italic me-md-3"><i class="fas fa-check-circle mb-0"></i>
-                                Comming Soon Polling </small>
+                            <small class="text-primary fst-italic me-md-3"><i class="fas fa-check-circle mb-0"></i>
+                                Coming Soon Polling </small>
                             <small>{{ $date_start }} s/d {{ $date_end }}</small>
                         @else
                             <small class="text-success fst-italic mb-1"><i class="fas fa-check-circle"></i> Live
@@ -64,7 +64,7 @@
                             <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="btn btn-primary mt-md-3"
                                 type="button">Lihat Polling</a>
                         @else
-                            <a href="/pollingUnit/{{ $dp->slug }}" class="btn btn-primary mt-md-3"
+                            <a href="/polling/{{ $dp->slug }}" class="btn btn-primary mt-md-3"
                                 type="button">Ikuti Polling</a>
                         @endif
                     </div>
@@ -85,7 +85,7 @@
         @if ($date_end <= $today)
           <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h2><strong>{{ $dp->title }}</strong></h2></a>
         @else
-          <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h2><strong>{{ $dp->title }}</strong></h2></a>
+          <a href="/polling/{{ encrypt($dp->id) }}" class="mb-3 text-decoration-none text-dark"><h2><strong>{{ $dp->title }}</strong></h2></a>
         @endif
         <hr class="d-none d-md-block">
         <div class="d-none d-md-block">
@@ -104,7 +104,7 @@
         @if ($epoch_end <= $times)
           <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="btn btn-primary mt-md-3" type="button">Lihat Polling</a>
         @else
-          <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="btn btn-primary mt-md-3" type="button">Ikuti Polling</a>
+          <a href="/polling/{{ encrypt($dp->id) }}" class="btn btn-primary mt-md-3" type="button">Ikuti Polling</a>
         @endif
         </div>
         <hr class="d-block d-md-none">
@@ -123,7 +123,7 @@
     {{-- @if ($date_end <= $today)
               <a href="/pollingUnitBar/{{ encrypt($dp->id) }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
             @else
-              <a href="/pollingUnit/{{ encrypt($dp->id) }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
+              <a href="/polling/{{ encrypt($dp->id) }}"><h5 class="mb-3"><strong>{{ $dp->title }}</strong></h5></a>
             @endif
               <p class="text-muted mb-3 card_desc">{{$dp->description}}
               </p>
@@ -151,7 +151,7 @@
     {{-- @if ($epoch_end <= $times)
                     <a href="/pollingUnitBar/{{ encrypt($dp->id) }}" class="btn btn-primary btn-sm" type="button">Lihat Polling</a>
                   @else
-                    <a href="/pollingUnit/{{ encrypt($dp->id) }}" class="btn btn-primary btn-sm" type="button">Ikuti Polling</a>
+                    <a href="/polling/{{ encrypt($dp->id) }}" class="btn btn-primary btn-sm" type="button">Ikuti Polling</a>
                   @endif
                 </div>
 

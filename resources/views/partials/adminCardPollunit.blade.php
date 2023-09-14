@@ -44,8 +44,8 @@
                             <small class="text-danger fst-italic"><i class="fas fa-times-circle mb-0"></i> Closed
                                 Polling </small>
                         @elseif(date('d-m-Y') < $date_start)
-                            <small class="text-success fst-italic me-md-3"><i class="fas fa-check-circle mb-0"></i>
-                                Comming Soon Polling </small>
+                            <small class="text-primary fst-italic me-md-3"><i class="fas fa-check-circle mb-0"></i>
+                                Coming Soon Polling </small>
                             {{ $date_start }} s/d {{ $date_end }}
                         @else
                             <small class="text-success fst-italic me-md-3"><i class="fas fa-check-circle mb-0"></i> Live
