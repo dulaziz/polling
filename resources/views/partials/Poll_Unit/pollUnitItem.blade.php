@@ -1,4 +1,21 @@
 @php
+    $epoch_start = $polling_unit_with_items->date_start;
+    $dt = new DateTime("@$epoch_start"); // convert UNIX timestamp to PHP DateTime
+    $date_start = $dt->format('d-m-Y');
+
+    $epoch_end = $polling_unit_with_items->date_end;
+    $dt = new DateTime("@$epoch_end"); // convert UNIX timestamp to PHP DateTime
+    $date_end = $dt->format('d-m-Y');
+
+    // $date = new DateTime('07/09/2022'); // format: MM/DD/YYYY
+    // echo $date->format('U');
+
+    //    echo time();
+
+    $times = round(microtime(true));
+    $ts = new DateTime("@$times");
+    $today = $ts->format('d-m-Y');
+
     $i =1;
 @endphp
 
@@ -73,7 +90,7 @@
                 </div>
 
                 {{-- Vote progres bar --}}
-                
+
                     {{-- Cari jumlah persentase dari pemilih --}}
                     @php
                         // Cek apakah ada data total user vote
@@ -95,7 +112,7 @@
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $total_vote }}%" aria-valuenow="{{ $total_vote }}" aria-valuemin="0" aria-valuemax="100"></div>
                         @endif
                     </div>
-                
+
 
                 <hr class="d-block d-md-none">
             </div>
@@ -193,8 +210,12 @@
                     @if (Auth::user())
                         {{-- Vote Button --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile/{{ encrypt($pi->id) }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
-                            <button type="submit" class="btn btn-success btn-sm px-5">Vote</button>
+                            <a href="/profile/{{ $pi->slug }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                            @if(date('d-m-Y') < $date_start)
+                                <a href="javascript:void(0)" onclick="alert('Pemungutan suara akan dimulai pada {{$date_start}} !!')" class="btn btn-success btn-sm px-5">Vote</a>
+                            @else
+                                <button type="submit" class="btn btn-success btn-sm px-5">Vote</button>
+                            @endif
                         </div>
                     @else
                         {{-- Vote Button Redirect Login --}}

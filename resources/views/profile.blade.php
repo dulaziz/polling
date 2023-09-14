@@ -18,7 +18,7 @@
                 <h1 class="card-title mb-0 fw-bold mb-3 mb-md-0 text-uppercase">{{$data_item->vote_name}}</h1>
                 <hr class="mt-1 mb-3 d-none d-md-block">
                 <p class="mb-1 fw-bold">{{$data_item->vote_position}}</p>
-                <p class="fw-bold">{{ $data_item->short_desc }}</p>
+                <p class="fw-bold">{!! $data_item->description !!}</p>
             </div>
         </div>
         <div class="col-md-5 d-flex align-items-center justify-content-center profile_bgx mb-3">

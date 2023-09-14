@@ -3,6 +3,7 @@
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\pollingController;
+use App\Http\Controllers\pollingItemController;
 use App\Http\Livewire\AddItems;
 use App\Http\Livewire\AddProfileItems;
 use App\Http\Controllers\ProductController;
@@ -101,22 +102,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/addPollItems', function () {
             return view('addPollItems', ["title" => "Add Poll Items"]);
         });
-        Route::post('/addUnit', [pollingController::class, 'create_unit'])->name('add-unit');;
+        Route::post('/addUnit', [pollingController::class, 'create_unit'])->name('add-unit');
 
         // View Unit Bar
         Route::get('/pollingUnitBar/{id}', [pollingController::class, 'show_bar']);
 
-        // Add Item Page
-        Route::get('/addItems/{id}', AddItems::class);
 
-        // Edit Item
-        // Route::get('/editPollItems/{id}', function () {
-        //     return view('editPollItems', [
-        //         "title" => "Edit Polling Items"
-        //     ]);
-        // });
+        // polling item area
+        Route::get('/add-polling-item/{vote_unit}', [pollingItemController::class, 'create']);
+        Route::post('/add-item', [pollingItemController::class, 'createItem'])->name('add-item');
 
-        Route::get('/editPollItems/{id}', EditProfileItems::class);
+        Route::get('/edit-polling-item/{voteItem}', [pollingItemController::class, 'edit']);
+        Route::post('/edit-polling-item/{id}', [pollingItemController::class, 'update']);
+
+         Route::post('/delete-polling-item', [pollingItemController::class, 'delete'])->name('delete-poll-item');
+
+
 
         // Result Polling Page
         Route::get('/result/{vote_unit}', [pollingController::class, 'result']);
@@ -131,7 +132,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/update-more-profile', [pollingController::class, 'updateMoreProfileItem']);
         Route::get('/delete-more-profile', [pollingController::class, 'deleteMoreProfileItem']);
 
-        Route::get('/polling/createSlug', [pollingController::class, 'createSlug'])->middleware('auth');
+        //generate slug
+        Route::get('/polling/createSlug', [pollingController::class, 'createSlug']);
+        Route::get('/polling-item/createSlug', [pollingItemController::class, 'createSlug']);
 
         // Logout Page
         Route::get('/logout', [adminController::class, 'logout'])->name('logout');
@@ -173,30 +176,6 @@ Route::get('/profile', function () {
     ]);
 });
 
-
-
-// Route::get('/moreProfile', function () {
-//     return view('moreProfile', [
-//         "title" => "Add More Profile"
-//     ]);
-// });
-
-
-
-
-
-
-
-
-// root Testing
-// Route::get('/pollSurvey', function () {
-//     return view('pollSurvey', [
-//         "title" => "Poll Survey"
-//     ]);
-// });
-
-
-
 Route::get('/pollSurvey/{id}', [pollingController::class, 'polling_survey']);
 
 
@@ -229,14 +208,3 @@ Route::get('/viewProfileItems', function () {
         "title" => "View Profile Items"
     ]);
 });
-
-Route::get('/products', function () {
-    return view('products', [
-        "title" => "Products"
-    ]);
-});
-Route::post('/save', [ProductController::class, 'save'])->name('save.product');
-Route::get('/fetchProducts', [ProductController::class, 'fetchProducts'])->name('fetch.products');
-Route::get('/getProductDetails', [ProductController::class, 'getProductDetails'])->name('get.product.details');
-Route::post('/updateProduct', [ProductController::class, 'updateProduct'])->name('update.product');
-Route::post('/deleteProduct', [ProductController::class, 'deleteProduct'])->name('delete.product');

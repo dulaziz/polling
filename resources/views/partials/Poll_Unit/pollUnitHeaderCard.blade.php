@@ -7,11 +7,6 @@
     $dt = new DateTime("@$epoch_end"); // convert UNIX timestamp to PHP DateTime
     $date_end = $dt->format('d-m-Y');
 
-    // $date = new DateTime('07/09/2022'); // format: MM/DD/YYYY
-    // echo $date->format('U');
-
-    //    echo time();
-
     $times = round(microtime(true));
     $ts = new DateTime("@$times");
     $today = $ts->format('d-m-Y');

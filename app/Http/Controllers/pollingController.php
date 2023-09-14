@@ -13,19 +13,14 @@ use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Support\Facades\Crypt;
-
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class pollingController extends Controller
 {
-    //
-
     public function index(){
 
         $data_pollings = VoteUnit::with('votings')
-            ->orderBy('id', 'DESC')
+            ->orderBy('id', 'asc')
             ->get();
 
 
@@ -201,18 +196,12 @@ class pollingController extends Controller
 
     }
 
-    public function show_profile_item($id){
-        // dd(decrypt($id));
+    public function show_profile_item($voteItem){
 
-        // $data_unit = VoteUnit::find($id);
-        $data_item = VoteItem::with('voteProfiles')->where('id', decrypt($id))->first();
-        // $data = with('voteProfile')->first();
-
-        // dd($data_item);
+        $data_item = VoteItem::with('voteProfiles')->where('slug', $voteItem)->first();
 
         return view('profile', [
             "title" => "View Profile Items",
-            // 'data_unit' => $data_unit,
             'data_item' => $data_item
         ]);
 
@@ -232,24 +221,9 @@ class pollingController extends Controller
                             ->where('vote_item_id',decrypt($id))
                             ->first();
 
-
-        // $total_votings = Voting::with(['voteItem'])
-        //                         ->where('vote_unit_id',$id->id)
-        //                         ->get();
-
-        //                         dd($total_votings);
-
-        // $total_user_vote = DB::table('votings')->count('*');
-
         $total_user_vote = DB::table('votings')
                                 ->where('vote_unit_id',decrypt($id))
                                 ->count('*');
-
-        // $total_vote = $total_votings->response / $total_user_vote * 100;
-
-        // return view('viewPollUnit', [
-             // "total_vote" => $total_vote
-        // ]);
 
         return view('polling.pollingUnitBar', [
             "title" => "Polling Unit Bar",
@@ -269,13 +243,7 @@ class pollingController extends Controller
                                 ->where('vote_unit_id', $data_polling_unit_with_items->id)
                                 ->count('*');
 
-        // dd($data_polling_unit_with_items);
-
-        // dd($total_user_vote);
-
         $data_user_vote = Voting::where('user_vote', Auth::user()->id);
-
-        // dd($data_user_vote);
 
         return view('polling.pollingUnit', [
             "title" => "Polling Unit Bar",

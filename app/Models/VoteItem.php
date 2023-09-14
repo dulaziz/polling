@@ -24,8 +24,8 @@ class VoteItem extends Model
         'vote_name',
         'slug',
         'vote_position',
-        'short_desc',
-        'profile'
+        'description',
+        'premium_profile'
     ];
 
     public function sluggable(): array
@@ -35,6 +35,11 @@ class VoteItem extends Model
                 'source' => 'vote_name'
             ]
         ];
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     public function votings(){

@@ -70,7 +70,7 @@
         @if ($epoch_end <= $times)
         @else
             <li>
-                <a href="admin/addItems/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-users"></i>
+                <a href="admin/add-polling-item/{{ $pu->slug }}" class="dropdown-item"><i class="fa-solid fa-users"></i>
                     Poll items</a>
             </li>
             <li>
