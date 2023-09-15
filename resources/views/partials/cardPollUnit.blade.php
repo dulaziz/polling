@@ -1,3 +1,23 @@
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-12 d-flex justify-content-end">
+            <div class="mr-5">
+                <form action="/home" >
+                    <div class="input-group">
+                        <div class="form-outline">
+                            <input type="search" id="search" name="search" class="form-control"
+                                placeholder="search polling....." value="{{request('search')}}"/>
+                        </div>
+                        <button id="search-button" type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{-- Looping Data Polling  --}}
 @foreach ($data_polling as $dp)
     @php
@@ -59,8 +79,8 @@
                             <a href="/pollingUnitBar/{{ $dp->slug }}" class="btn btn-primary mt-md-3"
                                 type="button">Lihat Polling</a>
                         @else
-                            <a href="/polling/{{ $dp->slug }}" class="btn btn-primary mt-md-3"
-                                type="button">Ikuti Polling</a>
+                            <a href="/polling/{{ $dp->slug }}" class="btn btn-primary mt-md-3" type="button">Ikuti
+                                Polling</a>
                         @endif
                     </div>
                     <hr class="d-block d-md-none">

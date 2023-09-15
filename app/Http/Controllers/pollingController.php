@@ -20,13 +20,17 @@ class pollingController extends Controller
     public function index(){
 
         $data_pollings = VoteUnit::with('votings')
-            ->orderBy('id', 'desc')
-            ->paginate(5)->withQueryString();
+            ->orderBy('id', 'desc');
+
+        if(request('search')) {
+            $data_pollings->where('title', 'like', '%'.request('search').'%')
+                ->orWhere('description', 'like', '%'.request('search').'%');
+        }
 
 
         return view('home', [
             "title" => "Home",
-            "data_polling" => $data_pollings,
+            "data_polling" => $data_pollings->paginate(5)->withQueryString(),
         ]);
 
     }
