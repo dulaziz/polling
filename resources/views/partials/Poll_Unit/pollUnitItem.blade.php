@@ -84,9 +84,7 @@
                 {{-- Vote Name --}}
                 <div class="d-flex mb-2">
                     {{-- <h5>{{$i++}}.</h5> --}}
-                        <a href="/profile/{{ encrypt($pi->id) }}" class="text-decoration-none text-dark"><h2>{{ $pi->vote_name }}</h2></a>
-                        {{-- <p class="card-text mb-0"><small class="text-muted">{{ $pi->vote_position }}</small></p> --}}
-                        {{-- <a href="/profile/{{ encrypt($pi->id) }}">Profile</a> --}}
+                        <a href="/profile/{{ $pi->slug}}" class="text-decoration-none text-dark"><h2>{{ $pi->vote_name }}</h2></a>
                 </div>
 
                 {{-- Vote progres bar --}}
@@ -154,13 +152,13 @@
                     @if (Auth::user())
                         {{-- Vote Button --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                            <a href="/profile/{{ $pi->slug }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
                             <button type="submit" class="btn btn-success btn-sm px-5">Vote</button>
                         </div>
                     @else
                         {{-- Vote Button Redirect Login --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                            <a href="/profile/{{ $pi->slug }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
                             <a href="{{ route('google.login') }}" class="btn btn-success btn-sm px-5">Vote</a>
                         </div>
                     @endif
@@ -220,7 +218,7 @@
                     @else
                         {{-- Vote Button Redirect Login --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
-                            <a href="/profile/{{ $pi->id }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
+                            <a href="/profile/{{ $pi->slug }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
                             <a href="{{ route('google.login') }}" class="btn btn-success btn-sm px-5">Vote</a>
                         </div>
                     @endif

@@ -70,3 +70,7 @@
         </div>
     </div>
 @endforeach
+
+<div class="d-flex justify-content-center">
+    {{ $data_polling->links() }}
+</div>

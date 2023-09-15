@@ -113,3 +113,7 @@
 </div>
 </div>
 @endforeach
+
+<div class="d-flex justify-content-center">
+    {{ $polling_unit->links() }}
+</div>

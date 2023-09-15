@@ -14,8 +14,7 @@ class adminController extends Controller
     //
     public function index(){
 
-        $polling_unit = DB::table('vote_units')->get();
-
+        $polling_unit = VoteUnit::orderBy('id', 'desc')->paginate(5)->withQueryString();
 
         return view('admin', [
             "title" => "Polling Unit",

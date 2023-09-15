@@ -5,10 +5,7 @@
         @foreach ($data_item->voteProfiles as $v)
             @foreach (json_decode($v->gallery) as $key => $g)
                 <img src="{{ asset('storage/'.$g) }}" class="img-fluid img_gallery" alt="...">
-                {{-- <td>
-
-
-
+                <td>
                     @if($i === $g)
                         {{$i}}
                         <br>
@@ -20,7 +17,7 @@
                     @endphp
                         <button wire:click="confirmDelete({{json_encode($key)}})" class="btn-secondary text-dark w-32 px-4 py-1 hover:bg-red-600 rounded border">Delete</button>
                     @endif
-                </td> --}}
+                </td>
             @endforeach
         @endforeach
     </div>

@@ -123,7 +123,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/result/{vote_unit}', [pollingController::class, 'result']);
 
         // More Profile Page
-        Route::get('/moreProfile/{id}', AddProfileItems::class);
+        Route::get('/moreProfile/{slug}', AddProfileItems::class);
 
         // Show Profile Page
         Route::get('/showProfile/{id}', [pollingController::class, 'show_profile']);

@@ -20,8 +20,8 @@ class pollingController extends Controller
     public function index(){
 
         $data_pollings = VoteUnit::with('votings')
-            ->orderBy('id', 'asc')
-            ->get();
+            ->orderBy('id', 'desc')
+            ->paginate(5)->withQueryString();
 
 
         return view('home', [
@@ -122,71 +122,9 @@ class pollingController extends Controller
     }
 
 
-    public function create_items(Request $request){
-
-        // dd($request->all());
-
-        $validated = $request->validate([
-            'vote_unit_id' => 'required',
-            'vote_image' => 'required|mimes:jpg,bmp,png',
-            'vote_name' => 'required',
-            'vote_position' => 'required',
-            'short_desc' => 'required',
-        ]);
-
-         // Cek jika ada gambar yang di inputkan dan simpan kedalam folder storage
-        if($request->hasfile('vote_image')){
-            $validated['vote-image'] = $request->file('vote_image')->store('vote-items');
-        }
-
-        $save = VoteItem::create($validated);
-
-        if($save){
-
-            return redirect('admin')->with('success', 'Your data has been created!');
-
-        }else{
-
-            return back()->with('error', 'Your data failed created!')->withInput();
-        }
-
-    }
-
-
     public function show_profile($id){
 
         $data_item = VoteItem::with('voteProfiles')->where('vote_unit_id', $id)->first();
-
-        // Fitur tambah element array di akhir.
-        // $data_array = json_decode($data_item->voteProfiles[0]->gallery);
-        // $data_gambar_baru = "gallery-items\/m6LS4xMuUl89qF8RHkNeua7wUgNDBNCu9TRIw6JG.png";
-        // Tambah element di akhir array
-        // $debug = array_push($data_array,$data_gambar_baru);
-
-        // cari element sesuai element dan ganti dengan element
-        // $debug_search_filter = array_filter($data_array, fn($element) => $element = $data_gambar_baru);
-
-        // cari element sesuai element
-        // $debug_search = array_search($data_gambar_baru, $data_array);
-
-        // rubah element array
-        // $debug_replace = $data_array.seac($data_gambar_baru);
-        // Akhir fitur
-
-
-        // Looping data_array
-        // foreach($data_array as $key => $value){
-        //     echo "".$key." ".$value. "<br>";
-        // }
-
-        // die;
-
-        // dd($data_item);
-        // dd($data_array);
-        // dd($data_gambar_baru);
-        // dd($debug_search_filter);
-        // dd($debug_search);
-        // dd($debug_replace);
 
         return view('viewProfileItems', [
             "title" => "View Profile Items",

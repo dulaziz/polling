@@ -28,18 +28,6 @@
             </div>
 
             @if ($data_item->voteProfile)
-                {{-- {{$data_item->voteProfile->title}} --}}
-
-                {{-- More Profile --}}
-                {{-- <ul class="nav nav-pills mb-3 d-flex justify-content-between justify-content-md-start" id="pills-tab" role="tablist">
-        @foreach ($data_item->voteProfiles as $d)
-        <li class="nav-item me-2" role="presentation">
-            <button class="nav-link" id="pills-{{$d->title}}" data-bs-toggle="pill" data-bs-target="#pills-{{ $d->title }}" type="button" role="tab" aria-controls="pills-{{$d->title}}" aria-selected="true">{{$d->title}}</button>
-        </li>
-        @endforeach
-    </ul> --}}
-
-                {{-- @endforeach --}}
 
                 {{-- Gallery --}}
                 @if ($data_item->voteProfiles)
@@ -51,7 +39,7 @@
                             <div class="slider">
                                 @foreach (json_decode($item->gallery) as $g)
                                     <a href="{{ asset('storage/' . $g) }}" class="fancybox item" data-fancybox="gallery1">
-                                        <img src="{{ asset('storage/' . $g) }}" class="img-fluid img_slick" alt="...">
+                                    <img src="{{ asset('storage/' . $g) }}" class="img-fluid img_slick" alt="...">
                                 @endforeach
                             </div>
                         @endforeach
@@ -60,7 +48,7 @@
 
                 <div class="d-grid gap-2 d-md-flex justify-content-end">
                     @if (Auth::guard('admin')->user())
-                        <a href="/admin/addItems/{{ $data_item->vote_unit_id }}" class="text-end text-decoration-none mb-3"
+                        <a href="/admin/add-polling-item/{{ $data_item->voteUnit[0]->slug }}" class="text-end text-decoration-none mb-3"
                             type="button"><i class="fas fa-reply"></i> Back</a>
                     @endif
                 </div>

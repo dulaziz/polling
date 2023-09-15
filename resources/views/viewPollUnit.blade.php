@@ -73,7 +73,7 @@
           <div class="card-body">
             {{-- Vote Name --}}
             <h5 class="card-title fw-bold">{{ $item->vote_name }}</h5>
-            <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p>
+            <p class="card-text"><small class="text-muted">{!! $item->description !!}</small></p>
             <div class="progress" style="height: 2rem">
                 {{-- Cari jumlah persentase dari pemilih --}}
                 @php

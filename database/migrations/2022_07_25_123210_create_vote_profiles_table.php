@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::create('vote_profiles', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('vote_item_id');
-            $table->string('icon');
-            $table->string('title');
-            $table->text('description');
             $table->longText('gallery');
             $table->timestamps();
         });

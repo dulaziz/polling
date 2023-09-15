@@ -158,7 +158,7 @@
                                     <td>
                                         <a href="/admin/edit-polling-item/{{ $item->slug }}"
                                             class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i></a>
-                                        <a href="/admin/moreProfile/{{ $item->id }} "
+                                        <a href="/admin/moreProfile/{{ $item->slug }} "
                                             class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add Gallery</a>
                                         {{-- Delete Item --}}
                                         <form action="{{ route('admin.delete-poll-item') }}" method="post">
@@ -177,7 +177,7 @@
                                     <td>
                                         <a href="/admin/edit-polling-item/{{ $item->slug }}"
                                             class="btn btn-primary btn-sm text-light"><i class="fas fa-pen"></i></a>
-                                        <a href="/admin/moreProfile/{{ $item->id }} "
+                                        <a href="/admin/moreProfile/{{ $item->slug }} "
                                             class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add Gallery</a>
                                         {{-- Delete Item --}}
                                         <form action="{{ route('admin.delete-poll-item') }}" method="post">

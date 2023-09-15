@@ -20,9 +20,6 @@
         {{-- <h5>{{$i++}}.</h5> --}}
         <div class="">
             <h2>{{ $item->vote_name }}</h2>
-            {{-- <p class="card-text"><small class="text-muted">{{ $item->vote_position }}</small></p> --}}
-            {{-- <p class="card-text"><small class="text-muted">{{ $item->short_desc }}</small></p> --}}
-            {{-- <a href="/profile/{{ encrypt($item->id) }}">Profile</a> --}}
         </div>
       </div>
           {{-- Cari jumlah persentase dari pemilih --}}
