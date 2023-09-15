@@ -13,7 +13,7 @@ class AddProfileItems extends Component
     public $more_item_title;
 
     public function mount($id){
-        $this->data_item = VoteItem::find($id);
+        $this->data_item = VoteItem::with('voteUnit')->find($id);
     }
 
     public function render()

@@ -10,7 +10,7 @@
             <img src="{{ 'storage/' . $pu->thumbnail }}" class="pstr_thumb" alt="...">
         </div>
         <div class="col-md-8">
-            <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}" class="mb-3 text-decoration-none text-dark">
+            <a href="admin/pollingUnitBar/{{ $pu->slug }}" class="mb-3 text-decoration-none text-dark">
                 <h2><strong>{{ $pu->title }}</strong></h2>
             </a>
             <hr class="d-none d-md-block">
@@ -63,7 +63,7 @@
     </button>
     <ul class="dropdown-menu dropdown-menu-dark my-2">
         <li>
-            <a href="admin/pollingUnitBar/{{ encrypt($pu->id) }}" class="dropdown-item"><i class="fa-solid fa-eye"></i>
+            <a href="admin/pollingUnitBar/{{ $pu->slug }}" class="dropdown-item"><i class="fa-solid fa-eye"></i>
                 View</a>
             <a href="admin/editPolling/{{ $pu->slug }}" class="dropdown-item"><i class="fas fa-pen"></i> Edit</a>
         </li>
@@ -92,7 +92,7 @@
             </form>
         @endif
         <li>
-            <a href="admin/result/{{ $pu->id }}" class="dropdown-item"><i class="fa-solid fa-chart-bar"></i>
+            <a href="admin/result/{{ $pu->slug }}" class="dropdown-item"><i class="fa-solid fa-chart-bar"></i>
                 Result</a>
         </li>
         {{-- Delete Unit --}}

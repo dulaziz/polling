@@ -26,16 +26,10 @@ class StoreProfileItems extends Component
     protected $listeners = ['profileAdded' => 'render'];
 
     protected $rules = [
-           'icon_profile' => 'required|image|max:1024',
-           'title_profile' => 'required',
-           'desc_profile' => 'required',
-           'gallery.*' => 'required|image|max:1024',
+                'gallery.*' => 'required|image|max:1024',
            ];
 
     private function resetInput(){
-        $this->icon_profile = null;
-        $this->title_profile = null;
-        $this->desc_profile = null;
         $this->gallery = null;
     }
 
@@ -43,15 +37,12 @@ class StoreProfileItems extends Component
     public function mount($data_item){
         $this->data_id = $data_item->id;
         $this->data_vote_unit_id = $data_item->vote_unit_id;
-        $this->data_image = $data_item->vote_image;
 
     }
 
     public function storeProfile(){
 
         $this->validate();
-
-        $this->icon_profile = $this->icon_profile->store('icon-items');
 
         foreach ($this->gallery as $key => $photo) {
 
@@ -63,9 +54,6 @@ class StoreProfileItems extends Component
 
         VoteProfile::create([
             'vote_item_id' => $this->data_id,
-            'icon' => $this->icon_profile,
-            'title' => $this->title_profile,
-            'description' => $this->desc_profile,
             'gallery' => $this->gallery,
         ]);
 

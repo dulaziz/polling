@@ -198,7 +198,7 @@ class pollingController extends Controller
 
     public function show_profile_item($voteItem){
 
-        $data_item = VoteItem::with('voteProfiles')->where('slug', $voteItem)->first();
+        $data_item = VoteItem::with(['voteProfiles', 'voteUnit'])->where('slug', $voteItem)->first();
 
         return view('profile', [
             "title" => "View Profile Items",
@@ -210,19 +210,15 @@ class pollingController extends Controller
     public function show_bar($id){
 
         $polling_unit = DB::table('vote_units')
-                            ->where('id',decrypt($id))
+                            ->where('slug',$id)
                             ->first();
 
         $polling_item = DB::table('vote_items')
-                            ->where('vote_unit_id',decrypt($id))
+                            ->where('vote_unit_id', $polling_unit->id)
                             ->get();
 
-        $total_votings = DB::table('votings')
-                            ->where('vote_item_id',decrypt($id))
-                            ->first();
-
         $total_user_vote = DB::table('votings')
-                                ->where('vote_unit_id',decrypt($id))
+                                ->where('vote_unit_id',$polling_unit->id)
                                 ->count('*');
 
         return view('polling.pollingUnitBar', [
