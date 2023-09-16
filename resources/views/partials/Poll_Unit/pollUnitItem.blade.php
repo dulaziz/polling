@@ -209,7 +209,7 @@
                         {{-- Vote Button --}}
                         <div class="d-grid d-md-flex gap-2 col-md-2">
                             <a href="/profile/{{ $pi->slug }}" class="btn btn-info btn-sm text-light px-5">Profile</a>
-                            @if(date('d-m-Y') < $date_start)
+                            @if(\Carbon\Carbon::parse(now())->lt($date_start))
                                 <a href="javascript:void(0)" onclick="alert('Pemungutan suara akan dimulai pada {{$date_start}} !!')" class="btn btn-success btn-sm px-5">Vote</a>
                             @else
                                 <button type="submit" class="btn btn-success btn-sm px-5">Vote</button>
