@@ -18,7 +18,7 @@ class AddProfileItems extends Component
 
     public function render()
     {
-        return view('livewire.add-profile-items')
+        return view('livewire.add-gallery')
         ->extends('layouts.main')
         ->layoutData(['title' => 'More Profile']);
     }

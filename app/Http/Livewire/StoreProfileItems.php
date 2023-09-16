@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\VoteItem;
 use App\Models\VoteProfile;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -40,6 +39,11 @@ class StoreProfileItems extends Component
 
     }
 
+    public function removeUpload($index)
+    {
+            array_splice($this->gallery, $index, 1);
+    }
+
     public function storeProfile(){
 
         $this->validate();
@@ -70,7 +74,7 @@ class StoreProfileItems extends Component
     public function render()
     {
         $data_profile = VoteProfile::where('vote_item_id',$this->data_id)->get();
-        return view('livewire.store-profile-items',[
+        return view('livewire.store-gallery',[
             'data_profile' => $data_profile
         ]);
     }
