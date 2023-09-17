@@ -59,3 +59,50 @@
         </tbody>
     </table>
 </div>
+
+<div class="container">
+    <div class="row">
+        <hr class="d-block ">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-5 d-flex justify-content-center">
+            <canvas id="graph"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    <?php
+    if (count($total_votings) != 0) {
+        foreach ($total_votings as $pollingItem) {
+            $voteName[] = $pollingItem->vote_name;
+            $color[] = 'rgba(' . rand(0, 255) . ', ' . rand(0, 255) . ', ' . rand(0, 255) . ', 0.5)';
+            $voteCandidate[] = $pollingItem->response;
+        }
+        $vote_name_convert = json_encode($voteName);
+        $vote_convert = json_encode($voteCandidate);
+        $color_convert = json_encode($color);
+
+        echo 'var kandidat = ' . $vote_name_convert . ";\n";
+        echo 'var voteKandidat = ' . $vote_convert . ";\n";
+        echo 'var color = ' . $color_convert . ";\n";
+    }
+    ?>
+
+    var ctx = document.getElementById("graph").getContext("2d");
+    // tampilan chart
+    var piechart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+
+            // label nama setiap Value
+            labels: kandidat,
+            datasets: [{
+                // Jumlah Value yang ditampilkan
+                data: voteKandidat,
+
+                backgroundColor: color
+            }],
+        }
+    });
+</script>
