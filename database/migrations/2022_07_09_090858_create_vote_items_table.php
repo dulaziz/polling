@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('vote_position')->nullable();
             $table->text('description')->nullable();
+            $table->integer('premium_profile')->default(0);
             $table->timestamps();
         });
     }
