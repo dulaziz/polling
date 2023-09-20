@@ -31,4 +31,8 @@ class Voting extends Model
         return $this->hasOne(VoteUnit::class,'id','vote_unit_id');
     }
 
+    public function user(){
+        return $this->belongsTo(User::class, 'user_vote', 'id');
+    }
+
 }

@@ -115,9 +115,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/edit-polling-item/{voteItem}', [pollingItemController::class, 'edit']);
         Route::post('/edit-polling-item/{id}', [pollingItemController::class, 'update']);
 
-         Route::post('/delete-polling-item', [pollingItemController::class, 'delete'])->name('delete-poll-item');
+        Route::post('/delete-polling-item', [pollingItemController::class, 'delete'])->name('delete-poll-item');
 
-
+        //
+        Route::get('/voters/{vote_unit}', [pollingController::class, 'voters']);
 
         // Result Polling Page
         Route::get('/result/{vote_unit}', [pollingController::class, 'result']);

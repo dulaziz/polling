@@ -44,4 +44,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function voting(){
+        return $this->hasMany(Voting::class, 'user_vote', 'id');
+    }
 }

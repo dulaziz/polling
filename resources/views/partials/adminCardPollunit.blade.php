@@ -92,6 +92,10 @@
             </form>
         @endif
         <li>
+            <a href="admin/voters/{{ $pu->slug }}" class="dropdown-item"><i class="fa-solid fa-users"></i>
+                Voters</a>
+        </li>
+        <li>
             <a href="admin/result/{{ $pu->slug }}" class="dropdown-item"><i class="fa-solid fa-chart-bar"></i>
                 Result</a>
         </li>

@@ -35,8 +35,6 @@ class pollingController extends Controller
 
     }
 
-
-
     public function create(){
 
         // Ambil semua data vote unit dan validasi jumlah data vote unit
@@ -65,7 +63,6 @@ class pollingController extends Controller
             'vote_unit_id_latest' => $data
         ]);
     }
-
 
     public function create_unit(Request $request){
         // Buat rule validasi form input unit
@@ -124,7 +121,6 @@ class pollingController extends Controller
 
 
     }
-
 
     public function show_profile($id){
 
@@ -317,20 +313,14 @@ class pollingController extends Controller
                         ->where('id',$id->id)
                         ->first();
 
-                        // dd($vote_unit);
-        // $vote_unit_id = $vote_unit->id;
-
         return view('addItems', [
             "title" => "Edit Polling Unit",
             "vote_unit" => $vote_unit,
-            // "vo" => $vote_unit_id,
         ]);
 
     }
 
     public function update(Request $request){
-        // dd($request->all());
-
         $validatedData = $request->validate([
             'title' => 'required',
             'slug'  => 'required',
@@ -485,4 +475,15 @@ class pollingController extends Controller
         return response()->json(['slug' => $slug]);
     }
 
+    public function voters(VoteUnit $vote_unit){
+        $voters = Voting::with(['user', 'voteitem'])->where('vote_unit_id', $vote_unit->id)->get();
+
+        // dd($voters);
+
+        return view('viewVoters', [
+            'title'     => 'Voters '.$vote_unit->title,
+            'voteUnit'  => $vote_unit,
+            'voters'    => $voters
+        ]);
+    }
 }
