@@ -44,12 +44,28 @@
 
                 <div class="col-md-8">
                     @if ($date_end <= $today)
-                        <a href="/pollingUnitBar/{{ $dp->slug }}" class="mb-3 text-decoration-none text-dark">
-                            <h2><strong>{{ $dp->title }}</strong></h2>
+                        <a
+                            @if (\Carbon\Carbon::parse(now())->lt($date_start))
+                                href="javascript:void(0)"
+                                    onclick="alert('Pemungutan suara akan dimulai pada {{ $date_start }} !!')"
+                            @elseif (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start))
+                                href="/pollingUnitBar/{{ $dp->slug }}"
+                            @else
+                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin"
+                            @endif
+                            class="mb-3 text-decoration-none text-dark"> <h2><strong>{{ $dp->title }}</strong></h2>
                         </a>
                     @else
-                        <a href="/polling/{{ $dp->slug }}" class="mb-3 text-decoration-none text-dark">
-                            <h2><strong>{{ $dp->title }}</strong></h2>
+                        <a
+                            @if (\Carbon\Carbon::parse(now())->lt($date_start))
+                                href="javascript:void(0)"
+                                onclick="alert('Pemungutan suara akan dimulai pada {{ $date_start }} !!')"
+                            @elseif (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start))
+                                href="/polling/{{ $dp->slug }}"
+                            @else
+                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin"
+                            @endif
+                            class="mb-3 text-decoration-none text-dark"> <h2><strong>{{ $dp->title }}</strong></h2>
                         </a>
                     @endif
 
@@ -76,14 +92,26 @@
 
                     <div class="btn-group d-grid d-md-block mt-3">
                         @if ($epoch_end <= $times)
-                            <a @if (Auth::check()) href="/pollingUnitBar/{{ $dp->slug }}"
-                            @else
-                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin" @endif
-                                class="btn btn-primary mt-md-3" type="button">Lihat Polling</a>
+                            <a
+                                @if (\Carbon\Carbon::parse(now())->lt($date_start))
+                                    href="javascript:void(0)"
+                                        onclick="alert('Pemungutan suara akan dimulai pada {{ $date_start }} !!')"
+                                @elseif (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start))
+                                    href="/pollingUnitBar/{{ $dp->slug }}"
+                                @else
+                                    data-bs-toggle="modal" data-bs-target="#modalOptionLogin"
+                                @endif
+                                    class="btn btn-primary mt-md-3" type="button">Lihat Polling</a>
                         @else
-                            <a @if (Auth::check()) href="/polling/{{ $dp->slug }}"
+                            <a
+                            @if (\Carbon\Carbon::parse(now())->lt($date_start))
+                                    href="javascript:void(0)"
+                                    onclick="alert('Pemungutan suara akan dimulai pada {{ $date_start }} !!')"
+                            @elseif (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start))
+                                href="/polling/{{ $dp->slug }}"
                             @else
-                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin" @endif
+                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin"
+                            @endif
                                 class="btn btn-primary mt-md-3" type="button">Ikuti Polling</a>
                         @endif
                     </div>
