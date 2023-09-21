@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-end">
             <div class="mr-5">
-                <form action="/home" >
+                <form action="/home">
                     <div class="input-group">
                         <div class="form-outline">
                             <input type="search" id="search" name="search" class="form-control"
-                                placeholder="search polling....." value="{{request('search')}}"/>
+                                placeholder="search polling....." value="{{ request('search') }}" />
                         </div>
                         <button id="search-button" type="submit" class="btn btn-primary">
                             <i class="fas fa-search"></i>
@@ -76,11 +76,15 @@
 
                     <div class="btn-group d-grid d-md-block mt-3">
                         @if ($epoch_end <= $times)
-                            <a href="/pollingUnitBar/{{ $dp->slug }}" class="btn btn-primary mt-md-3"
-                                type="button">Lihat Polling</a>
+                            <a @if (Auth::check()) href="/pollingUnitBar/{{ $dp->slug }}"
+                            @else
+                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin" @endif
+                                class="btn btn-primary mt-md-3" type="button">Lihat Polling</a>
                         @else
-                            <a href="/polling/{{ $dp->slug }}" class="btn btn-primary mt-md-3" type="button">Ikuti
-                                Polling</a>
+                            <a @if (Auth::check()) href="/polling/{{ $dp->slug }}"
+                            @else
+                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin" @endif
+                                class="btn btn-primary mt-md-3" type="button">Ikuti Polling</a>
                         @endif
                     </div>
                     <hr class="d-block d-md-none">
@@ -94,3 +98,24 @@
 <div class="d-flex justify-content-center">
     {{ $data_polling->links() }}
 </div>
+
+<!-- Modal login -->
+<div class="modal fade" id="modalOptionLogin" tabindex="-1" role="dialog" aria-labelledby="modalOptionLoginTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="border-radius: 25px !important;">
+            <div class="modal-body">
+                <div class="text-center">
+                    <h5 class="mb-5">Login Option</h5>
+                    <a href="{{ route('facebook.login') }}" class="btn btn-primary mb-3">Login With Facebook</a>
+                    <a href="{{ route('google.login') }}" class="btn btn-dark mb-3">Login With Google</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

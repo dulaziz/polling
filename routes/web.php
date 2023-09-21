@@ -1,13 +1,10 @@
 <?php
 
 use App\Http\Controllers\adminController;
-use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\pollingController;
 use App\Http\Controllers\pollingItemController;
-use App\Http\Livewire\AddItems;
 use App\Http\Livewire\AddProfileItems;
-use App\Http\Controllers\ProductController;
-use App\Http\Livewire\EditProfileItems;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,9 +32,15 @@ Route::get('/pollingUnitBar/{id}', [pollingController::class, 'show_bar']);
 Route::middleware('guest:web')->group(function () {
     // Home Page
     Route::get('/', [pollingController::class, 'index']);
-    // Login Page
-    Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
-    Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+
+    // Google Login
+    Route::get('auth/google', [LoginController::class, 'redirectToGoogle'])->name('google.login');
+    Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.callback');
+
+    // Facebook Login
+    Route::get('auth/facebook', [LoginController::class, 'redirectToFacebook'])->name('facebook.login');
+    Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCallback'])->name('facebook.callback');
+
     // Polling Uni Page
     Route::get('/polling/{id}', [pollingController::class, 'show_unit']);
     // View Unit Bar
@@ -60,7 +63,7 @@ Route::middleware(['auth:web',])->group(function () {
     // View Unit Bar
     Route::get('/pollingUnitBar/{id}', [pollingController::class, 'show_bar']);
     // Action Logout
-    Route::get('/auth/google/logout', [GoogleController::class, 'logout'])->name('logout');
+    Route::get('/auth/google/logout', [LoginController::class, 'logout'])->name('logout');
     // View Profile
     Route::get('/profile/{id}', [pollingController::class, 'show_profile_item']);
 });
