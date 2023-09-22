@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\pollingController;
 use App\Http\Controllers\pollingItemController;
@@ -120,8 +121,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::post('/delete-polling-item', [pollingItemController::class, 'delete'])->name('delete-poll-item');
 
-        //
-        Route::get('/voters/{vote_unit}', [pollingController::class, 'voters']);
+        //voters
+        Route::get('/voters/{voteUnit}', [pollingController::class, 'voters']);
+        Route::get('/export-voters/{voteUnit}', [ExportController::class, 'exportVoters']);
 
         // Result Polling Page
         Route::get('/result/{vote_unit}', [pollingController::class, 'result']);

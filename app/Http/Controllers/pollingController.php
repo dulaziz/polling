@@ -181,7 +181,6 @@ class pollingController extends Controller
 
         return view('polling.pollingUnit', [
             "title" => "Polling Unit Bar",
-            // "polling_unit" => $polling_unit,
             "polling_unit_with_items" => $data_polling_unit_with_items,
             "total_user_vote" => $total_user_vote,
             "data_user_vote" => $data_user_vote,
@@ -475,14 +474,11 @@ class pollingController extends Controller
         return response()->json(['slug' => $slug]);
     }
 
-    public function voters(VoteUnit $vote_unit){
-        $voters = Voting::with(['user', 'voteitem'])->where('vote_unit_id', $vote_unit->id)->get();
-
-        // dd($voters);
-
+    public function voters(VoteUnit $voteUnit){
+        $voters = Voting::with(['user', 'voteitem'])->where('vote_unit_id', $voteUnit->id)->get();
         return view('viewVoters', [
-            'title'     => 'Voters '.$vote_unit->title,
-            'voteUnit'  => $vote_unit,
+            'title'     => 'Voters '.$voteUnit->title,
+            'voteUnit'  => $voteUnit,
             'voters'    => $voters
         ]);
     }

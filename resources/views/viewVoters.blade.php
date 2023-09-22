@@ -59,6 +59,8 @@
             </div>
             <div class="card-footer">
                 <div class="gap-2 d-flex justify-content-end">
+                    <a href="/admin/export-voters/{{$voteUnit->slug}}" class="btn btn-info btn-sm" target="_blank"><i
+                            class="fas fa-print"></i> Export CSV</a>
                     <a href="/admin" class="btn btn-secondary btn-sm" type="button"><i
                             class="fas fa-reply"></i> Back</a>
                 </div>
@@ -78,12 +80,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $i = 1;
-                    @endphp
                     @foreach ($voters as $vote)
                         <tr>
-                            <th scope="row">{{ $i++ }}</th>
+                            <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $vote->user->name }}</td>
                             <td>{{ $vote->user->email }}</td>
                             <td>{{ $vote->voteItem->vote_name }}</td>
