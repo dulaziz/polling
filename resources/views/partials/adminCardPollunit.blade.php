@@ -7,7 +7,7 @@
 @foreach ($polling_unit as $pu)
     <div class="row d-flex align-items-center mb-5">
         <div class="col-md-4 mb-3 mb-md-0">
-            <img src="{{ 'storage/' . $pu->thumbnail }}" class="pstr_thumb" alt="...">
+            <img src="{{ asset('storage/' . $pu->thumbnail) }}" class="pstr_thumb" alt="...">
         </div>
         <div class="col-md-8">
             <a href="admin/pollingUnitBar/{{ $pu->slug }}" class="mb-3 text-decoration-none text-dark">

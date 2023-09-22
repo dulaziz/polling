@@ -428,6 +428,9 @@ class pollingController extends Controller
         $request->validate([
             'id' => 'required'
         ]);
+        //Delete thumbnail Vote Unit
+        $voteUnit = VoteUnit::where('id', $request->id)->first();
+        Storage::delete($voteUnit->thumbnail);
 
         // Delete Vote Item By Vote Unit Id
         VoteItem::where('vote_unit_id', $request->id)->delete();
@@ -444,28 +447,6 @@ class pollingController extends Controller
             return back()->with('message', 'Your data failed deleted!')->withInput();
         }
 
-    }
-
-    public function updateMoreProfileItem(Request $request){
-        $profileId = $request->profileId;
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'description' => 'required'
-        ]);
-
-        VoteProfile::where('id', $profileId)->update($validatedData);
-
-        return redirect(request()->header('Referer'))->with('success', 'Your data has been updated!');
-    }
-
-    public function deleteMoreProfileItem(Request $request){
-        $profileId = $request->profile_id;
-        $VoteProfile = VoteProfile::where('id', $profileId)->first();
-
-        Storage::delete($VoteProfile->icon);
-        VoteProfile::where('id', $profileId)->delete();
-
-        return redirect(request()->header('Referer'))->with('success', 'Your data has been deleted!');
     }
 
     public function createSlug(Request $request)

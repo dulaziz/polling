@@ -147,34 +147,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-
-
-
-
-// Route::post('/addItems',[pollingController::class,'create_items']);
-// Route::get('/addItems/{id}',[pollingController::class,'edit_items']);
-// Route::post('/addItems',[StoreItems::class,'storeItems']);
-
-// Route::get('/pollingUnit', function () {
-//     return view('pollingUnit', [
-//         "title" => "Polling Unit"
-//     ]);
-// });
-
-
-
 Route::get('/pollingUnitBar', function () {
     return view('pollingUnitBar', [
         "title" => "Polling Unit Bar"
     ]);
 });
 
-
-
 // Route::get('/getPollingUnit',[pollingController::class,'get_polling_json']);
 Route::get('/viewPollUnit/{id}', [pollingController::class, 'show_unit']);
-
-
 
 Route::get('/profile', function () {
     return view('profile', [
@@ -183,31 +163,6 @@ Route::get('/profile', function () {
 });
 
 Route::get('/pollSurvey/{id}', [pollingController::class, 'polling_survey']);
-
-
-Route::get('/formPollTes', function () {
-    return view('formPollTes', [
-        "title" => "Form Poll Tes"
-    ]);
-});
-
-Route::get('/addMoreProfile', function () {
-    return view('addMoreProfile', [
-        "title" => "Add More Profile"
-    ]);
-});
-
-Route::get('/editPolling', function () {
-    return view('editPolling', [
-        "title" => "Edit Polling Unit"
-    ]);
-});
-
-Route::get('/editPollItems', function () {
-    return view('editPollItems', [
-        "title" => "Edit Polling Items"
-    ]);
-});
 
 Route::get('/viewProfileItems', function () {
     return view('viewProfileItems', [

@@ -60,7 +60,7 @@
             <div class="card-footer">
                 <div class="gap-2 d-flex justify-content-end">
                     <a href="/admin/export-voters/{{$voteUnit->slug}}" class="btn btn-info btn-sm" target="_blank"><i
-                            class="fas fa-print"></i> Export CSV</a>
+                            class="fas fa-print"></i> Export Voters</a>
                     <a href="/admin" class="btn btn-secondary btn-sm" type="button"><i
                             class="fas fa-reply"></i> Back</a>
                 </div>
@@ -95,9 +95,5 @@
         </div>
     </div>
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script>
-        let table = new DataTable('#dataTable');
-    </script>
+
 @endsection

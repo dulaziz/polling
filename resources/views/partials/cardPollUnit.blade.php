@@ -39,7 +39,7 @@
 
             <div class="row d-flex align-items-center mb-5 " data-aos="zoom-in">
                 <div class="col-md-4 mb-3 mb-md-0">
-                    <img src="{{ 'storage/' . $dp->thumbnail }}" class="pstr_thumb" alt="">
+                    <img src="{{ asset('storage/' . $dp->thumbnail) }}" class="pstr_thumb" alt="">
                 </div>
 
                 <div class="col-md-8">

@@ -76,7 +76,7 @@
 
                                 {{-- Input Position --}}
                                 <input type="text" class="form-control mb-3" placeholder="Position" aria-label="Position"
-                                    name="vote_position">
+                                    name="vote_position" id="vote_position">
                                 {{-- Response notif form input vote_position --}}
                                 @error('vote_position')
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -94,7 +94,7 @@
                                     </div>
                                 @enderror
                                 {{-- Input description --}}
-                                <textarea class="form-control poll_summer" placeholder="Description" id="poll_summer" name="description"></textarea>
+                                <textarea class="form-control poll_summer" placeholder="Description" id="description" name="description"></textarea>
 
                                 {{-- Response notif form input description --}}
                                 @error('description')
@@ -105,10 +105,19 @@
                                     </div>
                                 @enderror
 
-                                <div class="input-group mt-5">
-                                    <input type="checkbox" class="form-check-input m-2" id="premium_profile"
-                                        name="premium_profile" value="1">
-                                    <label for="premium_profile" class="mt-1"> Premium Profile</label><br>
+                                <div class="row  mt-5">
+                                    <div class="col-lg-6">
+                                        <a href="javascript:void(0)" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#candidateModal">Gunakan Kandidat
+                                            Tersimpan</a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input-group">
+                                            <input type="checkbox" class="form-check-input m-2" id="premium_profile"
+                                                name="premium_profile" value="1">
+                                            <label for="premium_profile" class="mt-1"> Premium Profile</label><br>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -201,6 +210,47 @@
 
     </div>
 
+    {{-- modal courier --}}
+    <div class="modal fade" id="candidateModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Data Kandidat</h5> <br>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>klik dibaris data untuk menggunakan data sebelumnya</p>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="dataTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Vote Name</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Tgl. Data Disimpan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($allVoteItem as $voteItem)
+                                    <tr class="CandidateData" data-thumbnail="{{ $voteItem->vote_image }}"
+                                        class="CandidateData" data-vote-name="{{ $voteItem->vote_name }}"
+                                        class="CandidateData" data-vote-position="{{ $voteItem->vote_position }}"
+                                        class="CandidateData" data-description="{{ $voteItem->description }}"
+                                        class="CandidateData" data-premium-profile="{{ $voteItem->premium_profile }}">
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>{{ $voteItem->vote_name }}</td>
+                                        <td>{{ $voteItem->vote_position }}</td>
+                                        <td>{{ $voteItem->created_at }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End courier centered Modal-->
+
     <script src="{{ asset('js/previewImg.js') }}"></script>
     {{-- cdn add form --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -210,13 +260,59 @@
         const slug = document.querySelector('#slug');
 
         vote_name.addEventListener('change', function() {
-            fetch('/admin/polling-item/createSlug?vote_name=' + vote_name.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
+            generateSlug(vote_name.value);
         });
 
+        function generateSlug(voteName) {
+            fetch('/admin/polling-item/createSlug?vote_name=' + voteName)
+                .then(response => response.json())
+                .then(data => slug.value = data.slug)
+        }
+        // Modal courir
+        $(document).on('click', '.CandidateData', function(e) {
+            let url = '<?= env('APP_URL') ?>/storage/' + $(this).attr('data-thumbnail');
+
+            document.getElementById("file-ip-1-preview").src = url;
+            getImgURL(url, (imgBlob) => {
+                // Load img blob to input
+                let fileName = 'fileFromHistory.jpg'
+                let file = new File([imgBlob], fileName, {
+                    type: "image/jpeg",
+                    lastModified: new Date().getTime()
+                }, 'utf-8');
+                let container = new DataTransfer();
+                container.items.add(file);
+                document.querySelector('#file-ip-1').files = container.files;
+
+            })
+
+            document.getElementById("vote_name").value = $(this).attr('data-vote-name');
+            document.getElementById("vote_position").value = $(this).attr('data-vote-position');
+            $(".poll_summer").summernote("code", $(this).attr('data-description'));
+
+            if ($(this).attr('data-premium-profile') == 1) {
+                document.getElementById("premium_profile").checked = true;
+            } else {
+                document.getElementById("premium_profile").checked = false;
+            }
+
+            generateSlug($(this).attr('data-vote-name'));
+
+            $('#candidateModal').modal('hide');
+        });
+
+        // xmlHTTP return blob respond
+        function getImgURL(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                callback(xhr.response);
+            };
+            xhr.open('GET', url);
+            xhr.responseType = 'blob';
+            xhr.send();
+        }
+
         $(document).ready(function() {
-            // $('#summernote').summernote();
             $('.poll_summer').summernote({
                 tabsize: 2,
                 height: 200,
