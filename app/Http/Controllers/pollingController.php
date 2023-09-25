@@ -17,14 +17,15 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class pollingController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $data_pollings = VoteUnit::with('votings')
             ->orderBy('id', 'desc');
 
-        if(request('search')) {
-            $data_pollings->where('title', 'like', '%'.request('search').'%')
-                ->orWhere('description', 'like', '%'.request('search').'%');
+        if (request('search')) {
+            $data_pollings->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('description', 'like', '%' . request('search') . '%');
         }
 
 
@@ -32,26 +33,25 @@ class pollingController extends Controller
             "title" => "Home",
             "data_polling" => $data_pollings->paginate(5)->withQueryString(),
         ]);
-
     }
 
-    public function create(){
+    public function create()
+    {
 
         // Ambil semua data vote unit dan validasi jumlah data vote unit
         $query_vote_unit = VoteUnit::all();
 
-        if(count($query_vote_unit)){
+        if (count($query_vote_unit)) {
 
             $vote_unit_id_latest = DB::table('vote_units')
-                            ->select('id')
-                            ->latest()->first();
+                ->select('id')
+                ->latest()->first();
 
             $data = $vote_unit_id_latest->id;
-
-        }else{
+        } else {
 
             $vote_unit_id_latest = [
-               'id'=> 0,
+                'id' => 0,
             ];
 
             $data = $vote_unit_id_latest['id'];
@@ -64,7 +64,8 @@ class pollingController extends Controller
         ]);
     }
 
-    public function create_unit(Request $request){
+    public function create_unit(Request $request)
+    {
         // Buat rule validasi form input unit
         $validated = $request->validate([
             'thumbnail' => 'required|image|file',
@@ -76,12 +77,12 @@ class pollingController extends Controller
         ]);
 
         // Cek jika ada gambar yang di inputkan dan simpan kedalam folder storage
-        if($request->hasfile('thumbnail')){
+        if ($request->hasfile('thumbnail')) {
             $validated['thumbnail'] = $request->file('thumbnail')->store('unit-items');
         }
 
         // Cek jika ada gambar yang di inputkan dan simpan kedalam folder storage
-        if($request->hasfile('vote_image')){
+        if ($request->hasfile('vote_image')) {
             $validated['vote_image'] = $request->file('vote_image')->store('vote-items');
         }
 
@@ -92,14 +93,14 @@ class pollingController extends Controller
         $date_start = $dt->format('U');
 
         $epoch_end = $request->date_end;
-         $dt = new DateTime("$epoch_end");  // convert UNIX timestamp to PHP DateTime
-         $date_end = $dt->format('U');
+        $dt = new DateTime("$epoch_end");  // convert UNIX timestamp to PHP DateTime
+        $date_end = $dt->format('U');
 
 
         // Validate form vote unit
-         $validated['description'] = $request->description;
-         $validated['date_start'] = $date_start;
-         $validated['date_end'] = $date_end;
+        $validated['description'] = $request->description;
+        $validated['date_start'] = $date_start;
+        $validated['date_end'] = $date_end;
 
 
 
@@ -110,19 +111,17 @@ class pollingController extends Controller
 
         $save = VoteUnit::create($validated);
 
-        if($save){
+        if ($save) {
 
             return redirect('admin')->with('success', 'Your data has been created!');
-
-        }else{
+        } else {
 
             return back()->with('error', 'Your data failed created!')->withInput();
         }
-
-
     }
 
-    public function show_profile($id){
+    public function show_profile($id)
+    {
 
         $data_item = VoteItem::with('voteProfiles')->where('vote_unit_id', $id)->first();
 
@@ -131,10 +130,10 @@ class pollingController extends Controller
             // 'data_unit' => $data_unit,
             'data_item' => $data_item
         ]);
-
     }
 
-    public function show_profile_item($voteItem){
+    public function show_profile_item($voteItem)
+    {
 
         $data_item = VoteItem::with(['voteProfiles', 'voteUnit'])->where('slug', $voteItem)->first();
 
@@ -142,22 +141,22 @@ class pollingController extends Controller
             "title" => "View Profile Items",
             'data_item' => $data_item
         ]);
-
     }
 
-    public function show_bar($id){
+    public function show_bar($id)
+    {
 
         $polling_unit = DB::table('vote_units')
-                            ->where('slug',$id)
-                            ->first();
+            ->where('slug', $id)
+            ->first();
 
         $polling_item = DB::table('vote_items')
-                            ->where('vote_unit_id', $polling_unit->id)
-                            ->get();
+            ->where('vote_unit_id', $polling_unit->id)
+            ->get();
 
         $total_user_vote = DB::table('votings')
-                                ->where('vote_unit_id',$polling_unit->id)
-                                ->count('*');
+            ->where('vote_unit_id', $polling_unit->id)
+            ->count('*');
 
         return view('polling.pollingUnitBar', [
             "title" => "Polling Unit Bar",
@@ -165,17 +164,17 @@ class pollingController extends Controller
             "polling_item" => $polling_item,
             "total_user_vote" => $total_user_vote,
         ]);
-
     }
 
     // Controller Fitur Polling Unit
-    public function show_unit($slug){
+    public function show_unit($slug)
+    {
 
-        $data_polling_unit_with_items = VoteUnit::with(['vote_items','votings'])->where('slug', $slug)->first();
+        $data_polling_unit_with_items = VoteUnit::with(['vote_items', 'votings'])->where('slug', $slug)->first();
 
         $total_user_vote = DB::table('votings')
-                                ->where('vote_unit_id', $data_polling_unit_with_items->id)
-                                ->count('*');
+            ->where('vote_unit_id', $data_polling_unit_with_items->id)
+            ->count('*');
 
         $data_user_vote = Voting::where('user_vote', Auth::user()->id);
 
@@ -186,31 +185,31 @@ class pollingController extends Controller
             "data_user_vote" => $data_user_vote,
 
         ]);
-
     }
 
-    public function polling_survey(VoteUnit $id){
+    public function polling_survey(VoteUnit $id)
+    {
 
         $polling_unit = DB::table('vote_units')
-                        ->where('id',$id->id)
-                        ->first();
+            ->where('id', $id->id)
+            ->first();
 
         $polling_item = DB::table('vote_items')
-                        ->where('vote_unit_id',$id->id)
-                        ->get();
+            ->where('vote_unit_id', $id->id)
+            ->get();
 
         $total_vote =  DB::table('votings')
-                        ->select(DB::raw('count(*) as total_vote'))
-                        ->where('vote_item_id', '=', 2)
-                        ->first();
+            ->select(DB::raw('count(*) as total_vote'))
+            ->where('vote_item_id', '=', 2)
+            ->first();
 
         $total_user_vote = DB::table('votings')->count('*');
 
         $user_vote = DB::table('votings')
-                    ->select('user_vote')
-                    ->get();
+            ->select('user_vote')
+            ->get();
 
-                // dd($total_user_vote);
+        // dd($total_user_vote);
 
         return view('pollSurvey', [
             "title" => "Poll Survey",
@@ -223,7 +222,8 @@ class pollingController extends Controller
     }
 
 
-    public function set_polling_survey(Request $request){
+    public function set_polling_survey(Request $request)
+    {
 
         // dd($request->all());
 
@@ -234,51 +234,48 @@ class pollingController extends Controller
             'vote_item_id' => 'required',
         ]);
 
-         VoteItem::where('id', $validatedData['vote_item_id'])
-                ->update(['response' => $validatedData['response']]);
+        VoteItem::where('id', $validatedData['vote_item_id'])
+            ->update(['response' => $validatedData['response']]);
 
-         $save = Voting::create($validatedData);
+        $save = Voting::create($validatedData);
 
-        if($save){
+        if ($save) {
 
             return back()->with('success', 'Your vote has been saved!');
-
-        }else{
+        } else {
 
             return back()->with('error', 'Your vote failed saved!')->withInput();
         }
-
-
-
     }
 
-    public function result(VoteUnit $vote_unit){
+    public function result(VoteUnit $vote_unit)
+    {
 
         // Ambil semua data total vote item yang vote unit id nya sesuai dengan vote unit id dan berelasi dengan tabel voting
         $total_votings = VoteItem::with(['votings'])
-                                ->where('vote_unit_id',$vote_unit->id)
-                                ->get();
+            ->where('vote_unit_id', $vote_unit->id)
+            ->get();
 
-                                // dd($total_votings);
+        // dd($total_votings);
 
         // Ambil data vote unit yang id nya sesuai dengan vote unit id
         $vote_unit = DB::table('vote_units')
-                        ->where('id',$vote_unit->id)
-                        ->first();
+            ->where('id', $vote_unit->id)
+            ->first();
 
         // Hitung jumlah total user yang melakukan voting
         $total_user_vote = DB::table('votings')
-                                ->where('vote_unit_id',$vote_unit->id)
-                                ->count('*');
+            ->where('vote_unit_id', $vote_unit->id)
+            ->count('*');
 
-                            // dd($total_user_vote);
+        // dd($total_user_vote);
 
         // Hitung semua jumlah data yang ada di vote item yang vote unit id nya sama dengan id vote unit
         $total_vote_item = DB::table('vote_items')
-                                ->where('vote_unit_id',$vote_unit->id)
-                                ->count('*');
+            ->where('vote_unit_id', $vote_unit->id)
+            ->count('*');
 
-                                // dd($total_vote_item);
+        // dd($total_vote_item);
 
         return view('result', [
             "title" => "Polling Result",
@@ -287,39 +284,27 @@ class pollingController extends Controller
             "total_user_vote" => $total_user_vote,
             "total_vote_item" => $total_vote_item
         ]);
-
     }
 
-    public function get_polling_json(){
+    public function get_polling_json()
+    {
 
         $data_vote_unit_json = DB::table('vote_items')->get();
 
         return json_decode($data_vote_unit_json);
-
     }
 
-    public function edit(VoteUnit $id){
+    public function edit(VoteUnit $id)
+    {
 
         return view('polling.editPolling', [
             "title" => "Edit Polling Unit",
             "vote_unit" => $id
         ]);
-
     }
 
-    public function edit_items(VoteUnit $id){
-        $vote_unit = VoteUnit::with(['vote_items'])
-                        ->where('id',$id->id)
-                        ->first();
-
-        return view('addItems', [
-            "title" => "Edit Polling Unit",
-            "vote_unit" => $vote_unit,
-        ]);
-
-    }
-
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $validatedData = $request->validate([
             'title' => 'required',
             'slug'  => 'required',
@@ -328,102 +313,64 @@ class pollingController extends Controller
 
 
         // cek validasi jika ada thumbnail yang di kirim
-        if($request->file('thumbnail')){
+        if ($request->file('thumbnail')) {
             // insert data thumbnail baru
             $validatedData['thumbnail'] = $request->file('thumbnail')->store('unit-items');
             // hapus data thumbnail sebelumnya
             Storage::delete($request->thumbnail_old);
-        }else{
+        } else {
             $validatedData['thumbnail'] = $request->thumbnail_old;
         }
 
         // cek validasi date start
-        if($request->date_start){
-
-               // Ubah date normal time ke date epoch
-                $epoch_start = $request->date_start;
-                $dt = new DateTime("$epoch_start");  // convert UNIX timestamp to PHP DateTime
-                $date_start = $dt->format('U');
-
-
-                // insert data date start baru
-                $validatedData['date_start'] = $date_start;
-        }else{
-
-                // Ubah date normal time ke date epoch
-                $epoch_start = $request->date_start_old;
-                $dt = new DateTime("$epoch_start");  // convert UNIX timestamp to PHP DateTime
-                $date_start_old = $dt->format('U');
-
-            // insert data date start dengan data date start sebelumnya
-            $validatedData['date_start'] = $date_start_old;
+        if ($request->date_start) {
+            // insert data date start baru
+            $validatedData['date_start'] = date('U', strtotime($request->date_start));
         }
 
-        // cek validasi date start
-        if($request->date_end){
-
-                // Ubah date normal time ke date epoch
-                $epoch_end = $request->date_end;
-                $dt = new DateTime("$epoch_end");  // convert UNIX timestamp to PHP DateTime
-                $date_end = $dt->format('U');
-
-            // insert data date start baru
-            $validatedData['date_end'] = $date_end;
-        }else{
-
-                // Ubah date normal time ke date epoch
-                $epoch_end = $request->date_end_old;
-                $dt = new DateTime("$epoch_end");  // convert UNIX timestamp to PHP DateTime
-                $date_end_old = $dt->format('U');
-
-            // insert data date start dengan data date start sebelumnya
-            $validatedData['date_end'] = $date_end_old;
+        // cek validasi date end
+        if ($request->date_end) {
+            // insert data date end baru
+            $validatedData['date_end'] = date('U', strtotime($request->date_end));
         }
 
         $validatedData['description'] = $request->description;
 
         // simpan validasi kedalam database vote unit
-        $save = VoteUnit::where('id',$request->id)->update($validatedData);
+        $save = VoteUnit::where('id', $request->id)->update($validatedData);
 
-        if($save){
+        if ($save) {
 
-            return redirect('admin/editPolling/'.$validatedData['slug'])->with('success', 'Your data has been updated!');
+            return redirect('admin/editPolling/' . $validatedData['slug'])->with('success', 'Your data has been updated!');
+        } else {
 
-        }else{
-
-            return redirect('admin/editPolling/'.$validatedData['slug'])->with('error', 'Your data failed updated!')->withInput();
+            return redirect('admin/editPolling/' . $validatedData['slug'])->with('error', 'Your data failed updated!')->withInput();
         }
-
     }
 
-    public function close_polling(Request $request){
-         // Request Validate Id Item
-         $validatedData = $request->validate([
+    public function close_polling(Request $request)
+    {
+        // Request Validate Id Item
+        $validatedData = $request->validate([
             'id' => 'required',
             'date_end' => 'required',
         ]);
 
-        // Ubah date normal time ke date epoch
-        $epoch_start = $request->date_end;
-        $dt = new DateTime("$epoch_start");  // convert UNIX timestamp to PHP DateTime
-        $date_end = $dt->format('U');
-
-        $validatedData['date_end'] = $date_end;
+        $validatedData['date_end'] = date('U', strtotime($request->date_end));
 
         $closed = VoteUnit::where('id', $request->id)->update($validatedData);
 
-        if($closed){
+        if ($closed) {
 
             return back()->with('message', 'Your data has been closed!');
-
-        }else{
+        } else {
 
             return back()->with('message', 'Your data failed closed!');
         }
-
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         // Request Validate Id Item
         $request->validate([
             'id' => 'required'
@@ -439,26 +386,25 @@ class pollingController extends Controller
         // Delete Vote Unit By Vote Unit Id
         $delete = VoteUnit::where('id', $request->id)->delete();
 
-        if($delete){
+        if ($delete) {
             return back()->with('message', 'Your data has been deleted!');
-
-        }else{
+        } else {
 
             return back()->with('message', 'Your data failed deleted!')->withInput();
         }
-
     }
 
     public function createSlug(Request $request)
     {
-        $slug =  SlugService::createSlug(VoteUnit::class, 'slug', $request->title) ;
+        $slug =  SlugService::createSlug(VoteUnit::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
     }
 
-    public function voters(VoteUnit $voteUnit){
+    public function voters(VoteUnit $voteUnit)
+    {
         $voters = Voting::with(['user', 'voteitem'])->where('vote_unit_id', $voteUnit->id)->get();
         return view('viewVoters', [
-            'title'     => 'Voters '.$voteUnit->title,
+            'title'     => 'Voters ' . $voteUnit->title,
             'voteUnit'  => $voteUnit,
             'voters'    => $voters
         ]);

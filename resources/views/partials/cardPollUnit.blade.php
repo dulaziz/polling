@@ -21,17 +21,9 @@
 {{-- Looping Data Polling  --}}
 @foreach ($data_polling as $dp)
     @php
-        $epoch_start = $dp->date_start;
-        $dt = new DateTime("@$epoch_start"); // convert UNIX timestamp to PHP DateTime
-        $date_start = $dt->format('d-m-Y');
+        $date_start = date('d-m-Y', $dp->date_start);
 
-        $epoch_end = $dp->date_end;
-        $dt = new DateTime("@$epoch_end"); // convert UNIX timestamp to PHP DateTime
-        $date_end = $dt->format('d-m-Y');
-
-        $times = round(microtime(true));
-        $ts = new DateTime("@$times");
-        $today = $ts->format('d-m-Y');
+        $date_end = date('d-m-Y', $dp->date_end);
     @endphp
 
     <div class="container mt-5">
@@ -43,29 +35,24 @@
                 </div>
 
                 <div class="col-md-8">
-                    @if ($date_end <= $today)
-                        <a
-                            @if (\Carbon\Carbon::parse(now())->lt($date_start))
+                    @if (\Carbon\Carbon::parse(now())->gt($date_end))
+                        <a @if (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start)) href="/pollingUnitBar/{{ $dp->slug }}"
+                            @elseif (\Carbon\Carbon::parse(now())->lt($date_start))
                                 href="javascript:void(0)"
                                     onclick="alert('Pemungutan suara akan dimulai pada {{ $date_start }} !!')"
-                            @elseif (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start))
-                                href="/pollingUnitBar/{{ $dp->slug }}"
                             @else
-                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin"
-                            @endif
-                            class="mb-3 text-decoration-none text-dark"> <h2><strong>{{ $dp->title }}</strong></h2>
+                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin" @endif
+                            class="mb-3 text-decoration-none text-dark">
+                            <h2><strong>{{ $dp->title }}</strong></h2>
                         </a>
                     @else
-                        <a
-                            @if (\Carbon\Carbon::parse(now())->lt($date_start))
-                                href="javascript:void(0)"
-                                onclick="alert('Pemungutan suara akan dimulai pada {{ $date_start }} !!')"
-                            @elseif (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start))
-                                href="/polling/{{ $dp->slug }}"
+                        <a @if (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start)) href="/polling/{{ $dp->slug }}"
+                    @elseif (\Carbon\Carbon::parse(now())->lt($date_start)) href="javascript:void(0)"
+                        onclick="alert('Pemungutan suara akan dimulai pada {{ $date_start }} !!')"
                             @else
-                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin"
-                            @endif
-                            class="mb-3 text-decoration-none text-dark"> <h2><strong>{{ $dp->title }}</strong></h2>
+                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin" @endif
+                            class="mb-3 text-decoration-none text-dark">
+                            <h2><strong>{{ $dp->title }}</strong></h2>
                         </a>
                     @endif
 
@@ -76,7 +63,7 @@
                     </div>
 
                     <div class="d-flex flex-column">
-                        @if ($epoch_end <= $times)
+                        @if (\Carbon\Carbon::parse(now())->gt($date_end))
                             <small class="text-danger fst-italic mb-1"><i class="fas fa-times-circle"></i> Closed
                                 Polling</small>
                         @elseif(\Carbon\Carbon::parse(now())->lt($date_start))
@@ -91,27 +78,21 @@
                     </div>
 
                     <div class="btn-group d-grid d-md-block mt-3">
-                        @if ($epoch_end <= $times)
-                            <a
-                                @if (\Carbon\Carbon::parse(now())->lt($date_start))
-                                    href="javascript:void(0)"
+                        @if (\Carbon\Carbon::parse(now())->gt($date_end))
+                            <a @if (\Carbon\Carbon::parse(now())->lt($date_start)) href="javascript:void(0)"
                                         onclick="alert('Pemungutan suara akan dimulai pada {{ $date_start }} !!')"
                                 @elseif (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start))
                                     href="/pollingUnitBar/{{ $dp->slug }}"
                                 @else
-                                    data-bs-toggle="modal" data-bs-target="#modalOptionLogin"
-                                @endif
-                                    class="btn btn-primary mt-md-3" type="button">Lihat Polling</a>
+                                    data-bs-toggle="modal" data-bs-target="#modalOptionLogin" @endif
+                                class="btn btn-primary mt-md-3" type="button">Lihat Polling</a>
                         @else
-                            <a
-                            @if (\Carbon\Carbon::parse(now())->lt($date_start))
-                                    href="javascript:void(0)"
+                            <a @if (\Carbon\Carbon::parse(now())->lt($date_start)) href="javascript:void(0)"
                                     onclick="alert('Pemungutan suara akan dimulai pada {{ $date_start }} !!')"
                             @elseif (Auth::check() && !\Carbon\Carbon::parse(now())->lt($date_start))
                                 href="/polling/{{ $dp->slug }}"
                             @else
-                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin"
-                            @endif
+                                data-bs-toggle="modal" data-bs-target="#modalOptionLogin" @endif
                                 class="btn btn-primary mt-md-3" type="button">Ikuti Polling</a>
                         @endif
                     </div>
@@ -145,5 +126,3 @@
         </div>
     </div>
 </div>
-
-

@@ -1,33 +1,25 @@
 @extends('layouts.main')
 @section('child')
-@php
-        $epoch_start = $voteUnit->date_start;
-        $dt = new DateTime("@$epoch_start"); // convert UNIX timestamp to PHP DateTime
-        $date_start = $dt->format('d-m-Y');
+    @php
+        $date_start = date('d-m-Y', $voteUnit->date_start);
 
-        $epoch_end = $voteUnit->date_end;
-        $dt = new DateTime("@$epoch_end"); // convert UNIX timestamp to PHP DateTime
-        $date_end = $dt->format('d-m-Y');
-
-        $times = round(microtime(true));
-        $ts = new DateTime("@$times");
-        $today = $ts->format('d-m-Y');
+        $date_end = date('d-m-Y', $voteUnit->date_end);
     @endphp
     <div class="container mt-5">
         <div class="col-md-10 mx-auto mb-5 card">
             <div class="card-body  p-3">
                 <div class="row d-flex align-items-center" data-aos="zoom-in">
                     <div class="col-md-4">
-                        <img src="{{asset('storage/' . $voteUnit->thumbnail) }}" class="pstr_thumb" alt="...">
+                        <img src="{{ asset('storage/' . $voteUnit->thumbnail) }}" class="pstr_thumb" alt="...">
                     </div>
 
                     <div class="col-md-8">
-                        @if ($date_end <= $today)
-                            <a href="/pollingUnitBar/{{ $voteUnit->slug }}" class="mb-3 text-decoration-none text-dark">
+                        @if (\Carbon\Carbon::parse(now())->gt($date_end))
+                            <a href="javascript:void(0)" class="mb-3 text-decoration-none text-dark">
                                 <h2><strong>{{ $voteUnit->title }}</strong></h2>
                             </a>
                         @else
-                            <a href="/polling/{{ $voteUnit->slug }}" class="mb-3 text-decoration-none text-dark">
+                            <a href="javascript:void(0)" class="mb-3 text-decoration-none text-dark">
                                 <h2><strong>{{ $voteUnit->title }}</strong></h2>
                             </a>
                         @endif
@@ -39,7 +31,7 @@
                         </div>
 
                         <div class="d-flex flex-column">
-                            @if ($epoch_end <= $times)
+                            @if (\Carbon\Carbon::parse(now())->gt($date_end))
                                 <small class="text-danger fst-italic mb-1"><i class="fas fa-times-circle"></i> Closed
                                     Polling</small>
                             @elseif(\Carbon\Carbon::parse(now())->lt($date_start))
@@ -59,10 +51,9 @@
             </div>
             <div class="card-footer">
                 <div class="gap-2 d-flex justify-content-end">
-                    <a href="/admin/export-voters/{{$voteUnit->slug}}" class="btn btn-info btn-sm" target="_blank"><i
+                    <a href="/admin/export-voters/{{ $voteUnit->slug }}" class="btn btn-info btn-sm" target="_blank"><i
                             class="fas fa-print"></i> Export Voters</a>
-                    <a href="/admin" class="btn btn-secondary btn-sm" type="button"><i
-                            class="fas fa-reply"></i> Back</a>
+                    <a href="/admin" class="btn btn-secondary btn-sm" type="button"><i class="fas fa-reply"></i> Back</a>
                 </div>
             </div>
         </div>
@@ -94,6 +85,4 @@
             </table>
         </div>
     </div>
-
-
 @endsection

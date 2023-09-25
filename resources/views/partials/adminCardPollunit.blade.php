@@ -19,28 +19,15 @@
             </div>
 
             @php
-                $epoch_start = $pu->date_start;
-                $dt = new DateTime("@$epoch_start"); // convert UNIX timestamp to PHP DateTime
-                $date_start = $dt->format('d-m-Y');
+                $date_start = date('d-m-Y', $pu->date_start);
 
-                $epoch_end = $pu->date_end;
-                $dt = new DateTime("@$epoch_end"); // convert UNIX timestamp to PHP DateTime
-                $date_end = $dt->format('d-m-Y');
-
-                // $date = new DateTime('07/09/2022'); // format: MM/DD/YYYY
-                // echo $date->format('U');
-
-                // echo time();
-
-                $times = round(microtime(true));
-                $ts = new DateTime("@$times");
-                $today = $ts->format('d-m-Y');
+                $date_end = date('d-m-Y', $pu->date_end);
             @endphp
 
             <div class="row d-flex align-items-center">
                 <div class="col-md-9">
                     <p class="d-grid d-md-flex fst-italic mb-3 mb-md-0">
-                        @if ($epoch_end <= $times)
+                        @if (\Carbon\Carbon::parse(now())->gt($date_end))
                             <small class="text-danger fst-italic"><i class="fas fa-times-circle mb-0"></i> Closed
                                 Polling </small>
                         @elseif(\Carbon\Carbon::parse(now())->lt($date_start))
@@ -67,7 +54,7 @@
                 View</a>
             <a href="admin/editPolling/{{ $pu->slug }}" class="dropdown-item"><i class="fas fa-pen"></i> Edit</a>
         </li>
-        @if ($epoch_end <= $times)
+        @if (\Carbon\Carbon::parse(now())->gt($date_end))
         @else
             <li>
                 <a href="admin/add-polling-item/{{ $pu->slug }}" class="dropdown-item"><i class="fa-solid fa-users"></i>
@@ -81,9 +68,7 @@
                 @csrf
                 {{-- Convert time today to date --}}
                 @php
-                    $times = round(microtime(true));
-                    $ts = new DateTime("@$times");
-                    $today = $ts->format('d-m-Y');
+                    $today = date('d-m-Y');
                 @endphp
                 <input type="hidden" name="id" value="{{ $pu->id }}">
                 <input type="hidden" name="date_end" value="{{ $today }}">

@@ -6,7 +6,7 @@
 <div class="container">
 {{-- Content --}}
 <div class="col-md-10 mx-auto my-3 my-md-5">
-    <h6 class="text-muted mb-3 mb-md-5">{{ $title }}: <a class="fst-italic" href="{{ '/admin/pollingUnitBar/' . $vote_unit->id }}"> {{$vote_unit->title}}</a></h6>
+    <h6 class="text-muted mb-3 mb-md-5">{{ $title }}: <a class="fst-italic" href="{{ '/admin/pollingUnitBar/' . $vote_unit->slug}}"> {{$vote_unit->title}}</a></h6>
 
   {{-- Response --}}
   @if ($message = Session::get('success'))
@@ -114,38 +114,10 @@
                     <div class="row mt-3">
 
                         {{-- Convert Date Time --}}
-                        @php
-                            $epoch_start = $vote_unit->date_start;
-                            $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
-                            $date_start = $dt->format('d/m/Y');
-
-                            $epoch_start = $vote_unit->date_start;
-                            $dt = new DateTime("@$epoch_start");  // convert UNIX timestamp to PHP DateTime
-                            $date_start_old = $dt->format('m/d/Y');
-
-                            $epoch_end = $vote_unit->date_end;
-                            $dt = new DateTime("@$epoch_end");  // convert UNIX timestamp to PHP DateTime
-                            $date_end = $dt->format('d/m/Y');
-
-                            $epoch_end = $vote_unit->date_end;
-                            $dt = new DateTime("@$epoch_end");  // convert UNIX timestamp to PHP DateTime
-                            $date_end_old = $dt->format('m/d/Y');
-
-                            // $date = new DateTime('07/09/2022'); // format: MM/DD/YYYY
-                            // echo $date->format('U');
-
-                            //    echo time();
-
-                            $times = round(microtime(true));
-                            $ts = new DateTime("@$times");
-                            $today = $ts->format('d-m-Y');
-
-                        @endphp
 
                         <div class="col-md-6 mb-3 mb-md-0">
                             <div class="form-floating">
-                                <input class="form-control-edit" type="hidden" name="date_start_old" id="floatingInput" value="{{ $date_start_old }}">
-                                <input class="form-control-edit" type="text" name="date_start" id="floatingInput" placeholder="{{$date_start}}" onfocus="(this.type='date')">
+                                <input class="form-control-edit" type="date" name="date_start" id="date_start" value="{{date('Y-m-d', $vote_unit->date_start)}}">
                                 <label for="floatingInput title-text" class="label-form-control-input">Start Date</label>
                                  {{-- Response notif form input thumbnail --}}
                                  @error('date_start')
@@ -158,8 +130,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input class="form-control-edit" type="hidden" name="date_end_old" id="floatingInput" value="{{ $date_end_old }}">
-                                <input type="text" class="form-control-edit" id="floatingInput" placeholder="{{ $date_end }}" name="date_end" onfocus="(this.type='date')">
+                                <input type="date" class="form-control-edit" id="date_end" value="{{date('Y-m-d', $vote_unit->date_end)}}" name="date_end">
                                 <label for="floatingInput title-text" class="label-form-control-input">Expired</label>
                                 {{-- Response notif form input thumbnail --}}
                                 @error('date_end')
@@ -203,6 +174,24 @@
         fetch('/admin/polling/createSlug?title=' + title.value)
             .then(response => response.json())
             .then(data => slug.value = data.slug)
+    });
+
+    $("#date_end").change(function() {
+        var startDate = document.getElementById("date_start").value;
+        var endDate = document.getElementById("date_end").value;
+
+        const date = new Date(<?= $vote_unit->date_end; ?> * 1000);
+        const year = date.getFullYear();
+        let month = date.getMonth() + 1;
+            month = month.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+        let day = date.getDate();
+            day = day.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+        const dateString = `${year}-${month}-${day}`;
+
+        if ((Date.parse(endDate) <= Date.parse(startDate))) {
+            alert("Tanggal berakhir harus lebih dari tanggal polling dimulai !!");
+            document.getElementById("date_end").value = dateString;
+        }
     });
 
     $(document).ready(function() {

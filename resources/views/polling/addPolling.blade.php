@@ -94,9 +94,7 @@
                                 @enderror
                                 {{-- Input description --}}
                                 <textarea class="form-control poll_summer" placeholder="Description" id="poll_summer" name="description"></textarea>
-                                {{-- <div wire:ignore>
-                            <textarea type="text" input="desc_profile" id="summernote" class="form-control summernote">{{ $desc_profile }}</textarea>
-                        </div> --}}
+
                                 {{-- Response notif form input description --}}
                                 @error('description')
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -109,7 +107,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-6 mb-3 mb-md-0">
                                         <div class="form-floating">
-                                            <input type="date" class="form-control" id="floatingInput" placeholder="Text"
+                                            <input type="date" class="form-control" id="date_start" placeholder="Text"
                                                 name="date_start">
                                             <label for="floatingInput title-text">Star from</label>
                                         </div>
@@ -124,7 +122,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="date" class="form-control" id="floatingInput"
+                                            <input type="date" class="form-control" id="date_end"
                                                 placeholder="Text" name="date_end">
                                             <label for="floatingInput title-text">Expired</label>
                                         </div>
@@ -164,6 +162,15 @@
     const title = document.querySelector('#title');
     const slug = document.querySelector('#slug');
 
+    $("#date_end").change(function() {
+        var startDate = document.getElementById("date_start").value;
+        var endDate = document.getElementById("date_end").value;
+
+        if ((Date.parse(endDate) <= Date.parse(startDate))) {
+            alert("Tanggal berakhir harus lebih dari tanggal polling dimulai !!");
+            document.getElementById("date_end").value = "";
+        }
+    });
     title.addEventListener('change', function() {
         fetch('/admin/polling/createSlug?title=' + title.value)
             .then(response => response.json())
