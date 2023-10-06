@@ -9,6 +9,20 @@ use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
+    //privacyPolicy
+    public function privacyPolicy(){
+        return view('privacyPolicy', [
+            'title' => 'Privacy Policy'
+        ]);
+    }
+
+    //privacyPolicy
+    public function termsConditions(){
+        return view('termsConditions', [
+            'title' => 'Terms and Conditions'
+        ]);
+    }
+
     //redirect google login
     public function redirectToGoogle(){
         Http::withUserAgent("mozilla/5.0 (linux; android 4.1.1; galaxy nexus build/jro03c) applewebkit/535.19 (khtml, like gecko) chrome/18.0.1025.166 mobile safari/535.19");
